@@ -4,13 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - circleAntH
-  - circleH
-  - rotAloneNO
-  - rotAloneNE
   - textCircleCentral
-  - circleCentralAntH
   - textCircleH
+  - circleCAntH_Gray
+  - cristalEnergy
   layers:
   - Default
   - TransparentFX

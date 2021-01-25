@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1351224937362155180}
   - component: {fileID: 1351224937362155169}
   - component: {fileID: 1351224937362155171}
-  - component: {fileID: 1351224937362155170}
+  - component: {fileID: 1599802812253542106}
   m_Layer: 0
   m_Name: CircleHRotAlone_Blue
   m_TagString: Untagged
@@ -100,7 +100,7 @@ CircleCollider2D:
   m_Offset: {x: 0.01096651, y: 0.002641797}
   serializedVersion: 2
   m_Radius: 0.24567345
---- !u!114 &1351224937362155170
+--- !u!114 &1599802812253542106
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,9 +109,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1351224937362155181}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4477501f411e4549bd28ac7c210e15f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f08c1e19f7e6f94cb935fbba39008eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomeCircle: CircleHRotAlone_Blue
-  circlesRot: {fileID: 3328709310897007165, guid: b49be361f210e2e409d82a059fa39735,
-    type: 3}
+  tipo: CircleHRotAlone_Blue
+  autoRot: -1

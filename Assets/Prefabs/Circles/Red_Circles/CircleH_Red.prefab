@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 1554428682922199171}
   - component: {fileID: 1554428682922199170}
   - component: {fileID: 1554428682922199168}
-  - component: {fileID: 1554428682922199173}
+  - component: {fileID: 2425419689932730194}
+  - component: {fileID: 1478068671}
+  - component: {fileID: 1478068670}
   m_Layer: 0
   m_Name: CircleH_Red
   m_TagString: Untagged
@@ -97,10 +99,10 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.011886315, y: 0}
+  m_Offset: {x: -0.06496551, y: 0.004802261}
   serializedVersion: 2
-  m_Radius: 0.24192312
---- !u!114 &1554428682922199173
+  m_Radius: 0.17401008
+--- !u!114 &2425419689932730194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,9 +111,59 @@ MonoBehaviour:
   m_GameObject: {fileID: 1554428682922199172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4477501f411e4549bd28ac7c210e15f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f9e65afdcada7a438ca8e7bf1e47726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomeCircle: CircleH_Red
-  circlesRot: {fileID: 3328709310897007165, guid: b49be361f210e2e409d82a059fa39735,
-    type: 3}
+  tipo: CircleH_Red
+  indexVetCircles: 2
+  indexVetCircle: 0
+  energCAntH_Gray: {fileID: 0}
+  circleManager: {fileID: 0}
+  autoRot: 1
+--- !u!50 &1478068671
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554428682922199172}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &1478068670
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554428682922199172}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.25666395, y: -0.0070259785}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.63, y: 0.54}
+    newSize: {x: 0.63, y: 0.54}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.1166721, y: 0.0586565}
+  m_EdgeRadius: 0
