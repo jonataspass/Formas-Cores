@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -4903254553845163760, guid: d2842e6943bb0504f90d000d0af728f2,
     type: 3}
   m_Color: {r: 0.080322154, g: 0.8962264, b: 0.14820576, a: 1}
@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25422cb411084544f97c1811f5e0295d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circleManager: {fileID: 0}
   y: 0
 --- !u!1 &1635098691555267834
 GameObject:
@@ -107,7 +108,7 @@ GameObject:
   - component: {fileID: 1635098691555267835}
   m_Layer: 0
   m_Name: 'Energy '
-  m_TagString: Untagged
+  m_TagString: energy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +198,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 3469178385484208995, guid: d2842e6943bb0504f90d000d0af728f2,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

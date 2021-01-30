@@ -20,12 +20,43 @@ public class GAMEMANAGER : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    //testando***
+    public void YouWin(int canhoes, int ativos)
+    {
+        int ativosTemp = 0;
 
+        if(ativos == 1)
+        {
+            ativosTemp ++;
+            print("ativosTemp" + ativosTemp);
+
+        }
+        else if(ativos == 0)
+        {
+            if(ativosTemp == 0)
+            {
+                ativosTemp = 0;
+                print("ativosTemp" + ativosTemp);
+            }
+            else if(ativosTemp > 0)
+            {
+                ativosTemp--;
+                print("ativosTemp" + ativosTemp);
+            }
+        }
+
+        if (canhoes == ativosTemp)
+        {
+            print("Você venceu!");            
+        }
+    }
+
+    //desativar daqui para baixo
     public Circles[] circles;
 
     private void Start()
     {
-        InicializaAngs();       
+        InicializaAngs();
     }
 
     private void Update()
@@ -39,26 +70,26 @@ public class GAMEMANAGER : MonoBehaviour
     {
         for (int i = 0; i < circles.Length; i++)
         {
-            for(int j = 0; j < circles[i].circle.Length; j++)
+            for (int j = 0; j < circles[i].circle.Length; j++)
             {
-                if(circles[i].circle[j].ativa == true)
+                if (circles[i].circle[j].ativa == true)
                 {
-                    circles[i].circle[j].angCircles = circles[i].circle[j].StartAngCircles;                      
+                    circles[i].circle[j].angCircles = circles[i].circle[j].StartAngCircles;
                 }
-            }            
+            }
         }
     }
 
     //Atualiza ângulos dos objs
     void AtualizaAngs()
     {
-        for(int i = 0; i < circles.Length; i++)
+        for (int i = 0; i < circles.Length; i++)
         {
-            for(int j = 0; j < circles[i].circle.Length; j++)
+            for (int j = 0; j < circles[i].circle.Length; j++)
             {
-                if(circles[i].circle[j] != null && circles[i].circle[j].tipo != "CircleCAntH_Gray")
+                if (circles[i].circle[j] != null && circles[i].circle[j].tipo != "CircleCAntH_Gray")
                 {
-                    circles[i].circle[j].circleTransform.transform.rotation = Quaternion.Euler(0, 0, circles[i].circle[j].angCircles);
+                   // circles[i].circle[j].circleTransform.transform.rotation = Quaternion.Euler(0, 0, circles[i].circle[j].angCircles);
                 }
             }
         }
@@ -74,7 +105,7 @@ public class GAMEMANAGER : MonoBehaviour
         circles[indexCircles].circle[indexCircle].currentlife = (int)energy_Y.y;
     }
 
-    
+
 }
 
 

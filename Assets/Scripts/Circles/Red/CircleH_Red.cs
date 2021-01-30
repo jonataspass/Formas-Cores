@@ -22,7 +22,6 @@ public class CircleH_Red : MonoBehaviour
     //Teste trava click***
     public bool travaClick;
 
-
     private void Start()
     {
         energyCH_Red.AtualizaEnergy(indexVetCircles, indexVetCircle);
@@ -54,7 +53,6 @@ public class CircleH_Red : MonoBehaviour
             travaClick = true;
 
             circleManager.NivelEnergy(indexVetCircles, indexVetCircle);
-
             energyCH_Red.AtualizaEnergy(indexVetCircles, indexVetCircle);
            
             for (int i = 0; i < circleManager.circles.Length; i++)
@@ -99,6 +97,7 @@ public class CircleH_Red : MonoBehaviour
                     }
                 }
             }
+
             energyCH_Red.AtualizaEnergy(indexVetCircles, indexVetCircle);
             StartCoroutine(DestroyCristal());
             Destroy(collision.gameObject);
@@ -112,7 +111,7 @@ public class CircleH_Red : MonoBehaviour
 
     IEnumerator DestravaClick()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         travaClick = false;
     }
 }

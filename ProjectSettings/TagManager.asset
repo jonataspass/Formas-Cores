@@ -4,10 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - textCircleCentral
-  - textCircleH
-  - circleCAntH_Gray
   - cristalEnergy
+  - collReceptLazer
+  - collCanhaoLazer
+  - feixeLazer
+  - circleManager
+  - energy
   layers:
   - Default
   - TransparentFX

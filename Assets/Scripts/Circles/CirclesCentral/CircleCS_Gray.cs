@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//CIRCLE CENTRAL SIMPLES GRAY
-//ROTACIONA TODAS AS CIRCLES NO SENTIDO ESPECÍFICO INDICADO EM CADA UMA
+//CIRCLE CENTRAL SIMPLES GRAY -> ROTACIONA TODAS AS CIRCLES, NO SENTIDO ESPECÍFICO INDICADO EM CADA 
+//CIRCLE, QUE ESTIVEREM SENDO CONTROLADAS POR "CCS_Gray".
 public class CircleCS_Gray : MonoBehaviour
 {
     //Tipo de shape
@@ -15,21 +15,23 @@ public class CircleCS_Gray : MonoBehaviour
     //GameObject com Script CircleManager
     public CircleManager circleManager;
 
-    //Teste trava click***
-    public bool travaClick;
+    //trava -> controla a velocidade de clicks do usuário
+    public bool travaClick;    
 
     private void Start()
     {
+        //Componentes de lazer
+        circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();        
+        //Componentes Energy
+        energyCS_Gray = GameObject.FindWithTag("energy").GetComponentInChildren<Energy>();
         //Inicializa a energia        
-        energyCS_Gray.AtualizaEnergy(indexVetCircles, indexVetCircle);
+        energyCS_Gray.AtualizaEnergy(indexVetCircles, indexVetCircle);        
+        
     }
 
     private void Update()
     {
-        if (circleManager.circles[indexVetCircles].circle[indexVetCircle].currentlife >= 0)
-        {
-            energyCS_Gray.AtualizaEnergy(indexVetCircles, indexVetCircle);
-        }
+        AtualizaEnergy();
     }
 
     private void OnMouseDown()
@@ -46,16 +48,17 @@ public class CircleCS_Gray : MonoBehaviour
             {
                 for (int j = 0; j < circleManager.circles[i].circle.Length; j++)
                 {
-                    //Se ainda tiver energia rotaciona objs
+                    //Currentlife -> Se ainda tiver energia rotaciona objs
                     if (circleManager.circles[indexVetCircles].circle[indexVetCircle].currentlife > 0)
                     {
-                        if (circleManager.circles[i].circle[j].tipo == "CH_Red" 
+                        //Tipos de objs que são rotacionados por this obj
+                        if (circleManager.circles[i].circle[j].tipo == "CH_Red"
                                   && circleManager.circles[i].circle[j].sentRot == 1)
                         {
-                            if(circleManager.circles[i].circle[j].tipo != "CS_Red")
+                            if (circleManager.circles[i].circle[j].tipo != "CS_Red")
                             {
                                 circleManager.circles[i].circle[j].angCircles -= 45;
-                            }                            
+                            }
                         }
                         else
                         {
@@ -75,11 +78,25 @@ public class CircleCS_Gray : MonoBehaviour
 
             StartCoroutine(DestravaClick());
         }
+    } 
+    
+    //Atuallização da energia deste obj
+    void AtualizaEnergy()
+    {
+        if (circleManager.circles[indexVetCircles].circle[indexVetCircle].currentlife >= 0)
+        {
+            energyCS_Gray.AtualizaEnergy(indexVetCircles, indexVetCircle);
+        }
     }
 
+    //velocidade de clicks
     IEnumerator DestravaClick()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         travaClick = false;
     }
 }
+
+
+
+

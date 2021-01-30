@@ -18,7 +18,6 @@ public class Energy : MonoBehaviour
 
     public void AtualizaEnergy(int a, int b)
     {
-        //y = GAMEMANAGER.instance.circles[a].circle[b].currentlife;
         y = circleManager.circles[a].circle[b].currentlife;
     }
 

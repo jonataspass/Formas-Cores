@@ -10,10 +10,6 @@ public class CircleManager : MonoBehaviour
     //Atributos das circles
     public Circles[] circles;
 
-    //teste rotações**
-    //public float vel;
-    //public float limit;
-
     private void Awake()
     {
         IniCirclesAng();
@@ -21,42 +17,18 @@ public class CircleManager : MonoBehaviour
 
     private void Start()
     {
-       /// IniCirclesAng();
+        /// IniCirclesAng();
     }
 
     private void Update()
     {
-        //AtualizaAngs();
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(3);
         }
+    }    
 
-    }
-
-    //Atualiza ângulos dos objs
-    //Desativado***
-    void AtualizaAngs()
-    {
-        for (int i = 0; i < circles.Length; i++)
-        {
-            for (int j = 0; j < circles[i].circle.Length; j++)
-            {
-                if (circles[i].circle[j] != null && circles[i].circle[j].tipo != "CCS_Gray")
-                {
-                    //circles[i].circle[j].circleTransform.transform.rotation = Quaternion.Euler(0, 0, circles[i].circle[j].angCircles);
-                    //teste**
-                    //if (limit <= circles[i].circle[j].angCircles)
-                    //{
-                    //    limit += vel * Time.deltaTime;
-                    //    circles[i].circle[j].circleTransform.transform.rotation = Quaternion.Euler(0, 0, limit);
-                    //}
-                }
-            }
-        }
-    }
-
-    //NÍVEL DE ENERGIA; CONTROLA A QUANTIDADE DE CLICKS POR OBJ
+    //Nível de energia -> controla a quatidade de clicks por objs
     public void NivelEnergy(int indexCircles, int indexCircle)
     {
         //O cáculo do enery_Y é uma regra de 3
@@ -66,7 +38,7 @@ public class CircleManager : MonoBehaviour
         circles[indexCircles].circle[indexCircle].currentlife = (int)energy_Y.y;
     }
 
-    //Inicializa os aângulos das Circles
+    //Inicializa os ângulos das Circles
     void IniCirclesAng()
     {
         for (int i = 0; i < circles.Length; i++)
@@ -83,6 +55,15 @@ public class CircleManager : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    //teste**
+    public void Win(int ativados, int canhoes)
+    {        
+        if(ativados == canhoes)
+        {
+            print("WIN");
         }
     }
 
