@@ -9,16 +9,23 @@ public class Energy : MonoBehaviour
     public CircleManager circleManager;
 
     public int y;
+    
+    private void Start()
+    {
+        circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();        
+    }
 
     void Update()
     {
         if(y >= 0)
-        transform.localScale = new Vector3(transform.localScale.x, y, transform.localScale.z );        
+        {
+            transform.localScale = new Vector3(transform.localScale.x, y, transform.localScale.z);
+        }                       
     }
 
-    public void AtualizaEnergy(int a, int b)
-    {
-        y = circleManager.circles[a].circle[b].currentlife;
+    public void AtualizaEnergy(int indexVetCircles)
+    {       
+        y = circleManager.circles[indexVetCircles].currentlife;        
     }
 
 }

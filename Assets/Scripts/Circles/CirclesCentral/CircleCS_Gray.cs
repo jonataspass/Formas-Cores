@@ -6,27 +6,40 @@ using UnityEngine;
 //CIRCLE, QUE ESTIVEREM SENDO CONTROLADAS POR "CCS_Gray".
 public class CircleCS_Gray : MonoBehaviour
 {
+    //teste**
+    public static CircleCS_Gray instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     //Tipo de shape
     public string tipo;
     //Index do vetor do obj
-    public int indexVetCircles, indexVetCircle;
+    public int indexVetCircles;
     //GameObject com Script Energy
     public Energy energyCS_Gray;
     //GameObject com Script CircleManager
     public CircleManager circleManager;
+    //teste***quantidade de canhoes
+    public int numCanhoes;
 
     //trava -> controla a velocidade de clicks do usuário
-    public bool travaClick;    
+    public bool travaClick;
 
     private void Start()
     {
         //Componentes de lazer
-        circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();        
-        //Componentes Energy
-        energyCS_Gray = GameObject.FindWithTag("energy").GetComponentInChildren<Energy>();
+        circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
+        //Componentes Energy****melhorar a forma de pegar o energy//talvez colocar manualmente em cada obj
+        energyCS_Gray = GetComponentInChildren<Energy>();
         //Inicializa a energia        
-        energyCS_Gray.AtualizaEnergy(indexVetCircles, indexVetCircle);        
-        
+        energyCS_Gray.AtualizaEnergy(indexVetCircles);
+
     }
 
     private void Update()
@@ -40,52 +53,53 @@ public class CircleCS_Gray : MonoBehaviour
         {
             travaClick = true;
 
-            circleManager.NivelEnergy(indexVetCircles, indexVetCircle);
+            circleManager.NivelEnergy(indexVetCircles);
 
-            energyCS_Gray.AtualizaEnergy(indexVetCircles, indexVetCircle);
+            energyCS_Gray.AtualizaEnergy(indexVetCircles);
 
             for (int i = 0; i < circleManager.circles.Length; i++)
             {
-                for (int j = 0; j < circleManager.circles[i].circle.Length; j++)
+
+
+                //Currentlife -> Se ainda tiver energia rotaciona objs
+                if (circleManager.circles[indexVetCircles].currentlife > 0)
                 {
-                    //Currentlife -> Se ainda tiver energia rotaciona objs
-                    if (circleManager.circles[indexVetCircles].circle[indexVetCircle].currentlife > 0)
+                    //Tipos de objs que são rotacionados por this obj
+                    //testado***
+                    if (/*circleManager.circles[i].tipo == "CH_Red"
+                              && */circleManager.circles[i].sentRot == 1)
                     {
-                        //Tipos de objs que são rotacionados por this obj
-                        if (circleManager.circles[i].circle[j].tipo == "CH_Red"
-                                  && circleManager.circles[i].circle[j].sentRot == 1)
-                        {
-                            if (circleManager.circles[i].circle[j].tipo != "CS_Red")
-                            {
-                                circleManager.circles[i].circle[j].angCircles -= 45;
-                            }
-                        }
-                        else
-                        {
-                            if (circleManager.circles[i].circle[j].tipo != "CS_Red")
-                            {
-                                circleManager.circles[i].circle[j].angCircles += 45;
-                            }
-                        }
+                        //if (circleManager.circles[i].tipo != "CS_Red")
+                        //{
+                            circleManager.circles[i].angCircles -= 45;
+                        //}
+                    }
+                    else
+                    {
+                        //if (circleManager.circles[i].tipo != "CS_Red")
+                        //{
+                            circleManager.circles[i].angCircles += 45;
+                        //}
                     }
                 }
+
             }
 
-            if (circleManager.circles[indexVetCircles].circle[indexVetCircle].currentlife > 0)
+            if (circleManager.circles[indexVetCircles].currentlife > 0)
             {
-                circleManager.circles[indexVetCircles].circle[indexVetCircle].currentlife--;
+                circleManager.circles[indexVetCircles].currentlife--;
             }
 
             StartCoroutine(DestravaClick());
         }
-    } 
-    
-    //Atuallização da energia deste obj
+    }
+
+    //Atualização da energia deste obj
     void AtualizaEnergy()
     {
-        if (circleManager.circles[indexVetCircles].circle[indexVetCircle].currentlife >= 0)
+        if (circleManager.circles[indexVetCircles].currentlife >= 0)
         {
-            energyCS_Gray.AtualizaEnergy(indexVetCircles, indexVetCircle);
+            energyCS_Gray.AtualizaEnergy(indexVetCircles);
         }
     }
 

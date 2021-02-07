@@ -18,11 +18,11 @@ public class CanhaoManager : MonoBehaviour
     public float lazerComprimento;
     public Color lazerAlphaLazer;
     public bool desativaLazer;
-    public int canhaoAtiv;
+    public int ativados;
 
     private void Start()
     {
-        feixeLazer = GameObject.FindWithTag("feixeLazer").GetComponentInChildren<SpriteRenderer>();
+        feixeLazer = GetComponentInChildren<SpriteRenderer>();
         feixeLazer.color = new Color(lazerAlphaLazer.r, lazerAlphaLazer.g, lazerAlphaLazer.b, lazerAlphaLazer.a);
         DesativaColl(gameObject.GetComponent<Collider2D>());
         StartCoroutine(AtivaColl(gameObject.GetComponent<Collider2D>()));
@@ -34,12 +34,12 @@ public class CanhaoManager : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
-    {
+    {        
         if (coll.gameObject.CompareTag("collReceptLazer"))
         {
-            canhaoAtiv = 1;
-            //teste** 
-            GAMEMANAGER.instance.YouWin(1, canhaoAtiv);
+            ativados = 1;
+             
+            GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados);
         }
     }
 
@@ -47,15 +47,15 @@ public class CanhaoManager : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("collReceptLazer"))
         {
-            canhaoAtiv = 0;
-            //teste** 
-            GAMEMANAGER.instance.YouWin(1, canhaoAtiv);
+            ativados = 0;
+            
+            GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados);
         }
     }
 
     void AcionaLazer()
     {
-        if (canhaoAtiv == 1)
+        if (ativados == 1)
         {
             StartCoroutine(LiberaLazer());
             desativaLazer = true;
@@ -76,7 +76,7 @@ public class CanhaoManager : MonoBehaviour
                 }
             }            
         }
-        else if (canhaoAtiv == 0)
+        else if (ativados == 0)
         {
             lazerTrava = false;
 

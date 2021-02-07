@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CircleAntHRotAlone_Red : MonoBehaviour
+public class CircleAntH_Red : MonoBehaviour
 {
     //tipo de shape
     public string tipo;
@@ -13,15 +13,15 @@ public class CircleAntHRotAlone_Red : MonoBehaviour
     //GameObject com Script CircleManager
     public CircleManager circleManager;
 
-    //Comportamento: quando o valor desta variável for IGUAL ao valor de uma variável... 
-    //shapeCircles[i].aut0Rot[x], significa que este obj APENAS rotaciona ele mesmo ao ser clicado.
+    //Comportamento: quando o valor desta variável é IGUAL ao valor de uma variável... 
+    //shapeCircles[i].atRot[x], significa que este obj NÃO rotaciona ao ser clicado.
     public int autoRot;
 
     //Velocidade de rotação do obj.
     [SerializeField]
     private float vel = 0;
     //Variável sentinela -> controla a rotação do obj dentro do método Update().
-    private float limit;
+    public float limit;
     //Controla velocidade de clicks do usuário
     public bool travaClick;
 
@@ -47,7 +47,7 @@ public class CircleAntHRotAlone_Red : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (tipo == "CAHRA_Red" && travaClick == false)
+        if (tipo == "CAH_Red" && travaClick == false)
         {
             travaClick = true;
 
@@ -59,7 +59,7 @@ public class CircleAntHRotAlone_Red : MonoBehaviour
 
                 if (circleManager.circles[i].cor == "Red")
                 {
-                    if (circleManager.circles[i].autoRot == autoRot)
+                    if (circleManager.circles[i].autoRot != autoRot)
                     {
                         if (circleManager.circles[indexVetCircles].currentlife > 0)
                             circleManager.circles[i].angCircles += 45;
@@ -103,7 +103,7 @@ public class CircleAntHRotAlone_Red : MonoBehaviour
 
     //Rotaciona este  obj quando seu obj controlador é clicado.
     void RotacionaObj()
-    {//testando***trabalhando aqui        
+    {
         if (limit <= circleManager.circles[indexVetCircles].angCircles)
         {
             limit += vel * Time.deltaTime;
@@ -113,8 +113,7 @@ public class CircleAntHRotAlone_Red : MonoBehaviour
                 limit = circleManager.circles[indexVetCircles].angCircles;
             }
             circleManager.circles[indexVetCircles].circleTransform.transform.rotation = Quaternion.Euler(0, 0, limit);
-            
-        }
+        }//testando
         else if (limit >= circleManager.circles[indexVetCircles].angCircles)
         {
             limit -= vel * Time.deltaTime;

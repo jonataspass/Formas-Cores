@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5190464957699738254}
   - component: {fileID: 5190464957699738241}
   m_Layer: 0
-  m_Name: CircleCS_Gray
+  m_Name: CCS_Gray1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7553521914133821833, guid: c80c91c280e34404b9fc4a5164008e69,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -116,10 +116,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipo: CCS_Gray
   indexVetCircles: 0
-  indexVetCircle: 0
   energyCS_Gray: {fileID: 0}
   circleManager: {fileID: 0}
+  numCanhoes: 1
   travaClick: 0
+--- !u!114 &1479526015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6825546049745887081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25422cb411084544f97c1811f5e0295d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circleManager: {fileID: 0}
+  y: 0
 --- !u!1001 &5190464957035199895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127,10 +141,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5190464957699738252}
     m_Modifications:
+    - target: {fileID: 1635098691408667385, guid: 394aa59b09818bc4abd64876aa77749a,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1635098691555267834, guid: 394aa59b09818bc4abd64876aa77749a,
         type: 3}
       propertyPath: m_Name
-      value: 'Energy '
+      value: Energy
       objectReference: {fileID: 0}
     - target: {fileID: 1635098691555267835, guid: 394aa59b09818bc4abd64876aa77749a,
         type: 3}
@@ -145,7 +164,7 @@ PrefabInstance:
     - target: {fileID: 1635098691555267835, guid: 394aa59b09818bc4abd64876aa77749a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.16918238
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1635098691555267835, guid: 394aa59b09818bc4abd64876aa77749a,
         type: 3}
@@ -187,11 +206,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1635098692376191978, guid: 394aa59b09818bc4abd64876aa77749a,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1635098691408667384, guid: 394aa59b09818bc4abd64876aa77749a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 394aa59b09818bc4abd64876aa77749a, type: 3}
 --- !u!4 &6825546049624058220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1635098691555267835, guid: 394aa59b09818bc4abd64876aa77749a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5190464957035199895}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6825546049745887081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1635098691408667390, guid: 394aa59b09818bc4abd64876aa77749a,
     type: 3}
   m_PrefabInstance: {fileID: 5190464957035199895}
   m_PrefabAsset: {fileID: 0}

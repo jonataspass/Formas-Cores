@@ -8,7 +8,7 @@ public class CircleManager : MonoBehaviour
     public static CircleManager instance;
 
     //Atributos das circles
-    public Circles[] circles;
+    public CirclesAtributos[] circles;
 
     private void Awake()
     {
@@ -24,18 +24,18 @@ public class CircleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(4);
         }
-    }    
+    }
 
     //Nível de energia -> controla a quatidade de clicks por objs
-    public void NivelEnergy(int indexCircles, int indexCircle)
+    public void NivelEnergy(int indexCircles)
     {
-        //O cáculo do enery_Y é uma regra de 3
-        Vector3 energy_Y = new Vector3(7, circles[indexCircles].circle[indexCircle].currentlife
-                                         * 7 / circles[indexCircles].circle[indexCircle].maxLife, 1);
+        //O cáculo do enery_Y é uma regra de 3        
+        Vector3 energy_Y = new Vector3(7, circles[indexCircles].currentlife
+                                         * 7 / circles[indexCircles].maxLife, 1);
 
-        circles[indexCircles].circle[indexCircle].currentlife = (int)energy_Y.y;
+        circles[indexCircles].currentlife = (int)energy_Y.y;
     }
 
     //Inicializa os ângulos das Circles
@@ -43,28 +43,19 @@ public class CircleManager : MonoBehaviour
     {
         for (int i = 0; i < circles.Length; i++)
         {
-            for (int j = 0; j < circles[i].circle.Length; j++)
-            {
-                if (circles[i].circle[j].ativa == true)
-                {
-                    circles[i].circle[j].angCircles += circles[i].circle[j].StartAngCircles;
 
-                    for (int a = 0; a < circles[i].circle[j].clicksR.Length; a++)
-                    {
-                        circles[i].circle[j].angCircles += circles[i].circle[j].clicksR[a].clicks * 45;
-                    }
+            if (circles[i].ativa == true)
+            {
+                circles[i].angCircles += circles[i].StartAngCircles;
+
+                for (int a = 0; a < circles[i].clicksR.Length; a++)
+                {
+                    circles[i].angCircles += circles[i].clicksR[a].clicks * 45;
                 }
             }
         }
     }
-
-    //teste**
-    public void Win(int ativados, int canhoes)
-    {        
-        if(ativados == canhoes)
-        {
-            print("WIN");
-        }
-    }
-
 }
+
+
+

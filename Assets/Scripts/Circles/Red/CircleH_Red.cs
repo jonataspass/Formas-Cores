@@ -6,44 +6,42 @@ public class CircleH_Red : MonoBehaviour
     //tipo de shape
     public string tipo;
     //Index do vetor do obj
-    public int indexVetCircles, indexVetCircle;
+    public int indexVetCircles;
     //GameObject com Script Energy
     public Energy energyCH_Red;
     //GameObject com Script CircleManager
     public CircleManager circleManager;
 
-    //comportamento: quando o valor desta variável é IGUAL ao valor de uma variável... 
+    //Comportamento: quando o valor desta variável é IGUAL ao valor de uma variável... 
     //shapeCircles[i].atRot[x], significa que este obj NÃO rotaciona ao ser clicado.
     public int autoRot;
 
-    //teste rotações**
-    private float vel;
-    private float limit;
-    //Teste trava click***
+    //Velocidade de rotação do obj.
+    [SerializeField]
+    private float vel = 0;
+    //Variável sentinela -> controla a rotação do obj dentro do método Update().
+    public float limit;
+    //Controla velocidade de clicks do usuário
     public bool travaClick;
 
     private void Start()
     {
-        energyCH_Red.AtualizaEnergy(indexVetCircles, indexVetCircle);
-        //teste**
-        vel = 70;
-        limit = circleManager.circles[indexVetCircles].circle[indexVetCircle].angCircles;
+        //Componentes de lazer
+        circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
+        //Componentes Energy
+        energyCH_Red = GetComponentInChildren<Energy>();
+        //Inicializa a carga de enegia inicial do obj.
+        energyCH_Red.AtualizaEnergy(indexVetCircles);
+        //Inicializa o limite de rotação do obj.        
+        limit = circleManager.circles[indexVetCircles].angCircles;
     }
 
     private void Update()
     {
         //Atualiza Energy
-        if (circleManager.circles[indexVetCircles].circle[indexVetCircle].currentlife >= 0)
-        {
-            energyCH_Red.AtualizaEnergy(indexVetCircles, indexVetCircle);
-        }
-
-        //Rotaciona este  obj teste ***
-        if (limit >= circleManager.circles[indexVetCircles].circle[indexVetCircle].angCircles)
-        {
-            limit -= vel * Time.deltaTime;
-            circleManager.circles[indexVetCircles].circle[indexVetCircle].circleTransform.transform.rotation = Quaternion.Euler(0, 0, limit);
-        }
+        AtualizaEnergy();
+        //Rotaciona este  obj quando seu obj controlador é clicado.
+        RotacionaObj();
     }
 
     private void OnMouseDown()
@@ -52,27 +50,26 @@ public class CircleH_Red : MonoBehaviour
         {
             travaClick = true;
 
-            circleManager.NivelEnergy(indexVetCircles, indexVetCircle);
-            energyCH_Red.AtualizaEnergy(indexVetCircles, indexVetCircle);
-           
+            circleManager.NivelEnergy(indexVetCircles);
+            energyCH_Red.AtualizaEnergy(indexVetCircles);
+
             for (int i = 0; i < circleManager.circles.Length; i++)
             {
-                for (int j = 0; j < circleManager.circles[i].circle.Length; j++)
+
+                if (circleManager.circles[i].cor == "Red")
                 {
-                    if (circleManager.circles[i].circle[j].cor == "Red")
+                    if (circleManager.circles[i].autoRot != autoRot)
                     {
-                        if (circleManager.circles[i].circle[j].autoRot != autoRot)
-                        {
-                            if (circleManager.circles[indexVetCircles].circle[indexVetCircle].currentlife > 0)
-                                circleManager.circles[i].circle[j].angCircles -= 45;                            
-                        }
+                        if (circleManager.circles[indexVetCircles].currentlife > 0)
+                            circleManager.circles[i].angCircles -= 45;
                     }
                 }
+
             }
 
-            if (circleManager.circles[indexVetCircles].circle[indexVetCircle].currentlife > 0)
+            if (circleManager.circles[indexVetCircles].currentlife > 0)
             {
-                circleManager.circles[indexVetCircles].circle[indexVetCircle].currentlife--;
+                circleManager.circles[indexVetCircles].currentlife--;
             }
 
             StartCoroutine(DestravaClick());
@@ -84,23 +81,57 @@ public class CircleH_Red : MonoBehaviour
     {
         if (collision.CompareTag("cristalEnergy"))
         {
-            circleManager.circles[indexVetCircles].circle[indexVetCircle].currentlife++;
+            circleManager.circles[indexVetCircles].currentlife++;
 
-            for(int i = 0; i < circleManager.circles.Length; i++)
+            for (int i = 0; i < circleManager.circles.Length; i++)
             {
-                for(int j = 0; j < circleManager.circles[i].circle.Length; j++)
+
+                //Carrega seu obj central contralador
+                if (circleManager.circles[i].tipo == "CCS_Gray")
                 {
-                    //Carrega seu obj central contralador
-                    if(circleManager.circles[i].circle[j].tipo == "CCS_Gray")
-                    {
-                        circleManager.circles[i].circle[j].currentlife++;
-                    }
+                    circleManager.circles[i].currentlife++;
                 }
+
             }
 
-            energyCH_Red.AtualizaEnergy(indexVetCircles, indexVetCircle);
+            energyCH_Red.AtualizaEnergy(indexVetCircles);
             StartCoroutine(DestroyCristal());
             Destroy(collision.gameObject);
+        }
+    }
+
+    //Rotaciona este  obj quando seu obj controlador é clicado.
+    void RotacionaObj()
+    {
+        if (limit >= circleManager.circles[indexVetCircles].angCircles)
+        {
+            limit -= vel * Time.deltaTime;
+            //estabiliza o valor de limit
+            if (limit < circleManager.circles[indexVetCircles].angCircles)
+            {
+                limit = circleManager.circles[indexVetCircles].angCircles;
+            }
+            circleManager.circles[indexVetCircles].circleTransform.transform.rotation = Quaternion.Euler(0, 0, limit);
+        }//testando
+        else if (limit <= circleManager.circles[indexVetCircles].angCircles)
+        {
+            limit += vel * Time.deltaTime;
+            //estabiliza o valor de limit
+            if (limit > circleManager.circles[indexVetCircles].angCircles)
+            {
+                limit = circleManager.circles[indexVetCircles].angCircles;
+            }
+            circleManager.circles[indexVetCircles].circleTransform.transform.rotation = Quaternion.Euler(0, 0, limit);
+
+        }
+    }
+
+    //Atualização da energia deste obj
+    void AtualizaEnergy()
+    {
+        if (circleManager.circles[indexVetCircles].currentlife >= 0)
+        {
+            energyCH_Red.AtualizaEnergy(indexVetCircles);
         }
     }
 

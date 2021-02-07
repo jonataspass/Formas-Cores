@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8063498073348360519}
   m_Layer: 0
   m_Name: CircleManager
-  m_TagString: Untagged
+  m_TagString: circleManager
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,8 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc9cee003352894b8e095b8fc7dab7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicksEmbaralha: {fileID: 0}
-  circles:
-  - circle: []
-  - circle: []
-  - circle: []
+  circles: []

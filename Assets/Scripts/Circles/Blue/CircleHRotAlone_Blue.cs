@@ -13,19 +13,19 @@ public class CircleHRotAlone_Blue : MonoBehaviour
     {
         if (tipo == "CircleHRotAlone_Blue")
         {
-            for (int i = 0; i < GAMEMANAGER.instance.circles.Length; i++)
-            {
-                for (int j = 0; j < GAMEMANAGER.instance.circles[i].circle.Length; j++)
-                {
-                    if (GAMEMANAGER.instance.circles[i].circle[j].cor == "Blue")
-                    {
-                        if (GAMEMANAGER.instance.circles[i].circle[j].autoRot == autoRot)
-                        {
-                            GAMEMANAGER.instance.circles[i].circle[j].angCircles -= 45;
-                        }
-                    }
-                }
-            }
+            //for (int i = 0; i < GAMEMANAGER.instance.circles.Length; i++)
+            //{
+            //    for (int j = 0; j < GAMEMANAGER.instance.circles[i].circle.Length; j++)
+            //    {
+            //        if (GAMEMANAGER.instance.circles[i].circle[j].cor == "Blue")
+            //        {
+            //            if (GAMEMANAGER.instance.circles[i].circle[j].autoRot == autoRot)
+            //            {
+            //                GAMEMANAGER.instance.circles[i].circle[j].angCircles -= 45;
+            //            }
+            //        }
+            //    }
+            //}
         }
     }
 }
