@@ -1,11 +1,10 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//script adicionado ao obj CirclesAntH_Gray.
-//rotaciona todos os shapes tipo Circle com a parte externa em cinza no sentido anti-horário.
-public class CircleCAntH_Gray : MonoBehaviour
+public class CIrcleCH_Gray : MonoBehaviour
 {
-    public static CircleCAntH_Gray instance;
+    public static CIrcleCH_Gray instance;
 
     private void Awake()
     {
@@ -46,7 +45,7 @@ public class CircleCAntH_Gray : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (tipo == "CCAH_Gray" && travaClick == false)
+        if (tipo == "CCH_Gray" && travaClick == false)
         {
             travaClick = true;
 
@@ -59,7 +58,7 @@ public class CircleCAntH_Gray : MonoBehaviour
                 //Currentlife -> Se ainda tiver energia rotaciona objs
                 if (circleManager.circles[indexVetCircles].currentlife > 0)
                 {
-                    circleManager.circles[i].angCircles += 45;
+                    circleManager.circles[i].angCircles -= 45;
                 }
             }
 

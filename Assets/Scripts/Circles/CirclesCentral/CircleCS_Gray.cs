@@ -6,7 +6,6 @@ using UnityEngine;
 //CIRCLE, QUE ESTIVEREM SENDO CONTROLADAS POR "CCS_Gray".
 public class CircleCS_Gray : MonoBehaviour
 {
-    //teste**
     public static CircleCS_Gray instance;
 
     private void Awake()
@@ -25,7 +24,7 @@ public class CircleCS_Gray : MonoBehaviour
     public Energy energyCS_Gray;
     //GameObject com Script CircleManager
     public CircleManager circleManager;
-    //teste***quantidade de canhoes
+    //Quantidade de canhoes
     public int numCanhoes;
 
     //trava -> controla a velocidade de clicks do usuário
@@ -35,11 +34,10 @@ public class CircleCS_Gray : MonoBehaviour
     {
         //Componentes de lazer
         circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
-        //Componentes Energy****melhorar a forma de pegar o energy//talvez colocar manualmente em cada obj
+        //Componentes Energy
         energyCS_Gray = GetComponentInChildren<Energy>();
         //Inicializa a energia        
         energyCS_Gray.AtualizaEnergy(indexVetCircles);
-
     }
 
     private void Update()
@@ -59,10 +57,8 @@ public class CircleCS_Gray : MonoBehaviour
 
             for (int i = 0; i < circleManager.circles.Length; i++)
             {
-
-
-                //Currentlife -> Se ainda tiver energia rotaciona objs
-                if (circleManager.circles[indexVetCircles].currentlife > 0)
+                //Currentlife -> Se ainda tiver energia rotaciona objs teste*****
+                if (circleManager.circles[indexVetCircles].currentlife > 0 && circleManager.circles[i].tipo != "CS_Red")
                 {
                     //Tipos de objs que são rotacionados por this obj
                     //testado***
@@ -71,14 +67,14 @@ public class CircleCS_Gray : MonoBehaviour
                     {
                         //if (circleManager.circles[i].tipo != "CS_Red")
                         //{
-                            circleManager.circles[i].angCircles -= 45;
+                        circleManager.circles[i].angCircles -= 45;
                         //}
                     }
                     else
                     {
                         //if (circleManager.circles[i].tipo != "CS_Red")
                         //{
-                            circleManager.circles[i].angCircles += 45;
+                        circleManager.circles[i].angCircles += 45;
                         //}
                     }
                 }

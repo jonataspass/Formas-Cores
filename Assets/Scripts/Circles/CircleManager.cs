@@ -5,26 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class CircleManager : MonoBehaviour
 {
-    public static CircleManager instance;
-
     //Atributos das circles
     public CirclesAtributos[] circles;
 
-    private void Awake()
-    {
-        IniCirclesAng();
-    }
-
     private void Start()
     {
-        /// IniCirclesAng();
+        IniCirclesAng();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(LevelAtual.instance.level);
         }
     }
 

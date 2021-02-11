@@ -55,7 +55,6 @@ public class CircleH_Red : MonoBehaviour
 
             for (int i = 0; i < circleManager.circles.Length; i++)
             {
-
                 if (circleManager.circles[i].cor == "Red")
                 {
                     if (circleManager.circles[i].autoRot != autoRot)
@@ -64,9 +63,8 @@ public class CircleH_Red : MonoBehaviour
                             circleManager.circles[i].angCircles -= 45;
                     }
                 }
-
             }
-
+            //Decrementa energy
             if (circleManager.circles[indexVetCircles].currentlife > 0)
             {
                 circleManager.circles[indexVetCircles].currentlife--;
@@ -85,13 +83,11 @@ public class CircleH_Red : MonoBehaviour
 
             for (int i = 0; i < circleManager.circles.Length; i++)
             {
-
                 //Carrega seu obj central contralador
                 if (circleManager.circles[i].tipo == "CCS_Gray")
                 {
                     circleManager.circles[i].currentlife++;
                 }
-
             }
 
             energyCH_Red.AtualizaEnergy(indexVetCircles);
@@ -111,8 +107,9 @@ public class CircleH_Red : MonoBehaviour
             {
                 limit = circleManager.circles[indexVetCircles].angCircles;
             }
+
             circleManager.circles[indexVetCircles].circleTransform.transform.rotation = Quaternion.Euler(0, 0, limit);
-        }//testando
+        }
         else if (limit <= circleManager.circles[indexVetCircles].angCircles)
         {
             limit += vel * Time.deltaTime;
@@ -121,8 +118,8 @@ public class CircleH_Red : MonoBehaviour
             {
                 limit = circleManager.circles[indexVetCircles].angCircles;
             }
-            circleManager.circles[indexVetCircles].circleTransform.transform.rotation = Quaternion.Euler(0, 0, limit);
 
+            circleManager.circles[indexVetCircles].circleTransform.transform.rotation = Quaternion.Euler(0, 0, limit);
         }
     }
 
