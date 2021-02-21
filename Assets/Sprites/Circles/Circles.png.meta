@@ -272,10 +272,10 @@ TextureImporter:
       name: Circles_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 531
-        width: 177
-        height: 182
+        x: 27
+        y: 537
+        width: 170
+        height: 171
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

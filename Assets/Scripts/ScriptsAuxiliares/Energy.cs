@@ -12,20 +12,32 @@ public class Energy : MonoBehaviour
     
     private void Start()
     {
-        circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();        
+        circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
+        MaxEnergy();
     }
 
     void Update()
     {
-        if(y >= 0)
-        {
-            transform.localScale = new Vector3(transform.localScale.x, y, transform.localScale.z);
-        }                       
+        
     }
 
     public void AtualizaEnergy(int indexVetCircles)
     {       
-        y = circleManager.circles[indexVetCircles].currentlife;        
+        y = circleManager.circles[indexVetCircles].currentlife;
+        //*****teste
+        if (y >= 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, y, transform.localScale.z);
+        }
+    }
+
+    //Define o tamanho máximo da barra de energia
+    void MaxEnergy()
+    {
+        for (int i = 0; i < circleManager.circles.Length; i++)
+        {
+            circleManager.circles[i].maxLife = circleManager.maxEnergy;
+        }
     }
 
 }

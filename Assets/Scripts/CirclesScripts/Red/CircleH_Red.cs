@@ -46,7 +46,7 @@ public class CircleH_Red : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (tipo == "CH_Red" && travaClick == false)
+        if (tipo == "CH_Red" && travaClick == false && circleManager.circles[indexVetCircles].ativa == true)
         {
             travaClick = true;
 

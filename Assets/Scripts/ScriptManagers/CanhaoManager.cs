@@ -20,6 +20,9 @@ public class CanhaoManager : MonoBehaviour
     public bool desativaLazer;
     public int ativados;
 
+    //teste
+    //private int ptsTemp = 0;
+
     private void Start()
     {
         feixeLazer = GetComponentInChildren<SpriteRenderer>();
@@ -33,15 +36,19 @@ public class CanhaoManager : MonoBehaviour
         AcionaLazer();
     }
 
+    //Ativa canhão
     private void OnTriggerEnter2D(Collider2D coll)
     {        
         if (coll.gameObject.CompareTag("collReceptLazer"))
         {
             ativados = 1;
             GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados);
+            //Incremente score
+            ScoreManager.instance.ptsMarcados += 100;
         }
     }
 
+    //Desativa canhão
     private void OnTriggerExit2D(Collider2D coll)
     {
         if (coll.gameObject.CompareTag("collReceptLazer"))
@@ -99,7 +106,8 @@ public class CanhaoManager : MonoBehaviour
         }
     }
 
-    //Desativa collider
+    //Desativa collider "o collider deve ser desativado rapidamente no inicio
+    //para que o lazer não seja ativado inicialmente
     void DesativaColl(Collider2D coll)
     {
         coll.enabled = false;

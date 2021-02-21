@@ -23,13 +23,26 @@ public class GAMEMANAGER : MonoBehaviour
         }
     }
 
-    //testando***trabalhando aqui
+    //GameObject com Script CircleManager trabalhando aqui***
+    public CircleManager circleManager;
+    //Variáveis de Win
+    private bool win;
+
+    private void Start()
+    {
+        //trabalhando aqui***
+        circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
+        //***trabahando aqui
+        win = false;
+    }
+
+    //trabalhando aqui****
+    //mudar nome para... 
     public void YouWin(int canhoes, int ativos)
     {
         if (ativos == 1)
         {
             ativosTemp++;
-
         }
         else if (ativos == 0)
         {
@@ -45,7 +58,27 @@ public class GAMEMANAGER : MonoBehaviour
 
         if (canhoes == ativosTemp)
         {
-            print("Você venceu!");
+            win = true;
+        }
+        //testando***
+        if(win == true)
+        {
+            circleManager.ScoreFinal();
+            DesabClicks();
+        }        
+    }
+
+    void StartGame()
+    {
+
+    }
+
+    //Desabilita clicks quando o jogo chega ao fim*****testando
+    void DesabClicks()
+    {
+        for (int i = 0; i < circleManager.circles.Length; i++)
+        {
+           circleManager.circles[i].ativa = false;
         }
     }
 }

@@ -46,8 +46,8 @@ public class CircleCS_Gray : MonoBehaviour
     }
 
     private void OnMouseDown()
-    {
-        if (tipo == "CCS_Gray" && travaClick == false)
+    {                                                   
+        if (tipo == "CCS_Gray" && travaClick == false && circleManager.circles[indexVetCircles].ativa == true)
         {
             travaClick = true;
 
@@ -57,25 +57,17 @@ public class CircleCS_Gray : MonoBehaviour
 
             for (int i = 0; i < circleManager.circles.Length; i++)
             {
-                //Currentlife -> Se ainda tiver energia rotaciona objs teste*****
+                //Currentlife -> Se ainda tiver energia rotaciona objs 
                 if (circleManager.circles[indexVetCircles].currentlife > 0 && circleManager.circles[i].tipo != "CS")
                 {
-                    //Tipos de objs que são rotacionados por this obj
-                    //testado***
-                    if (/*circleManager.circles[i].tipo == "CH_Red"
-                              && */circleManager.circles[i].sentRot == 1)
+                    //Tipos de objs que são rotacionados por this obj                    
+                    if (circleManager.circles[i].sentRot == 1)
                     {
-                        //if (circleManager.circles[i].tipo != "CS_Red")
-                        //{
                         circleManager.circles[i].angCircles -= 45;
-                        //}
                     }
                     else
                     {
-                        //if (circleManager.circles[i].tipo != "CS_Red")
-                        //{
                         circleManager.circles[i].angCircles += 45;
-                        //}
                     }
                 }
 
