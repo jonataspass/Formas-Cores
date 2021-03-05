@@ -10,7 +10,7 @@ public class CircleManager : MonoBehaviour
     //Nível máximo de energia acumulável
     public int maxEnergy;
 
-    //testando****
+    //Variávei de MaxScore
     public int totalClicks;
     public int numCircCent;
 
@@ -19,9 +19,17 @@ public class CircleManager : MonoBehaviour
         IniCirclesAng();
         MaxPontos();
     }
-
+    //passar todos os updatees dos scripts instances para o update do Gamemanager; criar um metodo "UpdateCircleManager"...
+    //e chamar este no update do gamemanager
     private void Update()
-    {
+    { //testando****
+        int x = Total_CurrentLife();
+
+        if (x == 0)
+        {
+            GAMEMANAGER.instance.YouLose(CircleCS_Gray.instance.numCanhoes, GAMEMANAGER.instance.ativosTemp);
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(LevelAtual.instance.level);
@@ -55,8 +63,8 @@ public class CircleManager : MonoBehaviour
             }
         }
     }
-
-    //Defini a pontuação que completa 100% do objetivo****Em testes iniciais//melhorar
+        
+    //Defini a pontuação que completa 100% do objetivo
     void MaxPontos()
     {
         int currentLifeTemp = 0;
@@ -79,7 +87,7 @@ public class CircleManager : MonoBehaviour
         ScoreManager.instance.maxScore = maxPontoTemp / 100;
     }
 
-    //Define pontuação final do level corrente*** testando*****
+    //Define pontuação final do level corrente
     public void ScoreFinal()
     {
         int currentLifeTemp = 0;
@@ -97,8 +105,22 @@ public class CircleManager : MonoBehaviour
         }
 
         maxPontoTemp = currentLifeTemp * 100;
-        ScoreManager.instance.ptsMarcados += maxPontoTemp;
-    }    
+        ScoreManager.instance.ptsMarcados_Total += maxPontoTemp;
+    }
+    
+    //testando*** metodo que conta o total de energia de todos os objs 04/03
+    //para verificar se o jogador perdeu
+    public int Total_CurrentLife()
+    {
+        int totalEnergy = 0;
+
+        for(int i = 0; i < circles.Length; i++)
+        {
+            totalEnergy += circles[i].currentlife;
+        }
+
+        return totalEnergy;
+    }
 }
 
 

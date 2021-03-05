@@ -24,7 +24,7 @@ public class Energy : MonoBehaviour
     public void AtualizaEnergy(int indexVetCircles)
     {       
         y = circleManager.circles[indexVetCircles].currentlife;
-        //*****teste
+        
         if (y >= 0)
         {
             transform.localScale = new Vector3(transform.localScale.x, y, transform.localScale.z);

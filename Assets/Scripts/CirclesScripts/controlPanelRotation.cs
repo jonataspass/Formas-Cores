@@ -28,7 +28,7 @@ public class controlPanelRotation : MonoBehaviour
         if (coll.gameObject.CompareTag("collReceptLazer"))
         {
             tempAngPanel = angPanel.color;            
-            angPanel.color = new Color(colorAngPanel.r, colorAngPanel.g, colorAngPanel.b, colorAngPanel.a + 135);
+            angPanel.color = new Color(colorAngPanel.r, colorAngPanel.g, colorAngPanel.b, colorAngPanel.a + 135);          
         }
     }
 

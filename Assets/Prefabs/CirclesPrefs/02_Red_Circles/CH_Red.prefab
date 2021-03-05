@@ -223,7 +223,7 @@ MonoBehaviour:
   indexVetCircles: 1
   energyCH_Red: {fileID: 0}
   circleManager: {fileID: 0}
-  autoRot: 0
+  autoRot: 1
   vel: 70
   limit: 0
   travaClick: 0
@@ -292,12 +292,17 @@ PrefabInstance:
     - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.004225187
+      value: 0.0016887262
       objectReference: {fileID: 0}
     - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}
       propertyPath: m_Offset.y
       value: 0.0464899
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.21520515
       objectReference: {fileID: 0}
     - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelAtual : MonoBehaviour
 {
     public int level = -1;
+    public string cenaAtual;
 
     [SerializeField]
     public static LevelAtual instance;
@@ -29,4 +30,11 @@ public class LevelAtual : MonoBehaviour
     {
         level = SceneManager.GetActiveScene().buildIndex;
     }
+
+    ////método utilizado na cena FaseMestra para entrar nos mundos
+    //public void CarregaMundo(string s)
+    //{
+    //    mundoAtual = s;
+    //    SceneManager.LoadScene(mundoAtual);
+    //}
 }

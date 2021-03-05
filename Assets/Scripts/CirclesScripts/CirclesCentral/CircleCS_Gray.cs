@@ -81,6 +81,16 @@ public class CircleCS_Gray : MonoBehaviour
             StartCoroutine(DestravaClick());
         }
     }
+    //USAR PARA EXIBIR INFORMAÇÕES SOBRE OS OBJS: EXEMPLO: NÍVEL ENERGIA DO MÒDULO
+    private void OnMouseOver()
+    {
+        //print("OLÀÀÀ");
+    }
+
+    private void OnMouseExit()
+    {
+        //print("Saiu!!!");
+    }
 
     //Atualização da energia deste obj
     void AtualizaEnergy()

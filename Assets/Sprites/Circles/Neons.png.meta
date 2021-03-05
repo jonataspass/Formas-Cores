@@ -50,6 +50,72 @@ TextureImporter:
   - first:
       213: -5837807405135460222
     second: Neons_15
+  - first:
+      213: -6303586854953173799
+    second: Neons_1
+  - first:
+      213: -1494922919172373373
+    second: Neons_2
+  - first:
+      213: 8611560660428933288
+    second: Neons_5
+  - first:
+      213: -919043715708322553
+    second: Neons_9
+  - first:
+      213: -1589790922779515300
+    second: Neons_10
+  - first:
+      213: -2847973245465844533
+    second: Neons_11
+  - first:
+      213: -5730410200662442015
+    second: Neons_12
+  - first:
+      213: 2463802880167703858
+    second: Neons_13
+  - first:
+      213: -2383845574118810637
+    second: Neons_0
+  - first:
+      213: -7151371841311657272
+    second: Neons_1
+  - first:
+      213: -8732761448407805043
+    second: Neons_2
+  - first:
+      213: 753362142959014917
+    second: Neons_3
+  - first:
+      213: 502593977821302554
+    second: Neons_4
+  - first:
+      213: 6807749636216622077
+    second: Neons_5
+  - first:
+      213: -4296977004674062358
+    second: Neons_6
+  - first:
+      213: -5949115744193939073
+    second: Neons_7
+  - first:
+      213: 1149566636920086564
+    second: Neons_8
+  - first:
+      213: -4465640109065125167
+    second: Neons_9
+  - first:
+      213: 1156930580043104826
+    second: Neons_10
+  - first:
+      213: 2992661567196901566
+    second: Neons_11
+  - first:
+      213: 1062553732634659440
+    second: Neons_12
+  - first:
+      213: 5887820262963720688
+    second: Neons_13
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -146,15 +212,36 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PanelOrientRot
+      name: Neons_0
       rect:
         serializedVersion: 2
-        x: 34
-        y: 519
-        width: 177
-        height: 180
-      alignment: 9
-      pivot: {x: 0.4857623, y: 0.49440002}
+        x: 4
+        y: 676
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fbd24b9411eaeed0800000000000000
+      internalID: -2383845574118810637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neons_1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 507
+        width: 247
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -167,7 +254,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "45\xB0"
+      name: Neons_2
       rect:
         serializedVersion: 2
         x: 263
@@ -175,7 +262,7 @@ TextureImporter:
         width: 75
         height: 63
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -188,7 +275,28 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "90\xB0"
+      name: Neons_4
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 577
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f0a4a5f8299f600800000000000000
+      internalID: 502593977821302554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neons_5
       rect:
         serializedVersion: 2
         x: 262
@@ -196,7 +304,7 @@ TextureImporter:
         width: 76
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -209,7 +317,70 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "135\xB0"
+      name: Neons_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 503
+        width: 33
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae7616c3e221e54c0800000000000000
+      internalID: -4296977004674062358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neons_7
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 504
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f79f2ab10ce707da0800000000000000
+      internalID: -5949115744193939073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neons_8
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 485
+        width: 84
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 420234ff3c414ff00800000000000000
+      internalID: 1149566636920086564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neons_9
       rect:
         serializedVersion: 2
         x: 258
@@ -217,7 +388,7 @@ TextureImporter:
         width: 87
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -230,7 +401,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "180\xB0"
+      name: Neons_10
       rect:
         serializedVersion: 2
         x: 258
@@ -238,7 +409,7 @@ TextureImporter:
         width: 87
         height: 65
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -251,7 +422,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "225\xB0"
+      name: Neons_11
       rect:
         serializedVersion: 2
         x: 257
@@ -259,7 +430,7 @@ TextureImporter:
         width: 88
         height: 66
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -272,7 +443,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "270\xB0"
+      name: Neons_12
       rect:
         serializedVersion: 2
         x: 257
@@ -280,7 +451,7 @@ TextureImporter:
         width: 88
         height: 65
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -293,7 +464,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "315\xB0"
+      name: Neons_13
       rect:
         serializedVersion: 2
         x: 257
@@ -301,7 +472,7 @@ TextureImporter:
         width: 88
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -309,6 +480,27 @@ TextureImporter:
       bones: []
       spriteID: 0f1bc4b855db5b150800000000000000
       internalID: 5887820262963720688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Neons_3
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 635
+        width: 89
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5049c46a0ea747a00800000000000000
+      internalID: 753362142959014917
       vertices: []
       indices: 
       edges: []

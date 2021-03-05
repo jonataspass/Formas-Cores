@@ -4,13 +4,25 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - cristalEnergy
   - collReceptLazer
   - collCanhaoLazer
   - feixeLazer
   - circleManager
   - energy
   - barEnergy
+  - scoreBar
+  - ptsText
+  - cristalEnergy
+  - btnLevels
+  - btnGaleria
+  - btnLoja
+  - btnBack
+  - capBronze
+  - capPrata
+  - capOuro
+  - textPts_FaseMestra
+  - painel_WL
+  - txt_Painel_WL
   layers:
   - Default
   - TransparentFX

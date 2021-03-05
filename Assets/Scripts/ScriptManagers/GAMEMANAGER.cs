@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-//Renomear Esta classe de CIRCLESMANAGER
 public class GAMEMANAGER : MonoBehaviour
 {
     public static GAMEMANAGER instance;
@@ -21,23 +21,45 @@ public class GAMEMANAGER : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        SceneManager.sceneLoaded += Carrega;
     }
 
-    //GameObject com Script CircleManager trabalhando aqui***
+    //GameObject com Script CircleManager
     public CircleManager circleManager;
     //Variáveis de Win
-    private bool win;
+    public bool win;
 
-    private void Start()
+    private void Update()
     {
-        //trabalhando aqui***
-        circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
-        //***trabahando aqui
+                
+    }//não em uso
+
+    //Carrega cena
+    void Carrega(Scene cena, LoadSceneMode modo)
+    {
         win = false;
+
+        if (LevelAtual.instance.level >= 5)
+        {
+            circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
+
+            StartGame();
+        }
     }
 
-    //trabalhando aqui****
-    //mudar nome para... 
+    void StartGame()
+    {
+        //pontuação
+        ScoreManager.instance.ptsMarcados_Total = 0;
+        ScoreManager.instance.conta_ptsMarcados = 0;
+
+        //canhões
+        ativosTemp = 0;
+        
+        //PlayerPrefs.DeleteAll();
+    }
+
     public void YouWin(int canhoes, int ativos)
     {
         if (ativos == 1)
@@ -60,26 +82,48 @@ public class GAMEMANAGER : MonoBehaviour
         {
             win = true;
         }
-        //testando***
-        if(win == true)
+        
+        if (win == true)
         {
             circleManager.ScoreFinal();
             DesabClicks();
-        }        
+            DesbloqueiaLevel();
+
+            //testando****  
+            UIManager.instance.txt_Painel_WL.text = "You Win!!!";
+            UIManager.instance.UI_Win();
+        }
     }
 
-    void StartGame()
+    //testando****
+    public void YouLose(int canhoes, int ativados)
     {
+        int totalTemp_CurrentLife = circleManager.Total_CurrentLife();
 
-    }
+        if (ativados < canhoes)
+        {
+            //testando****  
+            UIManager.instance.txt_Painel_WL.text = "You Lose!!!";
+            UIManager.instance.UI_Win();
+            print("LOSE");
+        }
+    }    
 
-    //Desabilita clicks quando o jogo chega ao fim*****testando
+    //Desabilita clicks quando o jogo chega ao fim
     void DesabClicks()
     {
         for (int i = 0; i < circleManager.circles.Length; i++)
         {
-           circleManager.circles[i].ativa = false;
+            circleManager.circles[i].ativa = false;
         }
+    }
+
+    //Desbloqueia uma nova fase quando um level é concluído
+    void DesbloqueiaLevel()
+    {
+        int temp = LevelAtual.instance.level - 4;
+        temp++;
+        PlayerPrefs.SetInt("Level" + temp + "_RedSC", 1);
     }
 }
 

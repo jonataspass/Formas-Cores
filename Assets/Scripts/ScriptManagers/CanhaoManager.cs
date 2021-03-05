@@ -42,9 +42,9 @@ public class CanhaoManager : MonoBehaviour
         if (coll.gameObject.CompareTag("collReceptLazer"))
         {
             ativados = 1;
-            GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados);
+            GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados);            
             //Incremente score
-            ScoreManager.instance.ptsMarcados += 100;
+            ScoreManager.instance.ptsMarcados_Total += 100;
         }
     }
 
@@ -54,7 +54,7 @@ public class CanhaoManager : MonoBehaviour
         if (coll.gameObject.CompareTag("collReceptLazer"))
         {
             ativados = 0;
-            GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados);
+            GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados);            
         }
     }
 
@@ -122,7 +122,7 @@ public class CanhaoManager : MonoBehaviour
     //velocidade de ativação do lazer
     IEnumerator LiberaLazer()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         lazerTrava = true;
     }
     //Ativa collider
