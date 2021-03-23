@@ -20,9 +20,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {        
         AddBtn();        
-        PlayerPrefs.SetInt("Level1_RedSC", 1);
-        
-        //PlayerPrefs.DeleteAll();
+        //PlayerPrefs.SetInt("Level1_RedSC", 1);
     }
 
     //Variáveis para geração dos btns

@@ -11,7 +11,10 @@ public class CirclesAtributos
     public int StartAngCircles;
     public int angCircles;
     public int maxLife;
-    public int currentlife;    
+    public int currentlife;
+    public int totalCurrentEnergy_H;
+    public int totalCurrentEnergy_AH;
     public int sentRot;
-    public ClicksCircles[] clicksR;
+    public int currentClicks;
+    public ClicksCircles[] clicksR;    
 }

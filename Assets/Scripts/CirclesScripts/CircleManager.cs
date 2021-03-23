@@ -19,24 +19,9 @@ public class CircleManager : MonoBehaviour
         IniCirclesAng();
         MaxPontos();
     }
-    //passar todos os updatees dos scripts instances para o update do Gamemanager; criar um metodo "UpdateCircleManager"...
-    //e chamar este no update do gamemanager
-    private void Update()
-    { //testando****
-        int x = Total_CurrentLife();
-
-        if (x == 0)
-        {
-            GAMEMANAGER.instance.YouLose(CircleCS_Gray.instance.numCanhoes, GAMEMANAGER.instance.ativosTemp);
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(LevelAtual.instance.level);
-        }
-    }
 
     //Nível de energia -> controla a quatidade de clicks por objs
+    //Desativar
     public void NivelEnergy(int indexCircles)
     {
         //O cáculo do enery_Y é uma regra de 3        
@@ -106,20 +91,6 @@ public class CircleManager : MonoBehaviour
 
         maxPontoTemp = currentLifeTemp * 100;
         ScoreManager.instance.ptsMarcados_Total += maxPontoTemp;
-    }
-    
-    //testando*** metodo que conta o total de energia de todos os objs 04/03
-    //para verificar se o jogador perdeu
-    public int Total_CurrentLife()
-    {
-        int totalEnergy = 0;
-
-        for(int i = 0; i < circles.Length; i++)
-        {
-            totalEnergy += circles[i].currentlife;
-        }
-
-        return totalEnergy;
     }
 }
 

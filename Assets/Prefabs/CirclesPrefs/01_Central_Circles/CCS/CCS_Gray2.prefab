@@ -286,6 +286,7 @@ MonoBehaviour:
   energyCS_Gray: {fileID: 0}
   circleManager: {fileID: 0}
   numCanhoes: 2
+  circleEnergyCS_Gray: {fileID: 0}
   travaClick: 0
 --- !u!1001 &539624420822057008
 PrefabInstance:
@@ -352,7 +353,7 @@ PrefabInstance:
     - target: {fileID: 6645071006855177158, guid: a4b89d5239217ea4382d9320ed4fb99a,
         type: 3}
       propertyPath: m_Name
-      value: CollCanhaoLazer (1)
+      value: 'CollCanhaoLazer '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4b89d5239217ea4382d9320ed4fb99a, type: 3}
@@ -444,6 +445,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6684209103532114257}
     m_Modifications:
+    - target: {fileID: 1635098691408667391, guid: 394aa59b09818bc4abd64876aa77749a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1635098691555267834, guid: 394aa59b09818bc4abd64876aa77749a,
         type: 3}
       propertyPath: m_Name

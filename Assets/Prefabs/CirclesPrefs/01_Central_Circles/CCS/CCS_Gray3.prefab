@@ -186,9 +186,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.09079623}
+  m_Offset: {x: 0, y: 0.004796505}
   serializedVersion: 2
-  m_Radius: 0.5011871
+  m_Radius: 0.8516934
 --- !u!114 &4809528486263092406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +206,7 @@ MonoBehaviour:
   energyCS_Gray: {fileID: 0}
   circleManager: {fileID: 0}
   numCanhoes: 3
+  circleEnergyCS_Gray: {fileID: 0}
   travaClick: 0
 --- !u!1 &4921660880157854197
 GameObject:
@@ -603,6 +604,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4809528486263092411}
     m_Modifications:
+    - target: {fileID: 1635098691408667391, guid: 394aa59b09818bc4abd64876aa77749a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1635098691408667391, guid: 394aa59b09818bc4abd64876aa77749a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1635098691555267834, guid: 394aa59b09818bc4abd64876aa77749a,
         type: 3}
       propertyPath: m_Name

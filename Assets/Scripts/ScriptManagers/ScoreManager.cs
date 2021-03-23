@@ -41,6 +41,9 @@ public class ScoreManager : MonoBehaviour
     //Salva pontuação da FaseMestra
     public int score_FaseMestra;
 
+    //testando****variável espera contagem
+    public bool waitCont;
+
     private void Update()
     {
         ShowScore();        
@@ -49,6 +52,8 @@ public class ScoreManager : MonoBehaviour
     //Carrega cena
     void Carrega(Scene cena, LoadSceneMode modo)
     {
+        GameStartScoreM();
+
         if(LevelAtual.instance.level >= 5)
         {
             //Elementos barra de score e texto de pontuação da UI
@@ -58,13 +63,11 @@ public class ScoreManager : MonoBehaviour
             scoreBar.rectTransform.localScale = new Vector3(ptsMarcados_Total, 0, 0);
         }        
     }
-    //trabalhando aqui******
+
+    //trabalhando aqui******Variáveis que devem ser inicializadas
     public void GameStartScoreM()
     {
-        //if (PlayerPrefs.HasKey("Score_FaseMestra"))
-        //{
-        //    score_FaseMestra = PlayerPrefs.GetInt("Score_FaseMestra");
-        //}
+        waitCont = false;
     }
 
     public void UpdateScoreM()
@@ -97,7 +100,6 @@ public class ScoreManager : MonoBehaviour
         {
             score_FaseMestra = pts;
             PlayerPrefs.SetInt("Score_FaseMestra", score_FaseMestra);
-            print("Else");
         }       
     }
 
@@ -136,6 +138,11 @@ public class ScoreManager : MonoBehaviour
                 }
 
                 scoreBar.rectTransform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);                
+            }
+            //testando****
+            if(GAMEMANAGER.instance.win == true && ptsMarcados_Total == conta_ptsMarcados)
+            {
+                waitCont = true;
             }
 
             UIManager.instance.ShowCapacetes();

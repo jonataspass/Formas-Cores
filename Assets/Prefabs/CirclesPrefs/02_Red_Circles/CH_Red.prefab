@@ -183,9 +183,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.006239062, y: -0.009131405}
+  m_Offset: {x: 0.0069109644, y: -0.0047481167}
   serializedVersion: 2
-  m_Radius: 0.46796963
+  m_Radius: 0.4741685
 --- !u!50 &1478068671
 Rigidbody2D:
   serializedVersion: 4
@@ -221,8 +221,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipo: CH_Red
   indexVetCircles: 1
-  energyCH_Red: {fileID: 0}
   circleManager: {fileID: 0}
+  circleEnergyCH_Red: {fileID: 0}
   autoRot: 1
   vel: 70
   limit: 0
@@ -329,6 +329,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1554428682922199171}
     m_Modifications:
+    - target: {fileID: 6754834768070555724, guid: 288a19c102ca3a74cac8fc7cd39272cc,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901735980757398481, guid: 288a19c102ca3a74cac8fc7cd39272cc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901735980757398481, guid: 288a19c102ca3a74cac8fc7cd39272cc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901735980757398481, guid: 288a19c102ca3a74cac8fc7cd39272cc,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901735980757398487, guid: 288a19c102ca3a74cac8fc7cd39272cc,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.36078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901735980757398487, guid: 288a19c102ca3a74cac8fc7cd39272cc,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7901735980878693844, guid: 288a19c102ca3a74cac8fc7cd39272cc,
         type: 3}
       propertyPath: m_Name
@@ -337,7 +367,7 @@ PrefabInstance:
     - target: {fileID: 7901735980878693845, guid: 288a19c102ca3a74cac8fc7cd39272cc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.16
+      value: -0.176
       objectReference: {fileID: 0}
     - target: {fileID: 7901735980878693845, guid: 288a19c102ca3a74cac8fc7cd39272cc,
         type: 3}

@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+//pensar em desativar********
 //aumentar o nivel de energia
 public class Energy : MonoBehaviour
 {
@@ -16,14 +15,9 @@ public class Energy : MonoBehaviour
         MaxEnergy();
     }
 
-    void Update()
-    {
-        
-    }
-
     public void AtualizaEnergy(int indexVetCircles)
     {       
-        y = circleManager.circles[indexVetCircles].currentlife;
+        y = circleManager.circles[indexVetCircles].currentlife + 1;
         
         if (y >= 0)
         {

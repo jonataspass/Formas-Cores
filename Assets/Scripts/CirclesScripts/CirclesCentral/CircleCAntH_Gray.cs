@@ -19,8 +19,6 @@ public class CircleCAntH_Gray : MonoBehaviour
     public string tipo;
     //Index do vetor do obj
     public int indexVetCircles;
-    //GameObject com Script Energy
-    public Energy energyCS_Gray;
     //GameObject com Script CircleManager
     public CircleManager circleManager;
     //Quantidade de canhoes
@@ -34,9 +32,6 @@ public class CircleCAntH_Gray : MonoBehaviour
         //Componentes de lazer
         circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
         //Componentes Energy
-        energyCS_Gray = GetComponentInChildren<Energy>();
-        //Inicializa a energia        
-        energyCS_Gray.AtualizaEnergy(indexVetCircles);
     }
 
     private void Update()
@@ -51,8 +46,6 @@ public class CircleCAntH_Gray : MonoBehaviour
             travaClick = true;
 
             circleManager.NivelEnergy(indexVetCircles);
-
-            energyCS_Gray.AtualizaEnergy(indexVetCircles);
 
             for (int i = 0; i < circleManager.circles.Length; i++)
             {
@@ -77,7 +70,7 @@ public class CircleCAntH_Gray : MonoBehaviour
     {
         if (circleManager.circles[indexVetCircles].currentlife >= 0)
         {
-            energyCS_Gray.AtualizaEnergy(indexVetCircles);
+            
         }
     }
 

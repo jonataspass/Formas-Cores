@@ -21,7 +21,8 @@ public class CanhaoManager : MonoBehaviour
     public int ativados;
 
     //teste
-    //private int ptsTemp = 0;
+    public AudioClip[] clips;
+    public AudioSource effectsObjs;
 
     private void Start()
     {
@@ -29,6 +30,8 @@ public class CanhaoManager : MonoBehaviour
         feixeLazer.color = new Color(lazerAlphaLazer.r, lazerAlphaLazer.g, lazerAlphaLazer.b, lazerAlphaLazer.a);
         DesativaColl(gameObject.GetComponent<Collider2D>());
         StartCoroutine(AtivaColl(gameObject.GetComponent<Collider2D>()));
+        //audio
+        effectsObjs = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -45,6 +48,9 @@ public class CanhaoManager : MonoBehaviour
             GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados);            
             //Incremente score
             ScoreManager.instance.ptsMarcados_Total += 100;
+            //lazerSound
+            StartCoroutine(Wait_AtivaSoundLazer());
+            
         }
     }
 
@@ -54,7 +60,10 @@ public class CanhaoManager : MonoBehaviour
         if (coll.gameObject.CompareTag("collReceptLazer"))
         {
             ativados = 0;
-            GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados);            
+            GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados);
+            //SoundDesativaLazer();
+            effectsObjs.clip = clips[1];
+            effectsObjs.Play();
         }
     }
 
@@ -63,7 +72,7 @@ public class CanhaoManager : MonoBehaviour
         if (ativados == 1)
         {
             StartCoroutine(LiberaLazer());
-            desativaLazer = true;
+            desativaLazer = true;            
 
             if (lazerTrava == true)
             {
@@ -130,5 +139,14 @@ public class CanhaoManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         coll.enabled = true;
+    }
+
+    IEnumerator Wait_AtivaSoundLazer()
+    {
+        yield return new WaitForSeconds(0.3f);
+        //SoundAtivaLazer();
+        effectsObjs.clip = clips[0];
+        effectsObjs.Play();
+
     }
 }

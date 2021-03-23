@@ -184,6 +184,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textLevel_Btn: {fileID: 1032514821965282057}
   desbloq_Btn: 0
+  capacete_Bronze: {fileID: 0}
+  capacete_Prata: {fileID: 0}
+  capacete_Ouro: {fileID: 0}
+  realLevel: 
 --- !u!1 &1032514823482300675
 GameObject:
   m_ObjectHideFlags: 0

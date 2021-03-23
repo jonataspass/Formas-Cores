@@ -23,6 +23,13 @@ TagManager:
   - textPts_FaseMestra
   - painel_WL
   - txt_Painel_WL
+  - btnVlt_P_WL
+  - btnNvm_P_WL
+  - btnPrx_P_WL
+  - txtEnergy
+  - PanelInitEnergy
+  - txt_Painel_info_WL
+  - btn_AtivaDesativa_cenaInicial
   layers:
   - Default
   - TransparentFX

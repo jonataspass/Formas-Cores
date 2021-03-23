@@ -95,4 +95,54 @@ public class CircleS_Red : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         travaClick = false;
     }
+
+    //testando*** metodo que conta o total de energia de todos os objs 04/03
+    //para verificar se o jogador perdeu
+    //chamar este método na inicialização
+    public int Total_EnergyH()
+    {
+        int totalEnergyH_Temp = 0;
+
+        //Total "energyH" CircleH_Red -> total de movimentos no sentido horário 
+        //recebe energy de CCS_Gray, CH_Red menos dele próprio.
+        for (int i = 0; i < circleManager.circles.Length; i++)
+        {
+            //energy "H"
+            if (circleManager.circles[i].tipo == "CH_Red")
+            {
+                totalEnergyH_Temp += circleManager.circles[i].currentlife;
+            }
+            if (circleManager.circles[i].tipo == "CCH_Gray")
+            {
+                totalEnergyH_Temp += circleManager.circles[i].currentlife;
+            }
+        }
+
+        return totalEnergyH_Temp;
+    }
+
+    //testando*** metodo que conta o total de energia de todos os objs 04/03
+    //para verificar se o jogador perdeu
+    //chamar este método na inicialização
+    public int Total_EnergyAH()
+    {
+        int totalEnergyAH_Temp = 0;
+
+        //Total "energyAH" CircleAH_Red -> total de movimentos no sentido anti-horário 
+        //recebe energy de CAH_Red.
+        for (int i = 0; i < circleManager.circles.Length; i++)
+        {
+            //energy "AH"
+            if (circleManager.circles[i].tipo == "CAH_Red")
+            {
+                totalEnergyAH_Temp += circleManager.circles[i].currentlife;
+            }
+            if (circleManager.circles[i].tipo == "CCAH_Gray")
+            {
+                totalEnergyAH_Temp += circleManager.circles[i].currentlife;
+            }
+        }
+
+        return totalEnergyAH_Temp;
+    }
 }

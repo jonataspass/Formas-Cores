@@ -22,19 +22,20 @@ public class UIManager : MonoBehaviour
         }
 
         SceneManager.sceneLoaded += Carrega;
-    }
+    }    
 
     //Btns de acesso às fases: cena de faseMestra, galeria e loja
     [SerializeField]
     private Button btnFaseMestra, btnGaleria, btnLoja;
 
-    //Btn BACK das fases : fasesMestra, Galeria, Loja e Fase com btns levels
+    //Btn BACK das fases : fasesMestra, Galeria, Loja e Fase com btns levels e...
+    //Btns do Painel_WL
     [SerializeField]
-    private Button btnBack;
+    private Button btnBack, btnVoltar_Painel_WL, btnNovamente_Painel_WL, btnProximo_Painel_WL;
 
     //Texto do ptsFaseMestra; text do "Painel_WL"
     [SerializeField]
-    public TextMeshProUGUI textPts_FaseMestra, txt_Painel_WL;
+    public TextMeshProUGUI textPts_FaseMestra, txt_Painel_WL, txt_Painel_info_WL;
 
     //Capacetes na barra de score
     [SerializeField]
@@ -43,6 +44,15 @@ public class UIManager : MonoBehaviour
     //testando***
     [SerializeField]
     private GameObject Painel_WL;
+
+    //testando****
+    public TextMeshProUGUI textEnergy;
+
+    private void Update()
+    {
+        //testando****
+        HabilitDesabilitBts_Painel_WL();
+    }
 
     void Carrega(Scene cena, LoadSceneMode modo)
     {
@@ -61,6 +71,7 @@ public class UIManager : MonoBehaviour
             //Btns Loja e galeria         
             btnGaleria = GameObject.FindWithTag("btnGaleria").GetComponent<Button>();
             btnLoja = GameObject.FindWithTag("btnLoja").GetComponent<Button>();
+
             //Eventos de click dos btns Loja e Galeria
             btnGaleria.onClick.AddListener(() => UI_Metodo.CarregaCena("4_Galeria"));
             btnLoja.onClick.AddListener(() => UI_Metodo.CarregaCena("3_Loja"));
@@ -74,6 +85,7 @@ public class UIManager : MonoBehaviour
         {
             //btn Voltar
             btnBack = GameObject.FindWithTag("btnBack").GetComponent<Button>();
+
             //Evento de click do btn Voltar
             btnBack.onClick.AddListener(UI_Metodo.Voltar);
         }
@@ -82,6 +94,7 @@ public class UIManager : MonoBehaviour
         {
             //btn Voltar
             btnBack = GameObject.FindWithTag("btnBack").GetComponent<Button>();
+
             //Evento de click do btn Voltar
             btnBack.onClick.AddListener(UI_Metodo.Voltar);
         }
@@ -90,6 +103,7 @@ public class UIManager : MonoBehaviour
         {
             //btn Voltar
             btnBack = GameObject.FindWithTag("btnBack").GetComponent<Button>();
+
             //Evento de click do btn Voltar
             btnBack.onClick.AddListener(UI_Metodo.Voltar);
         }
@@ -103,13 +117,30 @@ public class UIManager : MonoBehaviour
 
             //testando****text do painel_WL
             txt_Painel_WL = GameObject.FindWithTag("txt_Painel_WL").GetComponent<TextMeshProUGUI>();
+            txt_Painel_info_WL = GameObject.FindWithTag("txt_Painel_info_WL").GetComponent<TextMeshProUGUI>();
 
             //testando****
             Painel_WL = GameObject.FindWithTag("painel_WL");
-            Painel_WL.SetActive(false);
-        }
 
-        //StartGameUIM();
+            //testando***btns do "Painel_WL"
+            btnVoltar_Painel_WL = GameObject.FindWithTag("btnVlt_P_WL").GetComponent<Button>();
+            btnNovamente_Painel_WL = GameObject.FindWithTag("btnNvm_P_WL").GetComponent<Button>();
+            btnProximo_Painel_WL = GameObject.FindWithTag("btnPrx_P_WL").GetComponent<Button>();
+
+            //Desabilita Painel_WL
+            //Painel_WL.SetActive(false);
+            StartCoroutine(esperaWL());
+
+            //testando****eventos de clicks dos btns do painel_WL            
+            btnNovamente_Painel_WL.onClick.AddListener(() => SceneManager.LoadScene(LevelAtual.instance.level));
+            btnProximo_Painel_WL.onClick.AddListener(() => SceneManager.LoadScene(LevelAtual.instance.level + 1));
+        }
+    }
+
+    IEnumerator esperaWL()
+    {
+        yield return new WaitForSeconds(0.01f);
+        Painel_WL.SetActive(false);
     }
     
     void StartGameUIM()
@@ -151,4 +182,29 @@ public class UIManager : MonoBehaviour
     {
         Painel_WL.SetActive(true);
     }
+
+    public void HabilitDesabilitBts_Painel_WL()
+    {
+        if(LevelAtual.instance.level >= 5)
+        {
+            if (ScoreManager.instance.waitCont == true)
+            {
+                btnVoltar_Painel_WL.enabled = true;
+                btnNovamente_Painel_WL.enabled = true;
+                btnProximo_Painel_WL.enabled = true;
+            }
+            else
+            {
+                btnVoltar_Painel_WL.enabled = false;
+                btnNovamente_Painel_WL.enabled = false;
+                btnProximo_Painel_WL.enabled = false;
+            }
+            if(GAMEMANAGER.instance.lose == true)
+            {
+                btnVoltar_Painel_WL.enabled = true;
+                btnNovamente_Painel_WL.enabled = true;
+                btnProximo_Painel_WL.enabled = true;
+            }
+        }        
+    }    
 }

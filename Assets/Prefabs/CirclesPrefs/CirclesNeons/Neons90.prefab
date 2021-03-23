@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3827725114045783335}
   - component: {fileID: 3827725114045783336}
   - component: {fileID: 3827725114045783338}
+  - component: {fileID: 3923092883723054475}
   - component: {fileID: 3827725114045783337}
   - component: {fileID: 3827725114045783339}
   m_Layer: 0
@@ -103,7 +104,7 @@ EdgeCollider2D:
   m_Points:
   - {x: 0.12065546, y: -0.059377797}
   - {x: 0.123454295, y: 0.22487338}
---- !u!114 &3827725114045783337
+--- !u!114 &3923092883723054475
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,11 +113,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 3827725114045783334}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69041410105978b41847ad2d8037faeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posAng_H: 4
+  posAng_AH: 4
+  indexCircleVet: 0
+--- !u!114 &3827725114045783337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3827725114045783334}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4be66b0a0bb03e34a8d3cd0f95512d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   colorAngPanel: {r: 0, g: 1, b: 0.007030964, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 0
+  posAng_AH: 0
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 0
 --- !u!114 &3827725114045783339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +162,7 @@ GameObject:
   - component: {fileID: 3827725114096470966}
   - component: {fileID: 3827725114096470967}
   - component: {fileID: 3827725114096470969}
+  - component: {fileID: 4799928023136614518}
   - component: {fileID: 3827725114096470968}
   - component: {fileID: 3827725114096470970}
   m_Layer: 0
@@ -232,7 +255,7 @@ EdgeCollider2D:
   m_Points:
   - {x: -0.35887352, y: -0.008576095}
   - {x: -0.0011372222, y: -0.011528781}
---- !u!114 &3827725114096470968
+--- !u!114 &4799928023136614518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,11 +264,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 3827725114096470965}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69041410105978b41847ad2d8037faeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posAng_H: 6
+  posAng_AH: 2
+  indexCircleVet: 0
+--- !u!114 &3827725114096470968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3827725114096470965}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4be66b0a0bb03e34a8d3cd0f95512d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   colorAngPanel: {r: 0, g: 1, b: 0.007030964, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 0
+  posAng_AH: 0
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 0
 --- !u!114 &3827725114096470970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +313,7 @@ GameObject:
   - component: {fileID: 3827725114299221139}
   - component: {fileID: 3827725114299221140}
   - component: {fileID: 3827725114299221142}
+  - component: {fileID: 2750812701932352511}
   - component: {fileID: 3827725114299221141}
   - component: {fileID: 3827725114299221143}
   m_Layer: 0
@@ -361,7 +406,7 @@ EdgeCollider2D:
   m_Points:
   - {x: -0.2226733, y: -0.0054641366}
   - {x: 0.32067245, y: -0.0044515133}
---- !u!114 &3827725114299221141
+--- !u!114 &2750812701932352511
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -370,11 +415,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 3827725114299221138}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69041410105978b41847ad2d8037faeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posAng_H: 2
+  posAng_AH: 6
+  indexCircleVet: 0
+--- !u!114 &3827725114299221141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3827725114299221138}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4be66b0a0bb03e34a8d3cd0f95512d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   colorAngPanel: {r: 0, g: 1, b: 0, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 0
+  posAng_AH: 0
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 0
 --- !u!114 &3827725114299221143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +464,7 @@ GameObject:
   - component: {fileID: 3827725114306460103}
   - component: {fileID: 3827725114306460104}
   - component: {fileID: 3827725114306460106}
+  - component: {fileID: 1613425893741890795}
   - component: {fileID: 3827725114306460105}
   - component: {fileID: 3827725114306460107}
   m_Layer: 0
@@ -491,7 +558,7 @@ EdgeCollider2D:
   - {x: -0.32676828, y: -0.15211056}
   - {x: -0.18788454, y: -0.085975625}
   - {x: -0.007435252, y: -0.0000002947636}
---- !u!114 &3827725114306460105
+--- !u!114 &1613425893741890795
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -500,11 +567,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 3827725114306460102}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69041410105978b41847ad2d8037faeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posAng_H: 7
+  posAng_AH: 1
+  indexCircleVet: 0
+--- !u!114 &3827725114306460105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3827725114306460102}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4be66b0a0bb03e34a8d3cd0f95512d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   colorAngPanel: {r: 0, g: 1, b: 0.007030964, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 0
+  posAng_AH: 0
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 0
 --- !u!114 &3827725114306460107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +616,7 @@ GameObject:
   - component: {fileID: 3827725114337353841}
   - component: {fileID: 3827725114337353842}
   - component: {fileID: 3827725114337353844}
+  - component: {fileID: 504946001226207800}
   - component: {fileID: 3827725114337353843}
   - component: {fileID: 3827725114337353845}
   m_Layer: 0
@@ -620,7 +709,7 @@ EdgeCollider2D:
   m_Points:
   - {x: 0.0057947063, y: -0.014350476}
   - {x: -0.28564662, y: 0.1925565}
---- !u!114 &3827725114337353843
+--- !u!114 &504946001226207800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -629,11 +718,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 3827725114337353840}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69041410105978b41847ad2d8037faeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posAng_H: 5
+  posAng_AH: 3
+  indexCircleVet: 0
+--- !u!114 &3827725114337353843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3827725114337353840}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4be66b0a0bb03e34a8d3cd0f95512d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   colorAngPanel: {r: 0, g: 1, b: 0.007030964, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 0
+  posAng_AH: 0
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 0
 --- !u!114 &3827725114337353845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,6 +767,7 @@ GameObject:
   - component: {fileID: 3827725114817586189}
   - component: {fileID: 3827725114817586190}
   - component: {fileID: 3827725114817586224}
+  - component: {fileID: 263432877647138601}
   - component: {fileID: 3827725114817586191}
   - component: {fileID: 3827725114817586225}
   m_Layer: 0
@@ -749,7 +860,7 @@ EdgeCollider2D:
   m_Points:
   - {x: 0.006507895, y: -0.00000008428469}
   - {x: 0.24320808, y: 0.21163183}
---- !u!114 &3827725114817586191
+--- !u!114 &263432877647138601
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -758,11 +869,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 3827725114817586188}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69041410105978b41847ad2d8037faeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posAng_H: 3
+  posAng_AH: 5
+  indexCircleVet: 0
+--- !u!114 &3827725114817586191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3827725114817586188}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4be66b0a0bb03e34a8d3cd0f95512d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   colorAngPanel: {r: 0, g: 1, b: 0.007030964, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 0
+  posAng_AH: 0
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 0
 --- !u!114 &3827725114817586225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,7 +935,7 @@ Transform:
   m_GameObject: {fileID: 3827725115704256388}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -0.047, y: -1.744, z: 0}
-  m_LocalScale: {x: 0.56, y: 0.56, z: 1}
+  m_LocalScale: {x: 34.99999, y: 34.99999, z: 62.5}
   m_Children:
   - {fileID: 3827725115724916631}
   - {fileID: 3827725114299221139}
@@ -896,8 +1028,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be66b0a0bb03e34a8d3cd0f95512d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorAngPanel: {r: 0, g: 1, b: 0.062781096, a: 1}
+  colorAngPanel: {r: 1, g: 1, b: 1, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 0
+  posAng_AH: 0
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 0
 --- !u!1 &3827725115724916630
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,6 +1047,7 @@ GameObject:
   - component: {fileID: 3827725115724916631}
   - component: {fileID: 3827725115724916632}
   - component: {fileID: 3827725115724916633}
+  - component: {fileID: 2786152493758853737}
   - component: {fileID: 3827725115724916634}
   - component: {fileID: 3827725115724916635}
   m_Layer: 0
@@ -1001,7 +1140,7 @@ EdgeCollider2D:
   m_Points:
   - {x: 0.10504579, y: -0.1316865}
   - {x: -0.1744349, y: 0.12073223}
---- !u!114 &3827725115724916634
+--- !u!114 &2786152493758853737
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1010,11 +1149,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 3827725115724916630}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69041410105978b41847ad2d8037faeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posAng_H: 1
+  posAng_AH: 7
+  indexCircleVet: 0
+--- !u!114 &3827725115724916634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3827725115724916630}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4be66b0a0bb03e34a8d3cd0f95512d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorAngPanel: {r: 0, g: 1, b: 0, a: 1}
+  colorAngPanel: {r: 0, g: 1, b: 0.9728527, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 0
+  posAng_AH: 0
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 0
 --- !u!114 &3827725115724916635
 MonoBehaviour:
   m_ObjectHideFlags: 0

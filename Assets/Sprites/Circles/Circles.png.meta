@@ -272,10 +272,10 @@ TextureImporter:
       name: Circles_0
       rect:
         serializedVersion: 2
-        x: 27
-        y: 537
-        width: 170
-        height: 171
+        x: 26
+        y: 531
+        width: 171
+        height: 182
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -335,12 +335,12 @@ TextureImporter:
       name: Circles_3
       rect:
         serializedVersion: 2
-        x: 610
-        y: 676
-        width: 74
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 608
+        y: 668
+        width: 77
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -440,12 +440,12 @@ TextureImporter:
       name: Circles_8
       rect:
         serializedVersion: 2
-        x: 609
+        x: 608
         y: 625
-        width: 37
+        width: 39
         height: 11
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -566,12 +566,12 @@ TextureImporter:
       name: Circles_14
       rect:
         serializedVersion: 2
-        x: 770
-        y: 426
-        width: 34
-        height: 162
-      alignment: 9
-      pivot: {x: 0.5000036, y: 0.9313554}
+        x: 764
+        y: 416
+        width: 94
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -587,12 +587,12 @@ TextureImporter:
       name: Circles_15
       rect:
         serializedVersion: 2
-        x: 862
+        x: 858
         y: 416
-        width: 33
+        width: 39
         height: 163
       alignment: 9
-      pivot: {x: 0.5000037, y: 0.008068997}
+      pivot: {x: 0.5311733, y: 0.999748}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -608,10 +608,10 @@ TextureImporter:
       name: Circles_16
       rect:
         serializedVersion: 2
-        x: 63
-        y: 332
-        width: 95
-        height: 96
+        x: 62
+        y: 330
+        width: 96
+        height: 101
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -734,10 +734,10 @@ TextureImporter:
       name: Circles_22
       rect:
         serializedVersion: 2
-        x: 20
-        y: 106
-        width: 138
-        height: 112
+        x: 63
+        y: 119
+        width: 95
+        height: 97
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -852,27 +852,6 @@ TextureImporter:
       bones: []
       spriteID: d576a2248c96aace0800000000000000
       internalID: -1393184825893296291
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Circles_28
-      rect:
-        serializedVersion: 2
-        x: 815
-        y: 419
-        width: 32
-        height: 163
-      alignment: 9
-      pivot: {x: 0.46235275, y: 0.9361003}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 85779d2a3fbeb0ef0800000000000000
-      internalID: -140759531690297512
       vertices: []
       indices: 
       edges: []
