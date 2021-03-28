@@ -36,6 +36,7 @@ public class CanhaoManager : MonoBehaviour
 
     private void Update()
     {
+        StopSoundLazer();
         AcionaLazer();
     }
 
@@ -49,8 +50,7 @@ public class CanhaoManager : MonoBehaviour
             //Incremente score
             ScoreManager.instance.ptsMarcados_Total += 100;
             //lazerSound
-            StartCoroutine(Wait_AtivaSoundLazer());
-            
+            StartCoroutine(Wait_AtivaSoundLazer());            
         }
     }
 
@@ -148,5 +148,13 @@ public class CanhaoManager : MonoBehaviour
         effectsObjs.clip = clips[0];
         effectsObjs.Play();
 
+    }
+
+    void StopSoundLazer()
+    {
+        if(ScoreManager.instance.waitCont == true)
+        {
+            effectsObjs.Stop();
+        }
     }
 }

@@ -101,6 +101,7 @@ public class GAMEMANAGER : MonoBehaviour
             UIManager.instance.txt_Painel_WL.text = "You Win!!!";
             UIManager.instance.txt_Painel_info_WL.text = "";
             UIManager.instance.UI_Win();
+            UIManager.instance.desabBtnsCena = false;//testando****
             startGame = false;
         }
     }
@@ -115,8 +116,7 @@ public class GAMEMANAGER : MonoBehaviour
             UIManager.instance.txt_Painel_WL.text = "You Lose!!!";
             UIManager.instance.txt_Painel_info_WL.text = "não haviam mais jogadas possíveis";
             UIManager.instance.UI_Win();
-            //testando****
-            //ScoreManager.instance.waitCont = true;
+            UIManager.instance.desabBtnsCena = false;//testando****
             print("LOSE");
         }
     }    

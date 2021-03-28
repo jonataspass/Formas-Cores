@@ -301,7 +301,7 @@ MonoBehaviour:
   circleEnergyCS_Gray: {fileID: 0}
   travaClick: 0
   clips:
-  - {fileID: 8300000, guid: d08ef7891eb0934479adf74be1f58988, type: 3}
+  - {fileID: 8300000, guid: e5a2539d93330b74eb8c4e054431e1ee, type: 3}
   effectsObjs: {fileID: 0}
 --- !u!82 &711909575522165146
 AudioSource:

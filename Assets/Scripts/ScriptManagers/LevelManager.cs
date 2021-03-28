@@ -60,7 +60,15 @@ public class LevelManager : MonoBehaviour
 
     public void ClickLevel(string s)
     {
+        //LevelAtual.instance.cenaAtual = s;
+        //SceneManager.LoadScene(s);
+        StartCoroutine(WaitSoundClick(s));
+    }
+
+    IEnumerator WaitSoundClick(string s)
+    {
+        yield return new WaitForSeconds(0.4f);
         LevelAtual.instance.cenaAtual = s;
-        SceneManager.LoadScene(s);        
+        SceneManager.LoadScene(s);
     }
 }

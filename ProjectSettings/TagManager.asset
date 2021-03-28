@@ -30,6 +30,12 @@ TagManager:
   - PanelInitEnergy
   - txt_Painel_info_WL
   - btn_AtivaDesativa_cenaInicial
+  - soundCapacete
+  - btn_restart
+  - painel_Guia
+  - btn_Painel_Guia
+  - btnSound
+  - anime_mao
   layers:
   - Default
   - TransparentFX

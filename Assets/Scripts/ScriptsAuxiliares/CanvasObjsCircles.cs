@@ -66,7 +66,11 @@ public class CanvasObjsCircles : MonoBehaviour
         {
             contInitGame += Time.deltaTime * velCont;
             if (contInitGame >= 10)
-            GAMEMANAGER.instance.startGame = true;
+            {
+                GAMEMANAGER.instance.startGame = true;
+                UIManager.instance.liberaMetodo_Painel_Guia = true;
+                UIManager.instance.desabBtnsCena = true;
+            }            
         }
 
         textCurrentLife.text = currentLifeTemp.ToString("F0");

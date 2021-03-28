@@ -44,6 +44,10 @@ public class ScoreManager : MonoBehaviour
     //testando****variável espera contagem
     public bool waitCont;
 
+    //audios
+    public AudioClip[] clips;
+    public AudioSource effectsObjs;
+
     private void Update()
     {
         ShowScore();        
@@ -60,7 +64,7 @@ public class ScoreManager : MonoBehaviour
             scoreBar = GameObject.FindWithTag("scoreBar").GetComponent<Image>();
             currentScore = GameObject.FindWithTag("ptsText").GetComponent<TextMeshProUGUI>();
             //carregamento de pts
-            scoreBar.rectTransform.localScale = new Vector3(ptsMarcados_Total, 0, 0);
+            scoreBar.rectTransform.localScale = new Vector3(ptsMarcados_Total, 0, 0);            
         }        
     }
 
@@ -68,6 +72,8 @@ public class ScoreManager : MonoBehaviour
     public void GameStartScoreM()
     {
         waitCont = false;
+        //audio
+        effectsObjs = GetComponent<AudioSource>();
     }
 
     public void UpdateScoreM()
@@ -110,9 +116,13 @@ public class ScoreManager : MonoBehaviour
         {
             if (conta_ptsMarcados < 100)
             {
-                conta_ptsMarcados++;
+                conta_ptsMarcados ++;
                 xScale = conta_ptsMarcados / 100 / maxScore;
                 currentScore.text = conta_ptsMarcados.ToString();
+                
+                //effect sound
+                effectsObjs.clip = clips[0];
+                effectsObjs.Play();
 
                 if (xScale > 1)
                 {
@@ -124,9 +134,13 @@ public class ScoreManager : MonoBehaviour
             }
             else
             {
-                conta_ptsMarcados += 5;
+                conta_ptsMarcados += 10f;
                 xScale = conta_ptsMarcados / 100 / maxScore;
                 currentScore.text = conta_ptsMarcados.ToString();
+
+                //effect sound
+                effectsObjs.clip = clips[0];
+                effectsObjs.Play();
 
                 //Salva pontuação a ser exibida no score da "FaseMestra"
                 SalvaScore_FaseMestra((int)ptsMarcados_Total);
@@ -139,7 +153,12 @@ public class ScoreManager : MonoBehaviour
 
                 scoreBar.rectTransform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);                
             }
+
             //testando****
+            if (conta_ptsMarcados > ptsMarcados_Total)
+                conta_ptsMarcados = ptsMarcados_Total;
+
+            
             if(GAMEMANAGER.instance.win == true && ptsMarcados_Total == conta_ptsMarcados)
             {
                 waitCont = true;

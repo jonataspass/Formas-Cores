@@ -24,12 +24,18 @@ public class AudioManager : MonoBehaviour
         SceneManager.sceneLoaded += Carrega;
     }
 
+    //Música de fundo
     public AudioClip[] clips;
     public AudioSource backGround_Sound;
     public bool libera_BG_Sound;
 
+    //testando clickBtn****TRABALHANDO AQUI
+    public AudioSource clickBtn;
+
+    
+
     //btn Play cena Inicial
-    public Button btn_AtivaDesativa_CenaInicial;
+    public Button btn_Mute;
 
     private void Start()
     {
@@ -43,8 +49,8 @@ public class AudioManager : MonoBehaviour
 
     void Carrega(Scene cena, LoadSceneMode modo)
     {
-        btn_AtivaDesativa_CenaInicial = GameObject.FindWithTag("btn_AtivaDesativa_cenaInicial").GetComponent<Button>();
-        btn_AtivaDesativa_CenaInicial.onClick.AddListener(() => AtivaDesativa_backGround_Sound(libera_BG_Sound));
+        btn_Mute = GameObject.FindWithTag("btn_AtivaDesativa_cenaInicial").GetComponent<Button>();
+        btn_Mute.onClick.AddListener(() => AtivaDesativa_backGround_Sound(libera_BG_Sound));
     }
 
     void Play_backGround_Sound(bool pl)
@@ -57,24 +63,29 @@ public class AudioManager : MonoBehaviour
                 backGround_Sound.Play();
             }
         }
-        else if(pl == false)
+        else if (pl == false)
         {
             backGround_Sound.Pause();
         }
     }
 
+    //Muta musica de fundo
     public void AtivaDesativa_backGround_Sound(bool pl)
     {
-        
+
         if (pl == false)
         {
-            //pl = true;
             libera_BG_Sound = true;
         }
         else if (pl == true)
         {
-            //pl = false;
             libera_BG_Sound = false;
         }
+    }
+
+    //sound click btns
+    public void SoudBtn()
+    {
+        clickBtn.Play();
     }
 }
