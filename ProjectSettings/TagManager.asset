@@ -36,6 +36,24 @@ TagManager:
   - btn_Painel_Guia
   - btnSound
   - anime_mao
+  - btn_dicas
+  - painel_dicas
+  - levelManager
+  - textCristalGreen
+  - dica
+  - txtDica
+  - txtPts_MCS
+  - txtPts_MCH
+  - txtPts_MCAH
+  - txtCapsB_MCS
+  - txtCapsP_MCS
+  - txtCapsO_MCS
+  - txtCapsB_MCH
+  - txtCapsP_MCH
+  - txtCapsO_MCH
+  - txtCapsB_MCAH
+  - txtCapsP_MCAH
+  - txtCapsO_MCAH
   layers:
   - Default
   - TransparentFX

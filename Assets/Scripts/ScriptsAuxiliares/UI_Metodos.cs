@@ -19,6 +19,10 @@ public static class UI_Metodo
             {
                 SceneManager.LoadScene(LevelAtual.instance.level - 3);
             }
+            else if (LevelAtual.instance.level == 5)
+            {
+                SceneManager.LoadScene(LevelAtual.instance.level - 4);
+            }
         }
     }
     //Evento de clicks dos btns "Loja", Galeria e FaseMestra

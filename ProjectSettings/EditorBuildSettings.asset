@@ -12,24 +12,36 @@ EditorBuildSettings:
     path: Assets/Scenes/2_FaseMestra.unity
     guid: d287ec3120cf2264e88de433d344c4c7
   - enabled: 1
-    path: Assets/Scenes/3_Loja.unity
-    guid: 79228329b3a255e4288a982335b61d71
-  - enabled: 1
-    path: Assets/Scenes/4_Galeria.unity
+    path: Assets/Scenes/3_Galeria.unity
     guid: 0a323506036b0944b87de47b781109aa
   - enabled: 1
-    path: Assets/Scenes/RedSC.unity
+    path: Assets/Scenes/MCS.unity
     guid: a87ff3134f2118b4ab203fca79137e25
   - enabled: 1
-    path: Assets/Scenes/Level1_RedSC.unity
+    path: Assets/Scenes/MCH.unity
+    guid: 2e91a646b4c2c2642b412760553bf79f
+  - enabled: 1
+    path: Assets/Scenes/MCAH.unity
+    guid: 3cd7be1c6be67064884b92935913d754
+  - enabled: 1
+    path: Assets/Scenes/LevelsMCS/Level1_MCS.unity
     guid: a0e8af56c27be0a47871cfbada4eda80
   - enabled: 1
-    path: Assets/Scenes/Level2_RedSC.unity
+    path: Assets/Scenes/LevelsMCS/Level2_MCS.unity
     guid: ca9ec9c138ec9054394ae78be0574647
   - enabled: 1
-    path: Assets/Scenes/Level3_RedSC.unity
+    path: Assets/Scenes/LevelsMCH/Level1_MCH.unity
+    guid: 6253f81d64598cb4e9082be4cba7900e
+  - enabled: 1
+    path: Assets/Scenes/LevelsMCH/Level2_MCH.unity
     guid: 3afe9078460b94547b8be5da0f267860
   - enabled: 1
-    path: Assets/Scenes/Level4_RedSC.unity
-    guid: c94dad11a4f9096469299997ccb3908e
+    path: Assets/Scenes/LevelsMCAH/Level1_MCAH.unity
+    guid: 94364079da60020408f33297018e0c8e
+  - enabled: 1
+    path: Assets/Scenes/LevelsMCAH/Level2_MCAH.unity
+    guid: 17369e65a8e86f746ba7ed102487de45
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

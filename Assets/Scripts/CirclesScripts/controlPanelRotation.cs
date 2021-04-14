@@ -71,14 +71,10 @@ public class controlPanelRotation : MonoBehaviour
     //Verifica possibilidade de jogadas
     void verificaLose(int pos_H, int pos_AH)
     {
-        print("pos_H " + pos_H);
-        print("index " + indexCircleVet);
-
         if (pos_H > circleManager.circles[indexCircleVet].totalCurrentEnergy_H
             && pos_AH > circleManager.circles[indexCircleVet].totalCurrentEnergy_AH)
         {            
             GAMEMANAGER.instance.YouLose(CircleCS_Gray.instance.numCanhoes, GAMEMANAGER.instance.ativosTemp);
         }
-
     }
 }

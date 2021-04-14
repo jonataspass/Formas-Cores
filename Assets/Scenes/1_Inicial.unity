@@ -1335,11 +1335,12 @@ MonoBehaviour:
   currentScore: {fileID: 0}
   xScale: 0
   scoreBar: {fileID: 0}
-  score_FaseMestra: 0
+  score_FaseMestra_MCS: 0
   waitCont: 0
   clips:
   - {fileID: 8300000, guid: efb5f1b0875bbc7408e2352c2367f89a, type: 3}
   effectsObjs: {fileID: 0}
+  velCon: 30
 --- !u!4 &1473859742
 Transform:
   m_ObjectHideFlags: 0
@@ -1488,16 +1489,25 @@ MonoBehaviour:
   btnProximo_Painel_WL: {fileID: 0}
   btnPainel_Guia: {fileID: 0}
   ativa_Painel_Guia: 0
+  liberaMetodo_Painel_Guia: 0
   btn_restart: {fileID: 0}
-  textPts_FaseMestra: {fileID: 0}
+  habilitabBtnsCena: 0
+  habilitaBtnRestart: 0
+  textPts_FaseMestra_MCS: {fileID: 0}
   txt_Painel_WL: {fileID: 0}
   txt_Painel_info_WL: {fileID: 0}
+  txtCristalGreen: {fileID: 0}
+  painel_Dicas: {fileID: 0}
+  btnPainel_Dicas: {fileID: 0}
+  ativa_painel_Dicas: 0
   capaceteBronze: {fileID: 0}
   capacetePrata: {fileID: 0}
   capaceteOuro: {fileID: 0}
   painel_Guia: {fileID: 0}
   Painel_WL: {fileID: 0}
+  anime_mao: {fileID: 0}
   textEnergy: {fileID: 0}
+  velCon: 30
 --- !u!4 &1622977476
 Transform:
   m_ObjectHideFlags: 0

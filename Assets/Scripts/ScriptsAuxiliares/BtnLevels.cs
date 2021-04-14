@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //Objetivo deste script é repassar as informações add ao levelManager para os botões...
-//como Level e se o btn foi desbloqueado. 
+//como: Level e se o btn foi desbloqueado. 
 public class BtnLevels : MonoBehaviour
 {
     public Text textLevel_Btn;

@@ -34,6 +34,9 @@ public class CircleCS_Gray : MonoBehaviour
     public AudioClip[] clips;
     public AudioSource effectsObjs;
 
+    //testando****
+    public Dicas objD;
+
     private void Start()
     {
         //Componentes de lazer
@@ -42,6 +45,9 @@ public class CircleCS_Gray : MonoBehaviour
         circleEnergyCS_Gray = GetComponentInChildren<CircleEnergy>();
         //audio
         effectsObjs = GetComponent<AudioSource>();
+
+        //testando****
+        objD = GameObject.FindWithTag("dica").GetComponent<Dicas>();
     }
 
     private void Update()
@@ -49,15 +55,26 @@ public class CircleCS_Gray : MonoBehaviour
         AtualizaEnergy();
     }
 
+    int xClicks;//teatando****
     private void OnMouseDown()
     {                                                   
         if (tipo == "CCS_Gray" && travaClick == false 
             && circleManager.circles[indexVetCircles].ativa == true
             && GAMEMANAGER.instance.startGame == true)
         {
+            //Controles do objDica//testando****
+            if (objD.objDica[indexVetCircles].dicaAtiva == true && circleManager.circles[indexVetCircles].currentlife > 0)
+            {
+                objD.objDica[indexVetCircles].dicaClick--;
+
+                if(objD.objDica[indexVetCircles].dicaClick == 0)
+                {
+                    objD.Desat_Dica(indexVetCircles);
+                }                
+            }
             //testando****
             //Audio
-            if(circleManager.circles[indexVetCircles].currentlife > 0)
+            if (circleManager.circles[indexVetCircles].currentlife > 0)
             {
                 effectsObjs.clip = clips[0];
                 effectsObjs.Play();

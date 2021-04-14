@@ -69,7 +69,8 @@ public class CanvasObjsCircles : MonoBehaviour
             {
                 GAMEMANAGER.instance.startGame = true;
                 UIManager.instance.liberaMetodo_Painel_Guia = true;
-                UIManager.instance.desabBtnsCena = true;
+                UIManager.instance.habilitabBtnsCena = true;
+                UIManager.instance.habilitaBtnRestart = true;
             }            
         }
 

@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
+        ZPlayerPrefs.Initialize("157JONATAS", "157157157");
+
         if (instance == null)
         {
             instance = this;
@@ -33,8 +35,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Button btnBack, btnVoltar_Painel_WL, btnNovamente_Painel_WL, btnProximo_Painel_WL;
     [SerializeField]
-    private Button btnPainel_Guia;//testando****
-    public bool ativa_Painel_Guia;//testando****
+    private Button btnPainel_Guia;
+    public bool ativa_Painel_Guia;   
+
     //variável que espera o carregamento de energia para...
     //liberar o método AtivaDesativaPainel_Guia
     public bool liberaMetodo_Painel_Guia;
@@ -43,40 +46,52 @@ public class UIManager : MonoBehaviour
     public Button btn_restart;
 
     //testando****
-    public bool desabBtnsCena;
+    public bool habilitabBtnsCena;
+    public bool habilitaBtnRestart;
 
-    //Texto do ptsFaseMestra; text do "Painel_WL"
+    //Texto do ptsFaseMestra/text do "Painel_WL"   
+    public TextMeshProUGUI textPts_FaseMestra_MCS, txt_Painel_WL, txt_Painel_info_WL;
+    public TextMeshProUGUI txtCristalGreen;
+
+
+
+    //painel_dicas
     [SerializeField]
-    public TextMeshProUGUI textPts_FaseMestra, txt_Painel_WL, txt_Painel_info_WL;
-
+    private GameObject painel_Dicas;
+    [SerializeField]
+    private Button btnPainel_Dicas;
+    [SerializeField]
+    private bool ativa_painel_Dicas;
 
     //Capacetes na barra de score
     [SerializeField]
     private SpriteRenderer capaceteBronze, capacetePrata, capaceteOuro;
 
     [SerializeField]
-    private GameObject painel_Guia;//testando****
+    private GameObject painel_Guia;
     [SerializeField]
     private GameObject Painel_WL;
 
     [SerializeField]
-    private GameObject anime_mao;//testando****
+    private GameObject anime_mao;
 
-    //testando****
     public TextMeshProUGUI textEnergy;
 
     private void Update()
     {
-        HabilitDesabilitBts_Painel_WL();
-        //testando****
+        HabilitDesabilitBts_Painel_WL();        
         habilitaBtnsCena();
+
+        if (GAMEMANAGER.instance.win == true || GAMEMANAGER.instance.liberaCristal == true)
+        {
+            AtualizaCristalGreen(GAMEMANAGER.instance.cristalGreen);
+        }            
     }
 
     void Carrega(Scene cena, LoadSceneMode modo)
     {
         StartGameUIM();
 
-        //Cena Inicial
         if (LevelAtual.instance.level == 0)
         {
             //Carrega btn de acesso a cena FaseMestra
@@ -90,61 +105,44 @@ public class UIManager : MonoBehaviour
         {
             //Btns Loja e galeria         
             btnGaleria = GameObject.FindWithTag("btnGaleria").GetComponent<Button>();
-            btnLoja = GameObject.FindWithTag("btnLoja").GetComponent<Button>();
 
             //Eventos de click dos btns Loja e Galeria
-            btnGaleria.onClick.AddListener(() => StartCoroutine(WaitSoundClick("4_Galeria")));
-            btnLoja.onClick.AddListener(() => StartCoroutine(WaitSoundClick("3_Loja")));
-
-            //trabalhando aqui*****
-            textPts_FaseMestra = GameObject.FindWithTag("textPts_FaseMestra").GetComponent<TextMeshProUGUI>();
-            ShowScore();
+            btnGaleria.onClick.AddListener(() => StartCoroutine(WaitSoundClick("3_Galeria")));
         }
         //Cena Loja
-        else if (LevelAtual.instance.level == 2)
+        else if (LevelAtual.instance.level > 1 && LevelAtual.instance.level < 6)
         {
             //btn Voltar
             btnBack = GameObject.FindWithTag("btnBack").GetComponent<Button>();
 
             //Evento de click do btn Voltar
             btnBack.onClick.AddListener(() => StartCoroutine(WaitSoundClick_Voltar()));
-        }
-        //Cena Galeria
-        else if (LevelAtual.instance.level == 3)
-        {
-            //btn Voltar
-            btnBack = GameObject.FindWithTag("btnBack").GetComponent<Button>();
-
-            //Evento de click do btn Voltar
-            btnBack.onClick.AddListener(() => StartCoroutine(WaitSoundClick_Voltar()));
-        }
-        //Cena Levels
-        else if (LevelAtual.instance.level == 4)
-        {
-            //btn Voltar
-            btnBack = GameObject.FindWithTag("btnBack").GetComponent<Button>();
-
-            //Evento de click do btn Voltar
-            btnBack.onClick.AddListener(() => StartCoroutine(WaitSoundClick_Voltar()));
-        }
+        }        
 
         //Cenas Levels //Carrega capacetes OBS** criar método específicos para carregar componentes
-        else if (LevelAtual.instance.level >= 5)
+        else if (LevelAtual.instance.level >= 6)
         {
             capaceteBronze = GameObject.FindWithTag("capBronze").GetComponent<SpriteRenderer>();
             capacetePrata = GameObject.FindWithTag("capPrata").GetComponent<SpriteRenderer>();
             capaceteOuro = GameObject.FindWithTag("capOuro").GetComponent<SpriteRenderer>();
 
+            // painel Dicas
+            painel_Dicas = GameObject.FindWithTag("painel_dicas");
+            btnPainel_Dicas = GameObject.FindWithTag("btn_dicas").GetComponent<Button>();
+            btnPainel_Dicas.onClick.AddListener(() => AtivaDesativa_Painel_Dicas(ativa_painel_Dicas));
+
             //text do painel_WL
             txt_Painel_WL = GameObject.FindWithTag("txt_Painel_WL").GetComponent<TextMeshProUGUI>();
             txt_Painel_info_WL = GameObject.FindWithTag("txt_Painel_info_WL").GetComponent<TextMeshProUGUI>();
+
+            txtCristalGreen = GameObject.FindWithTag("textCristalGreen").GetComponent<TextMeshProUGUI>();
 
             //Painel_WL/Painel_Guia
             Painel_WL = GameObject.FindWithTag("painel_WL");
             painel_Guia = GameObject.FindWithTag("painel_Guia");//Testando****
             btnPainel_Guia = GameObject.FindWithTag("btn_Painel_Guia").GetComponent<Button>();
             btnPainel_Guia.onClick.AddListener(() => AtivaDesativa_Painel_Guia(ativa_Painel_Guia));
-            StartCoroutine(PegaPainel_Guia());
+            StartCoroutine(PegaPainel());
 
             //Mão_Painel guia
             anime_mao = GameObject.FindWithTag("anime_mao");
@@ -157,15 +155,17 @@ public class UIManager : MonoBehaviour
 
             StartCoroutine(esperaWL());
 
-            //eventos de clicks dos btns do painel_WL            
-            btnNovamente_Painel_WL.onClick.AddListener(() => SceneManager.LoadScene(LevelAtual.instance.level));
-            btnProximo_Painel_WL.onClick.AddListener(() => SceneManager.LoadScene(LevelAtual.instance.level + 1));
+            btnNovamente_Painel_WL.onClick.AddListener(() => SceneManager.LoadScene(LevelAtual.instance.level));            
 
-            //testando//restart level
+            //restart level
             btn_restart = GameObject.FindWithTag("btn_restart").GetComponent<Button>();
 
-            //testando//evento de click btn_restart
+            //evento de click btn_restart
             btn_restart.onClick.AddListener(() => RestartLevel());
+
+            // inicializa quantidade de cristais;
+            txtCristalGreen.text = ZPlayerPrefs.GetInt("cristaisGreen_Total").ToString();
+            xcristal = ZPlayerPrefs.GetInt("cristaisGreen_Total");
         }
     }
 
@@ -181,31 +181,85 @@ public class UIManager : MonoBehaviour
         GAMEMANAGER.instance.startGame = false;
         liberaMetodo_Painel_Guia = false;
         //btn restart/ btn_GUia/ btn_Dicas
-        desabBtnsCena = false;
+        habilitabBtnsCena = false;
+        habilitaBtnRestart = false;
     }
 
+    int cristalTemp;
+    //Mostra capacetes/ salva Cpacetes da mestra e salva cristaisGreen
     public void ShowCapacetes()
     {
+        //Bronze
         if (ScoreManager.instance.conta_ptsMarcados >= ScoreManager.instance.maxScore * 0.5 * 100)
         {
             capaceteBronze.enabled = true;
 
+            //capacetes dos btns das fases MCS, MCH, MCAH
+            GAMEMANAGER.instance.numCapacetes = 1;
+            GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
+
+            //capacetes dos btns da faseMestra
+            GAMEMANAGER.instance.numCapsB = 1;
+            GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);
+
+            //cristaisGreen           
+            if (!ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenB"))
+            {
+                ZPlayerPrefs.SetInt(LevelAtual.instance.level + "cristaisGreenB", 1);                    //cristalTemp = GAMEMANAGER.instance.cristalGreen;
+                cristalTemp = (int)(ScoreManager.instance.maxScore * 0.5 * 10);
+                GAMEMANAGER.instance.ColetaCristalGreen(cristalTemp);
+            }            
+
+            //Prata
             if (ScoreManager.instance.conta_ptsMarcados >= ScoreManager.instance.maxScore * 0.75 * 100)
             {
                 capacetePrata.enabled = true;
 
+                //capacetes dos btns das fases MCS, MCH, MCAH
+                GAMEMANAGER.instance.numCapacetes = 2;
+                GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
+
+                //capacetes dos btns da faseMestra
+                GAMEMANAGER.instance.numCapsP = 1;
+                GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);
+
+                //cristaisGreen                
+                if (!ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenP"))
+                {
+                    ZPlayerPrefs.SetInt(LevelAtual.instance.level + "cristaisGreenP", 2);
+                    cristalTemp = (int)(ScoreManager.instance.maxScore * 0.75 * 10) - (int)(ScoreManager.instance.maxScore * 0.5 * 10);
+                    GAMEMANAGER.instance.ColetaCristalGreen(cristalTemp);
+                }
+
+                //Ouro
                 if (ScoreManager.instance.conta_ptsMarcados >= ScoreManager.instance.maxScore * 100)
                 {
-                    capaceteOuro.enabled = true;
+                    capaceteOuro.enabled = true;                    
+
+                    //capacetes dos btns das fases MCS, MCH, MCAH
+                    GAMEMANAGER.instance.numCapacetes = 3;
+                    GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
+
+                    //capacetes dos btns da faseMestra
+                    GAMEMANAGER.instance.numCapsO = 1;
+                    GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);
+
+                    //cristaisGreen                    
+                    if (!ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenO"))
+                    {
+                        ZPlayerPrefs.SetInt(LevelAtual.instance.level + "cristaisGreenO", 3);
+                        cristalTemp = (int)(ScoreManager.instance.maxScore * 10) - (int)(ScoreManager.instance.maxScore * 0.75 * 10);
+                        GAMEMANAGER.instance.ColetaCristalGreen(cristalTemp);//testando****
+                    }
                 }
             }
         }
-    }
 
-    void ShowScore()
-    {
-        int pts = PlayerPrefs.GetInt("Score_FaseMestra");
-        textPts_FaseMestra.text = pts.ToString();
+        //if (ScoreManager.instance.waitCont == true)
+        //{
+        //    GAMEMANAGER.instance.ColetaCristalGreen(cristalTemp);
+        //}
+
     }
 
     public void Fases(string level)
@@ -228,7 +282,7 @@ public class UIManager : MonoBehaviour
 
     public void HabilitDesabilitBts_Painel_WL()
     {
-        if (LevelAtual.instance.level >= 5)
+        if (LevelAtual.instance.level >= 6)
         {
             if (ScoreManager.instance.waitCont == true)
             {
@@ -246,24 +300,35 @@ public class UIManager : MonoBehaviour
             {
                 btnVoltar_Painel_WL.enabled = true;
                 btnNovamente_Painel_WL.enabled = true;
-                btnProximo_Painel_WL.enabled = true;
+                btnProximo_Painel_WL.enabled = false;
+
+
+                btnProximo_Painel_WL.gameObject.SetActive(false);
             }
         }
     }
 
     public void habilitaBtnsCena()
     {
-        if (LevelAtual.instance.level >= 5)
+        if (LevelAtual.instance.level >= 6)
         {
-            if (desabBtnsCena == true)
+            if (habilitabBtnsCena == true)
             {
-                btn_restart.enabled = true;
                 btnPainel_Guia.enabled = true;
+                btnPainel_Dicas.enabled = true;
             }
             else
             {
-                btn_restart.enabled = false;
                 btnPainel_Guia.enabled = false;
+                btnPainel_Dicas.enabled = false;
+            }
+            if (habilitaBtnRestart == true)//testando****
+            {
+                btn_restart.enabled = true;
+            }
+            else//testando****
+            {
+                btn_restart.enabled = false;
             }
         }
     }
@@ -279,6 +344,9 @@ public class UIManager : MonoBehaviour
                 painel_Guia.SetActive(ativa_Painel_Guia);
                 painel_Guia.GetComponent<Animator>().Play("Anime_PainelManual");
                 StartCoroutine(Anime_Mao(ativa_Painel_Guia));
+
+                FechaPainel_Dica();//testando****
+                habilitaBtnRestart = false;//testando****
             }
             else
             {
@@ -286,7 +354,94 @@ public class UIManager : MonoBehaviour
                 ativa_Painel_Guia = false;
                 GAMEMANAGER.instance.startGame = true;
                 anime_mao.SetActive(false);
+
+                habilitaBtnRestart = true;//testando****
             }
+        }
+    }
+
+    public void AtivaDesativa_Painel_Dicas(bool pl)
+    {
+        if (liberaMetodo_Painel_Guia == true)
+        {
+            if (pl == false)
+            {
+                GAMEMANAGER.instance.startGame = false;
+                ativa_painel_Dicas = true;
+                painel_Dicas.SetActive(ativa_painel_Dicas);
+                painel_Dicas.GetComponent<Animator>().Play("Anime_PainelDicas");
+
+                FechaPainel_Guia();//testando****
+                habilitaBtnRestart = false;//testando****
+            }
+            else
+            {
+                painel_Dicas.GetComponent<Animator>().Play("Anime_PainelDicasBack");
+                ativa_painel_Dicas = false;
+                GAMEMANAGER.instance.startGame = true;
+
+                habilitaBtnRestart = true;//testando****
+            }
+        }
+    }
+
+    void FechaPainel_Guia()
+    {
+        if (ativa_Painel_Guia == true)
+        {
+            painel_Guia.GetComponent<Animator>().Play("Anime_PainelManualBack");
+            ativa_Painel_Guia = false;
+            anime_mao.SetActive(false);
+        }
+    }
+
+    public void FechaPainel_Dica()
+    {
+        if (ativa_painel_Dicas == true)
+        {
+            painel_Dicas.GetComponent<Animator>().Play("Anime_PainelDicasBack");
+            ativa_painel_Dicas = false;
+
+            GAMEMANAGER.instance.startGame = true;
+
+            habilitaBtnRestart = true;
+        }
+    }
+
+    //testando Aqui****
+    float xcristal;
+    public float velCon;
+    public void AtualizaCristalGreen(int cristais)//testando****
+    {
+        if (xcristal < cristais)
+        {
+            xcristal += 1 + (velCon * Time.deltaTime);
+
+            txtCristalGreen.text = xcristal.ToString("F0");
+
+            if (xcristal > cristais)
+            {
+                xcristal = cristais;
+                txtCristalGreen.text = xcristal.ToString("F0");
+            }
+        }
+        else if(xcristal > cristais)
+        {
+            xcristal -= 1 + (velCon * Time.deltaTime);
+
+            txtCristalGreen.text = xcristal.ToString("F0");
+
+            if (xcristal < cristais)
+            {
+                xcristal = cristais;
+                txtCristalGreen.text = xcristal.ToString("F0");
+            }
+            if(xcristal == cristais)
+            {
+                GAMEMANAGER.instance.liberaCristal = false;
+            }
+            //trava 
+            
         }
     }
 
@@ -308,10 +463,11 @@ public class UIManager : MonoBehaviour
         UI_Metodo.Voltar();
     }
 
-    IEnumerator PegaPainel_Guia()
+    IEnumerator PegaPainel()
     {
         yield return new WaitForSeconds(0.1f);
         painel_Guia.SetActive(false);
+        painel_Dicas.SetActive(false);
     }
 
     IEnumerator Anime_Mao(bool pl)
