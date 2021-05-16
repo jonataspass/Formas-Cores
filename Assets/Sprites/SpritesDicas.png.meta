@@ -1,0 +1,703 @@
+fileFormatVersion: 2
+guid: 21707cc39b85bf145aec6c69f64787ad
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 624600997531888686
+    second: SpritesDicas_0
+  - first:
+      213: -8618672989318531008
+    second: SpritesDicas_1
+  - first:
+      213: -5660777796592849347
+    second: SpritesDicas_2
+  - first:
+      213: 3409609058198481617
+    second: SpritesDicas_3
+  - first:
+      213: 5744938166853545545
+    second: SpritesDicas_4
+  - first:
+      213: -2926773789713140574
+    second: SpritesDicas_5
+  - first:
+      213: -5434291926865987858
+    second: SpritesDicas_6
+  - first:
+      213: 8287643447909850816
+    second: SpritesDicas_7
+  - first:
+      213: -1575614216316214591
+    second: SpritesDicas_8
+  - first:
+      213: -5797856613479169910
+    second: SpritesDicas_9
+  - first:
+      213: 845121466999135121
+    second: SpritesDicas_10
+  - first:
+      213: -2994579673464628660
+    second: SpritesDicas_11
+  - first:
+      213: 5578363894500378162
+    second: SpritesDicas_12
+  - first:
+      213: -5118093692942726169
+    second: SpritesDicas_13
+  - first:
+      213: -7198498268058904494
+    second: SpritesDicas_14
+  - first:
+      213: -6979335431548006127
+    second: SpritesDicas_15
+  - first:
+      213: -7075881542729728953
+    second: SpritesDicas_16
+  - first:
+      213: 3999948533531873959
+    second: SpritesDicas_17
+  - first:
+      213: 8139893668646320206
+    second: SpritesDicas_18
+  - first:
+      213: -6537459431753483075
+    second: SpritesDicas_19
+  - first:
+      213: -4870730001210161531
+    second: SpritesDicas_20
+  - first:
+      213: -669439695227659135
+    second: SpritesDicas_21
+  - first:
+      213: 7634140934928935340
+    second: SpritesDicas_22
+  - first:
+      213: -1712705352568100419
+    second: SpritesDicas_23
+  - first:
+      213: 1403094977622849131
+    second: SpritesDicas_24
+  - first:
+      213: -2463322559675362042
+    second: SpritesDicas_25
+  - first:
+      213: -368717636711471130
+    second: SpritesDicas_26
+  - first:
+      213: 7492143849295605876
+    second: SpritesDicas_27
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SpritesDicas_1
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 586
+        width: 553
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0483a647492546880800000000000000
+      internalID: -8618672989318531008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_2
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 492
+        width: 84
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3e2aa90690e071b0800000000000000
+      internalID: -5660777796592849347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_4
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 391
+        width: 179
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94ea3e323de1abf40800000000000000
+      internalID: 5744938166853545545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_5
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 390
+        width: 171
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a47936beb20267d0800000000000000
+      internalID: -2926773789713140574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_6
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 391
+        width: 176
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee6316dd8448594b0800000000000000
+      internalID: -5434291926865987858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_8
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 441
+        width: 96
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c2aa6dd73b422ae0800000000000000
+      internalID: -1575614216316214591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_10
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 395
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19b5a802f797abb00800000000000000
+      internalID: 845121466999135121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_11
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 399
+        width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4a198727ad1176d0800000000000000
+      internalID: -2994579673464628660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_12
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 399
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2364f8718645a6d40800000000000000
+      internalID: 5578363894500378162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_13
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 402
+        width: 18
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eb4bf037e0e8f8b0800000000000000
+      internalID: -5118093692942726169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_14
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 352
+        width: 16
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2589518e6fbc91c90800000000000000
+      internalID: -7198498268058904494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_15
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 353
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1119842376b642f90800000000000000
+      internalID: -6979335431548006127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_16
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 358
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74cf9dcf93b6dcd90800000000000000
+      internalID: -7075881542729728953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_17
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 359
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a21305affba28730800000000000000
+      internalID: 3999948533531873959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_18
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 256
+        width: 96
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e487d152a26b6f070800000000000000
+      internalID: 8139893668646320206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_19
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 306
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbc7ec4a8474645a0800000000000000
+      internalID: -6537459431753483075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_20
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 314
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 586c701ced0b76cb0800000000000000
+      internalID: -4870730001210161531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_21
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 263
+        width: 95
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18cd86fd42ca5b6f0800000000000000
+      internalID: -669439695227659135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_22
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 263
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca925bf9bbae1f960800000000000000
+      internalID: 7634140934928935340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_23
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 263
+        width: 95
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db9a44f5e8f3b38e0800000000000000
+      internalID: -1712705352568100419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_24
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 263
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b66385fb27bc87310800000000000000
+      internalID: 1403094977622849131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_25
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 217
+        width: 30
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6051857ee2580ddd0800000000000000
+      internalID: -2463322559675362042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_26
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 218
+        width: 39
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e72461534d02eaf0800000000000000
+      internalID: -368717636711471130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesDicas_27
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 221
+        width: 42
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4707467c22179f760800000000000000
+      internalID: 7492143849295605876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -14,7 +14,7 @@ public class CircleH_Red : MonoBehaviour
 
     //Comportamento: quando o valor desta variável é IGUAL ao valor de uma variável... 
     //shapeCircles[i].atRot[x], significa que este obj NÃO rotaciona ao ser clicado.
-    public int autoRot;
+    private int autoRot;
 
     //Velocidade de rotação do obj.
     [SerializeField]
@@ -24,6 +24,13 @@ public class CircleH_Red : MonoBehaviour
     //Controla velocidade de clicks do usuário
     public bool travaClick;
 
+    //audios
+    public AudioClip[] clips;
+    public AudioSource effectsObjs;
+
+    //Dicas
+    public Dicas objD;
+
     private void Start()
     {
         //Componentes de lazer
@@ -31,14 +38,19 @@ public class CircleH_Red : MonoBehaviour
         
         //Componentes Energy
         circleEnergyCH_Red = GetComponentInChildren<CircleEnergy>();
-       
+
+        //audio
+        effectsObjs = GetComponent<AudioSource>();
+
+        //Recebe obj com script Dicas//verificar necessidade
+        objD = GameObject.FindWithTag("dica").GetComponent<Dicas>();
+
         //Limite de rotação
         limit = circleManager.circles[indexVetCircles].angCircles;
-        
-        //testando****//passar esta variável para o gameManager
         circleManager.circles[indexVetCircles].totalCurrentEnergy_H = Total_EnergyH();
         circleManager.circles[indexVetCircles].totalCurrentEnergy_AH = Total_EnergyAH();
 
+        autoRot = indexVetCircles;
     }
 
     private void Update()
@@ -48,8 +60,8 @@ public class CircleH_Red : MonoBehaviour
         
         //Rotaciona este  obj quando seu obj controlador é clicado.
         RotacionaObj();
-        
-        //testando****
+
+        //Qtda energia H e Anti H
         circleManager.circles[indexVetCircles].totalCurrentEnergy_H = Total_EnergyH();
         circleManager.circles[indexVetCircles].totalCurrentEnergy_AH = Total_EnergyAH();
     }
@@ -60,8 +72,18 @@ public class CircleH_Red : MonoBehaviour
             && circleManager.circles[indexVetCircles].ativa == true
             && GAMEMANAGER.instance.startGame == true)
         {
-            //contador de clicks sobre o objeto
-            circleManager.circles[indexVetCircles].currentClicks++;
+            //Aviso mod sem energia
+            if (circleManager.circles[indexVetCircles].currentlife == 0)
+                GAMEMANAGER.instance.HabTex_ModSemEnergia();            
+
+            //Audio e contador de clicks
+            if (circleManager.circles[indexVetCircles].currentlife > 0)
+            {
+                effectsObjs.clip = clips[0];
+                effectsObjs.Play();
+                circleManager.circles[indexVetCircles].currentClicks++;
+            }
+
             travaClick = true;
 
             for (int i = 0; i < circleManager.circles.Length; i++)
@@ -155,7 +177,7 @@ public class CircleH_Red : MonoBehaviour
         travaClick = false;
     }
 
-    //testando*** metodo que conta o total de energia de todos os objs 04/03
+    // metodo que conta o total de energia de todos os objs 04/03
     //para verificar se o jogador perdeu
     //chamar este método na inicialização
     public int Total_EnergyH()

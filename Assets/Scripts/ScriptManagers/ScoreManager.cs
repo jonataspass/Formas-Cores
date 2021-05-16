@@ -177,39 +177,29 @@ public class ScoreManager : MonoBehaviour
 
             //testando****
             if (conta_ptsMarcados > ptsMarcados_Total)
-                conta_ptsMarcados = ptsMarcados_Total;
-
-            //Salva pontuação a ser exibida no score da "FaseMestra"
-            SalvaScore_FaseMestra((int)ptsMarcados_Total);
+                conta_ptsMarcados = ptsMarcados_Total;           
 
             //testando****TRABALHANDO AQUI
             currentScore.text = conta_ptsMarcados.ToString("F0");
-
-
-            if (GAMEMANAGER.instance.win == true && ptsMarcados_Total == conta_ptsMarcados)
-            {
-                waitCont = true;
-            }
+            //print("B");
+            //if (GAMEMANAGER.instance.win == true && ptsMarcados_Total == conta_ptsMarcados)
+            //{
+            //    waitCont = true;
+            //    //Salva pontuação a ser exibida no score da "FaseMestra"
+            //    SalvaScore_FaseMestra((int)ptsMarcados_Total);
+            //}
 
             UIManager.instance.ShowCapacetes();
         }
-    }
-    
-    //public void AtualizaCristalGreen(int cristais)//testando****
-    //{
-    //    if (xcristal < cristais)
-    //    {
-    //        xcristal += 1 + (velCon * Time.deltaTime);
-            
-    //        UIManager.instance.txtCristalGreen.text = xcristal.ToString("F0");
-
-    //        if (xcristal > cristais)
-    //        {
-    //            xcristal = cristais;
-    //            UIManager.instance.txtCristalGreen.text = xcristal.ToString("F0");
-    //        }
-    //    }
-
-    //   // UIManager.instance.txtCristalGreen.text = xcristal.ToString();
-    //}
+        //passar para o gamemanager
+        if (GAMEMANAGER.instance.win == true && ptsMarcados_Total == conta_ptsMarcados)
+        {
+            waitCont = true;
+            //Salva pontuação a ser exibida no score da "FaseMestra"
+            SalvaScore_FaseMestra(ptsMarcados_Total);
+            GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
+            GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);
+            print(GAMEMANAGER.instance.numCapacetes);
+        }
+    }   
 }

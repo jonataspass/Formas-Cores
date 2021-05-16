@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
+    public Loanding loanding;
 
     private void Awake()
     {
@@ -31,6 +32,8 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         AddBtn();
+        //if (LevelAtual.instance.level >= 6)
+        //    loanding = GameObject.FindWithTag("animeLoading").GetComponent<Loanding>();
     }
 
     //Variáveis para geração dos btns
@@ -67,8 +70,12 @@ public class LevelManager : MonoBehaviour
             newBtnTemp.GetComponent<Button>().interactable = lv.habilitado;
             //Add o novo btn ao painel
             newBtn.transform.SetParent(localBtn, false);
-            newBtnTemp.GetComponent<Button>().onClick.AddListener(() => ClickLevel(newBtnTemp.textLevel_Btn.text + "_" + LevelAtual.instance.cenaAtual));
-            
+
+            //newBtnTemp.GetComponent<Button>().onClick.AddListener(() => ClickLevel(newBtnTemp.textLevel_Btn.text + "_" + LevelAtual.instance.cenaAtual));
+            //testando****
+            newBtnTemp.GetComponent<Button>().onClick.AddListener(() => loanding.Loading(newBtnTemp.textLevel_Btn.text + "_" + LevelAtual.instance.cenaAtual));
+            //loanding.Loading(newBtnTemp.textLevel_Btn.text + "_" + LevelAtual.instance.cenaAtual);
+
             //mostra os capacetes em cada btn
             if (ZPlayerPrefs.GetInt("Level" + newBtnTemp.realLevel + "_" + LevelAtual.instance.cenaAtual + "capacete") == 1)
             {
@@ -114,15 +121,19 @@ public class LevelManager : MonoBehaviour
     //carrega cena pelo btnLevel
     public void ClickLevel(string s)
     {
-        StartCoroutine(WaitSoundClick(s));
+        //StartCoroutine(WaitSoundClick(s));
+        LevelAtual.instance.cenaAtual = s;
+        SceneManager.LoadScene(s);
     }
 
     //carrega próxima cena pelo brnProximo
     public void BtnCarrega_ProximoLevel(string codLevel)
     {
-        LevelAtual.instance.cenaAtual = "Level" + (LevelAtual.instance.level - 4) + codLevel;
-        SceneManager.LoadScene(LevelAtual.instance.cenaAtual);
-        print("Level" + (LevelAtual.instance.level - 4) + codLevel);
+        //StartCoroutine(WaitSoundClick_BtnProximo(codLevel));
+        //GAMEMANAGER.instance.win = false;
+        //LevelAtual.instance.cenaAtual = "Level" + (LevelAtual.instance.level - 4) + codLevel;
+        //SceneManager.LoadScene(LevelAtual.instance.cenaAtual);
+        //print("Level" + (LevelAtual.instance.level - 4) + codLevel);
     }
 
     IEnumerator WaitSoundClick(string s)
@@ -130,5 +141,14 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         LevelAtual.instance.cenaAtual = s;
         SceneManager.LoadScene(s);
-    }    
+    }
+
+    //IEnumerator WaitSoundClick_BtnProximo(string codLevel)
+    //{
+    //    yield return new WaitForSeconds(0.4f);
+    //    GAMEMANAGER.instance.win = false;
+    //    LevelAtual.instance.cenaAtual = "Level" + (LevelAtual.instance.level - 4) + codLevel;
+    //    SceneManager.LoadScene(LevelAtual.instance.cenaAtual);
+    //    //print("Level" + (LevelAtual.instance.level - 4) + codLevel);
+    //}
 }

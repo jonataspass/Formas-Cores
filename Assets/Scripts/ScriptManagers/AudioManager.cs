@@ -32,6 +32,12 @@ public class AudioManager : MonoBehaviour
     //testando clickBtn****TRABALHANDO AQUI
     public AudioSource clickBtn;
 
+    //testando
+    public Sprite Mute, Ative;
+
+    //btn click sound
+    //public Button btn_ClickSound;
+
     
 
     //btn Play cena Inicial
@@ -40,6 +46,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         libera_BG_Sound = true;
+       // btn_ClickSound.onClick.AddListener(() => SoudBtn());
     }
 
     private void Update()
@@ -61,11 +68,13 @@ public class AudioManager : MonoBehaviour
             {
                 backGround_Sound.clip = clips[0];
                 backGround_Sound.Play();
+                btn_Mute.image.sprite = Ative;
             }
         }
         else if (pl == false)
         {
             backGround_Sound.Pause();
+            btn_Mute.image.sprite = Mute;
         }
     }
 

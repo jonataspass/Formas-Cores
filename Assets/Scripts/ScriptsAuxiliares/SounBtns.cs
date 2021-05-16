@@ -6,13 +6,10 @@ using UnityEngine.UI;
 //TRABALHANDO AQUI*****
 public class SounBtns : MonoBehaviour
 {
-    public Button btnClick_sound;
+    public Button btnClick_sound;   
 
     private void Start()
     {
-        //btnClick_sound = GetComponent<Button>();
-        //btnClick_sound.onClick.AddListener(() => AudioManager.instance.SoudBtn());
+        btnClick_sound.onClick.AddListener(() => AudioManager.instance.SoudBtn());
     }
-
-
 }

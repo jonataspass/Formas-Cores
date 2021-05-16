@@ -38,10 +38,13 @@ public class controlPanelRotation : MonoBehaviour
         {
             tempAngPanel = angPanel.color;
             angPanel.color = new Color(colorAngPanel.r, colorAngPanel.g, colorAngPanel.b, colorAngPanel.a + 135);
-            
+
             //posições dos angulos ativos
             posAng_H_Temp = posAng_H;
             posAng_AH_Temp = posAng_AH;
+
+            //testando***
+            //AngsPositions.instance.CheckPos();
 
             verificaLose(posAng_H_Temp, posAng_AH_Temp);
         }
@@ -52,6 +55,11 @@ public class controlPanelRotation : MonoBehaviour
         if (coll.gameObject.CompareTag("collReceptLazer"))
         {
             angPanel.color = tempAngPanel;
+            posAng_H_Temp = 0;
+            posAng_AH_Temp = 0;
+
+            //testando***
+            //AngsPositions.instance.CheckPos();
         }
     }
 
@@ -73,8 +81,8 @@ public class controlPanelRotation : MonoBehaviour
     {
         if (pos_H > circleManager.circles[indexCircleVet].totalCurrentEnergy_H
             && pos_AH > circleManager.circles[indexCircleVet].totalCurrentEnergy_AH)
-        {            
-            GAMEMANAGER.instance.YouLose(CircleCS_Gray.instance.numCanhoes, GAMEMANAGER.instance.ativosTemp);
+        {
+            GAMEMANAGER.instance.YouLose(CircleCS_Gray.instance.numCanhoes, GAMEMANAGER.instance.ativosTemp);           
         }
     }
 }

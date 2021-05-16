@@ -45,12 +45,13 @@ public class CanhaoManager : MonoBehaviour
     {        
         if (coll.gameObject.CompareTag("collReceptLazer"))
         {
-            ativados = 1;
-            GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados);            
+            //ativados = 1;
+            //GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados); 
+            StartCoroutine(WaitBuster());
             //Incremente score
             ScoreManager.instance.ptsMarcados_Total += 100;
             //lazerSound
-            StartCoroutine(Wait_AtivaSoundLazer());            
+            StartCoroutine(Wait_AtivaSoundLazer());
         }
     }
 
@@ -120,6 +121,13 @@ public class CanhaoManager : MonoBehaviour
     void DesativaColl(Collider2D coll)
     {
         coll.enabled = false;
+    }
+    //testando****
+    IEnumerator WaitBuster()
+    {
+        yield return new WaitForSeconds(0.3f);
+        ativados = 1;
+        GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados);
     }
 
     //velocidades de clicks

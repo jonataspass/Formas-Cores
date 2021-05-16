@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5172655178147181740}
-  m_LocalRotation: {x: -0, y: -0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -0.143, y: 0.899, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: 0.3826836, w: -0.92387944}
+  m_LocalPosition: {x: -0.13, y: 0.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5172655180105979832}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 315}
 --- !u!212 &5172655178147181738
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -101,8 +101,8 @@ EdgeCollider2D:
   m_Offset: {x: -0.04, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.17637843, y: 0.21278161}
-  - {x: 0.22147009, y: -0.14333484}
+  - {x: -0.13709185, y: 0.15704802}
+  - {x: 0.21075144, y: -0.16905484}
 --- !u!114 &5172655178147181739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +117,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorAngPanel: {r: 0, g: 1, b: 0, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 2
+  posAng_AH: 6
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 1
 --- !u!114 &5172655178147181737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,13 +162,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5172655178175367672}
-  m_LocalRotation: {x: -0, y: -0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 0.638, y: -0.841, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: 0.3826836, w: -0.92387944}
+  m_LocalPosition: {x: 0.63, y: -0.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5172655180105979832}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 315}
 --- !u!212 &5172655178175367670
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -230,8 +236,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.4061304, y: -0.00000023841858}
-  - {x: -0.007435252, y: -0.0000002947636}
+  - {x: -0.32626975, y: 0.006352216}
+  - {x: 0.21907985, y: -0.004784651}
 --- !u!114 &5172655178175367671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +252,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorAngPanel: {r: 0, g: 1, b: 0.007030964, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 7
+  posAng_AH: 1
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 1
 --- !u!114 &5172655178175367669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,13 +297,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5172655178184314958}
-  m_LocalRotation: {x: -0, y: -0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -0.74, y: -0.76, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: 0.3826836, w: -0.92387944}
+  m_LocalPosition: {x: -0.77, y: -0.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5172655180105979832}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 315}
 --- !u!212 &5172655178184314956
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -359,8 +371,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.047113772, y: -0.047417566}
-  - {x: -0.040947214, y: 0.31159928}
+  - {x: 0.0011123121, y: 0.21127445}
+  - {x: 0.0045729503, y: -0.19124667}
 --- !u!114 &5172655178184314957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,6 +387,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorAngPanel: {r: 0, g: 1, b: 0.007030964, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 5
+  posAng_AH: 3
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 1
 --- !u!114 &5172655178184314955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,13 +432,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5172655178433948952}
-  m_LocalRotation: {x: -0, y: -0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -1.16, y: 0.049, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: 0.3826836, w: -0.92387944}
+  m_LocalPosition: {x: -1.14, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5172655180105979832}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 315}
 --- !u!212 &5172655178433948950
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -488,8 +506,8 @@ EdgeCollider2D:
   m_Offset: {x: -0.13, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.047906786, y: -0.07260484}
-  - {x: 0.46735656, y: 0.17857908}
+  - {x: 0.38149673, y: 0.16794914}
+  - {x: -0.020537749, y: -0.108105674}
 --- !u!114 &5172655178433948951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,6 +522,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorAngPanel: {r: 0, g: 1, b: 0.007030964, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 4
+  posAng_AH: 4
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 1
 --- !u!114 &5172655178433948949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,13 +567,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5172655178484448139}
-  m_LocalRotation: {x: -0, y: -0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -0.018, y: -1.116, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: 0.3826836, w: -0.92387944}
+  m_LocalPosition: {x: -0.13, y: -1.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5172655180105979832}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 315}
 --- !u!212 &5172655178484448137
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -617,8 +641,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.36548722, y: 0.1964429}
-  - {x: -0.0011372222, y: -0.011528781}
+  - {x: -0.17639205, y: 0.20383945}
+  - {x: 0.1553725, y: -0.10151826}
 --- !u!114 &5172655178484448134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,6 +657,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorAngPanel: {r: 0, g: 1, b: 0.007030964, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 6
+  posAng_AH: 2
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 1
 --- !u!114 &5172655178484448132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,13 +702,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5172655178668741682}
-  m_LocalRotation: {x: -0, y: -0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -0.878, y: 0.684, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: 0.3826836, w: -0.92387944}
+  m_LocalPosition: {x: -0.83, y: 0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5172655180105979832}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 315}
 --- !u!212 &5172655178668741680
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -746,8 +776,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.006507895, y: -0.00000008428469}
-  - {x: 0.43499982, y: 0}
+  - {x: 0.31694633, y: -0.010437079}
+  - {x: -0.241108, y: -0.010443948}
 --- !u!114 &5172655178668741681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,6 +792,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorAngPanel: {r: 0, g: 1, b: 0.007030964, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 3
+  posAng_AH: 5
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 1
 --- !u!114 &5172655178668741647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,7 +824,7 @@ GameObject:
   - component: {fileID: 5172655180105979833}
   m_Layer: 0
   m_Name: Neons45
-  m_TagString: Untagged
+  m_TagString: angZero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -802,7 +838,7 @@ Transform:
   m_GameObject: {fileID: 5172655180105979834}
   m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: -1.268, y: -1.231, z: 0}
-  m_LocalScale: {x: 0.56, y: 0.56, z: 1}
+  m_LocalScale: {x: 34.99999, y: 34.99999, z: 0}
   m_Children:
   - {fileID: 5172655180112877481}
   - {fileID: 5172655178147181741}
@@ -895,8 +931,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be66b0a0bb03e34a8d3cd0f95512d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorAngPanel: {r: 0, g: 1, b: 0.062781096, a: 1}
+  colorAngPanel: {r: 0, g: 1, b: 0, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: -1
+  posAng_AH: -1
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 0
 --- !u!1 &5172655180112877480
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,13 +966,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5172655180112877480}
-  m_LocalRotation: {x: -0, y: -0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 0.598, y: 0.579, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: 0.3826836, w: -0.92387944}
+  m_LocalPosition: {x: 0.54, y: 0.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5172655180105979832}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 315}
 --- !u!212 &5172655180112877478
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -998,8 +1040,9 @@ EdgeCollider2D:
   m_Offset: {x: 0.04, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.073518775, y: -0.20443533}
-  - {x: -0.035551064, y: 0.2596154}
+  - {x: -0.036332346, y: 0.27343532}
+  - {x: -0.03633234, y: 0.0016830512}
+  - {x: -0.032522686, y: -0.19260007}
 --- !u!114 &5172655180112877476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1014,6 +1057,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorAngPanel: {r: 0, g: 1, b: 0, a: 1}
   tempAngPanel: {r: 0, g: 0, b: 0, a: 0}
+  posAng_H: 1
+  posAng_AH: 7
+  posAng_H_Temp: 0
+  posAng_AH_Temp: 0
+  circleManager: {fileID: 0}
+  indexCircleVet: 1
 --- !u!114 &5172655180112877477
 MonoBehaviour:
   m_ObjectHideFlags: 0

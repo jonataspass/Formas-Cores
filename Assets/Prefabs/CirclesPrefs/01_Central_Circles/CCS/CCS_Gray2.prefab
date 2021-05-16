@@ -282,15 +282,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b38b723f9946845a4cc025ed0fe8de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: CCS_Gray
   indexVetCircles: 0
-  circleManager: {fileID: 0}
   numCanhoes: 2
-  circleEnergyCS_Gray: {fileID: 0}
+  tipo: CCS_Gray
   travaClick: 0
+  circleManager: {fileID: 0}
+  circleEnergyCS_Gray: {fileID: 0}
   clips:
   - {fileID: 8300000, guid: e5a2539d93330b74eb8c4e054431e1ee, type: 3}
   effectsObjs: {fileID: 0}
+  objD: {fileID: 0}
 --- !u!82 &5597948814410940830
 AudioSource:
   m_ObjectHideFlags: 0

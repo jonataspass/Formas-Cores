@@ -54,6 +54,12 @@ TagManager:
   - txtCapsB_MCAH
   - txtCapsP_MCAH
   - txtCapsO_MCAH
+  - btnSair
+  - dicaUtilizada
+  - modSemEnergia
+  - animeLoading
+  - txtAnimeLoading
+  - angZero
   layers:
   - Default
   - TransparentFX

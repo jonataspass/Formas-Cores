@@ -16,37 +16,38 @@ public class CircleCS_Gray : MonoBehaviour
         }
     }
 
-    //Tipo de shape
-    public string tipo;
     //Index do vetor do obj
     public int indexVetCircles;
-    //GameObject com Script CircleManager
-    public CircleManager circleManager;
     //Quantidade de canhoes
     public int numCanhoes;
-    //testando****
-    public CircleEnergy circleEnergyCS_Gray;
-
+    //Tipo de shape
+    public string tipo;
     //trava -> controla a velocidade de clicks do usuário
     public bool travaClick;
+    //GameObject com Script CircleManager
+    public CircleManager circleManager;    
+    //Energia deste Obj
+    public CircleEnergy circleEnergyCS_Gray;    
 
     //audios
     public AudioClip[] clips;
     public AudioSource effectsObjs;
 
-    //testando****
+    //Dicas
     public Dicas objD;
 
     private void Start()
     {
         //Componentes de lazer
         circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
-        //Componentes Energy//testando****
+
+        //Componentes Energy
         circleEnergyCS_Gray = GetComponentInChildren<CircleEnergy>();
+
         //audio
         effectsObjs = GetComponent<AudioSource>();
 
-        //testando****
+        //Recebe obj com script Dicas
         objD = GameObject.FindWithTag("dica").GetComponent<Dicas>();
     }
 
@@ -54,26 +55,29 @@ public class CircleCS_Gray : MonoBehaviour
     {
         AtualizaEnergy();
     }
-
-    int xClicks;//teatando****
+    
     private void OnMouseDown()
     {                                                   
         if (tipo == "CCS_Gray" && travaClick == false 
             && circleManager.circles[indexVetCircles].ativa == true
             && GAMEMANAGER.instance.startGame == true)
         {
-            //Controles do objDica//testando****
-            if (objD.objDica[indexVetCircles].dicaAtiva == true && circleManager.circles[indexVetCircles].currentlife > 0)
-            {
-                objD.objDica[indexVetCircles].dicaClick--;
+            ////Controles do objDica
+            //if (objD.objDica[indexVetCircles].dicaAtiva == true && circleManager.circles[indexVetCircles].currentlife > 0)
+            //{
+            //    //objD.objDica[indexVetCircles].dicaClick--;
 
-                if(objD.objDica[indexVetCircles].dicaClick == 0)
-                {
-                    objD.Desat_Dica(indexVetCircles);
-                }                
-            }
-            //testando****
-            //Audio
+            //    //if(objD.objDica[indexVetCircles].dicaClick == 0)
+            //    //{
+            //    //    objD.Desat_Dica(indexVetCircles);
+            //    //}                
+            //}
+
+            //Aviso mod sem energia
+            if (circleManager.circles[indexVetCircles].currentlife == 0)
+                GAMEMANAGER.instance.HabTex_ModSemEnergia();
+            
+            //Audio e contador de clicks
             if (circleManager.circles[indexVetCircles].currentlife > 0)
             {
                 effectsObjs.clip = clips[0];
@@ -82,8 +86,6 @@ public class CircleCS_Gray : MonoBehaviour
             } 
             
             travaClick = true;
-
-            AtualizaEnergy();
 
             for (int i = 0; i < circleManager.circles.Length; i++)
             {
@@ -103,6 +105,7 @@ public class CircleCS_Gray : MonoBehaviour
 
             }
 
+            //decrementa energy
             if (circleManager.circles[indexVetCircles].currentlife > 0)
             {
                 circleManager.circles[indexVetCircles].currentlife--;
@@ -110,16 +113,6 @@ public class CircleCS_Gray : MonoBehaviour
 
             StartCoroutine(DestravaClick());
         }
-    }
-    //USAR PARA EXIBIR INFORMAÇÕES SOBRE OS OBJS: EXEMPLO: NÍVEL ENERGIA DO MÒDULO
-    private void OnMouseOver()
-    {
-        //print("OLÀÀÀ");
-    }
-
-    private void OnMouseExit()
-    {
-        //print("Saiu!!!");
     }
 
     //Atualização da energia deste obj
@@ -129,7 +122,7 @@ public class CircleCS_Gray : MonoBehaviour
         {
             circleEnergyCS_Gray.AtualizaCircleEnergy(indexVetCircles);
         }
-    }
+    }   
 
     //velocidade de clicks
     IEnumerator DestravaClick()

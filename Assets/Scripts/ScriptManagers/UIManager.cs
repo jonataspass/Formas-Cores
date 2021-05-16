@@ -53,7 +53,10 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI textPts_FaseMestra_MCS, txt_Painel_WL, txt_Painel_info_WL;
     public TextMeshProUGUI txtCristalGreen;
 
+    public TextMeshProUGUI txt_ModSemEnergy;
 
+    //btns
+    public Button btnSair;
 
     //painel_dicas
     [SerializeField]
@@ -98,7 +101,7 @@ public class UIManager : MonoBehaviour
             btnFaseMestra = GameObject.FindWithTag("btnLevels").GetComponent<Button>();
 
             //Evento de click do btn FaseMestra
-            btnFaseMestra.onClick.AddListener(() => StartCoroutine(WaitSoundClick("2_FaseMestra")));
+            //btnFaseMestra.onClick.AddListener(() => StartCoroutine(WaitSoundClick("2_FaseMestra")));
         }
         //Cenas FaseMestra, Galeria, Loja
         else if (LevelAtual.instance.level == 1)
@@ -107,7 +110,7 @@ public class UIManager : MonoBehaviour
             btnGaleria = GameObject.FindWithTag("btnGaleria").GetComponent<Button>();
 
             //Eventos de click dos btns Loja e Galeria
-            btnGaleria.onClick.AddListener(() => StartCoroutine(WaitSoundClick("3_Galeria")));
+            //btnGaleria.onClick.AddListener(() => StartCoroutine(WaitSoundClick("3_Galeria")));
         }
         //Cena Loja
         else if (LevelAtual.instance.level > 1 && LevelAtual.instance.level < 6)
@@ -115,8 +118,8 @@ public class UIManager : MonoBehaviour
             //btn Voltar
             btnBack = GameObject.FindWithTag("btnBack").GetComponent<Button>();
 
-            //Evento de click do btn Voltar
-            btnBack.onClick.AddListener(() => StartCoroutine(WaitSoundClick_Voltar()));
+            //Evento de click do btn Back
+            //btnBack.onClick.AddListener(() => StartCoroutine(WaitSoundClick_Voltar()));
         }        
 
         //Cenas Levels //Carrega capacetes OBS** criar método específicos para carregar componentes
@@ -147,32 +150,39 @@ public class UIManager : MonoBehaviour
             //Mão_Painel guia
             anime_mao = GameObject.FindWithTag("anime_mao");
             anime_mao.SetActive(false);
+            //chamando dentro de StarCoroutine(esperaWL())
 
             //btns do "Painel_WL"
             btnVoltar_Painel_WL = GameObject.FindWithTag("btnVlt_P_WL").GetComponent<Button>();
             btnNovamente_Painel_WL = GameObject.FindWithTag("btnNvm_P_WL").GetComponent<Button>();
-            btnProximo_Painel_WL = GameObject.FindWithTag("btnPrx_P_WL").GetComponent<Button>();
+            btnProximo_Painel_WL = GameObject.FindWithTag("btnPrx_P_WL").GetComponent<Button>();            
 
             StartCoroutine(esperaWL());
-
-            btnNovamente_Painel_WL.onClick.AddListener(() => SceneManager.LoadScene(LevelAtual.instance.level));            
-
-            //restart level
-            btn_restart = GameObject.FindWithTag("btn_restart").GetComponent<Button>();
+            
+            btnNovamente_Painel_WL.onClick.AddListener(() => StartCoroutine(WaitSoundClick_btnRestart()));
+           //restart level
+           btn_restart = GameObject.FindWithTag("btn_restart").GetComponent<Button>();
 
             //evento de click btn_restart
             btn_restart.onClick.AddListener(() => RestartLevel());
 
+            //btn Sai do level
+            btnSair = GameObject.FindWithTag("btnSair").GetComponent<Button>();
+
             // inicializa quantidade de cristais;
             txtCristalGreen.text = ZPlayerPrefs.GetInt("cristaisGreen_Total").ToString();
             xcristal = ZPlayerPrefs.GetInt("cristaisGreen_Total");
+
+            txt_ModSemEnergy = GameObject.FindWithTag("modSemEnergia").GetComponent<TextMeshProUGUI>();
+            txt_ModSemEnergy.enabled = false;
         }
     }
 
     IEnumerator esperaWL()
     {
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.001f);
         Painel_WL.SetActive(false);
+        //anime_mao.SetActive(false);
     }
 
     void StartGameUIM()
@@ -193,14 +203,14 @@ public class UIManager : MonoBehaviour
         if (ScoreManager.instance.conta_ptsMarcados >= ScoreManager.instance.maxScore * 0.5 * 100)
         {
             capaceteBronze.enabled = true;
-
+            
             //capacetes dos btns das fases MCS, MCH, MCAH
             GAMEMANAGER.instance.numCapacetes = 1;
-            GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
-
+            //GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
+            
             //capacetes dos btns da faseMestra
             GAMEMANAGER.instance.numCapsB = 1;
-            GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);
+            //GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);
 
             //cristaisGreen           
             if (!ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenB"))
@@ -217,11 +227,11 @@ public class UIManager : MonoBehaviour
 
                 //capacetes dos btns das fases MCS, MCH, MCAH
                 GAMEMANAGER.instance.numCapacetes = 2;
-                GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
+                //GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
 
                 //capacetes dos btns da faseMestra
                 GAMEMANAGER.instance.numCapsP = 1;
-                GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);
+                //GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);
 
                 //cristaisGreen                
                 if (!ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenP"))
@@ -238,11 +248,11 @@ public class UIManager : MonoBehaviour
 
                     //capacetes dos btns das fases MCS, MCH, MCAH
                     GAMEMANAGER.instance.numCapacetes = 3;
-                    GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
+                    //GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
 
                     //capacetes dos btns da faseMestra
                     GAMEMANAGER.instance.numCapsO = 1;
-                    GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);
+                    //GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);
 
                     //cristaisGreen                    
                     if (!ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenO"))
@@ -254,12 +264,6 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
-
-        //if (ScoreManager.instance.waitCont == true)
-        //{
-        //    GAMEMANAGER.instance.ColetaCristalGreen(cristalTemp);
-        //}
-
     }
 
     public void Fases(string level)
@@ -270,11 +274,12 @@ public class UIManager : MonoBehaviour
     public void UI_Win()
     {
         Painel_WL.SetActive(true);
+        //GAMEMANAGER.instance.win = false;
     }
 
     public void RestartLevel()
     {
-        if (GAMEMANAGER.instance.startGame == true && GAMEMANAGER.instance.win == false)
+        if (GAMEMANAGER.instance.win == false)
         {
             StartCoroutine(WaitSoundClick_btnRestart());
         }
@@ -302,7 +307,6 @@ public class UIManager : MonoBehaviour
                 btnNovamente_Painel_WL.enabled = true;
                 btnProximo_Painel_WL.enabled = false;
 
-
                 btnProximo_Painel_WL.gameObject.SetActive(false);
             }
         }
@@ -322,11 +326,11 @@ public class UIManager : MonoBehaviour
                 btnPainel_Guia.enabled = false;
                 btnPainel_Dicas.enabled = false;
             }
-            if (habilitaBtnRestart == true)//testando****
+            if (habilitaBtnRestart == true)
             {
                 btn_restart.enabled = true;
             }
-            else//testando****
+            else
             {
                 btn_restart.enabled = false;
             }
@@ -402,7 +406,7 @@ public class UIManager : MonoBehaviour
             painel_Dicas.GetComponent<Animator>().Play("Anime_PainelDicasBack");
             ativa_painel_Dicas = false;
 
-            GAMEMANAGER.instance.startGame = true;
+            GAMEMANAGER.instance.startGame = false;
 
             habilitaBtnRestart = true;
         }
@@ -439,9 +443,7 @@ public class UIManager : MonoBehaviour
             if(xcristal == cristais)
             {
                 GAMEMANAGER.instance.liberaCristal = false;
-            }
-            //trava 
-            
+            }           
         }
     }
 

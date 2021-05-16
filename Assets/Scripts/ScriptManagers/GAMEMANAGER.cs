@@ -8,8 +8,6 @@ public class GAMEMANAGER : MonoBehaviour
 {
     public static GAMEMANAGER instance;
 
-    public int ativosTemp = 0;
-
     void Awake()
     {
         ZPlayerPrefs.Initialize("157JONATAS", "157157157");
@@ -40,8 +38,11 @@ public class GAMEMANAGER : MonoBehaviour
     //testando****variável que destrava inicialização do jogo
     public bool startGame;
 
+    //variável de canhao ativo
+    public int ativosTemp = 0;
+
     //variável que armazena quantidade de cristais green
-    public int cristalGreen;//testando****
+    public int cristalGreen;
 
     //capacetes conquistados btns fases MCS, MCH, MCAH
     public int numCapacetes;
@@ -49,15 +50,9 @@ public class GAMEMANAGER : MonoBehaviour
     //capacetes conquistados dos btns da faseMestra
     public int numCapsB, numCapsP, numCapsO;
 
-    private void Update()
-    {
-        //print("TotalUpdate " + ZPlayerPrefs.GetInt(LevelAtual.instance.cenaAtual + "cristaisGreen_Total"));
-    }
-
     //Carrega cena
     void Carrega(Scene cena, LoadSceneMode modo)
     {
-        //win = false;
 
         if (LevelAtual.instance.level >= 6)
         {
@@ -72,13 +67,14 @@ public class GAMEMANAGER : MonoBehaviour
         win = false;
         lose = false;
         liberaCristal = false;
+
         //pontuação
         ScoreManager.instance.ptsMarcados_Total = 0;
         ScoreManager.instance.conta_ptsMarcados = 0;
-        //testando****08/04/2021
+
+        //Salva cristais
         if (ZPlayerPrefs.HasKey("cristaisGreen_Total"))
         {
-            print("Inicializando cristal");
             cristalGreen = ZPlayerPrefs.GetInt("cristaisGreen_Total");
         }
 
@@ -88,8 +84,11 @@ public class GAMEMANAGER : MonoBehaviour
         //ZPlayerPrefs.DeleteAll();
     }
 
+    public int canTest;
     public void YouWin(int canhoes, int ativos)
     {
+        canTest = canhoes;
+
         if (ativos == 1)
         {
             ativosTemp++;
@@ -113,6 +112,7 @@ public class GAMEMANAGER : MonoBehaviour
 
         if (win == true)
         {
+            //ScoreManager.instance.ptsMarcados_Total += 100;
             circleManager.ScoreFinal();
             DesabClicks();
             DesbloqueiaLevel();
@@ -167,7 +167,7 @@ public class GAMEMANAGER : MonoBehaviour
     void DesbloqueiaLevel()
     {
         //cena MCS
-        if (LevelAtual.instance.level >= 6 && LevelAtual.instance.level <= 7)
+        if (LevelAtual.instance.level >= 6 && LevelAtual.instance.level <= 100)
         {
             int temp = LevelAtual.instance.level - 5;
             temp++;
@@ -195,13 +195,16 @@ public class GAMEMANAGER : MonoBehaviour
     {
         if (win == true)
         {
+            print("Salcacapacetes");
             if (!ZPlayerPrefs.HasKey(LevelAtual.instance.cenaAtual + "capacete"))
             {
                 ZPlayerPrefs.SetInt(LevelAtual.instance.cenaAtual + "capacete", nCapacetes);
+                print(LevelAtual.instance.cenaAtual + "capacete");
             }
             else if (ZPlayerPrefs.GetInt(LevelAtual.instance.cenaAtual + "capacete") < nCapacetes)
             {
                 ZPlayerPrefs.SetInt(LevelAtual.instance.cenaAtual + "capacete", nCapacetes);
+                print("2");
             }
         }
     }
@@ -232,7 +235,6 @@ public class GAMEMANAGER : MonoBehaviour
     public void ColetaCristalGreen(int crsG)
     {
         cristalGreen += crsG;
-        print("Coleta " + cristalGreen);
         SalvaCristais(cristalGreen);
     }
 
@@ -240,7 +242,6 @@ public class GAMEMANAGER : MonoBehaviour
     {
         liberaCristal = true;
         cristalGreen -= crsG;
-        print("Decrementa " + cristalGreen);
         SalvaCristais(cristalGreen);
         //UIManager.instance.AtualizaCristalGreen(cristalGreen);
     }
@@ -254,13 +255,10 @@ public class GAMEMANAGER : MonoBehaviour
             if (!ZPlayerPrefs.HasKey("cristaisGreen_Total"))
             {
                 ZPlayerPrefs.SetInt("cristaisGreen_Total", cristais);
-                print("Total " + ZPlayerPrefs.GetInt("cristaisGreen_Total"));
             }
             else
             {
                 ZPlayerPrefs.SetInt("cristaisGreen_Total", cristais);
-                print("Total " + ZPlayerPrefs.GetInt("cristaisGreen_Total"));
-                //liberaCristal = false;
             }
         }
     }
@@ -269,6 +267,31 @@ public class GAMEMANAGER : MonoBehaviour
     public void ShowTextEnergy(int indexVet)
     {
         UIManager.instance.textEnergy.text = circleManager.circles[indexVet].currentlife.ToString();
+    }
+    //trabalhando aqui***
+    public void TotalEnergiCircle_Perifericos()
+    {
+        for(int i = 0; i < circleManager.circles.Length; i++)
+        {
+            if(circleManager.circles[i].tipo != "CCS_Gray")
+            {
+
+            }
+        }
+    }
+
+    //Habilita e desabilita txt mod sem energia
+    public void HabTex_ModSemEnergia()
+    {
+        StartCoroutine(txtModSemEner());
+    }
+
+    IEnumerator txtModSemEner()
+    {
+        print("Modse");
+        UIManager.instance.txt_ModSemEnergy.enabled = true;
+        yield return new WaitForSeconds(1);
+        UIManager.instance.txt_ModSemEnergy.enabled = false;
     }
 }
 

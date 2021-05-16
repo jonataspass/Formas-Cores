@@ -17,6 +17,8 @@ public class ShowPts_Caps : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI txt_capBronze_MCAH, txt_capPrata_MCAH, txt_capOuro_MCAH;
 
+    public LevelManager levelManager;
+
     private int[] ptsVal;
     private int[] capsB, capsP, capsO;
 
@@ -53,7 +55,7 @@ public class ShowPts_Caps : MonoBehaviour
         capsO = new int[3];
 
         //Laço qu percorre os levels de cada Mestra
-        for (int i = 0; i < 2; i++)//i < 2 levels por mestra por enquanto
+        for (int i = 0; i < 10; i++)//i < 2 levels por mestra por enquanto
         {
             //Pts do score Mestra
             ptsVal[0] += ZPlayerPrefs.GetInt("Level" + (i + 1) + "_MCSscore");

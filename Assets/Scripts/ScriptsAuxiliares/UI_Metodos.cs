@@ -31,8 +31,8 @@ public static class UI_Metodo
         SceneManager.LoadScene(cena);
     }
     //testando****
-    public static void Voltar_P_WL(string cena)
-    {
-        SceneManager.LoadScene(cena);
-    }
+    //public static void Voltar_P_WL(string cena)
+    //{
+    //    SceneManager.LoadScene(cena);
+    //}
 }
