@@ -20,12 +20,14 @@ public class Loanding : MonoBehaviour
 
     public void Loading(string cena)
     {
+        GAMEMANAGER.instance.win = false;
         animeLoading.gameObject.SetActive(true);
         StartCoroutine(CenaDeCarregamento(cena));
     }
     //testandoBtnProxioLevel
     public void LoadingBtnProximo(string cena)
     {
+        GAMEMANAGER.instance.win = false;
         animeLoading.gameObject.SetActive(true);
         StartCoroutine(CenaDeCarregamento_BtnProximo(cena));
     }
@@ -59,7 +61,7 @@ public class Loanding : MonoBehaviour
     IEnumerator CenaDeCarregamento_BtnProximo(string codLevel)
     {
         yield return null;
-        GAMEMANAGER.instance.win = false;
+        //GAMEMANAGER.instance.win = false;
         LevelAtual.instance.cenaAtual = "Level" + (LevelAtual.instance.level - 4) + codLevel;
         AsyncOperation carregamento = SceneManager.LoadSceneAsync(LevelAtual.instance.cenaAtual);
 

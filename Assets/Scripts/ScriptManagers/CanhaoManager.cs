@@ -49,7 +49,7 @@ public class CanhaoManager : MonoBehaviour
             //GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados); 
             StartCoroutine(WaitBuster());
             //Incremente score
-            ScoreManager.instance.ptsMarcados_Total += 100;
+            //ScoreManager.instance.ptsMarcados_Total += 10;
             //lazerSound
             StartCoroutine(Wait_AtivaSoundLazer());
         }

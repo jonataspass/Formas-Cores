@@ -506,7 +506,7 @@ TextureImporter:
         x: 63
         y: 435
         width: 95
-        height: 99
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -608,10 +608,10 @@ TextureImporter:
       name: Circles_16
       rect:
         serializedVersion: 2
-        x: 62
-        y: 330
-        width: 96
-        height: 101
+        x: 63
+        y: 332
+        width: 95
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -674,7 +674,7 @@ TextureImporter:
         x: 63
         y: 227
         width: 95
-        height: 99
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -737,7 +737,7 @@ TextureImporter:
         x: 63
         y: 119
         width: 95
-        height: 97
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -800,7 +800,7 @@ TextureImporter:
         x: 63
         y: 10
         width: 95
-        height: 99
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

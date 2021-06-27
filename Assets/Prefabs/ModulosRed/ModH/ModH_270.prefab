@@ -114,6 +114,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6127369323630243015}
     m_Modifications:
+    - target: {fileID: 1739196462489955771, guid: 96aadb44062d7d548b75b8730933866b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739196462489955771, guid: 96aadb44062d7d548b75b8730933866b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739196462489955771, guid: 96aadb44062d7d548b75b8730933866b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739196462489955771, guid: 96aadb44062d7d548b75b8730933866b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739196462489955771, guid: 96aadb44062d7d548b75b8730933866b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5973194708815154839, guid: 96aadb44062d7d548b75b8730933866b,
         type: 3}
       propertyPath: m_textInfo.characterCount

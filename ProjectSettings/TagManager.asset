@@ -60,6 +60,10 @@ TagManager:
   - animeLoading
   - txtAnimeLoading
   - angZero
+  - missel
+  - meteoro
+  - showMissel
+  - tentativas
   layers:
   - Default
   - TransparentFX

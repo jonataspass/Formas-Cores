@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI textPts_FaseMestra_MCS, txt_Painel_WL, txt_Painel_info_WL;
     public TextMeshProUGUI txtCristalGreen;
 
-    public TextMeshProUGUI txt_ModSemEnergy;
+    public TextMeshProUGUI txt_ModSemEnergy, txt_num_tentativas;
 
     //btns
     public Button btnSair;
@@ -79,11 +79,13 @@ public class UIManager : MonoBehaviour
     private GameObject anime_mao;
 
     public TextMeshProUGUI textEnergy;
+    public TextMeshProUGUI txt_showNmissel;
 
     private void Update()
     {
         HabilitDesabilitBts_Painel_WL();        
         habilitaBtnsCena();
+        AtualizaUI();
 
         if (GAMEMANAGER.instance.win == true || GAMEMANAGER.instance.liberaCristal == true)
         {
@@ -175,6 +177,9 @@ public class UIManager : MonoBehaviour
 
             txt_ModSemEnergy = GameObject.FindWithTag("modSemEnergia").GetComponent<TextMeshProUGUI>();
             txt_ModSemEnergy.enabled = false;
+
+            txt_showNmissel = GameObject.FindWithTag("showMissel").GetComponent<TextMeshProUGUI>();
+            txt_num_tentativas = GameObject.FindWithTag("tentativas").GetComponent<TextMeshProUGUI>();
         }
     }
 
@@ -200,7 +205,7 @@ public class UIManager : MonoBehaviour
     public void ShowCapacetes()
     {
         //Bronze
-        if (ScoreManager.instance.conta_ptsMarcados >= ScoreManager.instance.maxScore * 0.5 * 100)
+        if (ScoreManager.instance.conta_ptsMarcados >= ScoreManager.instance.maxScore * 0.75 * 100)
         {
             capaceteBronze.enabled = true;
             
@@ -216,12 +221,12 @@ public class UIManager : MonoBehaviour
             if (!ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenB"))
             {
                 ZPlayerPrefs.SetInt(LevelAtual.instance.level + "cristaisGreenB", 1);                    //cristalTemp = GAMEMANAGER.instance.cristalGreen;
-                cristalTemp = (int)(ScoreManager.instance.maxScore * 0.5 * 10);
+                cristalTemp = (int)(ScoreManager.instance.maxScore * 0.75 * 10);
                 GAMEMANAGER.instance.ColetaCristalGreen(cristalTemp);
             }            
 
             //Prata
-            if (ScoreManager.instance.conta_ptsMarcados >= ScoreManager.instance.maxScore * 0.75 * 100)
+            if (ScoreManager.instance.conta_ptsMarcados >= ScoreManager.instance.maxScore * 0.85 * 100)
             {
                 capacetePrata.enabled = true;
 
@@ -237,7 +242,7 @@ public class UIManager : MonoBehaviour
                 if (!ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenP"))
                 {
                     ZPlayerPrefs.SetInt(LevelAtual.instance.level + "cristaisGreenP", 2);
-                    cristalTemp = (int)(ScoreManager.instance.maxScore * 0.75 * 10) - (int)(ScoreManager.instance.maxScore * 0.5 * 10);
+                    cristalTemp = (int)(ScoreManager.instance.maxScore * 0.85 * 10) - (int)(ScoreManager.instance.maxScore * 0.5 * 10);
                     GAMEMANAGER.instance.ColetaCristalGreen(cristalTemp);
                 }
 
@@ -362,6 +367,18 @@ public class UIManager : MonoBehaviour
                 habilitaBtnRestart = true;//testando****
             }
         }
+    }
+
+    //Atualiza UI colocar cristal e missel em todas as cenas
+    void AtualizaUI()
+    {
+        //Missel
+        if(LevelAtual.instance.level >= 6)
+        {
+            txt_showNmissel.text = GAMEMANAGER.instance.cargaMissel.ToString();
+            txt_num_tentativas.text = GAMEMANAGER.instance.num_tentativas.ToString();
+        }
+        
     }
 
     public void AtivaDesativa_Painel_Dicas(bool pl)

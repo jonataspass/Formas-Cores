@@ -22,7 +22,7 @@ public class CanvasObjsCircles : MonoBehaviour
     public float currentLifeTemp;
     public float velCont;
     public GameObject Panel_InitEnergy;
-    private float contInitGame;
+    private float contInitGame;    
 
     private void Start()
     {

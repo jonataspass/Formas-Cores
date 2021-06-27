@@ -43,10 +43,7 @@ public class controlPanelRotation : MonoBehaviour
             posAng_H_Temp = posAng_H;
             posAng_AH_Temp = posAng_AH;
 
-            //testando***
-            //AngsPositions.instance.CheckPos();
-
-            verificaLose(posAng_H_Temp, posAng_AH_Temp);
+            verificaLose(/*posAng_H_Temp, posAng_AH_Temp*/);
         }
     }
 
@@ -57,9 +54,6 @@ public class controlPanelRotation : MonoBehaviour
             angPanel.color = tempAngPanel;
             posAng_H_Temp = 0;
             posAng_AH_Temp = 0;
-
-            //testando***
-            //AngsPositions.instance.CheckPos();
         }
     }
 
@@ -77,12 +71,31 @@ public class controlPanelRotation : MonoBehaviour
     }
 
     //Verifica possibilidade de jogadas
-    void verificaLose(int pos_H, int pos_AH)
+    void verificaLose(/*int pos_H, int pos_AH*/)
     {
-        if (pos_H > circleManager.circles[indexCircleVet].totalCurrentEnergy_H
-            && pos_AH > circleManager.circles[indexCircleVet].totalCurrentEnergy_AH)
+        StartCoroutine(test(/*posAng_H_Temp, posAng_AH_Temp*/));
+
+        //if (pos_H > circleManager.circles[indexCircleVet].totalCurrentEnergy_H
+        //    && pos_AH > circleManager.circles[indexCircleVet].totalCurrentEnergy_AH)
+        //{
+        //if(GAMEMANAGER.instance.num_tentativas == 0 && GAMEMANAGER.instance.win == false)
+        //    GAMEMANAGER.instance.YouLose(CircleCS_Gray.instance.numCanhoes, GAMEMANAGER.instance.ativosTemp);
+            
+        //}
+    }
+
+    IEnumerator test(/*int pos_H, int pos_AH*/)
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        if (GAMEMANAGER.instance.num_tentativas == 0 && GAMEMANAGER.instance.win == false)
         {
-            GAMEMANAGER.instance.YouLose(CircleCS_Gray.instance.numCanhoes, GAMEMANAGER.instance.ativosTemp);           
+            GAMEMANAGER.instance.YouLose(CircleCS_Gray.instance.numCanhoes, GAMEMANAGER.instance.ativosTemp);
         }
+        //else if(circleManager.currentLifeTotal == 0 && GAMEMANAGER.instance.win == false)
+        //{
+        //    GAMEMANAGER.instance.YouLose(CircleCS_Gray.instance.numCanhoes, GAMEMANAGER.instance.ativosTemp);
+        //}    
+        
     }
 }

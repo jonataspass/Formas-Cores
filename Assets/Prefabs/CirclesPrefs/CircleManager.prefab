@@ -44,3 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circles: []
+  maxEnergy: 0
+  totalClicks: 0
+  numCircCent: 0
+  num_tentativas_Start: 0
+  num_tentativas_Ideal: 0
+  currentLifeTotal: 0
+  extraLife: 0
+  dificuldadeLevel: 0

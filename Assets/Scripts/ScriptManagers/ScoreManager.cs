@@ -58,7 +58,6 @@ public class ScoreManager : MonoBehaviour
     private void Update()
     {
         ShowScore();
-        //AtualizaCristalGreen(GAMEMANAGER.instance.cristalGreen);
     }
 
     private void FixedUpdate()
@@ -89,21 +88,6 @@ public class ScoreManager : MonoBehaviour
         effectsObjs = GetComponent<AudioSource>();
     }
 
-    public void UpdateScoreM()
-    {
-
-    }
-
-    public void ColetaCristal()
-    {
-
-    }
-
-    public void ColetaCromiunCoins()
-    {
-
-    }
-
     public void SalvaScore_FaseMestra(int pts)
     {
         if(GAMEMANAGER.instance.win == true)
@@ -115,6 +99,7 @@ public class ScoreManager : MonoBehaviour
                 {
                     score_FaseMestra_MCS = pts;//testando****
                     ZPlayerPrefs.SetInt(LevelAtual.instance.cenaAtual + "score", score_FaseMestra_MCS);
+                    print(pts);
                 }
             }
             else
@@ -132,15 +117,20 @@ public class ScoreManager : MonoBehaviour
     {
         if (conta_ptsMarcados < ptsMarcados_Total)
         {
-            //if (conta_ptsMarcados < 100)
-            //{
-            //conta_ptsMarcados ++;
+            //testando****
+            if(conta_ptsMarcados <= 1000)
+            {
+                conta_ptsMarcados += 10 + (velCon * Time.deltaTime);
+                xScale = conta_ptsMarcados/ 100 / maxScore;
+            }
+            else if(conta_ptsMarcados > 1000)
+            {
+                conta_ptsMarcados += 100 + (velCon * Time.deltaTime);
+                xScale = conta_ptsMarcados / 100 / maxScore;
+            }
+            //conta_ptsMarcados += 10 + (velCon * Time.deltaTime);
+            //xScale = conta_ptsMarcados / 100 / maxScore;
 
-            //currentScore.text = conta_ptsMarcados.ToString();
-
-            //testando****TRABALHANDO AQUI
-            conta_ptsMarcados += 10 + (velCon * Time.deltaTime);
-            xScale = conta_ptsMarcados / 100 / maxScore;
             //effect sound
             effectsObjs.clip = clips[0];
             effectsObjs.Play();            
@@ -152,42 +142,11 @@ public class ScoreManager : MonoBehaviour
             }
 
             scoreBar.rectTransform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
-            //}
-            //else if(conta_ptsMarcados > 100)
-            //{
-            //    conta_ptsMarcados += 10f;
-            //    xScale = conta_ptsMarcados / 100 / maxScore;
-            //    currentScore.text = conta_ptsMarcados.ToString();
-
-            //    //effect sound
-            //    effectsObjs.clip = clips[0];
-            //    effectsObjs.Play();
-
-            //    //Salva pontuação a ser exibida no score da "FaseMestra"
-            //    SalvaScore_FaseMestra((int)ptsMarcados_Total);
-
-            //    if (xScale > 1)
-            //    {
-            //        xScale = 1;
-            //        scoreBar.rectTransform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
-            //    }
-
-            //    scoreBar.rectTransform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);                
-            //}
-
-            //testando****
+            
             if (conta_ptsMarcados > ptsMarcados_Total)
-                conta_ptsMarcados = ptsMarcados_Total;           
-
-            //testando****TRABALHANDO AQUI
-            currentScore.text = conta_ptsMarcados.ToString("F0");
-            //print("B");
-            //if (GAMEMANAGER.instance.win == true && ptsMarcados_Total == conta_ptsMarcados)
-            //{
-            //    waitCont = true;
-            //    //Salva pontuação a ser exibida no score da "FaseMestra"
-            //    SalvaScore_FaseMestra((int)ptsMarcados_Total);
-            //}
+                conta_ptsMarcados = ptsMarcados_Total; 
+            
+            currentScore.text = conta_ptsMarcados.ToString("F0");            
 
             UIManager.instance.ShowCapacetes();
         }
@@ -198,8 +157,7 @@ public class ScoreManager : MonoBehaviour
             //Salva pontuação a ser exibida no score da "FaseMestra"
             SalvaScore_FaseMestra(ptsMarcados_Total);
             GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
-            GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);
-            print(GAMEMANAGER.instance.numCapacetes);
+            GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);            
         }
     }   
 }

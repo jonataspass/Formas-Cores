@@ -39,6 +39,24 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelsMCS/Level5_MCS.unity
     guid: 91fd0aac8e5271a42839e3e3cf0e9371
   - enabled: 1
+    path: Assets/Scenes/LevelsMCS/Level6_MCS.unity
+    guid: 1751f385b419e234b9c08f5c173db857
+  - enabled: 1
+    path: Assets/Scenes/LevelsMCS/Level7_MCS.unity
+    guid: 85589dfd87045af41835cb403446e8c3
+  - enabled: 1
+    path: Assets/Scenes/LevelsMCS/Level8_MCS.unity
+    guid: 270a2b8975d0f3b4fb1df67a5a98f86f
+  - enabled: 1
+    path: Assets/Scenes/LevelsMCS/Level9_MCS.unity
+    guid: e52df488d88b9064ebe87a76b4c4a510
+  - enabled: 1
+    path: Assets/Scenes/LevelsMCS/Level10_MCS.unity
+    guid: ef362bac1372d9a419bca52ca42bef2f
+  - enabled: 1
+    path: Assets/Scenes/LevelsMCS/Level111_MCS_.unity
+    guid: 3eefb2c22158df540a92d1cd5d770431
+  - enabled: 1
     path: Assets/Scenes/LevelsMCH/Level1_MCH.unity
     guid: 6253f81d64598cb4e9082be4cba7900e
   - enabled: 1

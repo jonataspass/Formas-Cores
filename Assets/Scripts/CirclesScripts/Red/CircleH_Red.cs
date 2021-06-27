@@ -47,8 +47,9 @@ public class CircleH_Red : MonoBehaviour
 
         //Limite de rotação
         limit = circleManager.circles[indexVetCircles].angCircles;
-        circleManager.circles[indexVetCircles].totalCurrentEnergy_H = Total_EnergyH();
-        circleManager.circles[indexVetCircles].totalCurrentEnergy_AH = Total_EnergyAH();
+
+        //circleManager.circles[indexVetCircles].totalCurrentEnergy_H = Total_EnergyH();
+        //circleManager.circles[indexVetCircles].totalCurrentEnergy_AH = Total_EnergyAH();
 
         autoRot = indexVetCircles;
     }
@@ -62,8 +63,13 @@ public class CircleH_Red : MonoBehaviour
         RotacionaObj();
 
         //Qtda energia H e Anti H
-        circleManager.circles[indexVetCircles].totalCurrentEnergy_H = Total_EnergyH();
-        circleManager.circles[indexVetCircles].totalCurrentEnergy_AH = Total_EnergyAH();
+        //circleManager.circles[indexVetCircles].totalCurrentEnergy_H = Total_EnergyH();
+        //circleManager.circles[indexVetCircles].totalCurrentEnergy_AH = Total_EnergyAH();
+
+        if (GAMEMANAGER.instance.num_tentativas == 0)
+        {
+            travaClick = true;
+        }
     }
 
     private void OnMouseDown()
@@ -82,6 +88,9 @@ public class CircleH_Red : MonoBehaviour
                 effectsObjs.clip = clips[0];
                 effectsObjs.Play();
                 circleManager.circles[indexVetCircles].currentClicks++;
+                //decrementa tentativas 
+                //new***//new****add aos outros circlesScrpts
+                GAMEMANAGER.instance.num_tentativas--;
             }
 
             travaClick = true;
@@ -102,6 +111,8 @@ public class CircleH_Red : MonoBehaviour
             if (circleManager.circles[indexVetCircles].currentlife > 0)
             {
                 circleManager.circles[indexVetCircles].currentlife--;
+                //new****add aos outros circlesScrpts
+                //circleManager.currentLifeTotal--;
             }
 
             StartCoroutine(DestravaClick());
@@ -109,26 +120,25 @@ public class CircleH_Red : MonoBehaviour
     }
 
     //Coleta cristais de energia
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("cristalEnergy"))
-        {
-            circleManager.circles[indexVetCircles].currentlife++;
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("cristalEnergy"))
+    //    {
 
-            for (int i = 0; i < circleManager.circles.Length; i++)
-            {
-                //Carrega seu obj central contralador
-                if (circleManager.circles[i].tipo == "CCS_Gray")
-                {
-                    circleManager.circles[i].currentlife++;
-                }
-            }
+    //        //for (int i = 0; i < circleManager.circles.Length; i++)
+    //        //{
+    //        //    //Carrega seu obj central contralador
+    //        //    if (circleManager.circles[i].tipo == "CCS_Gray")
+    //        //    {
+    //        //        circleManager.circles[i].currentlife++;
+    //        //    }
+    //        //}
 
-            //circleEnergyCH_Red.AtualizaCircleEnergy();
-            StartCoroutine(DestroyCristal());
-            Destroy(collision.gameObject);
-        }
-    }
+    //        //circleEnergyCH_Red.AtualizaCircleEnergy();
+    //        StartCoroutine(DestroyCristal());
+    //        Destroy(collision.gameObject);
+    //    }
+    //}
 
     //Rotaciona este  obj quando seu obj controlador é clicado.
     void RotacionaObj()
@@ -180,46 +190,46 @@ public class CircleH_Red : MonoBehaviour
     // metodo que conta o total de energia de todos os objs 04/03
     //para verificar se o jogador perdeu
     //chamar este método na inicialização
-    public int Total_EnergyH()
-    {
-        int totalEnergyH_Temp = 0;
+    //public int Total_EnergyH()
+    //{
+    //    int totalEnergyH_Temp = 0;
 
-        //Total "energyH" CircleH_Red -> total de movimentos no sentido horário 
-        //recebe energy de CCS_Gray, CH_Red menos dele próprio.
-        for (int i = 0; i < circleManager.circles.Length; i++)
-        {
-            //energy "H"
-            if (circleManager.circles[i].tipo == "CH_Red" && circleManager.circles[i].autoRot != autoRot)
-            {
-                totalEnergyH_Temp += circleManager.circles[i].currentlife;
-            }
-            if (circleManager.circles[i].tipo == "CCS_Gray")
-            {
-                totalEnergyH_Temp += circleManager.circles[i].currentlife;
-            }
-        }
+    //    //Total "energyH" CircleH_Red -> total de movimentos no sentido horário 
+    //    //recebe energy de CCS_Gray, CH_Red menos dele próprio.
+    //    for (int i = 0; i < circleManager.circles.Length; i++)
+    //    {
+    //        //energy "H"
+    //        if (circleManager.circles[i].tipo == "CH_Red" && circleManager.circles[i].autoRot != autoRot)
+    //        {
+    //            totalEnergyH_Temp += circleManager.circles[i].currentlife;
+    //        }
+    //        if (circleManager.circles[i].tipo == "CCS_Gray")
+    //        {
+    //            totalEnergyH_Temp += circleManager.circles[i].currentlife;
+    //        }
+    //    }
 
-        return totalEnergyH_Temp;
-    }
+    //    return totalEnergyH_Temp;
+    //}
 
-    //testando*** metodo que conta o total de energia de todos os objs 04/03
-    //para verificar se o jogador perdeu
-    //chamar este método na inicialização
-    public int Total_EnergyAH()
-    {
-        int totalEnergyAH_Temp = 0;
+    ////testando*** metodo que conta o total de energia de todos os objs 04/03
+    ////para verificar se o jogador perdeu
+    ////chamar este método na inicialização
+    //public int Total_EnergyAH()
+    //{
+    //    int totalEnergyAH_Temp = 0;
 
-        //Total "energyAH" CircleAH_Red -> total de movimentos no sentido anti-horário 
-        //recebe energy de CAH_Red.
-        for (int i = 0; i < circleManager.circles.Length; i++)
-        {
-            //energy "AH"
-            if (circleManager.circles[i].tipo == "CAH_Red")
-            {
-                totalEnergyAH_Temp += circleManager.circles[i].currentlife;
-            }
-        }
+    //    //Total "energyAH" CircleAH_Red -> total de movimentos no sentido anti-horário 
+    //    //recebe energy de CAH_Red.
+    //    for (int i = 0; i < circleManager.circles.Length; i++)
+    //    {
+    //        //energy "AH"
+    //        if (circleManager.circles[i].tipo == "CAH_Red")
+    //        {
+    //            totalEnergyAH_Temp += circleManager.circles[i].currentlife;
+    //        }
+    //    }
 
-        return totalEnergyAH_Temp;
-    }
+    //    return totalEnergyAH_Temp;
+    //}
 }

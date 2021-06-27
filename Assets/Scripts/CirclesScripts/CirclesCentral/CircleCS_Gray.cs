@@ -54,6 +54,11 @@ public class CircleCS_Gray : MonoBehaviour
     private void Update()
     {
         AtualizaEnergy();
+        //add a todos scrips das circles
+        if (GAMEMANAGER.instance.num_tentativas == 0)
+        {
+            travaClick = true;
+        }
     }
     
     private void OnMouseDown()
@@ -73,6 +78,8 @@ public class CircleCS_Gray : MonoBehaviour
             //    //}                
             //}
 
+            
+
             //Aviso mod sem energia
             if (circleManager.circles[indexVetCircles].currentlife == 0)
                 GAMEMANAGER.instance.HabTex_ModSemEnergia();
@@ -83,6 +90,8 @@ public class CircleCS_Gray : MonoBehaviour
                 effectsObjs.clip = clips[0];
                 effectsObjs.Play();
                 circleManager.circles[indexVetCircles].currentClicks++;
+                //decrementa tentativas            
+                GAMEMANAGER.instance.num_tentativas--;
             } 
             
             travaClick = true;
@@ -105,10 +114,11 @@ public class CircleCS_Gray : MonoBehaviour
 
             }
 
-            //decrementa energy
+            //decrementa energy e total energy
             if (circleManager.circles[indexVetCircles].currentlife > 0)
             {
                 circleManager.circles[indexVetCircles].currentlife--;
+                //circleManager.currentLifeTotal--;
             }
 
             StartCoroutine(DestravaClick());

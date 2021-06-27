@@ -1,0 +1,358 @@
+fileFormatVersion: 2
+guid: 448ceb67c64d7ee429330742a772b2ca
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2620625604190161838
+    second: capacetes_Barra de score luminosa_Cristal verde_0
+  - first:
+      213: -3818081743011175965
+    second: capacetes_Barra de score luminosa_Cristal verde_1
+  - first:
+      213: -6624618838989638277
+    second: capacetes_Barra de score luminosa_Cristal verde_2
+  - first:
+      213: -2923382790048987580
+    second: capacetes_Barra de score luminosa_Cristal verde_3
+  - first:
+      213: -7861549114108346708
+    second: capacetes_Barra de score luminosa_Cristal verde_4
+  - first:
+      213: 5035258741606017936
+    second: capacetes_Barra de score luminosa_Cristal verde_5
+  - first:
+      213: -7656253565593655648
+    second: capacetes_Barra de score luminosa_Cristal verde_6
+  - first:
+      213: -6493470115759320220
+    second: capacetes_Barra de score luminosa_Cristal verde_7
+  - first:
+      213: -8713844531870447201
+    second: capacetes_Barra de score luminosa_Cristal verde_8
+  - first:
+      213: -4493825854205435155
+    second: tesntativas_0
+  - first:
+      213: 3653728847528420497
+    second: tesntativas_1
+  - first:
+      213: -3878789603724378268
+    second: tesntativas_2
+  - first:
+      213: 6462201523188824196
+    second: tesntativas_3
+  - first:
+      213: -2913845629116854445
+    second: tesntativas_4
+  - first:
+      213: 110072682789667471
+    second: tesntativas_5
+  - first:
+      213: 8322730693985487129
+    second: tesntativas_6
+  - first:
+      213: -9115186069600284888
+    second: tesntativas_7
+  - first:
+      213: -3760024452245466396
+    second: tesntativas_8
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tesntativas_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 652
+        width: 204
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de26e95e139b2a1c0800000000000000
+      internalID: -4493825854205435155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesntativas_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 495
+        width: 8
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 194678e4707a4b230800000000000000
+      internalID: 3653728847528420497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesntativas_2
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 452
+        width: 116
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46fb787f765cb2ac0800000000000000
+      internalID: -3878789603724378268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesntativas_3
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 495
+        width: 8
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48878a01c0a5ea950800000000000000
+      internalID: 6462201523188824196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesntativas_4
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 452
+        width: 122
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35f4a2aa6d0ff87d0800000000000000
+      internalID: -2913845629116854445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesntativas_5
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 452
+        width: 116
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f820725958e078100800000000000000
+      internalID: 110072682789667471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesntativas_6
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 323
+        width: 159
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 919ce307877408370800000000000000
+      internalID: 8322730693985487129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesntativas_7
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 468
+        width: 7
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82fc2e3609a508180800000000000000
+      internalID: -9115186069600284888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tesntativas_8
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 468
+        width: 7
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e25021aea5b1dbc0800000000000000
+      internalID: -3760024452245466396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

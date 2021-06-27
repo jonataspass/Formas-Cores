@@ -14,10 +14,22 @@ public class CircleManager : MonoBehaviour
     public int totalClicks;
     public int numCircCent;
 
+    public int num_tentativas_Start;
+    public int num_tentativas_Ideal;
+
+    public int currentLifeTotal;
+
+    //testando****
+    public int extraLife;
+    public int dificuldadeLevel;
+
+    public int descontraExtralife;
+
     private void Start()
     {
         IniCirclesAng();
         MaxPontos();
+        //TotalEnergy();
     }
 
     //Nível de energia -> controla a quatidade de clicks por objs
@@ -48,12 +60,11 @@ public class CircleManager : MonoBehaviour
             }
         }
     }
-        
+
     //Defini a pontuação que completa 100% do objetivo
     void MaxPontos()
     {
-        int currentLifeTemp = 0;
-        int clicksTemp = 0;
+        int currentLifeTemp = extraLife + (num_tentativas_Start - num_tentativas_Ideal);
         int maxPontoTemp = 0;
         int contCircle = 0;
 
@@ -61,37 +72,46 @@ public class CircleManager : MonoBehaviour
         {
             currentLifeTemp += circles[i].currentlife;
             contCircle++;
-
-            for (int j = 0; j < circles[i].clicksR.Length; j++)
-            {
-                clicksTemp += circles[i].clicksR[j].clicks;
-            }
         }
-
-        maxPontoTemp = ((currentLifeTemp - totalClicks) * 100) + ((contCircle - numCircCent) * 100);
+        
+        maxPontoTemp = (((currentLifeTemp - totalClicks) * 100) + (contCircle * 100)) * dificuldadeLevel;
         ScoreManager.instance.maxScore = maxPontoTemp / 100;
     }
 
     //Define pontuação final do level corrente
     public void ScoreFinal()
     {
-        int currentLifeTemp = 0;
-        int clicksTemp = 0;
+        int currentLifeTemp = (num_tentativas_Start - num_tentativas_Ideal);
+        int contCircleTemp = 0;
         int maxPontoTemp = 0;
+        int currentclicksTotal = 0;
 
         for (int i = 0; i < circles.Length; i++)
         {
+            //for()
             currentLifeTemp += circles[i].currentlife;
+            contCircleTemp++;
+        }
 
-            for (int j = 0; j < circles[i].clicksR.Length; j++)
+        for (int i = 0; i < circles.Length; i++)
+        {
+            for (int j = 0; j < circles[i].currentClicks; j++)
             {
-                clicksTemp += circles[i].clicksR[j].clicks;
+                currentclicksTotal++;
             }
         }
 
-        maxPontoTemp = currentLifeTemp * 100;
+        maxPontoTemp = (((currentLifeTemp * 100) + (contCircleTemp * 100)) - descontraExtralife)  * dificuldadeLevel;
         ScoreManager.instance.ptsMarcados_Total += maxPontoTemp;
     }
+
+    //void TotalEnergy()
+    //{
+    //    for (int i = 0; i < circles.Length; i++)
+    //    {
+    //        currentLifeTotal += circles[i].currentlife;
+    //    }
+    //}
 }
 
 

@@ -66,6 +66,11 @@ public class CircleAntH_Red : MonoBehaviour
         //Qtda energia H e Anti H
         circleManager.circles[indexVetCircles].totalCurrentEnergy_H = Total_EnergyH();
         circleManager.circles[indexVetCircles].totalCurrentEnergy_AH = Total_EnergyAH();
+
+        if (GAMEMANAGER.instance.num_tentativas == 0)
+        {
+            travaClick = true;
+        }
     }
 
     private void OnMouseDown()
@@ -84,6 +89,8 @@ public class CircleAntH_Red : MonoBehaviour
                 effectsObjs.clip = clips[0];
                 effectsObjs.Play();
                 circleManager.circles[indexVetCircles].currentClicks++;
+                //decrementa tentativas            
+                GAMEMANAGER.instance.num_tentativas--;
             }
 
             travaClick = true;
@@ -106,6 +113,7 @@ public class CircleAntH_Red : MonoBehaviour
             if (circleManager.circles[indexVetCircles].currentlife > 0)
             {
                 circleManager.circles[indexVetCircles].currentlife--;
+                //circleManager.currentLifeTotal--;
             }
 
             StartCoroutine(DestravaClick());
