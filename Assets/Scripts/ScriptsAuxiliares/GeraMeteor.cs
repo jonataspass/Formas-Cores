@@ -27,6 +27,7 @@ public class GeraMeteor : MonoBehaviour
 
             new_meteor.transform.position = gameObject.transform.position;
             num_Meteors += 1;
+            //GAMEMANAGER.instance.numRepetMeteor = num_Meteors;
         }
     }
 

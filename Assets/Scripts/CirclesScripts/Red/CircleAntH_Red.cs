@@ -81,7 +81,7 @@ public class CircleAntH_Red : MonoBehaviour
         {
             //Aviso mod sem energia
             if (circleManager.circles[indexVetCircles].currentlife == 0)
-                GAMEMANAGER.instance.HabTex_ModSemEnergia();
+                GAMEMANAGER.instance.HabTex_ModSemEnergia("Módulo sem energia");
 
             //Audio e contador de clicks
             if (circleManager.circles[indexVetCircles].currentlife > 0)

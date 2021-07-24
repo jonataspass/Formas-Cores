@@ -43,7 +43,7 @@ public class CanhaoManager : MonoBehaviour
     //Ativa canhão
     private void OnTriggerEnter2D(Collider2D coll)
     {        
-        if (coll.gameObject.CompareTag("collReceptLazer"))
+        if (coll.gameObject.CompareTag("collReceptLazer") && GAMEMANAGER.instance.canhaoAtivo== true)
         {
             //ativados = 1;
             //GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados); 

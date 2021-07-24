@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
     private Button btnBack, btnVoltar_Painel_WL, btnNovamente_Painel_WL, btnProximo_Painel_WL;
     [SerializeField]
     private Button btnPainel_Guia;
-    public bool ativa_Painel_Guia;   
+    public bool ativa_Painel_Guia;
 
     //variável que espera o carregamento de energia para...
     //liberar o método AtivaDesativaPainel_Guia
@@ -80,17 +80,13 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI textEnergy;
     public TextMeshProUGUI txt_showNmissel;
+    public TextMeshProUGUI txt_showNmoeda;
 
     private void Update()
     {
-        HabilitDesabilitBts_Painel_WL();        
+        HabilitDesabilitBts_Painel_WL();
         habilitaBtnsCena();
         AtualizaUI();
-
-        if (GAMEMANAGER.instance.win == true || GAMEMANAGER.instance.liberaCristal == true)
-        {
-            AtualizaCristalGreen(GAMEMANAGER.instance.cristalGreen);
-        }            
     }
 
     void Carrega(Scene cena, LoadSceneMode modo)
@@ -122,7 +118,7 @@ public class UIManager : MonoBehaviour
 
             //Evento de click do btn Back
             //btnBack.onClick.AddListener(() => StartCoroutine(WaitSoundClick_Voltar()));
-        }        
+        }
 
         //Cenas Levels //Carrega capacetes OBS** criar método específicos para carregar componentes
         else if (LevelAtual.instance.level >= 6)
@@ -157,13 +153,13 @@ public class UIManager : MonoBehaviour
             //btns do "Painel_WL"
             btnVoltar_Painel_WL = GameObject.FindWithTag("btnVlt_P_WL").GetComponent<Button>();
             btnNovamente_Painel_WL = GameObject.FindWithTag("btnNvm_P_WL").GetComponent<Button>();
-            btnProximo_Painel_WL = GameObject.FindWithTag("btnPrx_P_WL").GetComponent<Button>();            
+            btnProximo_Painel_WL = GameObject.FindWithTag("btnPrx_P_WL").GetComponent<Button>();
 
             StartCoroutine(esperaWL());
-            
+
             btnNovamente_Painel_WL.onClick.AddListener(() => StartCoroutine(WaitSoundClick_btnRestart()));
-           //restart level
-           btn_restart = GameObject.FindWithTag("btn_restart").GetComponent<Button>();
+            //restart level
+            btn_restart = GameObject.FindWithTag("btn_restart").GetComponent<Button>();
 
             //evento de click btn_restart
             btn_restart.onClick.AddListener(() => RestartLevel());
@@ -180,6 +176,8 @@ public class UIManager : MonoBehaviour
 
             txt_showNmissel = GameObject.FindWithTag("showMissel").GetComponent<TextMeshProUGUI>();
             txt_num_tentativas = GameObject.FindWithTag("tentativas").GetComponent<TextMeshProUGUI>();
+
+            txt_showNmoeda = GameObject.FindWithTag("ShowMoeda").GetComponent<TextMeshProUGUI>();
         }
     }
 
@@ -208,11 +206,11 @@ public class UIManager : MonoBehaviour
         if (ScoreManager.instance.conta_ptsMarcados >= ScoreManager.instance.maxScore * 0.75 * 100)
         {
             capaceteBronze.enabled = true;
-            
+
             //capacetes dos btns das fases MCS, MCH, MCAH
             GAMEMANAGER.instance.numCapacetes = 1;
             //GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
-            
+
             //capacetes dos btns da faseMestra
             GAMEMANAGER.instance.numCapsB = 1;
             //GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);
@@ -221,9 +219,10 @@ public class UIManager : MonoBehaviour
             if (!ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenB"))
             {
                 ZPlayerPrefs.SetInt(LevelAtual.instance.level + "cristaisGreenB", 1);                    //cristalTemp = GAMEMANAGER.instance.cristalGreen;
-                cristalTemp = (int)(ScoreManager.instance.maxScore * 0.75 * 10);
+                cristalTemp = 5;
                 GAMEMANAGER.instance.ColetaCristalGreen(cristalTemp);
-            }            
+                GAMEMANAGER.instance.qtd_moedaSalvas += 50;
+            }
 
             //Prata
             if (ScoreManager.instance.conta_ptsMarcados >= ScoreManager.instance.maxScore * 0.85 * 100)
@@ -242,14 +241,15 @@ public class UIManager : MonoBehaviour
                 if (!ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenP"))
                 {
                     ZPlayerPrefs.SetInt(LevelAtual.instance.level + "cristaisGreenP", 2);
-                    cristalTemp = (int)(ScoreManager.instance.maxScore * 0.85 * 10) - (int)(ScoreManager.instance.maxScore * 0.5 * 10);
+                    cristalTemp = 10;
                     GAMEMANAGER.instance.ColetaCristalGreen(cristalTemp);
+                    GAMEMANAGER.instance.qtd_moedaSalvas += 100;
                 }
 
                 //Ouro
                 if (ScoreManager.instance.conta_ptsMarcados >= ScoreManager.instance.maxScore * 100)
                 {
-                    capaceteOuro.enabled = true;                    
+                    capaceteOuro.enabled = true;
 
                     //capacetes dos btns das fases MCS, MCH, MCAH
                     GAMEMANAGER.instance.numCapacetes = 3;
@@ -263,8 +263,9 @@ public class UIManager : MonoBehaviour
                     if (!ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenO"))
                     {
                         ZPlayerPrefs.SetInt(LevelAtual.instance.level + "cristaisGreenO", 3);
-                        cristalTemp = (int)(ScoreManager.instance.maxScore * 10) - (int)(ScoreManager.instance.maxScore * 0.75 * 10);
+                        cristalTemp = 20;
                         GAMEMANAGER.instance.ColetaCristalGreen(cristalTemp);//testando****
+                        GAMEMANAGER.instance.qtd_moedaSalvas += 200;
                     }
                 }
             }
@@ -373,12 +374,20 @@ public class UIManager : MonoBehaviour
     void AtualizaUI()
     {
         //Missel
-        if(LevelAtual.instance.level >= 6)
+        if (LevelAtual.instance.level >= 6)
         {
             txt_showNmissel.text = GAMEMANAGER.instance.cargaMissel.ToString();
+            //txt_showNmoeda.text = GAMEMANAGER.instance.qtd_moedaSalvas.ToString();
             txt_num_tentativas.text = GAMEMANAGER.instance.num_tentativas.ToString();
+            AtualizaMoedaZ(GAMEMANAGER.instance.qtd_moedaSalvas);
         }
-        
+        //atualiza cristais
+        if (GAMEMANAGER.instance.win == true || GAMEMANAGER.instance.liberaCristal == true)
+        {
+            AtualizaCristalGreen(GAMEMANAGER.instance.cristalGreen);
+            //AtualizaMoedaZ(GAMEMANAGER.instance.qtd_moedaSalvas);
+        }
+
     }
 
     public void AtivaDesativa_Painel_Dicas(bool pl)
@@ -436,7 +445,13 @@ public class UIManager : MonoBehaviour
     {
         if (xcristal < cristais)
         {
-            xcristal += 1 + (velCon * Time.deltaTime);
+            if (cristais <= 100)
+                xcristal += 1 + (velCon * Time.deltaTime);
+            else if (cristais > 100 || cristais <= 1000)
+                xcristal += 10 + (velCon * Time.deltaTime);
+            else
+                xcristal += 100;
+
 
             txtCristalGreen.text = xcristal.ToString("F0");
 
@@ -446,7 +461,7 @@ public class UIManager : MonoBehaviour
                 txtCristalGreen.text = xcristal.ToString("F0");
             }
         }
-        else if(xcristal > cristais)
+        else if (xcristal > cristais)
         {
             xcristal -= 1 + (velCon * Time.deltaTime);
 
@@ -457,10 +472,49 @@ public class UIManager : MonoBehaviour
                 xcristal = cristais;
                 txtCristalGreen.text = xcristal.ToString("F0");
             }
-            if(xcristal == cristais)
+            if (xcristal == cristais)
             {
                 GAMEMANAGER.instance.liberaCristal = false;
-            }           
+            }
+        }
+    }
+
+    //trabalhando aqui****
+    float xmoedas;
+    public void AtualizaMoedaZ(int moedas)//testando****
+    {
+        if (xmoedas < moedas)
+        {
+            if (moedas <= 100)
+                xmoedas += 1 + (velCon * Time.deltaTime);
+            else if (moedas > 100 || moedas <= 1000)
+                xmoedas += 10 + (velCon * Time.deltaTime);
+            else
+                xmoedas += 100 + (velCon * Time.deltaTime);
+
+            txt_showNmoeda.text = xmoedas.ToString("F0");
+
+            if (xmoedas > moedas)
+            {
+                xmoedas = moedas;
+                txt_showNmoeda.text = xmoedas.ToString("F0");
+            }
+        }
+        else if (xmoedas > moedas)
+        {
+            xmoedas -= 1 + (velCon * Time.deltaTime);
+
+            txt_showNmoeda.text = xmoedas.ToString("F0");
+
+            if (xmoedas < moedas)
+            {
+                xmoedas = moedas;
+                txtCristalGreen.text = xcristal.ToString("F0");
+            }
+            //if (xmoedas == moedas)
+            //{
+            //    GAMEMANAGER.instance.liberaCristal = false;
+            //}
         }
     }
 

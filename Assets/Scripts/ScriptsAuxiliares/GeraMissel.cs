@@ -13,7 +13,7 @@ public class GeraMissel : MonoBehaviour
     public int num_Missel;
     public int num_MaxMissel;
 
-    public int randMissel;
+   // public int randMissel;
 
     public int cargMissel;
 
@@ -24,10 +24,10 @@ public class GeraMissel : MonoBehaviour
     void Start()
     {
         if (tocando == false)
-            Gera_Meteor();      
+            Gera_Missel();      
     }
 
-    void Gera_Meteor()
+    public void Gera_Missel()
     {
         if (num_Missel < num_MaxMissel && tocando == false && new_missel == null)
         {
@@ -61,7 +61,7 @@ public class GeraMissel : MonoBehaviour
 
             //if (randMissel != 0)
             //{
-                Gera_Meteor();
+                Gera_Missel();
             //}
         }
     }

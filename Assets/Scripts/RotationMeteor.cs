@@ -21,7 +21,7 @@ public class RotationMeteor : MonoBehaviour
 
 
     private void Awake()
-    {        
+    {
         meteor = GetComponent<Animator>();
         meteor.Play("AnimeGera-meteor");
     }
@@ -31,14 +31,14 @@ public class RotationMeteor : MonoBehaviour
     private void Start()
     {
         meteor = GetComponent<Animator>();
-        
+
         //anime_GeraMeteor = GetComponent<Animator>();
 
         soundExplod = GetComponent<AudioSource>();
 
         collMeteor = GetComponent<Collider2D>();
         //collMeteor.enabled = false;
-        StartCoroutine(LigaColl());        
+        StartCoroutine(LigaColl());
 
         int _vel = Random.Range(-10, -8);
         int _vel1 = Random.Range(8, 10);
@@ -55,7 +55,7 @@ public class RotationMeteor : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0, 0, Time.deltaTime * vel);       
+        transform.Rotate(0, 0, Time.deltaTime * vel);
     }
 
     void explodMeteor()
@@ -74,9 +74,10 @@ public class RotationMeteor : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.CompareTag("collReceptLazer") && GAMEMANAGER.instance.startGame == true)
-        {            
+        {
             explodMeteor();
             GAMEMANAGER.instance.lose = true;
+            GAMEMANAGER.instance.canhaoAtivo = false;
             UIManager.instance.txt_Painel_WL.text = "You Lose!!!";
             UIManager.instance.txt_Painel_info_WL.text = "O módulo colidiu com um meteóro";
             UIManager.instance.UI_Win();
@@ -103,11 +104,13 @@ public class RotationMeteor : MonoBehaviour
             GAMEMANAGER.instance.positioMeteor = transform.position;
             GAMEMANAGER.instance.speedMissel = GAMEMANAGER.instance.powerMissel;
 
-            if(GAMEMANAGER.instance.cargaMissel > 0)
+            if (GAMEMANAGER.instance.cargaMissel > 0)
             {
                 GAMEMANAGER.instance.cargaMissel--;
-            }            
-        }        
+            }
+        }
+        else
+            GAMEMANAGER.instance.HabTex_SemMissel("Sem mísseis");  
     }
 
     void Ligacoll()
@@ -123,5 +126,5 @@ public class RotationMeteor : MonoBehaviour
         yield return new WaitForSeconds(5);
         collMeteor = GetComponent<Collider2D>();
         collMeteor.enabled = true;
-    }    
+    }
 }

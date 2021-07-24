@@ -23,7 +23,7 @@ public class GAMEMANAGER : MonoBehaviour
         }
 
         SceneManager.sceneLoaded += Carrega;
-        //ZPlayerPrefs.DeleteAll();
+        ZPlayerPrefs.DeleteAll();
     }
 
     //GameObject com Script CircleManager
@@ -35,7 +35,7 @@ public class GAMEMANAGER : MonoBehaviour
     //Variáveis de Win
     public bool win, lose;
 
-    //testando****variável que destrava inicialização do jogo
+    //variável que destrava inicialização do jogo
     public bool startGame;
 
     //variável de canhao ativo
@@ -50,7 +50,7 @@ public class GAMEMANAGER : MonoBehaviour
     //capacetes conquistados dos btns da faseMestra
     public int numCapsB, numCapsP, numCapsO;
 
-    //numero de tentativas testando****
+    //numero de tentativas 
     public int num_tentativas;
 
     //testando****
@@ -63,6 +63,16 @@ public class GAMEMANAGER : MonoBehaviour
     public int numextrameteor;
 
     public bool misselAtivo;
+    
+    public bool canhaoAtivo;
+
+    //TEXT NUM MOEDAS DO PREFAB MOEDA
+    public int txt_numMoedaspref;
+    public int txt_moedasSalvas;
+    public int qtd_moedaSalvas;
+
+    //testando****
+    public int CrsCargaAtiva;
 
     //Carrega cena
     void Carrega(Scene cena, LoadSceneMode modo)
@@ -82,6 +92,7 @@ public class GAMEMANAGER : MonoBehaviour
         lose = false;
         liberaCristal = false;
         misselAtivo = false;
+        canhaoAtivo = true;
 
         //pontuação
         ScoreManager.instance.ptsMarcados_Total = 0;
@@ -97,9 +108,16 @@ public class GAMEMANAGER : MonoBehaviour
         if (ZPlayerPrefs.HasKey("cargaMissel"))
         {
             cargaMissel = ZPlayerPrefs.GetInt("cargaMissel");
+            txt_moedasSalvas = cargaMissel;
         }
 
-        if(LevelAtual.instance.level >= 6)
+        //Salva MoedasZ
+        if (ZPlayerPrefs.HasKey("qtdMoedas"))
+        {
+            qtd_moedaSalvas = ZPlayerPrefs.GetInt("qtdMoedas");
+        }
+
+        if (LevelAtual.instance.level >= 6)
         {
             num_tentativas = circleManager.num_tentativas_Start;
         }
@@ -122,6 +140,18 @@ public class GAMEMANAGER : MonoBehaviour
         else
         {
             ZPlayerPrefs.SetInt("cargaMissel", carga);
+        }
+    }
+
+    public void SalvaMoedasZ(int moedas)
+    {
+        if (!ZPlayerPrefs.HasKey("qtdMoedas"))
+        {
+            ZPlayerPrefs.SetInt("qtdMoedas", moedas);
+        }
+        else
+        {
+            ZPlayerPrefs.SetInt("qtdMoedas", moedas);
         }
     }
 
@@ -165,17 +195,21 @@ public class GAMEMANAGER : MonoBehaviour
             if (ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenB"))
             {
                 ColetaCristalGreen(1);
+                qtd_moedaSalvas += 50;
             }
             if (ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenP"))
             {
                 ColetaCristalGreen(1);
+                qtd_moedaSalvas += 50;
             }
             if (ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenO"))
             {
                 ColetaCristalGreen(1);
+                qtd_moedaSalvas += 50;
             }
-            
-                SalvaMissel(cargaMissel);            
+
+            SalvaMissel(cargaMissel);
+            SalvaMoedasZ(qtd_moedaSalvas);
 
             UIManager.instance.habilitabBtnsCena = false;
             UIManager.instance.habilitaBtnRestart = false;
@@ -253,7 +287,7 @@ public class GAMEMANAGER : MonoBehaviour
             if (!ZPlayerPrefs.HasKey(LevelAtual.instance.cenaAtual + "capacete"))
             {
                 ZPlayerPrefs.SetInt(LevelAtual.instance.cenaAtual + "capacete", nCapacetes);
-               // print(LevelAtual.instance.cenaAtual + "capacete");
+                // print(LevelAtual.instance.cenaAtual + "capacete");
             }
             else if (ZPlayerPrefs.GetInt(LevelAtual.instance.cenaAtual + "capacete") < nCapacetes)
             {
@@ -325,22 +359,27 @@ public class GAMEMANAGER : MonoBehaviour
     }
 
     //Habilita e desabilita txt mod sem energia
-    public void HabTex_ModSemEnergia()
+    public void HabTex_ModSemEnergia(string s)
     {
-        StartCoroutine(txtModSemEner());
+        StartCoroutine(txtModSemEner(s));
     }
 
-    //public void ChamaLose()
-    //{
-    //    if(num_tentativas == 0 && win == false)
-    //    {
-    //        lose = true;
-    //    } 
-    //}
-
-    IEnumerator txtModSemEner()
+    IEnumerator txtModSemEner(string s)
     {
-        UIManager.instance.txt_ModSemEnergy.text = "Módulo sem energia";
+        UIManager.instance.txt_ModSemEnergy.text = s;
+        UIManager.instance.txt_ModSemEnergy.enabled = true;
+        yield return new WaitForSeconds(1);
+        UIManager.instance.txt_ModSemEnergy.enabled = false;
+    }
+
+    public void HabTex_SemMissel(string s)
+    {
+        StartCoroutine(txtModSemEner(s));
+    }
+
+    IEnumerator txtSemMissel(string s)
+    {
+        UIManager.instance.txt_ModSemEnergy.text = s;
         UIManager.instance.txt_ModSemEnergy.enabled = true;
         yield return new WaitForSeconds(1);
         UIManager.instance.txt_ModSemEnergy.enabled = false;

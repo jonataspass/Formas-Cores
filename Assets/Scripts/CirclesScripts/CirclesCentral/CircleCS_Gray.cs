@@ -67,22 +67,9 @@ public class CircleCS_Gray : MonoBehaviour
             && circleManager.circles[indexVetCircles].ativa == true
             && GAMEMANAGER.instance.startGame == true)
         {
-            ////Controles do objDica
-            //if (objD.objDica[indexVetCircles].dicaAtiva == true && circleManager.circles[indexVetCircles].currentlife > 0)
-            //{
-            //    //objD.objDica[indexVetCircles].dicaClick--;
-
-            //    //if(objD.objDica[indexVetCircles].dicaClick == 0)
-            //    //{
-            //    //    objD.Desat_Dica(indexVetCircles);
-            //    //}                
-            //}
-
-            
-
             //Aviso mod sem energia
             if (circleManager.circles[indexVetCircles].currentlife == 0)
-                GAMEMANAGER.instance.HabTex_ModSemEnergia();
+                GAMEMANAGER.instance.HabTex_ModSemEnergia("Módulo sem energia");
             
             //Audio e contador de clicks
             if (circleManager.circles[indexVetCircles].currentlife > 0)

@@ -5,7 +5,7 @@ using TMPro;
 
 public class CarregaMissel : MonoBehaviour
 {
-    CircleManager circleManager;
+   // CircleManager circleManager;
 
     public int carga;
 
@@ -21,7 +21,7 @@ public class CarregaMissel : MonoBehaviour
 
     void Start()
     {
-        circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
+        //circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
         audio_pegaMissel = GetComponent<AudioSource>();
         animacarregaMissel = GetComponent<Animator>();
         animacarregaMissel.Play("AnimeGeraMissel");
@@ -53,10 +53,8 @@ public class CarregaMissel : MonoBehaviour
     {
         //recebe misseis coletas no startgame
         GAMEMANAGER.instance.cargaMissel += carga;       
-        
-        //UIManager.instance.txt_showNmissel.text = GAMEMANAGER.instance.cargaMissel.ToString();
         audio_pegaMissel.Play();
-        Destroy(gameObject, 1.5f);
+        Destroy(gameObject,0.5f);
 
     }
 

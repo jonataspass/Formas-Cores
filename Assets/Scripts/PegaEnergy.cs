@@ -89,7 +89,7 @@ public class PegaEnergy : MonoBehaviour
                 circleManager.circles[index].currentlife += carga;
 
                 //testando****
-                Destroy(gameObject, 1.5f);
+                Destroy(gameObject, 0.5f);
                 audio_pegaEnergy.Play();
 
                 circleManager.descontraExtralife += (carga *100);

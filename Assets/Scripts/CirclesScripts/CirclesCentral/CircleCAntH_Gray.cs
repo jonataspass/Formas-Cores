@@ -15,37 +15,73 @@ public class CircleCAntH_Gray : MonoBehaviour
         }
     }
 
-    //Tipo de shape
-    public string tipo;
     //Index do vetor do obj
     public int indexVetCircles;
-    //GameObject com Script CircleManager
-    public CircleManager circleManager;
     //Quantidade de canhoes
     public int numCanhoes;
-
+    //Tipo de shape
+    public string tipo;
     //trava -> controla a velocidade de clicks do usuário
     public bool travaClick;
+    //GameObject com Script CircleManager
+    public CircleManager circleManager;
+    //Energia deste Obj
+    public CircleEnergy circleEnergyCS_Gray;
+
+    //audios
+    public AudioClip[] clips;
+    public AudioSource effectsObjs;
+
+    //Dicas
+    public Dicas objD;
 
     private void Start()
     {
         //Componentes de lazer
         circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
+
         //Componentes Energy
+        circleEnergyCS_Gray = GetComponentInChildren<CircleEnergy>();
+
+        //audio
+        effectsObjs = GetComponent<AudioSource>();
+
+        //Recebe obj com script Dicas
+        objD = GameObject.FindWithTag("dica").GetComponent<Dicas>();
     }
 
     private void Update()
     {
         AtualizaEnergy();
+        //add a todos scrips das circles
+        if (GAMEMANAGER.instance.num_tentativas == 0)
+        {
+            travaClick = true;
+        }
     }
 
     private void OnMouseDown()
     {
-        if (tipo == "CCAH_Gray" && travaClick == false)
+        if (tipo == "CCAH_Gray" && travaClick == false
+            && circleManager.circles[indexVetCircles].ativa == true
+            && GAMEMANAGER.instance.startGame == true)
         {
-            travaClick = true;
+            print("olá");
+            //Aviso mod sem energia
+            if (circleManager.circles[indexVetCircles].currentlife == 0)
+                GAMEMANAGER.instance.HabTex_ModSemEnergia("Módulo sem energia");
 
-            circleManager.NivelEnergy(indexVetCircles);
+            //Audio e contador de clicks
+            if (circleManager.circles[indexVetCircles].currentlife > 0)
+            {
+                effectsObjs.clip = clips[0];
+                effectsObjs.Play();
+                circleManager.circles[indexVetCircles].currentClicks++;
+                //decrementa tentativas            
+                GAMEMANAGER.instance.num_tentativas--;
+            }
+
+            travaClick = true;
 
             for (int i = 0; i < circleManager.circles.Length; i++)
             {
@@ -56,9 +92,11 @@ public class CircleCAntH_Gray : MonoBehaviour
                 }
             }
 
+            //decrementa energy e total energy
             if (circleManager.circles[indexVetCircles].currentlife > 0)
             {
                 circleManager.circles[indexVetCircles].currentlife--;
+                //circleManager.currentLifeTotal--;
             }
 
             StartCoroutine(DestravaClick());
@@ -70,7 +108,7 @@ public class CircleCAntH_Gray : MonoBehaviour
     {
         if (circleManager.circles[indexVetCircles].currentlife >= 0)
         {
-            
+            circleEnergyCS_Gray.AtualizaCircleEnergy(indexVetCircles);
         }
     }
 

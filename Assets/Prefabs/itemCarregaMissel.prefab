@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7972314288f0f4b9728f40576ff9db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab_AnimePegaMissel: {fileID: 4894125195300377656}
   carga: 3
   animacarregaMissel: {fileID: 0}
   text_itemMissel: {fileID: 0}
@@ -489,9 +490,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.006689877, y: -0.030666694}
+  m_Offset: {x: 0.006689828, y: -0.030666694}
   serializedVersion: 2
-  m_Radius: 0.5989795
+  m_Radius: 0.31499696
 --- !u!1 &8247290606251294082
 GameObject:
   m_ObjectHideFlags: 0
