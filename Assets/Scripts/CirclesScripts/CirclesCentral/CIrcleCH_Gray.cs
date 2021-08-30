@@ -61,13 +61,19 @@ public class CIrcleCH_Gray : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (tipo == "CCH_Gray" && travaClick == false
+        if (tipo == "CCH_Gray" && circleManager.circles[indexVetCircles].trava_Click == false
             && circleManager.circles[indexVetCircles].ativa == true
             && GAMEMANAGER.instance.startGame == true)
         {
+            // se texto compre uma dica ativado => desative
+            if (UIManager.instance.txt_Informativo.enabled == true)
+            {
+                UIManager.instance.txt_Informativo.enabled = false;
+            }
+
             //Aviso mod sem energia
             if (circleManager.circles[indexVetCircles].currentlife == 0)
-                GAMEMANAGER.instance.HabTex_ModSemEnergia("Módulo sem energia");
+                GAMEMANAGER.instance.HabTex_Informativo("Módulo sem energia");
 
             //Audio e contador de clicks
             if (circleManager.circles[indexVetCircles].currentlife > 0)
@@ -79,7 +85,7 @@ public class CIrcleCH_Gray : MonoBehaviour
                 GAMEMANAGER.instance.num_tentativas--;
             }
 
-            travaClick = true;            
+            circleManager.circles[indexVetCircles].trava_Click = true;
 
             for (int i = 0; i < circleManager.circles.Length; i++)
             {
@@ -114,6 +120,7 @@ public class CIrcleCH_Gray : MonoBehaviour
     IEnumerator DestravaClick()
     {
         yield return new WaitForSeconds(0.5f);
-        travaClick = false;
+
+        circleManager.circles[indexVetCircles].trava_Click = false;
     }
 }

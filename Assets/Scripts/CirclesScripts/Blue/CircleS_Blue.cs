@@ -38,25 +38,25 @@ public class CircleS_Blue : MonoBehaviour
     }
 
     //Coleta cristais de energia
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("cristalEnergy"))
-        {
-            circleManager.circles[indexVetCircles].currentlife++;
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("cristalEnergy"))
+    //    {
+    //        circleManager.circles[indexVetCircles].currentlife++;
 
-            for (int i = 0; i < circleManager.circles.Length; i++)
-            {
-                //Carrega seu obj central contralador
-                if (circleManager.circles[i].tipo == "CCS_Gray")
-                {
-                    circleManager.circles[i].currentlife++;
-                }
-            }
+    //        for (int i = 0; i < circleManager.circles.Length; i++)
+    //        {
+    //            //Carrega seu obj central contralador
+    //            if (circleManager.circles[i].tipo == "CCS_Gray")
+    //            {
+    //                circleManager.circles[i].currentlife++;
+    //            }
+    //        }
 
-            StartCoroutine(DestroyCristal());
-            Destroy(collision.gameObject);
-        }
-    }
+    //        StartCoroutine(DestroyCristal());
+    //        Destroy(collision.gameObject);
+    //    }
+    ////}
 
     //Rotaciona este  obj quando seu obj controlador é clicado.
     void RotacionaObj()
@@ -88,11 +88,5 @@ public class CircleS_Blue : MonoBehaviour
     IEnumerator DestroyCristal()
     {
         yield return new WaitForSeconds(1f);
-    }
-
-    IEnumerator DestravaClick()
-    {
-        yield return new WaitForSeconds(0.5f);
-        travaClick = false;
     }
 }

@@ -12,19 +12,39 @@ public class GeraExtraLife : MonoBehaviour
     public int num_extralife;
     public int num_Maxextralife;
 
-    public int randextralife;
-
     public int cargExtraLife;
     public int indexExtraLife;
 
     public float desloCanvasX, desloCanvasY;
 
+    //new adiction
+    //variáveis usadas quando player usa tentativas extras
+    public int extra_num_extralife;
+    public int extra_num_Maxextralife;
+    public int extra_cargExtraLife;
+
     void Start()
     {
-        //num_Maxextralife = Random.Range(1, 7);
-        //decrementaEnerg = 0;
-        if(tocando == false)
-        Gera_extralife();
+        if (tocando == false)
+            Gera_extralife();
+
+        //new adiction
+        extra_num_extralife = num_extralife;
+        extra_num_Maxextralife = num_Maxextralife;
+        extra_cargExtraLife = cargExtraLife;
+    }
+    
+    //new adiction
+    private void Update()
+    {
+        //if(GAMEMANAGER.instance.num_tentativas > 0 && GAMEMANAGER.instance.getExtra == true)
+        //{
+        //    GAMEMANAGER.instance.getExtra = false;
+
+        //     num_extralife = extra_num_extralife;
+        //     num_Maxextralife = extra_num_Maxextralife;
+        //     cargExtraLife = extra_cargExtraLife;
+        //}       
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
@@ -32,8 +52,6 @@ public class GeraExtraLife : MonoBehaviour
 
         if (coll.CompareTag("collReceptLazer"))
         {
-           // randextralife = Random.Range(0, 7);
-            //if(collPegEnergy.IsTouching(coll))
             tocando = true;
         }
     }
@@ -44,10 +62,7 @@ public class GeraExtraLife : MonoBehaviour
         {
             tocando = false;
 
-            //if (randextralife != 0)
-            //{
-                Gera_extralife();
-            //}
+            Gera_extralife();
         }
     }
 
@@ -55,7 +70,6 @@ public class GeraExtraLife : MonoBehaviour
     {
         if (num_extralife < num_Maxextralife && tocando == false && new_extralife == null)
         {
-
             new_extralife = Instantiate(prefab_extralife) as GameObject;
             PegaEnergy extraL = new_extralife.GetComponent<PegaEnergy>();
             extraL.carga = cargExtraLife;
@@ -63,7 +77,7 @@ public class GeraExtraLife : MonoBehaviour
             extraL.desloCanvasX = desloCanvasX;
             extraL.desloCanvasY = desloCanvasY;
             new_extralife.transform.position = gameObject.transform.position;
-            num_extralife += 1;            
+            num_extralife += 1;
         }
     }
 }

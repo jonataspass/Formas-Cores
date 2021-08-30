@@ -18,30 +18,84 @@ public class CircleManager : MonoBehaviour
     public int num_tentativas_Ideal;
 
     public int currentLifeTotal;
-
-    //testando****
+    
     public int extraLife;
     public int dificuldadeLevel;
 
     public int descontraExtralife;
 
+    public int totalMoedasLevel;
+
+    //número de tentativas extras necessárias para cada level
+    public int num_extraTry;
+
     private void Start()
     {
         IniCirclesAng();
         MaxPontos();
-        //TotalEnergy();
+        GuardaEnergy();
     }
 
-    //Nível de energia -> controla a quatidade de clicks por objs
-    //Desativar
-    public void NivelEnergy(int indexCircles)
+    private void Update()
     {
-        //O cáculo do enery_Y é uma regra de 3        
-        Vector3 energy_Y = new Vector3(7, circles[indexCircles].currentlife
-                                         * maxEnergy / circles[indexCircles].maxLife, 1);
-
-        circles[indexCircles].currentlife = (int)energy_Y.y;
+        InitExtralife();
     }
+
+    //método que guarda energia de inicialização para ser reutilizada 
+    //nas tentativas extras
+    void GuardaEnergy()
+    {
+        for(int i = 0; i < circles.Length; i++)
+        {
+            circles[i].extra_life = circles[i].currentlife;
+        }
+    }
+
+    //inicializa Energy de todos os módulos quando utilizado tentativas extras
+    void InitExtralife()
+    {
+        //new; add aos outros scripts
+        if (GAMEMANAGER.instance.num_tentativas == 0)
+        {
+            for (int i = 0; i < circles.Length; i++)
+            {
+                circles[i].trava_Click = true;
+            }
+
+            //desativa os btns da cena
+            UIManager.instance.btnPainel_Guia.enabled = false;
+            UIManager.instance.btnPainel_Dicas.enabled = false;
+            UIManager.instance.btnSair.enabled = false;
+            UIManager.instance.btn_restart.enabled = false;
+
+            GAMEMANAGER.instance.painelExtraAtivado = true;
+        }
+        else if (GAMEMANAGER.instance.num_tentativas > 0 && GAMEMANAGER.instance.getExtra == true)
+        {
+            for (int i = 0; i < circles.Length; i++)
+            {
+                circles[i].trava_Click = false;
+            }
+
+            GAMEMANAGER.instance.getExtra = false;
+
+            for (int i = 0; i < circles.Length; i++)
+            {
+                circles[i].currentlife = circles[i].extra_life;
+            }
+
+            //ativa os btns da cena
+            UIManager.instance.btnPainel_Guia.enabled = true;
+            UIManager.instance.btnPainel_Dicas.enabled = true;
+            UIManager.instance.btnSair.enabled = true;
+            UIManager.instance.btn_restart.enabled = true;
+
+            GAMEMANAGER.instance.painelExtraAtivado = false;
+        }        
+    }
+
+    //quando player usou tentativas extras => getExtra == true 
+    //quando getExtra == true => inicializa a energia de todos o módulos
 
     //Inicializa os ângulos das Circles
     void IniCirclesAng()
@@ -67,15 +121,16 @@ public class CircleManager : MonoBehaviour
         int currentLifeTemp = extraLife + (num_tentativas_Start - num_tentativas_Ideal);
         int maxPontoTemp = 0;
         int contCircle = 0;
-
+        
         for (int i = 0; i < circles.Length; i++)
         {
             currentLifeTemp += circles[i].currentlife;
             contCircle++;
         }
         
-        maxPontoTemp = (((currentLifeTemp - totalClicks) * 100) + (contCircle * 100)) * dificuldadeLevel;
+        maxPontoTemp = (((currentLifeTemp - totalClicks) * 100) + (contCircle * 100) + (totalMoedasLevel * 300)) * dificuldadeLevel;
         ScoreManager.instance.maxScore = maxPontoTemp / 100;
+        print(totalMoedasLevel);
     }
 
     //Define pontuação final do level corrente
@@ -85,10 +140,10 @@ public class CircleManager : MonoBehaviour
         int contCircleTemp = 0;
         int maxPontoTemp = 0;
         int currentclicksTotal = 0;
+        int moedasDontGet = (totalMoedasLevel - GAMEMANAGER.instance.moedaPegas);
 
         for (int i = 0; i < circles.Length; i++)
         {
-            //for()
             currentLifeTemp += circles[i].currentlife;
             contCircleTemp++;
         }
@@ -101,17 +156,9 @@ public class CircleManager : MonoBehaviour
             }
         }
 
-        maxPontoTemp = (((currentLifeTemp * 100) + (contCircleTemp * 100)) - descontraExtralife)  * dificuldadeLevel;
+        maxPontoTemp = ((((currentLifeTemp * 100) + (contCircleTemp * 100))  - (GAMEMANAGER.instance.numTentativasExtras * 100)) + (GAMEMANAGER.instance.moedaPegas * 300)) * dificuldadeLevel;
         ScoreManager.instance.ptsMarcados_Total += maxPontoTemp;
     }
-
-    //void TotalEnergy()
-    //{
-    //    for (int i = 0; i < circles.Length; i++)
-    //    {
-    //        currentLifeTotal += circles[i].currentlife;
-    //    }
-    //}
 }
 
 

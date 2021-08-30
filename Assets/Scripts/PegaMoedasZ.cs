@@ -8,12 +8,14 @@ public class PegaMoedasZ : MonoBehaviour
     public GameObject prefab_moeda;
     GameObject new_moeda;
 
+    public int qtdmoedaTxt;
+
     //AudioSource audio_pegaMissel;
 
     //public Animator animacarregaMissel;
     public TextMeshProUGUI text_itemMoeda;
 
-    public Collider2D pegaMissel;
+    //public Collider2D pegaMoeda;
 
     public Canvas txt_numMoeda;
     public float desloCanvasX, desloCanvasY;
@@ -24,20 +26,21 @@ public class PegaMoedasZ : MonoBehaviour
         //animacarregaMissel = GetComponent<Animator>();
         //animacarregaMissel.Play("AnimeGeraMissel");
         text_itemMoeda = GetComponentInChildren<TextMeshProUGUI>();
-        text_itemMoeda.text = GAMEMANAGER.instance.txt_numMoedaspref.ToString() + "x";
-        pegaMissel = GetComponent<Collider2D>();
-        pegaMissel.enabled = false;
+        text_itemMoeda.text = qtdmoedaTxt.ToString() + "x";
+        //pegaMoeda = GetComponent<Collider2D>();
+        //pegaMoeda.enabled = false;
+        //StartCoroutine(LigaCollMoeda());
 
         txt_numMoeda = GetComponentInChildren<Canvas>();
         txt_numMoeda.transform.position = new Vector2(txt_numMoeda.transform.position.x + desloCanvasX, txt_numMoeda.transform.position.y + desloCanvasY);
-
     }
 
     private void Update()
     {
-        Ligacoll();
+        //Ligacoll();
     }
 
+    //public bool pegouMoeda;
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.CompareTag("collReceptLazer"))
@@ -46,29 +49,23 @@ public class PegaMoedasZ : MonoBehaviour
             new_moeda.transform.position = gameObject.transform.position;
             Coleta_Moeda();
             //animacarregaMissel.Play("AnimecarregaMissel");
+            //print("toou");
         }
     }
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    pegouMoeda = false;
+    //}
 
     void Coleta_Moeda()
     {
-        //MoveUp();
-        //recebe misseis coletas no startgame
-        //GAMEMANAGER.instance.cargaMissel += carga;
-
-        //UIManager.instance.txt_showNmissel.text = GAMEMANAGER.instance.cargaMissel.ToString();
-        //audio_pegaMissel.Play();
-        //qtdMoeda--;
-        //qtdMoeda++;
-        GAMEMANAGER.instance.qtd_moedaSalvas += 100;
-        UIManager.instance.AtualizaMoedaZ(GAMEMANAGER.instance.qtd_moedaSalvas);
-        Destroy(gameObject);
-    }
-
-    void Ligacoll()
-    {
-        if (GAMEMANAGER.instance.startGame == true)
-        {
-            pegaMissel.enabled = true;
-        }
+        //if (pegouMoeda == false)
+        //{
+            GAMEMANAGER.instance.qtd_moedaSalvas += 100;
+            GAMEMANAGER.instance.moedaPegas += 1;
+            Destroy(gameObject);
+            //pegouMoeda = true;
+        //}
     }
 }

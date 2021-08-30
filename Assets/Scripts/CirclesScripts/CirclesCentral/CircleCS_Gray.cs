@@ -22,8 +22,6 @@ public class CircleCS_Gray : MonoBehaviour
     public int numCanhoes;
     //Tipo de shape
     public string tipo;
-    //trava -> controla a velocidade de clicks do usuário
-    public bool travaClick;
     //GameObject com Script CircleManager
     public CircleManager circleManager;    
     //Energia deste Obj
@@ -53,23 +51,25 @@ public class CircleCS_Gray : MonoBehaviour
 
     private void Update()
     {
-        AtualizaEnergy();
-        //add a todos scrips das circles
-        if (GAMEMANAGER.instance.num_tentativas == 0)
-        {
-            travaClick = true;
-        }
+        //Atualiza Energy
+        AtualizaEnergy();        
     }
     
     private void OnMouseDown()
     {                                                   
-        if (tipo == "CCS_Gray" && travaClick == false 
+        if (tipo == "CCS_Gray" && circleManager.circles[indexVetCircles].trava_Click == false
             && circleManager.circles[indexVetCircles].ativa == true
             && GAMEMANAGER.instance.startGame == true)
         {
+            // se texto compre uma dica ativado => desative
+            if (UIManager.instance.txt_Informativo.enabled == true)
+            {
+                UIManager.instance.txt_Informativo.enabled = false;
+            }
+
             //Aviso mod sem energia
             if (circleManager.circles[indexVetCircles].currentlife == 0)
-                GAMEMANAGER.instance.HabTex_ModSemEnergia("Módulo sem energia");
+                GAMEMANAGER.instance.HabTex_Informativo("Módulo sem energia");
             
             //Audio e contador de clicks
             if (circleManager.circles[indexVetCircles].currentlife > 0)
@@ -79,9 +79,10 @@ public class CircleCS_Gray : MonoBehaviour
                 circleManager.circles[indexVetCircles].currentClicks++;
                 //decrementa tentativas            
                 GAMEMANAGER.instance.num_tentativas--;
-            } 
-            
-            travaClick = true;
+            }
+
+            //travaClick = true;
+            circleManager.circles[indexVetCircles].trava_Click = true;
 
             for (int i = 0; i < circleManager.circles.Length; i++)
             {
@@ -105,14 +106,13 @@ public class CircleCS_Gray : MonoBehaviour
             if (circleManager.circles[indexVetCircles].currentlife > 0)
             {
                 circleManager.circles[indexVetCircles].currentlife--;
-                //circleManager.currentLifeTotal--;
             }
 
             StartCoroutine(DestravaClick());
         }
     }
 
-    //Atualização da energia deste obj
+    //Atualização da energia deste obj "CÍRCULO DE LUZ"
     void AtualizaEnergy()
     {
         if (circleManager.circles[indexVetCircles].currentlife >= 0)
@@ -125,7 +125,8 @@ public class CircleCS_Gray : MonoBehaviour
     IEnumerator DestravaClick()
     {
         yield return new WaitForSeconds(0.5f);
-        travaClick = false;
+
+        circleManager.circles[indexVetCircles].trava_Click = false;
     }
 }
 

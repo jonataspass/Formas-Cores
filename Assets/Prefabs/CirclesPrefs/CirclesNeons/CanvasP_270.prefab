@@ -730,7 +730,11 @@ MonoBehaviour:
   circleManager: {fileID: 0}
   currentLifeTemp: 0
   velCont: 2
-  Panel_InitEnergy: {fileID: 0}
+  linhaEnerg: {fileID: 5973194708331714577}
+  iconeEnerg: {fileID: 5973194708418937708}
+  iconeCentralinfinito: {fileID: 0}
+  animeMaoCrs: {fileID: 0}
+  modCentral: 0
 --- !u!1001 &5750011899479002354
 PrefabInstance:
   m_ObjectHideFlags: 0

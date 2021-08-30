@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
+//Script inserido no obj Dica e btnCompra Dica
 public class Dicas : MonoBehaviour
 {
     [System.Serializable]

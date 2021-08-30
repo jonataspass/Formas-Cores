@@ -65,6 +65,29 @@ TagManager:
   - showMissel
   - tentativas
   - ShowMoeda
+  - circleEnergyCentral
+  - animeMaoCrs
+  - btnRecompensa
+  - painelBtnRecompensa
+  - Crs_R
+  - Missel_R
+  - Dica_R
+  - Extra_R
+  - animeMao_Dica
+  - compraExtra
+  - btn_desistir
+  - btn_comprar
+  - imgExtra
+  - imgMissel
+  - imgEnergy
+  - txtExtra
+  - txtEng
+  - txtMissel
+  - txtTipodeItem
+  - painelObjetivos
+  - txtClicksObjetivo
+  - txtMoedasObjetivo
+  - btnOkObjetivos
   layers:
   - Default
   - TransparentFX

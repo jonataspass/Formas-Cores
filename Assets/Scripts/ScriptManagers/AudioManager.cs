@@ -29,14 +29,11 @@ public class AudioManager : MonoBehaviour
     public AudioSource backGround_Sound;
     public bool libera_BG_Sound;
 
-    //testando clickBtn****TRABALHANDO AQUI
+    //testando clickBtn
     public AudioSource clickBtn;
 
     //testando
     public Sprite Mute, Ative;
-
-    //btn click sound
-    //public Button btn_ClickSound;
 
     
 

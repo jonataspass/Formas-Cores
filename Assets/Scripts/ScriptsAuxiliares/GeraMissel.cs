@@ -37,8 +37,6 @@ public class GeraMissel : MonoBehaviour
             cargM.desloCanvasX = desloCanvasX;
             cargM.desloCanvasY = desloCanvasY;
 
-            //TextMeshProUGUI text_itemMissel = GetComponentInChildren<TextMeshProUGUI>();
-            //cargM.text_itemMissel.text = cargM.carga.ToString();
             new_missel.transform.position = gameObject.transform.position;
             num_Missel += 1;
         }

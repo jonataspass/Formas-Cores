@@ -12,6 +12,8 @@ public class CirclesAtributos
     public int angCircles;
     public int maxLife;
     public int currentlife;
+    public int extra_life;
+    public bool trava_Click;
     public int totalCurrentEnergy_H;
     public int totalCurrentEnergy_AH;
     public int sentRot;

@@ -9,7 +9,7 @@ public class GeraMoedasZ : MonoBehaviour
     GameObject new_moeda;
 
     public bool tocando;
-    //public int num_Moeda;
+    int num_Moeda;
     public int num_MaxMoeda;
 
     // public int randMissel;
@@ -18,31 +18,40 @@ public class GeraMoedasZ : MonoBehaviour
 
     public float desloCanvasX, desloCanvasY;
 
-    //public CarregaMissel cargM;
-
     void Start()
     {
-
         if (tocando == false)
+        {
+            print("tocando");
             Gera_Moeda();
+        }            
     }
 
     void Gera_Moeda()
     {
-        if ( num_MaxMoeda > 0 && tocando == false && new_moeda == null)
+        if ( num_Moeda < num_MaxMoeda && tocando == false && new_moeda == null)
         {
-            new_moeda = Instantiate(prefab_moeda) as GameObject;
-            PegaMoedasZ cargM = new_moeda.GetComponent<PegaMoedasZ>();
-            //cargM.qtdMoeda = qtdMoeda;
-            cargM.desloCanvasX = desloCanvasX;
-            cargM.desloCanvasY = desloCanvasY;
-            GAMEMANAGER.instance.txt_numMoedaspref = num_MaxMoeda;
-            //TextMeshProUGUI text_itemMissel = GetComponentInChildren<TextMeshProUGUI>();
-            //cargM.text_itemMissel.text = cargM.carga.ToString();
-            new_moeda.transform.position = gameObject.transform.position;
-            //num_Moeda += 1;
-            num_MaxMoeda--;
+            StartCoroutine(WaitGeraObj());
         }
+    }
+
+    IEnumerator WaitGeraObj()
+    {
+        yield return new WaitForSeconds(0.5f);
+        new_moeda = Instantiate(prefab_moeda) as GameObject;
+        PegaMoedasZ itemMoedas = new_moeda.GetComponent<PegaMoedasZ>();
+        //cargM.qtdMoeda = qtdMoeda;
+        itemMoedas.desloCanvasX = desloCanvasX;
+        itemMoedas.desloCanvasY = desloCanvasY;
+        itemMoedas.qtdmoedaTxt = qtdMoeda;
+
+        if(qtdMoeda > 1)
+        {
+            qtdMoeda -= 1;
+        }
+
+        new_moeda.transform.position = gameObject.transform.position;
+        num_Moeda += 1;
     }
 
     private void OnTriggerEnter2D(Collider2D coll)

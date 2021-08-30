@@ -22,8 +22,13 @@ public class CircleHRotAlone_Blue : MonoBehaviour
     private float vel = 0;
     //Variável sentinela -> controla a rotação do obj dentro do método Update().
     private float limit;
-    //Controla velocidade de clicks do usuário
-    public bool travaClick;
+
+    //audios
+    public AudioClip[] clips;
+    public AudioSource effectsObjs;
+
+    //Dicas
+    public Dicas objD;
 
     private void Start()
     {
@@ -31,10 +36,14 @@ public class CircleHRotAlone_Blue : MonoBehaviour
         circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
         //Componentes Energy
         energyCH_Red = GetComponentInChildren<Energy>();
-        //Inicializa a carga de enegia inicial do obj.
-        energyCH_Red.AtualizaEnergy(indexVetCircles);
-        //Inicializa o limite de rotação do obj.        
+        //audio
+        effectsObjs = GetComponent<AudioSource>();
+        //Recebe obj com script Dicas//verificar necessidade
+        objD = GameObject.FindWithTag("dica").GetComponent<Dicas>();
+        //Limite de rotação
         limit = circleManager.circles[indexVetCircles].angCircles;
+
+        autoRot = indexVetCircles;
     }
 
     private void Update()
@@ -47,12 +56,25 @@ public class CircleHRotAlone_Blue : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (tipo == "CHRA_Blue" && travaClick == false)
+        if (tipo == "CHRA_Blue" && circleManager.circles[indexVetCircles].trava_Click == false
+            && circleManager.circles[indexVetCircles].ativa == true
+            && GAMEMANAGER.instance.startGame == true)
         {
-            travaClick = true;
+            //Aviso mod sem energia
+            if (circleManager.circles[indexVetCircles].currentlife == 0)
+                GAMEMANAGER.instance.HabTex_Informativo("Módulo sem energia");
 
-            circleManager.NivelEnergy(indexVetCircles);
-            energyCH_Red.AtualizaEnergy(indexVetCircles);
+            //Audio e contador de clicks
+            if (circleManager.circles[indexVetCircles].currentlife > 0)
+            {
+                effectsObjs.clip = clips[0];
+                effectsObjs.Play();
+                circleManager.circles[indexVetCircles].currentClicks++;
+                //decrementa tentativas 
+                GAMEMANAGER.instance.num_tentativas--;
+            }
+
+            circleManager.circles[indexVetCircles].trava_Click = true;
 
             for (int i = 0; i < circleManager.circles.Length; i++)
             {
@@ -75,33 +97,33 @@ public class CircleHRotAlone_Blue : MonoBehaviour
         }
     }
 
-    //Coleta cristais de energia
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("cristalEnergy"))
-        {
-            circleManager.circles[indexVetCircles].currentlife++;
+    ////Coleta cristais de energia
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("cristalEnergy"))
+    //    {
+    //        circleManager.circles[indexVetCircles].currentlife++;
 
-            for (int i = 0; i < circleManager.circles.Length; i++)
-            {
+    //        for (int i = 0; i < circleManager.circles.Length; i++)
+    //        {
 
-                //Carrega seu obj central contralador
-                if (circleManager.circles[i].tipo == "CCS_Gray")
-                {
-                    circleManager.circles[i].currentlife++;
-                }
+    //            //Carrega seu obj central contralador
+    //            if (circleManager.circles[i].tipo == "CCS_Gray")
+    //            {
+    //                circleManager.circles[i].currentlife++;
+    //            }
 
-            }
+    //        }
 
-            energyCH_Red.AtualizaEnergy(indexVetCircles);
-            StartCoroutine(DestroyCristal());
-            Destroy(collision.gameObject);
-        }
-    }
+    //        energyCH_Red.AtualizaEnergy(indexVetCircles);
+    //        StartCoroutine(DestroyCristal());
+    //        Destroy(collision.gameObject);
+    //    }
+    //}
 
     //Rotaciona este  obj quando seu obj controlador é clicado.
     void RotacionaObj()
-    {//testando***trabalhando aqui        
+    {        
         if (limit <= circleManager.circles[indexVetCircles].angCircles)
         {
             limit += vel * Time.deltaTime;
@@ -142,6 +164,6 @@ public class CircleHRotAlone_Blue : MonoBehaviour
     IEnumerator DestravaClick()
     {
         yield return new WaitForSeconds(0.5f);
-        travaClick = false;
+        circleManager.circles[indexVetCircles].trava_Click = false;
     }
 }

@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class CanvasObjsCircles : MonoBehaviour
 {
-    //void Awake()
-    //{
-    //    SceneManager.sceneLoaded += Carrega;
-    //}
-
     [SerializeField]
     private TextMeshProUGUI textCurrentLife = null, textCurrentClicks = null;
 
@@ -18,78 +14,181 @@ public class CanvasObjsCircles : MonoBehaviour
     [SerializeField]
     private CircleManager circleManager;
 
-    //testando****
     public float currentLifeTemp;
     public float velCont;
-    public GameObject Panel_InitEnergy;
-    private float contInitGame;    
+    //public GameObject Panel_InitEnergy;
+    public float contInitGame;
 
+    //testando****atribuir esses objetos em todos os módulos
+    public Image linhaEnerg, iconeEnerg;
+    public Image iconeCentralinfinito;
+    //public CircleEnergy circleEC;
+
+    int currentLife_temp;
+
+    public GameObject animeMaoCrs;
+    int tutorialAnimeMaoCrs;//controla para que apareça apenas uma vez
+
+    public bool modCentral;
+    //trabalhando aqui****
     private void Start()
     {
         circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
-        Panel_InitEnergy = GameObject.FindWithTag("PanelInitEnergy");
-        StartCanvas();
-        //circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
-        //Panel_InitEnergy = GameObject.FindWithTag("PanelInitEnergy");
+        //circleEC = GameObject.FindWithTag("circleEnergyCentral").GetComponent<CircleEnergy>();
+        //teste        
+        currentLife_temp = circleManager.circles[indexCircle].currentlife;
+        linhaEnerg.color = new Color(255, 255, 255, 150);
+        iconeEnerg.color = new Color(255, 255, 255, 150);
+        animeMaoCrs = GameObject.FindWithTag("animeMaoCrs");
+
+        if (!ZPlayerPrefs.HasKey("tutorialAnimeMaoCrs"))
+        {
+            ZPlayerPrefs.SetInt("tutorialAnimeMaoCrs", 0);
+        }
+
+        //print(ZPlayerPrefs.GetInt("tutorialAnimeMaoCrs"));
+
+        //ZPlayerPrefs.DeleteAll();
+
+        StartCoroutine(PegaMaoCrs());
+
+        if (modCentral == true)
+        {
+            iconeCentralinfinito.color = new Color(255, 255, 255, 150);
+        }
+
     }
 
-    private void Update()
-    {
-        Desativa_PainelInitEnergy();
-    }
+    //private void Update()
+    //{
+    //    Desativa_PainelInitEnergy();
+    //}
 
     private void FixedUpdate()
     {
         AtualizaTextsCanvas();
     }
-  //testando****
-    //void Carrega(Scene cena, LoadSceneMode modo)
-    //{
-    //    if(LevelAtual.instance.level >= 5)
-    //    circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
-    //    Panel_InitEnergy = GameObject.FindWithTag("PanelInitEnergy");
-    //    StartCanvas();
-    //}
 
     void AtualizaTextsCanvas()
     {
-        if (currentLifeTemp < circleManager.circles[indexCircle].currentlife)
+        if (GAMEMANAGER.instance.CrsCargaAtiva > 0 && contInitGame <= 10)
         {
-            currentLifeTemp += Time.deltaTime * velCont;
-        }
-        else if (currentLifeTemp > circleManager.circles[indexCircle].currentlife)
-        {
-            currentLifeTemp -= Time.deltaTime * velCont;
-        }
-        //testando****
-        if(contInitGame < 10)
-        {
-            contInitGame += Time.deltaTime * velCont;
-            if (contInitGame >= 10)
+            //print("0");
+            if (currentLifeTemp < circleManager.circles[indexCircle].currentlife)
             {
-                GAMEMANAGER.instance.startGame = true;
-                UIManager.instance.liberaMetodo_Painel_Guia = true;
-                UIManager.instance.habilitabBtnsCena = true;
-                UIManager.instance.habilitaBtnRestart = true;
-            }            
+                //Sprint("1");
+                currentLifeTemp += Time.deltaTime * velCont;
+            }
+            else if (currentLifeTemp > circleManager.circles[indexCircle].currentlife)
+            {
+                //print("2");
+                currentLifeTemp -= Time.deltaTime * velCont;
+            }
+
+            GAMEMANAGER.instance.Panel_InitEnergy.SetActive(true);
+
+            if (contInitGame <= 10)
+            {
+                contInitGame += Time.deltaTime * velCont;
+
+                if (contInitGame >= 10)
+                {
+                    //GAMEMANAGER.instance.startGame = true;
+                    //testando****//trabalhando aqui
+                    GAMEMANAGER.instance.startGame = true;
+                    GAMEMANAGER.instance.Panel_InitEnergy.SetActive(false);
+                    UIManager.instance.liberaMetodo_Painel_Guia = true;
+                    UIManager.instance.habilitabBtnsCena = true;
+                    UIManager.instance.habilitaBtnRestart = true;
+
+                    if(contInitGame > 10)
+                    {
+                        contInitGame = 10;
+                    }
+                }
+            }
+        }
+        else if (GAMEMANAGER.instance.CrsCargaAtiva == 0 && GAMEMANAGER.instance.lose == true
+            && GAMEMANAGER.instance.cristalGreen > 0)
+        {
+            GAMEMANAGER.instance.HabTex_Infor_NoCrs("Sem energia para inicializar os módulos\n click em novamente e carregue com cristais");
+
+            if (ZPlayerPrefs.GetInt("tutorialAnimeMaoCrs") < 1)
+            {
+                animeMaoCrs.SetActive(true);
+
+                ZPlayerPrefs.SetInt("tutorialAnimeMaoCrs", 1);
+            }
+
+            UIManager.instance.painel_Recompensa.SetActive(false);
+        }
+        else if (GAMEMANAGER.instance.CrsCargaAtiva == 0 && GAMEMANAGER.instance.destTxtCanvas == false
+            && GAMEMANAGER.instance.cristalGreen > 0)
+        {
+            //GAMEMANAGER.instance.travaBtnReompensa = true;
+            GAMEMANAGER.instance.HabTex_Infor_NoCrs("Sem energia para inicializar os módulos\n carregue com cristais");
+
+            if (ZPlayerPrefs.GetInt("tutorialAnimeMaoCrs") < 1)
+            {
+                animeMaoCrs.SetActive(true);
+
+                ZPlayerPrefs.SetInt("tutorialAnimeMaoCrs", 1);
+            }
+
+            UIManager.instance.painel_Recompensa.SetActive(false);
+
+        }//tem queliberar recompensa
+        else if (GAMEMANAGER.instance.CrsCargaAtiva == 0 && GAMEMANAGER.instance.destTxtCanvas == false
+            && GAMEMANAGER.instance.cristalGreen == 0 && GAMEMANAGER.instance.travaBtnReompensa == false)
+        {
+            GAMEMANAGER.instance.HabTex_Infor_NoCrs("Sem energia para inicializar os módulos\n ganhe 01 cristal clicando no botão abaixo");
+
+            if (ZPlayerPrefs.GetInt("tutorialAnimeMaoCrs") < 1)
+            {
+                animeMaoCrs.SetActive(true);
+
+                ZPlayerPrefs.SetInt("tutorialAnimeMaoCrs", 1);
+            }
+
+            //recompensa cristal
+            UIManager.instance.painel_Recompensa.SetActive(true);
+            UIManager.instance.crs.enabled = true;
+            // GAMEMANAGER.instance.travaBtnReompensa = true;
         }
 
         textCurrentLife.text = currentLifeTemp.ToString("F0");
         textCurrentClicks.text = circleManager.circles[indexCircle].currentClicks.ToString();
-    }
-
-    void Desativa_PainelInitEnergy()
-    {
-        if(GAMEMANAGER.instance.startGame == true)
+        //aplicar a todos os módulos
+        if (GAMEMANAGER.instance.CrsCargaAtiva <= 0)
         {
-            Panel_InitEnergy.SetActive(false);
+
+            linhaEnerg.color = new Color(255, 0, 0, 150);
+            iconeEnerg.color = new Color(255, 0, 0, 150);
+            if (modCentral == true)
+            {
+                iconeCentralinfinito.color = new Color(255, 0, 0, 150);
+            }
+
+            circleManager.circles[indexCircle].currentlife = 0;
+        }
+        else
+        {
+            linhaEnerg.color = new Color(0, 255, 0, 150);
+            iconeEnerg.color = new Color(0, 255, 0, 150);
+            if (modCentral == true)
+            {
+                iconeCentralinfinito.color = new Color(0, 255, 0, 150);
+            }
+
+            //trabalhar nessa linha, currentlife não está atualizando
+            //circleManager.circles[indexCircle].currentlife = currentLife_temp;
+            //print("Aqu  " + currentLifeTemp);
         }
     }
 
-    void StartCanvas()
+    IEnumerator PegaMaoCrs()
     {
-        AtualizaTextsCanvas();
-        Desativa_PainelInitEnergy();
-        Panel_InitEnergy.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        animeMaoCrs.SetActive(false);
     }
 }

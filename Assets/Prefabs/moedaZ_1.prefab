@@ -114,11 +114,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e726a09421a73b2409ef1ec09b8651b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qtdMoeda: 0
   prefab_moeda: {fileID: 4863740375325917409, guid: a996daa4e944d6e41ac76868fe0d7f32,
     type: 3}
+  qtdmoedaTxt: 0
   text_itemMoeda: {fileID: 0}
-  pegaMissel: {fileID: 0}
   txt_numMoeda: {fileID: 0}
   desloCanvasX: 0
   desloCanvasY: 0

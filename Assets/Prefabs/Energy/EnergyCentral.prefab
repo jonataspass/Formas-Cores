@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 3473248229049235631}
   m_Layer: 0
   m_Name: circleEnergy
-  m_TagString: Untagged
+  m_TagString: circleEnergyCentral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -30,6 +30,9 @@ public class CircleS_Red : MonoBehaviour
     //Dicas
     public Dicas objD;
 
+    //collider moedaZ
+    public Collider2D ativaCollMoeda;
+
 
     private void Start()
     {
@@ -44,6 +47,8 @@ public class CircleS_Red : MonoBehaviour
 
         //Inicializa o limite de rotação do obj.        
         limit = circleManager.circles[indexVetCircles].angCircles;
+
+        StartCoroutine(LigaCollMoeda());
     }
 
     private void Update()
@@ -84,10 +89,9 @@ public class CircleS_Red : MonoBehaviour
         yield return new WaitForSeconds(1f);
     }
 
-    IEnumerator DestravaClick()
+    IEnumerator LigaCollMoeda()
     {
-        yield return new WaitForSeconds(0.5f);
-        travaClick = false;
+        yield return new WaitForSeconds(3);
+        ativaCollMoeda.enabled = true;
     }
-    
 }

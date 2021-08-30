@@ -110,7 +110,7 @@ public class RotationMeteor : MonoBehaviour
             }
         }
         else
-            GAMEMANAGER.instance.HabTex_SemMissel("Sem mísseis");  
+            GAMEMANAGER.instance.HabTex_Informativo("Sem mísseis");  
     }
 
     void Ligacoll()

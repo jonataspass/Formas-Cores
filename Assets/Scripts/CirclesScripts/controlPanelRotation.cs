@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class controlPanelRotation : MonoBehaviour
 {
@@ -24,12 +25,65 @@ public class controlPanelRotation : MonoBehaviour
 
     private void Start()
     {
+        GAMEMANAGER.instance.liberalose = false;
+        GAMEMANAGER.instance.travaPainelExtras = true;
         angPanel = GetComponentInChildren<SpriteRenderer>();
         circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
-        
+
         //desativa coliders dos angulos
         DesativaColl(GetComponent<Collider2D>());
         StartCoroutine(AtivaColl(GetComponent<Collider2D>()));
+
+        //testando*******
+        executouChek = false;
+    }
+
+    //Não permite que a couroutine AguardaCheckWin seja executada mais de uma vez
+    public bool executouChek;
+
+    private void Update()
+    {
+        //CHAMADA DO YOULOSE
+        if (GAMEMANAGER.instance.num_tentativas == 0 && executouChek== false)
+        {
+            executouChek = true;
+            StartCoroutine(AguardaCheckWin());            
+        }
+        else if(GAMEMANAGER.instance.num_tentativas > 0)
+        {
+            executouChek = false;
+        }
+    }
+
+    bool travaExtra;//testando
+    //Aguarda a condição da variável win
+    IEnumerator AguardaCheckWin()
+    {
+        yield return new WaitForSeconds(1);
+        
+        if(GAMEMANAGER.instance.win == false && GAMEMANAGER.instance.qtd_moedaSalvas < GAMEMANAGER.instance.extraTry * 100)
+        {
+            GAMEMANAGER.instance.VerificaLose();
+        }
+        else if (GAMEMANAGER.instance.win == false && GAMEMANAGER.instance.qtd_moedaSalvas >= GAMEMANAGER.instance.extraTry * 100
+                 && travaExtra == false)
+        {
+            GAMEMANAGER.instance.OfereceTentativasExtras();
+        }
+        else if(GAMEMANAGER.instance.win == false && GAMEMANAGER.instance.qtd_moedaSalvas >= GAMEMANAGER.instance.extraTry * 100
+                 && travaExtra == true)
+        {
+            GAMEMANAGER.instance.VerificaLose();
+        }
+
+        //testando
+        if(GAMEMANAGER.instance.numTentativasExtras * 100 > (ScoreManager.instance.maxScore * 100) / 10)
+        {
+            travaExtra = true;
+        }
+
+        print((ScoreManager.instance.maxScore * 100) / 10);
+        print(GAMEMANAGER.instance.numTentativasExtras * 100);
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
@@ -42,8 +96,6 @@ public class controlPanelRotation : MonoBehaviour
             //posições dos angulos ativos
             posAng_H_Temp = posAng_H;
             posAng_AH_Temp = posAng_AH;
-
-            verificaLose(/*posAng_H_Temp, posAng_AH_Temp*/);
         }
     }
 
@@ -68,34 +120,5 @@ public class controlPanelRotation : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         coll.enabled = true;
-    }
-
-    //Verifica possibilidade de jogadas
-    void verificaLose(/*int pos_H, int pos_AH*/)
-    {
-        StartCoroutine(test(/*posAng_H_Temp, posAng_AH_Temp*/));
-
-        //if (pos_H > circleManager.circles[indexCircleVet].totalCurrentEnergy_H
-        //    && pos_AH > circleManager.circles[indexCircleVet].totalCurrentEnergy_AH)
-        //{
-        //if(GAMEMANAGER.instance.num_tentativas == 0 && GAMEMANAGER.instance.win == false)
-        //    GAMEMANAGER.instance.YouLose(CircleCS_Gray.instance.numCanhoes, GAMEMANAGER.instance.ativosTemp);
-            
-        //}
-    }
-
-    IEnumerator test(/*int pos_H, int pos_AH*/)
-    {
-        yield return new WaitForSeconds(1.5f);
-
-        if (GAMEMANAGER.instance.num_tentativas == 0 && GAMEMANAGER.instance.win == false)
-        {
-            GAMEMANAGER.instance.YouLose(CircleCS_Gray.instance.numCanhoes, GAMEMANAGER.instance.ativosTemp);
-        }
-        //else if(circleManager.currentLifeTotal == 0 && GAMEMANAGER.instance.win == false)
-        //{
-        //    GAMEMANAGER.instance.YouLose(CircleCS_Gray.instance.numCanhoes, GAMEMANAGER.instance.ativosTemp);
-        //}    
-        
-    }
+    }    
 }

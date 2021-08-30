@@ -635,10 +635,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 1172ddbe-8948-4916-8163-787f30b567f8
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: FormasEcores
+  organizationId: jonatased
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

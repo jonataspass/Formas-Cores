@@ -60,11 +60,6 @@ public class ScoreManager : MonoBehaviour
         ShowScore();
     }
 
-    private void FixedUpdate()
-    {
-        // ShowScore();
-    }
-
     //Carrega cena
     void Carrega(Scene cena, LoadSceneMode modo)
     {
@@ -117,7 +112,6 @@ public class ScoreManager : MonoBehaviour
     {
         if (conta_ptsMarcados < ptsMarcados_Total)
         {
-            //testando****
             if(conta_ptsMarcados <= 1000)
             {
                 conta_ptsMarcados += 10 + (velCon * Time.deltaTime);
@@ -128,8 +122,6 @@ public class ScoreManager : MonoBehaviour
                 conta_ptsMarcados += 100 + (velCon * Time.deltaTime);
                 xScale = conta_ptsMarcados / 100 / maxScore;
             }
-            //conta_ptsMarcados += 10 + (velCon * Time.deltaTime);
-            //xScale = conta_ptsMarcados / 100 / maxScore;
 
             //effect sound
             effectsObjs.clip = clips[0];

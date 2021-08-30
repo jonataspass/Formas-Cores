@@ -7,6 +7,7 @@ public class CarregaMissel : MonoBehaviour
 {
    // CircleManager circleManager;
 
+    //recebe cargMissel do script GeraMissel
     public int carga;
 
     AudioSource audio_pegaMissel;

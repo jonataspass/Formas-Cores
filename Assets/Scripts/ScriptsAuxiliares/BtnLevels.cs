@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//Objetivo deste script é repassar as informações add ao levelManager para os botões...
+//Objetivo deste script é receber as informações add ao levelManager para os botões...
 //como: Level e se o btn foi desbloqueado. 
 public class BtnLevels : MonoBehaviour
 {

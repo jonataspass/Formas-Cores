@@ -279,7 +279,10 @@ MonoBehaviour:
   circleManager: {fileID: 0}
   currentLifeTemp: 0
   velCont: 2
-  Panel_InitEnergy: {fileID: 0}
+  linhaEnerg: {fileID: 8719978727666646793}
+  iconeEnerg: {fileID: 8719978728251155572}
+  numEnerg: {fileID: 0}
+  modCentral: 0
 --- !u!1 &8719978727172049514
 GameObject:
   m_ObjectHideFlags: 0

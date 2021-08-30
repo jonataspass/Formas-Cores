@@ -21,8 +21,6 @@ public class CircleH_Red : MonoBehaviour
     private float vel = 0;
     //Variável sentinela -> controla a rotação do obj dentro do método Update().
     public float limit;
-    //Controla velocidade de clicks do usuário
-    public bool travaClick;
 
     //audios
     public AudioClip[] clips;
@@ -31,49 +29,50 @@ public class CircleH_Red : MonoBehaviour
     //Dicas
     public Dicas objD;
 
+    //collider moedaZ
+    public Collider2D ativaCollMoeda;
+
     private void Start()
     {
         //Componentes de lazer
-        circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
-        
+        circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();        
         //Componentes Energy
         circleEnergyCH_Red = GetComponentInChildren<CircleEnergy>();
-
         //audio
         effectsObjs = GetComponent<AudioSource>();
-
         //Recebe obj com script Dicas//verificar necessidade
         objD = GameObject.FindWithTag("dica").GetComponent<Dicas>();
-
         //Limite de rotação
         limit = circleManager.circles[indexVetCircles].angCircles;
 
         autoRot = indexVetCircles;
+        
+        StartCoroutine(LigaCollMoeda());
     }
 
     private void Update()
     {
         //Atualiza Energy
         AtualizaEnergy();
-        
         //Rotaciona este  obj quando seu obj controlador é clicado.
         RotacionaObj();
-
-        if (GAMEMANAGER.instance.num_tentativas == 0)
-        {
-            travaClick = true;
-        }
     }
 
     private void OnMouseDown()
-    {
-        if (tipo == "CH_Red" && travaClick == false 
+    {                           
+        if (tipo == "CH_Red" && circleManager.circles[indexVetCircles].trava_Click == false 
             && circleManager.circles[indexVetCircles].ativa == true
             && GAMEMANAGER.instance.startGame == true)
         {
+            // se texto compre uma dica ativado => desative
+            if (UIManager.instance.txt_Informativo.enabled == true)
+            {
+                UIManager.instance.txt_Informativo.enabled = false;
+            }
+
             //Aviso mod sem energia
             if (circleManager.circles[indexVetCircles].currentlife == 0)
-                GAMEMANAGER.instance.HabTex_ModSemEnergia("Módulo sem energia");            
+                GAMEMANAGER.instance.HabTex_Informativo("Módulo sem energia");            
 
             //Audio e contador de clicks
             if (circleManager.circles[indexVetCircles].currentlife > 0)
@@ -82,11 +81,10 @@ public class CircleH_Red : MonoBehaviour
                 effectsObjs.Play();
                 circleManager.circles[indexVetCircles].currentClicks++;
                 //decrementa tentativas 
-                //new***//new****add aos outros circlesScrpts
                 GAMEMANAGER.instance.num_tentativas--;
             }
 
-            travaClick = true;
+            circleManager.circles[indexVetCircles].trava_Click = true;
 
             for (int i = 0; i < circleManager.circles.Length; i++)
             {
@@ -104,8 +102,6 @@ public class CircleH_Red : MonoBehaviour
             if (circleManager.circles[indexVetCircles].currentlife > 0)
             {
                 circleManager.circles[indexVetCircles].currentlife--;
-                //new****add aos outros circlesScrpts
-                //circleManager.currentLifeTotal--;
             }
 
             StartCoroutine(DestravaClick());
@@ -156,6 +152,12 @@ public class CircleH_Red : MonoBehaviour
     IEnumerator DestravaClick()
     {
         yield return new WaitForSeconds(0.5f);
-        travaClick = false;
+        circleManager.circles[indexVetCircles].trava_Click = false;
+    }
+    
+    IEnumerator LigaCollMoeda()
+    {
+        yield return new WaitForSeconds(3);
+        ativaCollMoeda.enabled = true;
     }
 }

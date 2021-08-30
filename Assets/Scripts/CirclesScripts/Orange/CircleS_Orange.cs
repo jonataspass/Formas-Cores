@@ -20,15 +20,26 @@ public class CircleS_Orange : MonoBehaviour
     private float vel = 0;
     //Variável sentinela -> controla a rotação do obj dentro do método Update().
     public float limit;
-    //Controla velocidade de clicks do usuário
-    public bool travaClick;
+
+    //audios
+    public AudioClip[] clips;
+    public AudioSource effectsObjs;
+
+    //Dicas
+    public Dicas objD;
 
     private void Start()
     {
         //Componentes de lazer
         circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
-        //Inicializa o limite de rotação do obj.        
+        //audio
+        effectsObjs = GetComponent<AudioSource>();
+        //Recebe obj com script Dicas//verificar necessidade
+        objD = GameObject.FindWithTag("dica").GetComponent<Dicas>();
+        //Limite de rotação
         limit = circleManager.circles[indexVetCircles].angCircles;
+
+        autoRot = indexVetCircles;
     }
 
     private void Update()
@@ -38,25 +49,25 @@ public class CircleS_Orange : MonoBehaviour
     }
 
     //Coleta cristais de energia
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("cristalEnergy"))
-        {
-            circleManager.circles[indexVetCircles].currentlife++;
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("cristalEnergy"))
+    //    {
+    //        circleManager.circles[indexVetCircles].currentlife++;
 
-            for (int i = 0; i < circleManager.circles.Length; i++)
-            {
-                //Carrega seu obj central contralador
-                if (circleManager.circles[i].tipo == "CCS_Gray")
-                {
-                    circleManager.circles[i].currentlife++;
-                }
-            }
+    //        for (int i = 0; i < circleManager.circles.Length; i++)
+    //        {
+    //            //Carrega seu obj central contralador
+    //            if (circleManager.circles[i].tipo == "CCS_Gray")
+    //            {
+    //                circleManager.circles[i].currentlife++;
+    //            }
+    //        }
 
-            StartCoroutine(DestroyCristal());
-            Destroy(collision.gameObject);
-        }
-    }
+    //        StartCoroutine(DestroyCristal());
+    //        Destroy(collision.gameObject);
+    //    }
+    //}
 
     //Rotaciona este  obj quando seu obj controlador é clicado.
     void RotacionaObj()
@@ -88,11 +99,5 @@ public class CircleS_Orange : MonoBehaviour
     IEnumerator DestroyCristal()
     {
         yield return new WaitForSeconds(1f);
-    }
-
-    IEnumerator DestravaClick()
-    {
-        yield return new WaitForSeconds(0.5f);
-        travaClick = false;
     }
 }

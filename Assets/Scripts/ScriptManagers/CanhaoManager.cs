@@ -37,13 +37,13 @@ public class CanhaoManager : MonoBehaviour
     private void Update()
     {
         StopSoundLazer();
-        AcionaLazer();
+        AcionaLazer();        
     }
 
     //Ativa canhão
     private void OnTriggerEnter2D(Collider2D coll)
-    {        
-        if (coll.gameObject.CompareTag("collReceptLazer") && GAMEMANAGER.instance.canhaoAtivo== true)
+    {
+        if (coll.gameObject.CompareTag("collReceptLazer") && GAMEMANAGER.instance.canhaoAtivo == true)
         {
             //ativados = 1;
             //GAMEMANAGER.instance.YouWin(CircleCS_Gray.instance.numCanhoes, ativados); 
@@ -51,7 +51,7 @@ public class CanhaoManager : MonoBehaviour
             //Incremente score
             //ScoreManager.instance.ptsMarcados_Total += 10;
             //lazerSound
-            StartCoroutine(Wait_AtivaSoundLazer());
+            StartCoroutine(Wait_AtivaSoundLazer());           
         }
     }
 
@@ -73,7 +73,7 @@ public class CanhaoManager : MonoBehaviour
         if (ativados == 1)
         {
             StartCoroutine(LiberaLazer());
-            desativaLazer = true;            
+            desativaLazer = true;
 
             if (lazerTrava == true)
             {
@@ -89,7 +89,7 @@ public class CanhaoManager : MonoBehaviour
                         feixeLazer.transform.localScale = new Vector3(lazerLargura, lazerComprimento, 0);
                     }
                 }
-            }            
+            }
         }
         else if (ativados == 0)
         {
@@ -160,7 +160,7 @@ public class CanhaoManager : MonoBehaviour
 
     void StopSoundLazer()
     {
-        if(ScoreManager.instance.waitCont == true)
+        if (ScoreManager.instance.waitCont == true)
         {
             effectsObjs.Stop();
         }

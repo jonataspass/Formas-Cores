@@ -231,6 +231,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e5a2539d93330b74eb8c4e054431e1ee, type: 3}
   effectsObjs: {fileID: 0}
   objD: {fileID: 0}
+  ativaCollMoeda: {fileID: 0}
 --- !u!82 &5685329183191401090
 AudioSource:
   m_ObjectHideFlags: 0
@@ -503,6 +504,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 0.28356442
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5555522245673611968, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+//using UnityEngine.Advertisements;
 
 public class GAMEMANAGER : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class GAMEMANAGER : MonoBehaviour
         }
 
         SceneManager.sceneLoaded += Carrega;
-        ZPlayerPrefs.DeleteAll();
+        //ZPlayerPrefs.DeleteAll();
     }
 
     //GameObject com Script CircleManager
@@ -63,16 +64,55 @@ public class GAMEMANAGER : MonoBehaviour
     public int numextrameteor;
 
     public bool misselAtivo;
-    
+
     public bool canhaoAtivo;
 
     //TEXT NUM MOEDAS DO PREFAB MOEDA
     public int txt_numMoedaspref;
-    public int txt_moedasSalvas;
+    //public int txt_moedasSalvas;
     public int qtd_moedaSalvas;
+    //public int moedaPegas, total de moedas pegas em um level
+    public int moedaPegas;
 
     //testando****
+    //cristais que estão no btncarrega cristal
     public int CrsCargaAtiva;
+
+    public bool travaPanelInit;
+    public GameObject Panel_InitEnergy;
+
+    //desativa os txts do script CanvasObjs C: 
+    //"Sem energia para inicializar os módulos\n click em novamenete e depois carregue com cristais" 
+    //"Sem energia para inicializar os módulos\n carregue com cristais"
+    public bool destTxtCanvas;
+
+    private bool AdsOnceTime = false;
+
+    //recompensas capacetes
+    public int recompensaCapaceteB, recompensaCapaceteP, recompensaCapaceteO;
+    //recompensas experiências
+    public int ptsRokie, ptsInter, ptsVeteran, ptsExpert, ptsMaster;
+    //recompensa destroyer
+    public int totalMeteorDestuidos;
+
+    //painel extras
+    public bool liberalose;
+    public bool travaPainelExtras;
+
+    //randon que libera oferta de compra de tentativas extras
+    //se liberaExtras == 1 oferece tentativas extras
+    //se for diferente chama Lose
+    public float liberaExtras;
+
+    //variável usada para qando o painel de tentativas extras for ativado
+    //os btns restart, guia, dica e sair devem ser desativados quado exta variável for true
+    public bool painelExtraAtivado;
+
+    //variável que destrava o click sobre os módulos depois que o player...
+    //adquire tentativas extras
+    public bool getExtra;
+
+    public int numTentativasExtras;
 
     //Carrega cena
     void Carrega(Scene cena, LoadSceneMode modo)
@@ -88,15 +128,29 @@ public class GAMEMANAGER : MonoBehaviour
 
     void StartGame()
     {
+        //Advertisement.Initialize("4238821");
         win = false;
         lose = false;
         liberaCristal = false;
         misselAtivo = false;
         canhaoAtivo = true;
+        //teste
+        Panel_InitEnergy = GameObject.FindWithTag("PanelInitEnergy");
+        Panel_InitEnergy.SetActive(false);
+        //teste
+        liberaCargaCrs = false;
+        AdsOnceTime = false;
+        travaBtnReompensa = false;
+        destTxtCanvas = false;
+        getExtra = false;
+        moedaPegas = 0;
+        extraTry = circleManager.num_extraTry;
+        painelExtraAtivado = false;
 
-        //pontuação
         ScoreManager.instance.ptsMarcados_Total = 0;
         ScoreManager.instance.conta_ptsMarcados = 0;
+
+        liberaExtras = Random.Range(1, 4);//*****
 
         //Salva cristais
         if (ZPlayerPrefs.HasKey("cristaisGreen_Total"))
@@ -108,7 +162,7 @@ public class GAMEMANAGER : MonoBehaviour
         if (ZPlayerPrefs.HasKey("cargaMissel"))
         {
             cargaMissel = ZPlayerPrefs.GetInt("cargaMissel");
-            txt_moedasSalvas = cargaMissel;
+            //txt_moedasSalvas = cargaMissel;
         }
 
         //Salva MoedasZ
@@ -120,6 +174,18 @@ public class GAMEMANAGER : MonoBehaviour
         if (LevelAtual.instance.level >= 6)
         {
             num_tentativas = circleManager.num_tentativas_Start;
+        }
+
+        //carga de critais para inicializar o sistema
+        if (!ZPlayerPrefs.HasKey("cargaCrs"))
+        {
+            ZPlayerPrefs.SetInt("cargaCrs", 5);
+        }
+
+        //carga de critais para inicializar o sistema
+        if (ZPlayerPrefs.HasKey("cargaCrs"))
+        {
+            CrsCargaAtiva = ZPlayerPrefs.GetInt("cargaCrs");
         }
 
         //canhões
@@ -156,6 +222,7 @@ public class GAMEMANAGER : MonoBehaviour
     }
 
     public int canTest;
+
     public void YouWin(int canhoes, int ativos)
     {
         canTest = canhoes;
@@ -179,6 +246,7 @@ public class GAMEMANAGER : MonoBehaviour
         if (canhoes == ativosTemp)
         {
             win = true;
+            lose = false;
         }
 
         if (win == true)
@@ -188,8 +256,18 @@ public class GAMEMANAGER : MonoBehaviour
             DesabClicks();
             DesbloqueiaLevel();
 
-            UIManager.instance.txt_Painel_WL.text = "You Win!!!";
-            UIManager.instance.txt_Painel_info_WL.text = "";
+            UIManager.instance.txt_Painel_WL.text = "You Win";
+            if (moedaPegas == 0)
+            {
+                UIManager.instance.txt_Painel_info_WL.text = "Parabéns!!!";
+            }
+            else if (moedaPegas == circleManager.totalMoedasLevel)
+            {
+                UIManager.instance.txt_Painel_info_WL.text = "Parabéns voçê coletou todas as moedasZ!!!";
+            }
+            else if (moedaPegas < circleManager.totalMoedasLevel)
+                UIManager.instance.txt_Painel_info_WL.text = "Voçê deixou para trás "
+                    + (circleManager.totalMoedasLevel - moedaPegas) + " moedasZ";
             UIManager.instance.UI_Win();
 
             if (ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenB"))
@@ -210,18 +288,33 @@ public class GAMEMANAGER : MonoBehaviour
 
             SalvaMissel(cargaMissel);
             SalvaMoedasZ(qtd_moedaSalvas);
+            SalveCargaCrs(CrsCargaAtiva);
 
             UIManager.instance.habilitabBtnsCena = false;
             UIManager.instance.habilitaBtnRestart = false;
             startGame = false;
+
+            //anuncio
+            if (AdsOnceTime == false)
+            {
+                UnityAds.instance.ShowAds();
+                AdsOnceTime = true;
+            }
         }
     }
 
+    //VERIFICA SE TODOS OS LAZER ESTÃO ATIVADOS
+    public void VerificaLose()
+    {
+        YouLose(CircleCS_Gray.instance.numCanhoes, ativosTemp);
+    }
 
     public void YouLose(int canhoes, int ativados)
     {
+        //print("lose");
         if (ativados < canhoes)
         {
+            //print("loseIN");
             lose = true;
             DesabClicks();
             UIManager.instance.txt_Painel_WL.text = "You Lose!!!";
@@ -229,17 +322,17 @@ public class GAMEMANAGER : MonoBehaviour
             UIManager.instance.UI_Win();
             UIManager.instance.habilitabBtnsCena = false;
             UIManager.instance.habilitaBtnRestart = false;
+
+            if (AdsOnceTime == false)
+            {
+                UnityAds.instance.ShowAds();
+                AdsOnceTime = true;
+            }
+
+            //habilita anúncio Dica_R
+            RepeteLevel.instance.HabilitaDica_R();
+            numTentativasExtras = 0;
         }
-        //else if (ativados < canhoes && circleManager.currentLifeTotal == 0)
-        //{
-        //    lose = true;
-        //    DesabClicks();
-        //    UIManager.instance.txt_Painel_WL.text = "You Lose!!!";
-        //    UIManager.instance.txt_Painel_info_WL.text = "Todos os seus módulos estão sem energia";
-        //    UIManager.instance.UI_Win();
-        //    UIManager.instance.habilitabBtnsCena = false;
-        //    UIManager.instance.habilitaBtnRestart = false;
-        //}
     }
 
     //Desabilita clicks quando o jogo chega ao fim
@@ -320,6 +413,14 @@ public class GAMEMANAGER : MonoBehaviour
         }
     }
 
+    //Salva a carga ativa de cristais no btnCarrgaCrs
+    public void SalveCargaCrs(int cgCrs)
+    {
+        ZPlayerPrefs.SetInt("cargaCrs", cgCrs);
+
+        CrsCargaAtiva = cgCrs;
+    }
+
     public void ColetaCristalGreen(int crsG)
     {
         cristalGreen += crsG;
@@ -331,12 +432,11 @@ public class GAMEMANAGER : MonoBehaviour
         liberaCristal = true;
         cristalGreen -= crsG;
         SalvaCristais(cristalGreen);
-        //UIManager.instance.AtualizaCristalGreen(cristalGreen);
     }
 
     //Salva Cristais  
     public bool liberaCristal;
-
+    public bool liberaCargaCrs;
     public void SalvaCristais(int cristais)
     {
         if (win == true || liberaCristal == true)
@@ -350,6 +450,11 @@ public class GAMEMANAGER : MonoBehaviour
                 ZPlayerPrefs.SetInt("cristaisGreen_Total", cristais);
             }
         }
+        else if (liberaCargaCrs == true)
+        {
+            ZPlayerPrefs.SetInt("cristaisGreen_Total", cristais);
+            liberaCargaCrs = false;
+        }
     }
 
     //testando****
@@ -358,31 +463,56 @@ public class GAMEMANAGER : MonoBehaviour
         UIManager.instance.textEnergy.text = circleManager.circles[indexVet].currentlife.ToString();
     }
 
-    //Habilita e desabilita txt mod sem energia
-    public void HabTex_ModSemEnergia(string s)
+    public void HabTex_Informativo(string s)
     {
-        StartCoroutine(txtModSemEner(s));
+        StartCoroutine(txtInformativo(s));
     }
 
-    IEnumerator txtModSemEner(string s)
+    IEnumerator txtInformativo(string s)
     {
-        UIManager.instance.txt_ModSemEnergy.text = s;
-        UIManager.instance.txt_ModSemEnergy.enabled = true;
-        yield return new WaitForSeconds(1);
-        UIManager.instance.txt_ModSemEnergy.enabled = false;
+        UIManager.instance.txt_Informativo.text = s;
+        UIManager.instance.txt_Informativo.enabled = true;
+        yield return new WaitForSeconds(6);
+        UIManager.instance.txt_Informativo.enabled = false;
     }
 
-    public void HabTex_SemMissel(string s)
+    //Aviso sistema sem crsital
+    public bool ativapainelRecompensa;
+    public bool travaBtnReompensa;
+    public void HabTex_Infor_NoCrs(string s)
     {
-        StartCoroutine(txtModSemEner(s));
+        UIManager.instance.txt_Informativo.text = s;
+        UIManager.instance.txt_Informativo.enabled = true;
     }
 
-    IEnumerator txtSemMissel(string s)
+    //Oferece comprar mais tentativas extras
+    public int extraTry;
+    public void OfereceTentativasExtras()
     {
-        UIManager.instance.txt_ModSemEnergy.text = s;
-        UIManager.instance.txt_ModSemEnergy.enabled = true;
-        yield return new WaitForSeconds(1);
-        UIManager.instance.txt_ModSemEnergy.enabled = false;
+        //ADD VALOR E QUANTIDADE DE TENTATIVS EXTRAS
+        if (qtd_moedaSalvas >= extraTry * 100)
+        {
+            //ativa painel comprar tentativas
+            UIManager.instance.painel_CompraExtra.SetActive(true);
+            UIManager.instance.txtTipoItem.text = "Suas tentativas acabaram, compre " + extraTry + " tentativas extras para continuar jogando";
+            UIManager.instance.btnComprar.gameObject.SetActive(true);
+            UIManager.instance.txtTipoItem.enabled = true;
+            UIManager.instance.imgExtra.enabled = true;
+            UIManager.instance.txtExtra.enabled = true;
+        }
+        else if (qtd_moedaSalvas < extraTry * 100)
+        {
+            StartCoroutine(AvisoSemTentativas());
+        }
+    }
+
+    IEnumerator AvisoSemTentativas()
+    {
+        yield return new WaitForSeconds(1f);
+        HabTex_Infor_NoCrs("Suas tentativas acabaram, \n clique no botão abaixo e assista um vídeo para ganhar " + extraTry + " tentativas extras");
+        UIManager.instance.painel_Recompensa.SetActive(true);
+        UIManager.instance.extras.enabled = true;
+        travaPainelExtras = false;
     }
 }
 

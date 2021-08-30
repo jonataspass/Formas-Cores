@@ -27,6 +27,9 @@ public class ShowPts_Caps : MonoBehaviour
         txtPts_MCS.text = ptsVal[0].ToString();
         txtPts_MCH.text = ptsVal[1].ToString();
         txtPts_MCAH.text = ptsVal[2].ToString();
+
+        //repassa total de cada tipo de capacete para o script RecompensaManager
+        GAMEMANAGER.instance.recompensaCapaceteB = capsB[0];
     }
 
     private void Awake()
@@ -84,6 +87,6 @@ public class ShowPts_Caps : MonoBehaviour
         txt_capPrata_MCAH.SetText(capsP[2].ToString());
         txt_capOuro_MCAH.SetText(capsO[2].ToString());
 
-       //ZPlayerPrefs.DeleteAll();
+        //ZPlayerPrefs.DeleteAll();
     }
 }

@@ -26,6 +26,9 @@ public class UIManager : MonoBehaviour
         SceneManager.sceneLoaded += Carrega;
     }
 
+    //GameObject com Script CircleManager
+    public CircleManager circleManager;
+
     //Btns de acesso às fases: cena de faseMestra, galeria e loja
     [SerializeField]
     private Button btnFaseMestra, btnGaleria, btnLoja;
@@ -34,8 +37,8 @@ public class UIManager : MonoBehaviour
     //Btns do Painel_WL
     [SerializeField]
     private Button btnBack, btnVoltar_Painel_WL, btnNovamente_Painel_WL, btnProximo_Painel_WL;
-    [SerializeField]
-    private Button btnPainel_Guia;
+    
+    public Button btnPainel_Guia;
     public bool ativa_Painel_Guia;
 
     //variável que espera o carregamento de energia para...
@@ -53,7 +56,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI textPts_FaseMestra_MCS, txt_Painel_WL, txt_Painel_info_WL;
     public TextMeshProUGUI txtCristalGreen;
 
-    public TextMeshProUGUI txt_ModSemEnergy, txt_num_tentativas;
+    public TextMeshProUGUI txt_Informativo, txt_num_tentativas;
 
     //btns
     public Button btnSair;
@@ -61,8 +64,8 @@ public class UIManager : MonoBehaviour
     //painel_dicas
     [SerializeField]
     private GameObject painel_Dicas;
-    [SerializeField]
-    private Button btnPainel_Dicas;
+    
+    public Button btnPainel_Dicas;
     [SerializeField]
     private bool ativa_painel_Dicas;
 
@@ -74,6 +77,13 @@ public class UIManager : MonoBehaviour
     private GameObject painel_Guia;
     [SerializeField]
     private GameObject Painel_WL;
+    [SerializeField]
+    public GameObject painel_CompraExtra;//utilizado no Script controlPanelRotation
+
+    public Button btnDesistir, btnComprar;//utilizado no Script controlPanelRotation
+    public Image imgExtra, imgMissel, imgEnergy;
+    public TextMeshProUGUI txtTipoItem, txtExtra, txtMissel, txtEng;
+
 
     [SerializeField]
     private GameObject anime_mao;
@@ -81,6 +91,12 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI textEnergy;
     public TextMeshProUGUI txt_showNmissel;
     public TextMeshProUGUI txt_showNmoeda;
+
+    //public Button btn_Recompensa;
+    public GameObject painel_Recompensa;
+    public Image crs, missel, dica, extras;
+
+    public AudioSource soundMoedas;
 
     private void Update()
     {
@@ -155,6 +171,30 @@ public class UIManager : MonoBehaviour
             btnNovamente_Painel_WL = GameObject.FindWithTag("btnNvm_P_WL").GetComponent<Button>();
             btnProximo_Painel_WL = GameObject.FindWithTag("btnPrx_P_WL").GetComponent<Button>();
 
+            //btnRecompensa*********testando
+            painel_Recompensa = GameObject.FindWithTag("painelBtnRecompensa");
+            //btn_Recompensa = GameObject.FindWithTag("btnRecompensa").GetComponent<Button>();
+
+            //utilizados no script controlpanelrotation
+            painel_CompraExtra = GameObject.FindWithTag("compraExtra");
+            btnDesistir = GameObject.FindWithTag("btn_desistir").GetComponent<Button>();
+            btnComprar = GameObject.FindWithTag("btn_comprar").GetComponent<Button>();
+            imgExtra = GameObject.FindWithTag("imgExtra").GetComponent<Image>();
+            imgMissel = GameObject.FindWithTag("imgMissel").GetComponent<Image>();
+            imgEnergy = GameObject.FindWithTag("imgEnergy").GetComponent<Image>();
+            txtExtra = GameObject.FindWithTag("txtExtra").GetComponent<TextMeshProUGUI>();
+            txtMissel = GameObject.FindWithTag("txtMissel").GetComponent<TextMeshProUGUI>();
+            txtEng = GameObject.FindWithTag("txtEng").GetComponent<TextMeshProUGUI>();
+            txtTipoItem = GameObject.FindWithTag("txtTipodeItem").GetComponent<TextMeshProUGUI>();
+            txtTipoItem.enabled = false;
+            txtExtra.enabled = false;
+            txtMissel.enabled = false;
+            txtEng.enabled = false;
+            imgExtra.enabled = false;
+            imgMissel.enabled = false;
+            imgEnergy.enabled = false;
+            painel_CompraExtra.SetActive(false);            
+
             StartCoroutine(esperaWL());
 
             btnNovamente_Painel_WL.onClick.AddListener(() => StartCoroutine(WaitSoundClick_btnRestart()));
@@ -171,13 +211,24 @@ public class UIManager : MonoBehaviour
             txtCristalGreen.text = ZPlayerPrefs.GetInt("cristaisGreen_Total").ToString();
             xcristal = ZPlayerPrefs.GetInt("cristaisGreen_Total");
 
-            txt_ModSemEnergy = GameObject.FindWithTag("modSemEnergia").GetComponent<TextMeshProUGUI>();
-            txt_ModSemEnergy.enabled = false;
+            txt_Informativo = GameObject.FindWithTag("modSemEnergia").GetComponent<TextMeshProUGUI>();
+            txt_Informativo.enabled = false;
 
             txt_showNmissel = GameObject.FindWithTag("showMissel").GetComponent<TextMeshProUGUI>();
             txt_num_tentativas = GameObject.FindWithTag("tentativas").GetComponent<TextMeshProUGUI>();
 
             txt_showNmoeda = GameObject.FindWithTag("ShowMoeda").GetComponent<TextMeshProUGUI>();
+
+            //AtualizaMoedaZ(GAMEMANAGER.instance.qtd_moedaSalvas);          
+            //images do btnRecompensa
+            crs = GameObject.FindWithTag("Crs_R").GetComponent<Image>();
+            missel = GameObject.FindWithTag("Missel_R").GetComponent<Image>();
+            dica = GameObject.FindWithTag("Dica_R").GetComponent<Image>();
+            extras = GameObject.FindWithTag("Extra_R").GetComponent<Image>();
+            crs.enabled = false;
+            missel.enabled = false;
+            dica.enabled = false;
+            extras.enabled = false;            
         }
     }
 
@@ -185,17 +236,23 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.001f);
         Painel_WL.SetActive(false);
-        //anime_mao.SetActive(false);
+        painel_Recompensa.SetActive(false);
     }
 
     void StartGameUIM()
     {
-        //ativa_Painel_Guia = false;
         GAMEMANAGER.instance.startGame = false;
         liberaMetodo_Painel_Guia = false;
-        //btn restart/ btn_GUia/ btn_Dicas
         habilitabBtnsCena = false;
         habilitaBtnRestart = false;
+        
+        xmoedas = ZPlayerPrefs.GetInt("qtdMoedas");
+        soundMoedas = GetComponent<AudioSource>();
+
+        if (LevelAtual.instance.level >= 6)
+        {
+            circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
+        }
     }
 
     int cristalTemp;
@@ -320,7 +377,7 @@ public class UIManager : MonoBehaviour
 
     public void habilitaBtnsCena()
     {
-        if (LevelAtual.instance.level >= 6)
+        if (LevelAtual.instance.level >= 6 && GAMEMANAGER.instance.painelExtraAtivado == false)
         {
             if (habilitabBtnsCena == true)
             {
@@ -349,23 +406,24 @@ public class UIManager : MonoBehaviour
         {
             if (pl == false)
             {
-                GAMEMANAGER.instance.startGame = false;
+                print("painel");
+                TravaClicksMods();
                 ativa_Painel_Guia = true;
                 painel_Guia.SetActive(ativa_Painel_Guia);
                 painel_Guia.GetComponent<Animator>().Play("Anime_PainelManual");
                 StartCoroutine(Anime_Mao(ativa_Painel_Guia));
 
-                FechaPainel_Dica();//testando****
-                habilitaBtnRestart = false;//testando****
+                FechaPainel_Dica();
+                habilitaBtnRestart = false;
             }
             else
             {
                 painel_Guia.GetComponent<Animator>().Play("Anime_PainelManualBack");
                 ativa_Painel_Guia = false;
-                GAMEMANAGER.instance.startGame = true;
+                DestravaClicksMods();
                 anime_mao.SetActive(false);
 
-                habilitaBtnRestart = true;//testando****
+                habilitaBtnRestart = true;
             }
         }
     }
@@ -377,7 +435,7 @@ public class UIManager : MonoBehaviour
         if (LevelAtual.instance.level >= 6)
         {
             txt_showNmissel.text = GAMEMANAGER.instance.cargaMissel.ToString();
-            //txt_showNmoeda.text = GAMEMANAGER.instance.qtd_moedaSalvas.ToString();
+            txt_showNmoeda.text = GAMEMANAGER.instance.qtd_moedaSalvas.ToString();
             txt_num_tentativas.text = GAMEMANAGER.instance.num_tentativas.ToString();
             AtualizaMoedaZ(GAMEMANAGER.instance.qtd_moedaSalvas);
         }
@@ -385,33 +443,56 @@ public class UIManager : MonoBehaviour
         if (GAMEMANAGER.instance.win == true || GAMEMANAGER.instance.liberaCristal == true)
         {
             AtualizaCristalGreen(GAMEMANAGER.instance.cristalGreen);
-            //AtualizaMoedaZ(GAMEMANAGER.instance.qtd_moedaSalvas);
+            AtualizaMoedaZ(GAMEMANAGER.instance.qtd_moedaSalvas);
+        }
+        if(GAMEMANAGER.instance.liberaCristal == true)//libera pelo btnrecompensa
+        {
+            AtualizaCristalGreen(GAMEMANAGER.instance.cristalGreen);
         }
 
     }
 
     public void AtivaDesativa_Painel_Dicas(bool pl)
     {
+        //RepeteLevel.instance.animaMao_Dica.SetActive(false);
+
         if (liberaMetodo_Painel_Guia == true)
         {
             if (pl == false)
             {
-                GAMEMANAGER.instance.startGame = false;
+                TravaClicksMods();
                 ativa_painel_Dicas = true;
                 painel_Dicas.SetActive(ativa_painel_Dicas);
                 painel_Dicas.GetComponent<Animator>().Play("Anime_PainelDicas");
 
-                FechaPainel_Guia();//testando****
-                habilitaBtnRestart = false;//testando****
+                FechaPainel_Guia();
+                habilitaBtnRestart = false;
             }
             else
             {
                 painel_Dicas.GetComponent<Animator>().Play("Anime_PainelDicasBack");
                 ativa_painel_Dicas = false;
-                GAMEMANAGER.instance.startGame = true;
+                DestravaClicksMods();
 
-                habilitaBtnRestart = true;//testando****
+                habilitaBtnRestart = true;
             }
+        }        
+    }
+
+    //trava o click sobre os mods
+    void TravaClicksMods()
+    {
+        for (int i = 0; i < circleManager.circles.Length; i++)
+        {
+            circleManager.circles[i].trava_Click = true;
+        }
+    }
+    //destrava o click sobre os mods
+    void DestravaClicksMods()
+    {
+        for (int i = 0; i < circleManager.circles.Length; i++)
+        {
+            circleManager.circles[i].trava_Click = false;
         }
     }
 
@@ -438,10 +519,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    //testando Aqui****
-    float xcristal;
+    //Contagem final do total de cristais ganhos
+    public float xcristal;
     public float velCon;
-    public void AtualizaCristalGreen(int cristais)//testando****
+    public void AtualizaCristalGreen(int cristais)
     {
         if (xcristal < cristais)
         {
@@ -479,9 +560,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    //trabalhando aqui****
-    float xmoedas;
-    public void AtualizaMoedaZ(int moedas)//testando****
+    //Contagem final do total de moedas ganhas
+    public float xmoedas;
+    public void AtualizaMoedaZ(int moedas)
     {
         if (xmoedas < moedas)
         {
@@ -491,6 +572,9 @@ public class UIManager : MonoBehaviour
                 xmoedas += 10 + (velCon * Time.deltaTime);
             else
                 xmoedas += 100 + (velCon * Time.deltaTime);
+
+            //efeito de audio da contagem das moedas
+            soundMoedas.Play();
 
             txt_showNmoeda.text = xmoedas.ToString("F0");
 
@@ -502,19 +586,23 @@ public class UIManager : MonoBehaviour
         }
         else if (xmoedas > moedas)
         {
-            xmoedas -= 1 + (velCon * Time.deltaTime);
+            if (moedas <= 100)
+                xmoedas -= 1 + (velCon * Time.deltaTime);
+            else if (moedas > 100 || moedas <= 1000)
+                xmoedas -= 10 + (velCon * Time.deltaTime);
+            else
+                xmoedas -= 100 + (velCon * Time.deltaTime);
+
+            //efeito de audio da contagem das moedas
+            soundMoedas.Play();
 
             txt_showNmoeda.text = xmoedas.ToString("F0");
 
             if (xmoedas < moedas)
             {
                 xmoedas = moedas;
-                txtCristalGreen.text = xcristal.ToString("F0");
+                txt_showNmoeda.text = xcristal.ToString("F0");
             }
-            //if (xmoedas == moedas)
-            //{
-            //    GAMEMANAGER.instance.liberaCristal = false;
-            //}
         }
     }
 
@@ -524,10 +612,12 @@ public class UIManager : MonoBehaviour
         UI_Metodo.CarregaCena(s);
     }
 
+    //btn novamente
     IEnumerator WaitSoundClick_btnRestart()
     {
         yield return new WaitForSeconds(0.4f);
         SceneManager.LoadScene(LevelAtual.instance.level);
+        RepeteLevel.instance.SaveRepetLevel();
     }
 
     IEnumerator WaitSoundClick_Voltar()
