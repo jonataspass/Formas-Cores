@@ -19,7 +19,7 @@ public class ScoreManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
-        {
+        {          
             Destroy(gameObject);
         }
 
@@ -94,7 +94,7 @@ public class ScoreManager : MonoBehaviour
                 {
                     score_FaseMestra_MCS = pts;//testando****
                     ZPlayerPrefs.SetInt(LevelAtual.instance.cenaAtual + "score", score_FaseMestra_MCS);
-                    print(pts);
+
                 }
             }
             else
@@ -148,8 +148,11 @@ public class ScoreManager : MonoBehaviour
             waitCont = true;
             //Salva pontuação a ser exibida no score da "FaseMestra"
             SalvaScore_FaseMestra(ptsMarcados_Total);
-            GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
-            GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);            
+            if(conta_ptsMarcados >= maxScore * 0.75 * 100)
+            {
+                GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
+                GAMEMANAGER.instance.SalvaCapacetes_Mestra(GAMEMANAGER.instance.numCapacetes);
+            }                        
         }
     }   
 }

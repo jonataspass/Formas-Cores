@@ -14,17 +14,10 @@ public class Dicas : MonoBehaviour
         public bool dicaAtiva;
         //Qtda de clicksIni é usado para diminuir a currentlife
         //e apresentar a qtda de clicks exatas necessárias
-        //public int qtdClickIni_Dica;
-        //public int dicaClick;
-        //public TextMeshProUGUI txtDica;//texto atribuído manualmente no inspector
-        //testando//preço de cada dica
+        //preço de cada dica
         public int priceDica;
         public TextMeshProUGUI textPriceDica;
         public Button btnAtiv;
-        //public TextMeshProUGUI txt_dicaUtilizada;
-
-        //testando
-        //public bool dicaUtilizada;
     }
 
     public DicasAtributos[] objDica;
@@ -34,17 +27,10 @@ public class Dicas : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI textCrsG_Insufic;
 
-    //[SerializeField]
-    //private FechaDica closeDica;
-
-    private void Update()
-    {
-        for (int i = 0; i < objDica.Length; i++)
-        {
-            //atualiza text Dica
-            //objDica[i].txtDica.text = objDica[i].dicaClick.ToString();
-        }
-    }
+    [SerializeField]
+    private TextMeshProUGUI txtBtnReiniciar;
+    [SerializeField]
+    GameObject btnMoedaReiniciar;
 
     void Start()
     {
@@ -57,56 +43,32 @@ public class Dicas : MonoBehaviour
             //objDica[i].txtDica.text = objDica[i].dicaClick.ToString();
             objDica[i].dicas.SetActive(false);
             objDica[i].textPriceDica.text = objDica[i].priceDica.ToString();
-            //objDica[i].dicaClick = circleManager.circles[i].currentlife - objDica[i].qtdClickIni_Dica;
-            //testando
-            //objDica[i].dicaUtilizada = false;
-            //objDica[i].txt_dicaUtilizada.enabled = false;
         }
-    }
-
-    void StartDicas()
-    {
-
     }
 
     public void LiberaDica(int index)
     {
-        //mudar para receber circleManager.circles[index].currentlife
-        //objDica[index].dicaClick = objDica[index].qtdClickIni_Dica;
-        //objDica[index].dicaClick = circleManager.circles[index].currentlife - objDica[index].qtdClickIni_Dica;
-
-        //testando****
-        //for (int i = 0; i <= index; i++)
-        //{
-        if (GAMEMANAGER.instance.cristalGreen >= objDica[index].priceDica
-            /*&& circleManager.circles[index].currentlife >= objDica[index].dicaClick
-            && objDica[index].dicaClick > 0*/)
+        if (GAMEMANAGER.instance.cristalGreen >= objDica[index].priceDica)
         {
-            print("index " + index);
             GAMEMANAGER.instance.DecrementaCristal(objDica[index].priceDica);
             objDica[index].dicas.SetActive(true);
             objDica[index].dicaAtiva = true;
-            //desabilita btnDica
             objDica[index].btnAtiv.enabled = false;
             objDica[index].btnAtiv.interactable = false;
-            //
+
             UIManager.instance.FechaPainel_Dica();
-            //testando
-            //objDica[index].dicaUtilizada = true;
-            //objDica[index].txt_dicaUtilizada.enabled = true;
+
+            UIManager.instance.btn_restart.interactable = true;
+            UIManager.instance.dicaComprada = true;
+            btnMoedaReiniciar.SetActive(false);
+            txtBtnReiniciar.text = "Usar dica";
+            
         }
         else if (GAMEMANAGER.instance.cristalGreen < objDica[index].priceDica)//cristais insufucientes para comprar a dica
         {
             textCrsG_Insufic.enabled = true;
             StartCoroutine(AlertaCristalInsufic());
         }
-        //else if( objDica[index].dicaClick <= 0)//módulo com energia insuficiente para acessar a dica
-        //{
-        //    textCrsG_Insufic.text = "Módulo com energia insuficiente para acessar esta dica";
-        //    textCrsG_Insufic.enabled = true;
-        //    StartCoroutine(AlertaCristalInsufic());                
-        //}
-        //}
     }
 
     public void Desat_Dica(int index)
@@ -114,12 +76,6 @@ public class Dicas : MonoBehaviour
         //Desativa Dica
         objDica[index].dicas.SetActive(false);
         objDica[index].dicaAtiva = false;
-        //Habilita btnDica
-        //if(objDica[index].dicaUtilizada == false)
-        //{
-        //    objDica[index].btnAtiv.enabled = true;
-        //    objDica[index].btnAtiv.interactable = true;
-        //}        
     }
 
     IEnumerator AlertaCristalInsufic()

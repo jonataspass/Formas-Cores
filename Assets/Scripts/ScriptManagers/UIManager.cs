@@ -57,7 +57,6 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI txtCristalGreen;
 
     public TextMeshProUGUI txt_Informativo, txt_num_tentativas;
-
     //btns
     public Button btnSair;
 
@@ -66,8 +65,7 @@ public class UIManager : MonoBehaviour
     private GameObject painel_Dicas;
     
     public Button btnPainel_Dicas;
-    [SerializeField]
-    private bool ativa_painel_Dicas;
+    public bool ativa_painel_Dicas;
 
     //Capacetes na barra de score
     [SerializeField]
@@ -98,11 +96,16 @@ public class UIManager : MonoBehaviour
 
     public AudioSource soundMoedas;
 
+    //[SerializeField]
+    //GameObject animaMaoCarregaCrs;
+        
     private void Update()
     {
         HabilitDesabilitBts_Painel_WL();
         habilitaBtnsCena();
         AtualizaUI();
+        //new
+        ConverteMisselToCoin();
     }
 
     void Carrega(Scene cena, LoadSceneMode modo)
@@ -164,7 +167,10 @@ public class UIManager : MonoBehaviour
             //Mão_Painel guia
             anime_mao = GameObject.FindWithTag("anime_mao");
             anime_mao.SetActive(false);
-            //chamando dentro de StarCoroutine(esperaWL())
+            //mão carrega crs tutorial
+            //animaMaoCarregaCrs = GameObject.FindWithTag("animeMao_Dica");
+            //animaMaoCarregaCrs.SetActive(false);
+
 
             //btns do "Painel_WL"
             btnVoltar_Painel_WL = GameObject.FindWithTag("btnVlt_P_WL").GetComponent<Button>();
@@ -245,7 +251,11 @@ public class UIManager : MonoBehaviour
         liberaMetodo_Painel_Guia = false;
         habilitabBtnsCena = false;
         habilitaBtnRestart = false;
-        
+        descarregaMissel = false;
+        dicaComprada = false;
+        ativa_painel_Dicas = false;
+        ativa_Painel_Guia = false;
+
         xmoedas = ZPlayerPrefs.GetInt("qtdMoedas");
         soundMoedas = GetComponent<AudioSource>();
 
@@ -263,7 +273,7 @@ public class UIManager : MonoBehaviour
         if (ScoreManager.instance.conta_ptsMarcados >= ScoreManager.instance.maxScore * 0.75 * 100)
         {
             capaceteBronze.enabled = true;
-
+            
             //capacetes dos btns das fases MCS, MCH, MCAH
             GAMEMANAGER.instance.numCapacetes = 1;
             //GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
@@ -276,9 +286,10 @@ public class UIManager : MonoBehaviour
             if (!ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenB"))
             {
                 ZPlayerPrefs.SetInt(LevelAtual.instance.level + "cristaisGreenB", 1);                    //cristalTemp = GAMEMANAGER.instance.cristalGreen;
-                cristalTemp = 5;
+                cristalTemp = 2;
                 GAMEMANAGER.instance.ColetaCristalGreen(cristalTemp);
                 GAMEMANAGER.instance.qtd_moedaSalvas += 50;
+                GAMEMANAGER.instance.SalvaMoedasZ(GAMEMANAGER.instance.qtd_moedaSalvas);
             }
 
             //Prata
@@ -298,9 +309,10 @@ public class UIManager : MonoBehaviour
                 if (!ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenP"))
                 {
                     ZPlayerPrefs.SetInt(LevelAtual.instance.level + "cristaisGreenP", 2);
-                    cristalTemp = 10;
+                    cristalTemp = 3;
                     GAMEMANAGER.instance.ColetaCristalGreen(cristalTemp);
                     GAMEMANAGER.instance.qtd_moedaSalvas += 100;
+                    GAMEMANAGER.instance.SalvaMoedasZ(GAMEMANAGER.instance.qtd_moedaSalvas);
                 }
 
                 //Ouro
@@ -320,9 +332,10 @@ public class UIManager : MonoBehaviour
                     if (!ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenO"))
                     {
                         ZPlayerPrefs.SetInt(LevelAtual.instance.level + "cristaisGreenO", 3);
-                        cristalTemp = 20;
+                        cristalTemp = 5;
                         GAMEMANAGER.instance.ColetaCristalGreen(cristalTemp);//testando****
                         GAMEMANAGER.instance.qtd_moedaSalvas += 200;
+                        GAMEMANAGER.instance.SalvaMoedasZ(GAMEMANAGER.instance.qtd_moedaSalvas);
                     }
                 }
             }
@@ -337,65 +350,141 @@ public class UIManager : MonoBehaviour
     public void UI_Win()
     {
         Painel_WL.SetActive(true);
-        //GAMEMANAGER.instance.win = false;
     }
 
     public void RestartLevel()
     {
-        if (GAMEMANAGER.instance.win == false)
+        if (GAMEMANAGER.instance.win == false && dicaComprada == false)
+        {
+            StartCoroutine(WaitSoundClick_btnRestart());
+
+            if(GAMEMANAGER.instance.liberaCargaCrs == false)
+            {
+                GAMEMANAGER.instance.qtd_moedaSalvas -= 300;
+                GAMEMANAGER.instance.SalvaMoedasZ(GAMEMANAGER.instance.qtd_moedaSalvas);
+            }
+            
+        }
+        else if(GAMEMANAGER.instance.win == false && dicaComprada == true)
         {
             StartCoroutine(WaitSoundClick_btnRestart());
         }
     }
 
+    //testando proximoLevel debloqueado
+    public bool proximoLevel_desbloqueado = false;
     public void HabilitDesabilitBts_Painel_WL()
     {
         if (LevelAtual.instance.level >= 6)
         {
             if (ScoreManager.instance.waitCont == true)
             {
-                btnVoltar_Painel_WL.enabled = true;
-                btnNovamente_Painel_WL.enabled = true;
-                btnProximo_Painel_WL.enabled = true;
+                btnVoltar_Painel_WL.interactable = true;
+                btnNovamente_Painel_WL.interactable = true;
+                btnProximo_Painel_WL.interactable = true;
             }
-            else
+            else if (ScoreManager.instance.waitCont == false && GAMEMANAGER.instance.startGame == false)
             {
-                btnVoltar_Painel_WL.enabled = false;
-                btnNovamente_Painel_WL.enabled = false;
-                btnProximo_Painel_WL.enabled = false;
+                btnVoltar_Painel_WL.interactable = false;
+                btnNovamente_Painel_WL.interactable = false;
+                btnProximo_Painel_WL.interactable = false;
             }
-            if (GAMEMANAGER.instance.lose == true)
+            else if (GAMEMANAGER.instance.lose == true)
             {
-                btnVoltar_Painel_WL.enabled = true;
-                btnNovamente_Painel_WL.enabled = true;
-                btnProximo_Painel_WL.enabled = false;
+                btnVoltar_Painel_WL.interactable = true;
+                btnNovamente_Painel_WL.interactable = true;
 
-                btnProximo_Painel_WL.gameObject.SetActive(false);
+                //desabilita btn próximo caso o próximo level estiver bloqueado
+                //ou habilita caso esteja desbloqueado
+                VerificaNextLevel();
+
+                
             }
         }
     }
 
+    //metodo verifica se proximo level está desbloqueado
+    //para habilitar btn proximo
+    void VerificaNextLevel()
+    {
+        //cena MCS
+        if (LevelAtual.instance.level >= 6 && LevelAtual.instance.level <= 30)
+        {
+            int temp = LevelAtual.instance.level - 5;
+            temp++;
+            if(ZPlayerPrefs.GetInt("Level" + temp + "_MCS") == 1)
+            {
+                btnProximo_Painel_WL.interactable = true;
+                btnProximo_Painel_WL.gameObject.SetActive(true);
+            }
+            else
+            {
+                print("2");
+                btnProximo_Painel_WL.interactable = false;
+                btnProximo_Painel_WL.gameObject.SetActive(false);
+            }
+        }
+        //cena MCH
+        else if (LevelAtual.instance.level >= 31)
+        {
+            int temp = LevelAtual.instance.level - 30;
+            temp++;
+            if (ZPlayerPrefs.GetInt("Level" + temp + "_MCH") == 1)
+            {
+                btnProximo_Painel_WL.interactable = true;
+                btnProximo_Painel_WL.gameObject.SetActive(true);
+            }
+            else
+            {
+                print("2");
+                btnProximo_Painel_WL.interactable = false;
+                btnProximo_Painel_WL.gameObject.SetActive(false);
+            }
+        }
+        //cena MCAH
+        else if (LevelAtual.instance.level == 10)
+        {
+            int temp = LevelAtual.instance.level - 9;
+            temp++;
+            ZPlayerPrefs.SetInt("Level" + temp + "_MCAH", 1);
+        }
+    }
+
+    //libera restart
+    public bool dicaComprada;
     public void habilitaBtnsCena()
     {
         if (LevelAtual.instance.level >= 6 && GAMEMANAGER.instance.painelExtraAtivado == false)
         {
             if (habilitabBtnsCena == true)
             {
-                btnPainel_Guia.enabled = true;
-                btnPainel_Dicas.enabled = true;
+                //print("1");
+                btnPainel_Guia.interactable = true;
+                btnPainel_Dicas.interactable = true;
             }
-            else
+            else if (habilitabBtnsCena == false)
             {
-                btnPainel_Guia.enabled = false;
-                btnPainel_Dicas.enabled = false;
+                //print("2");
+                btnPainel_Guia.interactable = false;
+                btnPainel_Dicas.interactable = false;
             }
             if (habilitaBtnRestart == true)
             {
-                btn_restart.enabled = true;
+                //print("3");
+                btn_restart.interactable = true;
             }
-            else
+            else if(habilitaBtnRestart == false)
             {
-                btn_restart.enabled = false;
+                //print("4");
+                btn_restart.interactable = false;
+            }
+            if(GAMEMANAGER.instance.num_tentativas <= 3 && dicaComprada == false)
+            {
+                btn_restart.interactable = false;                
+            }
+            if(GAMEMANAGER.instance.num_tentativas != circleManager.num_tentativas_Start)
+            {
+                btnSair.interactable = false;
             }
         }
     }
@@ -406,7 +495,6 @@ public class UIManager : MonoBehaviour
         {
             if (pl == false)
             {
-                print("painel");
                 TravaClicksMods();
                 ativa_Painel_Guia = true;
                 painel_Guia.SetActive(ativa_Painel_Guia);
@@ -574,7 +662,10 @@ public class UIManager : MonoBehaviour
                 xmoedas += 100 + (velCon * Time.deltaTime);
 
             //efeito de audio da contagem das moedas
-            soundMoedas.Play();
+            if(soundMoedas != null)
+            {
+                soundMoedas.Play();
+            }
 
             txt_showNmoeda.text = xmoedas.ToString("F0");
 
@@ -594,7 +685,10 @@ public class UIManager : MonoBehaviour
                 xmoedas -= 100 + (velCon * Time.deltaTime);
 
             //efeito de audio da contagem das moedas
-            soundMoedas.Play();
+            if (soundMoedas != null)
+            {
+                soundMoedas.Play();
+            }
 
             txt_showNmoeda.text = xmoedas.ToString("F0");
 
@@ -606,6 +700,36 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public bool descarregaMissel;
+    //converte mísseis em moedas
+    public void ConverteMisselToCoin()
+    {
+        if(GAMEMANAGER.instance.win == true && GAMEMANAGER.instance.cargaMissel > 0 
+            && descarregaMissel == true && ScoreManager.instance.waitCont == true)
+        {
+            descarregaMissel = false;
+            StartCoroutine(convertTeste());
+        }
+    }
+
+    ////tutorial carrega Crs
+    //public void CarregaCrsTutorial()
+    //{
+    //    if(GAMEMANAGER.instance.CrsCargaAtiva == 0)
+    //    {
+    //        animaMaoCarregaCrs.SetActive(true);
+    //    }
+    //}
+
+    //testando convertemissel to coin
+    IEnumerator convertTeste()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GAMEMANAGER.instance.cargaMissel -= 1;
+        GAMEMANAGER.instance.qtd_moedaSalvas += 5;
+        descarregaMissel = true;
+    }
+
     IEnumerator WaitSoundClick(string s)
     {
         yield return new WaitForSeconds(0.4f);
@@ -615,9 +739,11 @@ public class UIManager : MonoBehaviour
     //btn novamente
     IEnumerator WaitSoundClick_btnRestart()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(LevelAtual.instance.level);
         RepeteLevel.instance.SaveRepetLevel();
+        //deve ser zerado para não descotar no scoreFinal
+        GAMEMANAGER.instance.numTentativasExtras = 0;
     }
 
     IEnumerator WaitSoundClick_Voltar()

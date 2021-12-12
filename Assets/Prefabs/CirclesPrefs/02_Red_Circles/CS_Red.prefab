@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 7
   m_Sprite: {fileID: -5383671415335508278, guid: 6baf30057d43ab844b0e1ef77a40b8cd,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -178,7 +178,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7635273700423634259}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -213,6 +213,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e5a2539d93330b74eb8c4e054431e1ee, type: 3}
   effectsObjs: {fileID: 0}
   objD: {fileID: 0}
+  ativaCollMoeda: {fileID: 6984565887342887153}
 --- !u!82 &5469364878027219330
 AudioSource:
   m_ObjectHideFlags: 0
@@ -378,7 +379,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_Sprite: {fileID: -3516616012245760874, guid: 6baf30057d43ab844b0e1ef77a40b8cd,
     type: 3}
   m_Color: {r: 0.078431375, g: 0.7411765, b: 0.8980392, a: 0.36078432}
@@ -463,6 +464,12 @@ PrefabInstance:
 --- !u!4 &5538918490360652812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 249267316182268356, guid: 8b44bb013a445234cb459c66d3520321,
+    type: 3}
+  m_PrefabInstance: {fileID: 5740860584075894216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &6984565887342887153 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
     type: 3}
   m_PrefabInstance: {fileID: 5740860584075894216}
   m_PrefabAsset: {fileID: 0}

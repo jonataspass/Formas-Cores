@@ -61,15 +61,31 @@ public class Loanding : MonoBehaviour
     IEnumerator CenaDeCarregamento_BtnProximo(string codLevel)
     {
         yield return null;
-        //GAMEMANAGER.instance.win = false;
-        LevelAtual.instance.cenaAtual = "Level" + (LevelAtual.instance.level - 4) + codLevel;
+        
+        if(LevelAtual.instance.level >= 6 && LevelAtual.instance.level <= 30)
+        {
+            LevelAtual.instance.cenaAtual = "Level" + (LevelAtual.instance.level - 4) + codLevel;
+        }
+        else if(LevelAtual.instance.level >= 31)
+        {
+            LevelAtual.instance.cenaAtual = "Level" + (LevelAtual.instance.level - 29) + codLevel;
+        }
+        
         AsyncOperation carregamento = SceneManager.LoadSceneAsync(LevelAtual.instance.cenaAtual);
 
         carregamento.allowSceneActivation = false;
 
         while (!carregamento.isDone)
         {
-            LevelAtual.instance.cenaAtual = "Level" + (LevelAtual.instance.level - 4) + codLevel;
+            //LevelAtual.instance.cenaAtual = "Level" + (LevelAtual.instance.level - 4) + codLevel;
+            if (LevelAtual.instance.level >= 6 && LevelAtual.instance.level <= 30)
+            {
+                LevelAtual.instance.cenaAtual = "Level" + (LevelAtual.instance.level - 4) + codLevel;
+            }
+            else if (LevelAtual.instance.level >= 31)
+            {
+                LevelAtual.instance.cenaAtual = "Level" + (LevelAtual.instance.level - 29) + codLevel;
+            }
             txt_porcentagemDeCarregamento.text = "Loading " + (carregamento.progress * 100).ToString("N0") + "%";
             animeLoading.Play("AnimeLoading");
 

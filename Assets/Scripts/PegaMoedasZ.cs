@@ -22,14 +22,8 @@ public class PegaMoedasZ : MonoBehaviour
 
     void Start()
     {
-        //audio_pegaMissel = GetComponent<AudioSource>();
-        //animacarregaMissel = GetComponent<Animator>();
-        //animacarregaMissel.Play("AnimeGeraMissel");
-        text_itemMoeda = GetComponentInChildren<TextMeshProUGUI>();
+        //text_itemMoeda = GetComponentInChildren<TextMeshProUGUI>();
         text_itemMoeda.text = qtdmoedaTxt.ToString() + "x";
-        //pegaMoeda = GetComponent<Collider2D>();
-        //pegaMoeda.enabled = false;
-        //StartCoroutine(LigaCollMoeda());
 
         txt_numMoeda = GetComponentInChildren<Canvas>();
         txt_numMoeda.transform.position = new Vector2(txt_numMoeda.transform.position.x + desloCanvasX, txt_numMoeda.transform.position.y + desloCanvasY);
@@ -53,19 +47,10 @@ public class PegaMoedasZ : MonoBehaviour
         }
     }
 
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    pegouMoeda = false;
-    //}
-
     void Coleta_Moeda()
     {
-        //if (pegouMoeda == false)
-        //{
-            GAMEMANAGER.instance.qtd_moedaSalvas += 100;
-            GAMEMANAGER.instance.moedaPegas += 1;
-            Destroy(gameObject);
-            //pegouMoeda = true;
-        //}
+        GAMEMANAGER.instance.qtd_moedaSalvas += 10;
+        GAMEMANAGER.instance.moedaPegas += 1;
+        Destroy(gameObject);
     }
 }

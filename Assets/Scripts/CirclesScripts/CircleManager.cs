@@ -39,6 +39,13 @@ public class CircleManager : MonoBehaviour
     private void Update()
     {
         InitExtralife();
+        if(GAMEMANAGER.instance.lose == true)
+        {
+            for (int i = 0; i < circles.Length; i++)
+            {
+               circles[i].trava_Click = true;
+            }
+        }
     }
 
     //método que guarda energia de inicialização para ser reutilizada 
@@ -63,10 +70,12 @@ public class CircleManager : MonoBehaviour
             }
 
             //desativa os btns da cena
-            UIManager.instance.btnPainel_Guia.enabled = false;
-            UIManager.instance.btnPainel_Dicas.enabled = false;
-            UIManager.instance.btnSair.enabled = false;
-            UIManager.instance.btn_restart.enabled = false;
+            UIManager.instance.btnPainel_Guia.interactable = false;
+            UIManager.instance.btnPainel_Dicas.interactable = false;
+            //UIManager.instance.btnSair.enabled = false;
+            UIManager.instance.btnSair.interactable = false;
+            UIManager.instance.btn_restart.interactable = false;
+            //UIManager.instance.btn_restart.enabled = false;
 
             GAMEMANAGER.instance.painelExtraAtivado = true;
         }
@@ -81,21 +90,19 @@ public class CircleManager : MonoBehaviour
 
             for (int i = 0; i < circles.Length; i++)
             {
-                circles[i].currentlife = circles[i].extra_life;
+                //circles[i].currentlife = circles[i].extra_life;
+                circles[i].currentlife = 7;
             }
 
             //ativa os btns da cena
             UIManager.instance.btnPainel_Guia.enabled = true;
             UIManager.instance.btnPainel_Dicas.enabled = true;
-            UIManager.instance.btnSair.enabled = true;
-            UIManager.instance.btn_restart.enabled = true;
+            UIManager.instance.btnSair.interactable = true;
+            UIManager.instance.btn_restart.interactable = true;
 
             GAMEMANAGER.instance.painelExtraAtivado = false;
         }        
     }
-
-    //quando player usou tentativas extras => getExtra == true 
-    //quando getExtra == true => inicializa a energia de todos o módulos
 
     //Inicializa os ângulos das Circles
     void IniCirclesAng()
@@ -128,9 +135,9 @@ public class CircleManager : MonoBehaviour
             contCircle++;
         }
         
-        maxPontoTemp = (((currentLifeTemp - totalClicks) * 100) + (contCircle * 100) + (totalMoedasLevel * 300)) * dificuldadeLevel;
+        maxPontoTemp = (((currentLifeTemp - num_tentativas_Ideal) * 100) + (contCircle * 100) + (totalMoedasLevel * 300)) * dificuldadeLevel;
         ScoreManager.instance.maxScore = maxPontoTemp / 100;
-        print(totalMoedasLevel);
+        //print(totalMoedasLevel);
     }
 
     //Define pontuação final do level corrente
@@ -139,7 +146,6 @@ public class CircleManager : MonoBehaviour
         int currentLifeTemp = (num_tentativas_Start - num_tentativas_Ideal);
         int contCircleTemp = 0;
         int maxPontoTemp = 0;
-        int currentclicksTotal = 0;
         int moedasDontGet = (totalMoedasLevel - GAMEMANAGER.instance.moedaPegas);
 
         for (int i = 0; i < circles.Length; i++)
@@ -147,17 +153,18 @@ public class CircleManager : MonoBehaviour
             currentLifeTemp += circles[i].currentlife;
             contCircleTemp++;
         }
+        
+        maxPontoTemp = ((((currentLifeTemp * 100) + (contCircleTemp * 100))  
+            - (((GAMEMANAGER.instance.numTentativasExtras * 300) + descontraExtralife))) 
+            + (GAMEMANAGER.instance.moedaPegas * 300)) * dificuldadeLevel;
 
-        for (int i = 0; i < circles.Length; i++)
+        if(maxPontoTemp >= 1000)
         {
-            for (int j = 0; j < circles[i].currentClicks; j++)
-            {
-                currentclicksTotal++;
-            }
+            ScoreManager.instance.ptsMarcados_Total += maxPontoTemp;
         }
+        else
 
-        maxPontoTemp = ((((currentLifeTemp * 100) + (contCircleTemp * 100))  - (GAMEMANAGER.instance.numTentativasExtras * 100)) + (GAMEMANAGER.instance.moedaPegas * 300)) * dificuldadeLevel;
-        ScoreManager.instance.ptsMarcados_Total += maxPontoTemp;
+        ScoreManager.instance.ptsMarcados_Total += 1000;
     }
 }
 

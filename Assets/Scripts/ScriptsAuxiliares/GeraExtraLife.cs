@@ -10,7 +10,7 @@ public class GeraExtraLife : MonoBehaviour
 
     public bool tocando;
     public int num_extralife;
-    public int num_Maxextralife;
+    //public int num_Maxextralife;
 
     public int cargExtraLife;
     public int indexExtraLife;
@@ -18,10 +18,14 @@ public class GeraExtraLife : MonoBehaviour
     public float desloCanvasX, desloCanvasY;
 
     //new adiction
-    //variáveis usadas quando player usa tentativas extras
+    //variáveis usadas quando player usar tentativas extras
     public int extra_num_extralife;
     public int extra_num_Maxextralife;
     public int extra_cargExtraLife;
+
+    //testando new adiction
+    public GameObject portalExtraLife;
+    public Animator destroiPortalExtralife;
 
     void Start()
     {
@@ -30,21 +34,17 @@ public class GeraExtraLife : MonoBehaviour
 
         //new adiction
         extra_num_extralife = num_extralife;
-        extra_num_Maxextralife = num_Maxextralife;
         extra_cargExtraLife = cargExtraLife;
     }
-    
-    //new adiction
+
     private void Update()
     {
-        //if(GAMEMANAGER.instance.num_tentativas > 0 && GAMEMANAGER.instance.getExtra == true)
-        //{
-        //    GAMEMANAGER.instance.getExtra = false;
+            if (tocando == false)
+                Gera_extralife();
 
-        //     num_extralife = extra_num_extralife;
-        //     num_Maxextralife = extra_num_Maxextralife;
-        //     cargExtraLife = extra_cargExtraLife;
-        //}       
+            //new adiction
+            extra_num_extralife = num_extralife;
+            extra_cargExtraLife = cargExtraLife;
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
@@ -68,16 +68,22 @@ public class GeraExtraLife : MonoBehaviour
 
     void Gera_extralife()
     {
-        if (num_extralife < num_Maxextralife && tocando == false && new_extralife == null)
+        if (num_extralife > 0 && tocando == false && new_extralife == null)
         {
             new_extralife = Instantiate(prefab_extralife) as GameObject;
             PegaEnergy extraL = new_extralife.GetComponent<PegaEnergy>();
             extraL.carga = cargExtraLife;
             extraL.index = indexExtraLife;
+            extraL.numRepetCarga = num_extralife;
             extraL.desloCanvasX = desloCanvasX;
             extraL.desloCanvasY = desloCanvasY;
             new_extralife.transform.position = gameObject.transform.position;
-            num_extralife += 1;
+            num_extralife -= 1;
+        }
+        else if(num_extralife == 0 && destroiPortalExtralife != null)
+        {
+            destroiPortalExtralife.Play("animeDestroiPortal"); 
+            Destroy(portalExtraLife, 1);
         }
     }
 }

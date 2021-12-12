@@ -22,7 +22,6 @@ public class GeraMoedasZ : MonoBehaviour
     {
         if (tocando == false)
         {
-            print("tocando");
             Gera_Moeda();
         }            
     }

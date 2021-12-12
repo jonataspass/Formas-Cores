@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3112457549090965574}
   - component: {fileID: 3112457549090965568}
   - component: {fileID: 3112457549090965573}
+  - component: {fileID: 248800161612673234}
   m_Layer: 0
   m_Name: portalEnergy
   m_TagString: Untagged
@@ -95,4 +96,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f93076567245046a4228ff2be34a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velRot: -10
+  velRot: -25
+--- !u!95 &248800161612673234
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3112457549090965569}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3d5a3b64dda4b744599bc7f9a6950b2b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

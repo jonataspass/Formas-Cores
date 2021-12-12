@@ -226,12 +226,11 @@ MonoBehaviour:
   circleEnergyCAH_Red: {fileID: 0}
   vel: 70
   limit: 0
-  travaClick: 0
   clips:
   - {fileID: 8300000, guid: e5a2539d93330b74eb8c4e054431e1ee, type: 3}
   effectsObjs: {fileID: 0}
   objD: {fileID: 0}
-  ativaCollMoeda: {fileID: 0}
+  ativaCollMoeda: {fileID: 1565081730717484357}
 --- !u!82 &5685329183191401090
 AudioSource:
   m_ObjectHideFlags: 0
@@ -244,7 +243,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 3
   Loop: 0
   Mute: 0
@@ -488,22 +487,22 @@ PrefabInstance:
     - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.007013656
+      value: 0.007013567
       objectReference: {fileID: 0}
     - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.33529472
+      value: 0.27828377
       objectReference: {fileID: 0}
     - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.2140977
+      value: 0.24260294
       objectReference: {fileID: 0}
     - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.28356442
+      value: 0.34057492
       objectReference: {fileID: 0}
     - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}
@@ -520,6 +519,12 @@ PrefabInstance:
 --- !u!4 &4145652675468779960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 249267316182268356, guid: 8b44bb013a445234cb459c66d3520321,
+    type: 3}
+  m_PrefabInstance: {fileID: 4250767381151766652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1565081730717484357 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
     type: 3}
   m_PrefabInstance: {fileID: 4250767381151766652}
   m_PrefabAsset: {fileID: 0}

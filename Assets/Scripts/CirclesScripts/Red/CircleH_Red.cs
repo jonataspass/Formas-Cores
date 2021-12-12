@@ -79,7 +79,8 @@ public class CircleH_Red : MonoBehaviour
             {
                 effectsObjs.clip = clips[0];
                 effectsObjs.Play();
-                circleManager.circles[indexVetCircles].currentClicks++;
+                //incrementa numClickstotal
+                circleManager.totalClicks += 1;
                 //decrementa tentativas 
                 GAMEMANAGER.instance.num_tentativas--;
             }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 399212893773301266}
   - component: {fileID: 7359249255055272350}
   - component: {fileID: 1182774419}
+  - component: {fileID: 1843215915561542616}
   m_Layer: 0
   m_Name: CAHRA_Red
   m_TagString: Untagged
@@ -138,11 +139,111 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipo: CAHRA_Red
   indexVetCircles: 0
-  energyCH_Red: {fileID: 0}
   circleManager: {fileID: 0}
+  circleEnergyCH_Red: {fileID: 0}
   autoRot: 0
-  vel: 0
-  travaClick: 0
+  vel: 70
+  clips:
+  - {fileID: 8300000, guid: e5a2539d93330b74eb8c4e054431e1ee, type: 3}
+  effectsObjs: {fileID: 0}
+  objD: {fileID: 0}
+  ativaCollMoeda: {fileID: 1746401888164151731}
+--- !u!82 &1843215915561542616
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399212893773301264}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1183746075744044669
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +388,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.021600898
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.19999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.26949212
+      objectReference: {fileID: 0}
     - target: {fileID: 5555522245673611968, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}
       propertyPath: m_Name
@@ -297,6 +413,12 @@ PrefabInstance:
 --- !u!4 &3750495656673862990 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 249267316182268356, guid: 8b44bb013a445234cb459c66d3520321,
+    type: 3}
+  m_PrefabInstance: {fileID: 3997503910147808394}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1746401888164151731 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
     type: 3}
   m_PrefabInstance: {fileID: 3997503910147808394}
   m_PrefabAsset: {fileID: 0}

@@ -69,7 +69,8 @@ public class CircleAntH_Orange : MonoBehaviour
             {
                 effectsObjs.clip = clips[0];
                 effectsObjs.Play();
-                circleManager.circles[indexVetCircles].currentClicks++;
+                //incrementa numClickstotal
+                circleManager.totalClicks += 1;
                 //decrementa tentativas 
                 //new***//new****add aos outros circlesScrpts
                 GAMEMANAGER.instance.num_tentativas--;

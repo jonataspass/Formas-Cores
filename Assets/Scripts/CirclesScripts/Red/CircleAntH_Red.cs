@@ -22,8 +22,6 @@ public class CircleAntH_Red : MonoBehaviour
     private float vel = 0;
     //Variável sentinela -> controla a rotação do obj dentro do método Update().
     public float limit;
-    //Controla velocidade de clicks do usuário
-    public bool travaClick;
 
     //audios
     public AudioClip[] clips;
@@ -83,7 +81,8 @@ public class CircleAntH_Red : MonoBehaviour
             {
                 effectsObjs.clip = clips[0];
                 effectsObjs.Play();
-                circleManager.circles[indexVetCircles].currentClicks++;
+                //incrementa numClickstotal
+                circleManager.totalClicks += 1;
                 //decrementa tentativas 
                 GAMEMANAGER.instance.num_tentativas--;
             }
@@ -138,7 +137,7 @@ public class CircleAntH_Red : MonoBehaviour
             }
             circleManager.circles[indexVetCircles].circleTransform.transform.rotation = Quaternion.Euler(0, 0, limit);
         }
-    }
+    }    
 
     //Atualização da energia deste obj
     void AtualizaEnergy()
@@ -147,11 +146,6 @@ public class CircleAntH_Red : MonoBehaviour
         {
             circleEnergyCAH_Red.AtualizaCircleEnergy(indexVetCircles);
         }
-    }
-
-    IEnumerator DestroyCristal()
-    {
-        yield return new WaitForSeconds(1f);
     }
 
     IEnumerator DestravaClick()

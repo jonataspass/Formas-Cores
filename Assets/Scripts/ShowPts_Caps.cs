@@ -17,40 +17,41 @@ public class ShowPts_Caps : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI txt_capBronze_MCAH, txt_capPrata_MCAH, txt_capOuro_MCAH;
 
+    [SerializeField]
+    TextMeshProUGUI totalScore, totalCristais, totalMoedas, totalMeteors;
+
     public LevelManager levelManager;
 
     private int[] ptsVal;
-    private int[] capsB, capsP, capsO;
+    public int[] capsB, capsP, capsO;
+    int totalCapsB, totalCapsP, totalCapsO;
+    int totalPts_recompensas;
 
     private void Update()
     {
         txtPts_MCS.text = ptsVal[0].ToString();
-        txtPts_MCH.text = ptsVal[1].ToString();
-        txtPts_MCAH.text = ptsVal[2].ToString();
+
+        if (GAMEMANAGER.instance.desbloMS2 == 1)
+            txtPts_MCH.text = ptsVal[1].ToString();
+
+        if (GAMEMANAGER.instance.desbloMS3 == 1)
+            txtPts_MCAH.text = ptsVal[2].ToString();
 
         //repassa total de cada tipo de capacete para o script RecompensaManager
-        GAMEMANAGER.instance.recompensaCapaceteB = capsB[0];
+        GAMEMANAGER.instance.recompensaCapaceteB = totalCapsB;
+        GAMEMANAGER.instance.recompensaCapaceteP = totalCapsP;
+        GAMEMANAGER.instance.recompensaCapaceteO = totalCapsO;
+        //repassa total de pts de todas as fases mestras
+        GAMEMANAGER.instance.totalScore_recompensas = totalPts_recompensas;
+        totalScore.text = totalPts_recompensas.ToString();
+        totalCristais.text = ZPlayerPrefs.GetInt("cristaisGreen_Total").ToString();
+        totalMoedas.text = ZPlayerPrefs.GetInt("qtdMoedas").ToString();
+        totalMeteors.text = ZPlayerPrefs.GetInt("meteorsDestruidos").ToString();
     }
 
     private void Awake()
     {
-        ZPlayerPrefs.Initialize("157JONATAS", "157157157");
-
-        //txt Pts Mestra
-        txtPts_MCS = GameObject.FindWithTag("txtPts_MCS").GetComponent<TextMeshProUGUI>();
-        txtPts_MCH = GameObject.FindWithTag("txtPts_MCH").GetComponent<TextMeshProUGUI>();
-        txtPts_MCAH = GameObject.FindWithTag("txtPts_MCAH").GetComponent<TextMeshProUGUI>();
-
-        //txt Capacetes Mestra
-        txt_capBronze_MCS = GameObject.FindWithTag("txtCapsB_MCS").GetComponent<TextMeshProUGUI>();
-        txt_capPrata_MCS = GameObject.FindWithTag("txtCapsP_MCS").GetComponent<TextMeshProUGUI>();
-        txt_capOuro_MCS = GameObject.FindWithTag("txtCapsO_MCS").GetComponent<TextMeshProUGUI>();
-        txt_capBronze_MCH = GameObject.FindWithTag("txtCapsB_MCH").GetComponent<TextMeshProUGUI>();
-        txt_capPrata_MCH = GameObject.FindWithTag("txtCapsP_MCH").GetComponent<TextMeshProUGUI>();
-        txt_capOuro_MCH = GameObject.FindWithTag("txtCapsO_MCH").GetComponent<TextMeshProUGUI>();
-        txt_capBronze_MCAH = GameObject.FindWithTag("txtCapsB_MCAH").GetComponent<TextMeshProUGUI>();
-        txt_capPrata_MCAH = GameObject.FindWithTag("txtCapsP_MCAH").GetComponent<TextMeshProUGUI>();
-        txt_capOuro_MCAH = GameObject.FindWithTag("txtCapsO_MCAH").GetComponent<TextMeshProUGUI>();
+        ZPlayerPrefs.Initialize("157JONATAS", "157157157");           
 
         ptsVal = new int[3];
         capsB = new int[3];
@@ -58,7 +59,7 @@ public class ShowPts_Caps : MonoBehaviour
         capsO = new int[3];
 
         //Laço qu percorre os levels de cada Mestra
-        for (int i = 0; i < 10; i++)//i < 2 levels por mestra por enquanto
+        for (int i = 0; i < 25; i++)//i < 25 pois cada mestra  possui apenas 25 leveis 
         {
             //Pts do score Mestra
             ptsVal[0] += ZPlayerPrefs.GetInt("Level" + (i + 1) + "_MCSscore");
@@ -74,19 +75,43 @@ public class ShowPts_Caps : MonoBehaviour
             capsO[1] += ZPlayerPrefs.GetInt("Level" + (i + 1) + "_MCHcapaceteOuro");
             capsB[2] += ZPlayerPrefs.GetInt("Level" + (i + 1) + "_MCAHcapaceteBronze");
             capsP[2] += ZPlayerPrefs.GetInt("Level" + (i + 1) + "_MCAHcapacetePrata");
-            capsO[2] += ZPlayerPrefs.GetInt("Level" + (i + 1) + "_MCAHcapaceteOuro");
+            capsO[2] += ZPlayerPrefs.GetInt("Level" + (i + 1) + "_MCAHcapaceteOuro");            
         }
 
+        //total capacetes
+        totalCapsB += capsB[0] + capsB[1] + capsB[2];
+        totalCapsP += capsP[0] + capsP[1] + capsP[2];
+        totalCapsO += capsO[0] + capsO[1] + capsO[2];
+
+        //total pontos
+        totalPts_recompensas += ptsVal[0] + ptsVal[1] + ptsVal[2];
+
+        //inicia desbloqueada fase mestra1 
         txt_capBronze_MCS.SetText(capsB[0].ToString());
         txt_capPrata_MCS.SetText(capsP[0].ToString());
         txt_capOuro_MCS.SetText(capsO[0].ToString());
-        txt_capBronze_MCH.SetText(capsB[1].ToString());
-        txt_capPrata_MCH.SetText(capsP[1].ToString());
-        txt_capOuro_MCH.SetText(capsO[1].ToString());
-        txt_capBronze_MCAH.SetText(capsB[2].ToString());
-        txt_capPrata_MCAH.SetText(capsP[2].ToString());
-        txt_capOuro_MCAH.SetText(capsO[2].ToString());
+
+        //desbloqueia fase mestra2
+        if (GAMEMANAGER.instance.desbloMS2 == 1)
+        {
+            txt_capBronze_MCH.SetText(capsB[1].ToString());
+            txt_capPrata_MCH.SetText(capsP[1].ToString());
+            txt_capOuro_MCH.SetText(capsO[1].ToString());
+        }
+        //desbloqueia fase mestra3
+        if (GAMEMANAGER.instance.desbloMS3 == 1)
+        {
+            txt_capBronze_MCAH.SetText(capsB[2].ToString());
+            txt_capPrata_MCAH.SetText(capsP[2].ToString());
+            txt_capOuro_MCAH.SetText(capsO[2].ToString());
+        }
+
+        //carrega capacetes de ouro no script recompensaManager
+        GAMEMANAGER.instance.capsOuro_msOne = capsO[0];
+        GAMEMANAGER.instance.capsOuro_msTwo = capsO[1];
 
         //ZPlayerPrefs.DeleteAll();
+
+        //AtualizaTxt_ptsMestas();
     }
 }

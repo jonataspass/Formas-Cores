@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
     public Loanding loanding;
+    public RectTransform positionPanelBtns;
+    public float posBtnsL;
 
     private void Awake()
     {
@@ -32,6 +34,27 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         AddBtn();
+
+        if (ZPlayerPrefs.HasKey(LevelAtual.instance.cenaAtual + "salvaPos"))
+        {
+            posBtnsL = ZPlayerPrefs.GetFloat(LevelAtual.instance.cenaAtual +"salvaPos");
+            positionPanelBtns.position = new Vector2(positionPanelBtns.position.x, posBtnsL);
+        }
+        else
+        {
+            positionPanelBtns.position = new Vector2(positionPanelBtns.position.x, positionPanelBtns.position.y);
+        }
+
+        //ZPlayerPrefs.DeleteKey("Level3_MCS");
+    }
+
+    private void Update()
+    {
+        if (posBtnsL != positionPanelBtns.position.y)
+        {
+            posBtnsL = positionPanelBtns.position.y;
+            SavaPositionBtnLv(posBtnsL);
+        }
     }
 
     //Variáveis para geração dos btns
@@ -62,6 +85,9 @@ public class LevelManager : MonoBehaviour
                 lv.habilitado = true;
             }
 
+            //TESTANDO DESBLOQUEIO DE FASE MESTRA
+            VerificaUltimoLv(lv.level_Real, lv.habilitado);
+
             //desbloqueia btn
             newBtnTemp.desbloq_Btn = lv.desbloq;
             //Habilita btn
@@ -69,10 +95,8 @@ public class LevelManager : MonoBehaviour
             //Add o novo btn ao painel
             newBtn.transform.SetParent(localBtn, false);
 
-            //newBtnTemp.GetComponent<Button>().onClick.AddListener(() => ClickLevel(newBtnTemp.textLevel_Btn.text + "_" + LevelAtual.instance.cenaAtual));
             //testando****
             newBtnTemp.GetComponent<Button>().onClick.AddListener(() => loanding.Loading(newBtnTemp.textLevel_Btn.text + "_" + LevelAtual.instance.cenaAtual));
-            //loanding.Loading(newBtnTemp.textLevel_Btn.text + "_" + LevelAtual.instance.cenaAtual);
 
             //mostra os capacetes em cada btn
             if (ZPlayerPrefs.GetInt("Level" + newBtnTemp.realLevel + "_" + LevelAtual.instance.cenaAtual + "capacete") == 1)
@@ -98,12 +122,12 @@ public class LevelManager : MonoBehaviour
             }
 
             //Percorre os levels de cada fase mestra
-            if(LevelAtual.instance.cenaAtual == "MCS")
+            if (LevelAtual.instance.cenaAtual == "MCS")
             {
                 mestraMCS++;
                 ZPlayerPrefs.SetInt("LevelsMCS", mestraMCS);
             }
-            else if(LevelAtual.instance.cenaAtual == "MCH")
+            else if (LevelAtual.instance.cenaAtual == "MCH")
             {
                 mestraMCH++;
                 ZPlayerPrefs.SetInt("LevelsMCH", mestraMCH);
@@ -116,17 +140,28 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    //carrega cena pelo btnLevel
-    public void ClickLevel(string s)
+    //salva posição do content de btnslevel
+    void SavaPositionBtnLv(float pos)
     {
-        LevelAtual.instance.cenaAtual = s;
-        SceneManager.LoadScene(s);
-    }    
+        ZPlayerPrefs.SetFloat(LevelAtual.instance.cenaAtual + "salvaPos", pos);
+    }
 
-    IEnumerator WaitSoundClick(string s)
+    //metodo verifica se útimo level da fase mestra está desbloqueada
+    void VerificaUltimoLv(string ultimolv, bool habilitado)
     {
-        yield return new WaitForSeconds(0.4f);
-        LevelAtual.instance.cenaAtual = s;
-        SceneManager.LoadScene(s);
+        if (LevelAtual.instance.level == 3)
+        {
+            string nomeNivel = LevelAtual.instance.cenaAtual;            
+        }
+
+        //desbloqueio próximo nivel "MCH/MCAH..."
+        if (LevelAtual.instance.cenaAtual == "MCS" && ultimolv == "25")
+        {
+            if (habilitado == true)
+            {
+                ZPlayerPrefs.SetInt("DesbloqMCH", 1);
+                GAMEMANAGER.instance.desbloMS2 = 1;
+            }
+        }
     }
 }

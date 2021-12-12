@@ -8,37 +8,41 @@ public class GeraMissel : MonoBehaviour
     public GameObject prefab_missel;
 
     GameObject new_missel;
-    
+
     public bool tocando;
     public int num_Missel;
-    public int num_MaxMissel;
-
-   // public int randMissel;
 
     public int cargMissel;
 
     public float desloCanvasX, desloCanvasY;
 
-    //public CarregaMissel cargM;
+    //testando new adiction
+    public GameObject portalMissel;
+    public Animator destroiPortalMissel;
 
     void Start()
     {
         if (tocando == false)
-            Gera_Missel();      
+            Gera_Missel();
     }
 
     public void Gera_Missel()
     {
-        if (num_Missel < num_MaxMissel && tocando == false && new_missel == null)
+        if (num_Missel > 0 && tocando == false && new_missel == null)
         {
             new_missel = Instantiate(prefab_missel) as GameObject;
             CarregaMissel cargM = new_missel.GetComponent<CarregaMissel>();
             cargM.carga = cargMissel;
+            cargM.numRepeteCarga = num_Missel;
             cargM.desloCanvasX = desloCanvasX;
             cargM.desloCanvasY = desloCanvasY;
-
             new_missel.transform.position = gameObject.transform.position;
-            num_Missel += 1;
+            num_Missel -= 1;
+        }
+        else if (num_Missel == 0)
+        {
+            destroiPortalMissel.Play("animePortalMissel");
+            Destroy(portalMissel, 1);
         }
     }
 
@@ -46,7 +50,6 @@ public class GeraMissel : MonoBehaviour
     {
         if (coll.CompareTag("collReceptLazer"))
         {
-            //randMissel = Random.Range(0, 7);
             tocando = true;
         }
     }
@@ -57,10 +60,7 @@ public class GeraMissel : MonoBehaviour
         {
             tocando = false;
 
-            //if (randMissel != 0)
-            //{
-                Gera_Missel();
-            //}
+            Gera_Missel();
         }
     }
 }

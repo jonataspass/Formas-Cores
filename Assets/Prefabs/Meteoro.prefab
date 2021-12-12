@@ -157,7 +157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 19
+  m_SortingOrder: 25
   m_Sprite: {fileID: 590587900785439939, guid: cc5a138ba60d28546ac4f21de6368ca2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -222,7 +222,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7149999
+  m_Radius: 1.5
 --- !u!82 &1308128831810043541
 AudioSource:
   m_ObjectHideFlags: 0
@@ -385,6 +385,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AnimeExplo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121237590780470359, guid: 4fbb92f457582ac499763e5fbc9f6221,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fbb92f457582ac499763e5fbc9f6221, type: 3}

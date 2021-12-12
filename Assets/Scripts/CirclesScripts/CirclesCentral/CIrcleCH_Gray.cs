@@ -20,8 +20,6 @@ public class CIrcleCH_Gray : MonoBehaviour
     public int numCanhoes;
     //Tipo de shape
     public string tipo;
-    //trava -> controla a velocidade de clicks do usuário
-    public bool travaClick;
     //GameObject com Script CircleManager
     public CircleManager circleManager;
     //Energia deste Obj
@@ -52,11 +50,6 @@ public class CIrcleCH_Gray : MonoBehaviour
     private void Update()
     {
         AtualizaEnergy();
-        //add a todos scrips das circles
-        if (GAMEMANAGER.instance.num_tentativas == 0)
-        {
-            travaClick = true;
-        }
     }
 
     private void OnMouseDown()
@@ -80,7 +73,8 @@ public class CIrcleCH_Gray : MonoBehaviour
             {
                 effectsObjs.clip = clips[0];
                 effectsObjs.Play();
-                circleManager.circles[indexVetCircles].currentClicks++;
+                //incrementa numClickstotal
+                circleManager.totalClicks += 1;
                 //decrementa tentativas            
                 GAMEMANAGER.instance.num_tentativas--;
             }

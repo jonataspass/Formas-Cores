@@ -7,9 +7,12 @@ public class GeraMeteor : MonoBehaviour
     public GameObject prefab_meteor;
     GameObject new_meteor;
     public bool tocando;
-    public int num_Meteors;
+    int num_Meteors;
     public int num_MaxMeteor;
-    public int randMeteor;
+    int randMeteor;
+
+    //new adiction
+    public bool portalMeteorAtivo;
 
     void Start()
     {
@@ -21,13 +24,12 @@ public class GeraMeteor : MonoBehaviour
 
     void Gera_Meteor()
     {
-        if (num_Meteors < num_MaxMeteor && tocando == false)
+        if ((num_Meteors < num_MaxMeteor && tocando == false) || portalMeteorAtivo == true)
         {
             new_meteor = Instantiate(prefab_meteor) as GameObject;
 
             new_meteor.transform.position = gameObject.transform.position;
             num_Meteors += 1;
-            //GAMEMANAGER.instance.numRepetMeteor = num_Meteors;
         }
     }
 

@@ -7,6 +7,7 @@ public class BtnCarregaCristal : MonoBehaviour
 {
     public Image bCrs1, bCrs2, bCrs3, bCrs4, bCrs5;
     public Button btnCargaCrs;
+    public bool AdsOnceTime;
    
     //objeto controlado por outras variáveis no Scrip canvasObjsCircles
     public GameObject animeMaoCrs;
@@ -18,6 +19,7 @@ public class BtnCarregaCristal : MonoBehaviour
         btnCargaCrs = GetComponent<Button>();        
         animeMaoCrs = GameObject.FindWithTag("animeMaoCrs");
         animeMaoCrs.SetActive(false);
+        AdsOnceTime = false;
     }
 
     private void Update()
@@ -26,7 +28,14 @@ public class BtnCarregaCristal : MonoBehaviour
         {
             cont = 1;
             DecrementaCrs();
-            btnCargaCrs.enabled = false;
+            //btnCargaCrs.enabled = false;
+            //anuncio
+            if (AdsOnceTime == false && GAMEMANAGER.instance.num_tentativas > 0)
+            {
+                print("meteoro colidiu");
+                UnityAds.instance.ShowAds();
+                AdsOnceTime = true;
+            }
         }
         else if (GAMEMANAGER.instance.lose == false && cont == 1)
         {
@@ -39,7 +48,7 @@ public class BtnCarregaCristal : MonoBehaviour
         //trava iteração do btnCargaCrs
         if (GAMEMANAGER.instance.num_tentativas == 0)
         {
-            btnCargaCrs.enabled = false;
+            //btnCargaCrs.enabled = false;
         }
         else if (GAMEMANAGER.instance.num_tentativas > 0 && GAMEMANAGER.instance.getExtra == true)
         {
@@ -56,9 +65,9 @@ public class BtnCarregaCristal : MonoBehaviour
 
             GAMEMANAGER.instance.destTxtCanvas = false;
             GAMEMANAGER.instance.liberaCargaCrs = true;
-            GAMEMANAGER.instance.DecrementaCristal(5);//colocar 5 depois
-            GAMEMANAGER.instance.CrsCargaAtiva = 5;//5
-            GAMEMANAGER.instance.SalveCargaCrs(5);//5
+            GAMEMANAGER.instance.DecrementaCristal(5);
+            GAMEMANAGER.instance.CrsCargaAtiva = 5;
+            GAMEMANAGER.instance.SalveCargaCrs(5);
 
             UIManager.instance.txt_Informativo.enabled = false;
             StartCoroutine(PegaMaoCrs());
@@ -92,7 +101,7 @@ public class BtnCarregaCristal : MonoBehaviour
             GAMEMANAGER.instance.destTxtCanvas = true;
             //GAMEMANAGER.instance.travaBtnReompensa = false;
             GAMEMANAGER.instance.HabTex_Informativo("Você não possui cristais suficientes" +
-                "\n ganhe 01 cristal clicando no botão abaixo");
+                "\n ganhe 30 cristais clicando no botão abaixo");
             //recompensa
             UIManager.instance.painel_Recompensa.SetActive(true);
             UIManager.instance.crs.enabled = true;

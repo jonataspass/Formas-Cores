@@ -230,7 +230,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e5a2539d93330b74eb8c4e054431e1ee, type: 3}
   effectsObjs: {fileID: 0}
   objD: {fileID: 0}
-  ativaCollMoeda: {fileID: 0}
+  ativaCollMoeda: {fileID: 2295098996597021956}
 --- !u!82 &1509909863297163545
 AudioSource:
   m_ObjectHideFlags: 0
@@ -243,7 +243,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 3
   Loop: 0
   Mute: 0
@@ -392,27 +392,27 @@ PrefabInstance:
     - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}
       propertyPath: m_Offset.x
-      value: -0.004097879
+      value: -0.006249562
       objectReference: {fileID: 0}
     - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.06674319
+      value: 0.12019989
       objectReference: {fileID: 0}
     - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.30779165
+      value: 0.25221404
       objectReference: {fileID: 0}
     - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.262241
+      value: 0.36915433
       objectReference: {fileID: 0}
     - target: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5555522245673611968, guid: 8b44bb013a445234cb459c66d3520321,
         type: 3}
@@ -424,6 +424,12 @@ PrefabInstance:
 --- !u!4 &3740746154135861753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 249267316182268356, guid: 8b44bb013a445234cb459c66d3520321,
+    type: 3}
+  m_PrefabInstance: {fileID: 3502779628496715837}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &2295098996597021956 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3406282503932140857, guid: 8b44bb013a445234cb459c66d3520321,
     type: 3}
   m_PrefabInstance: {fileID: 3502779628496715837}
   m_PrefabAsset: {fileID: 0}

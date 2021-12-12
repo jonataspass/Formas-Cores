@@ -19,11 +19,12 @@ public class RotationMeteor : MonoBehaviour
 
     public Collider2D collMeteor;
 
-
     private void Awake()
     {
         meteor = GetComponent<Animator>();
-        meteor.Play("AnimeGera-meteor");
+        meteor.Play("AnimeGera-meteor");       
+        
+        //GAMEMANAGER.instance.numTotalmeteor = 0;
     }
 
     //public Transform[] meteoros_explodir;
@@ -31,6 +32,7 @@ public class RotationMeteor : MonoBehaviour
     private void Start()
     {
         meteor = GetComponent<Animator>();
+        GAMEMANAGER.instance.numTotalmeteor += 1;
 
         //anime_GeraMeteor = GetComponent<Animator>();
 
@@ -50,7 +52,7 @@ public class RotationMeteor : MonoBehaviour
         else
         {
             vel = _vel1;
-        }
+        }        
     }
 
     void Update()
@@ -62,6 +64,7 @@ public class RotationMeteor : MonoBehaviour
     {
         meteor.Play("meteoroExplo");
         soundExplod.Play();
+        GAMEMANAGER.instance.numTotalmeteor--;
         Destroy(gameObject, 1.5f);
     }
 
@@ -82,7 +85,7 @@ public class RotationMeteor : MonoBehaviour
             UIManager.instance.txt_Painel_info_WL.text = "O módulo colidiu com um meteóro";
             UIManager.instance.UI_Win();
             UIManager.instance.habilitabBtnsCena = false;
-            UIManager.instance.habilitaBtnRestart = false;
+            UIManager.instance.habilitaBtnRestart = false;            
         }
         if (coll.CompareTag("missel"))
         {
@@ -97,21 +100,31 @@ public class RotationMeteor : MonoBehaviour
     //dispara missel - relacionado com script Missel
     private void OnMouseDown()
     {
-        if (GAMEMANAGER.instance.cargaMissel > 0 && GAMEMANAGER.instance.misselAtivo == false)
+        if(GAMEMANAGER.instance.win == false && GAMEMANAGER.instance.lose == false
+            && (UIManager.instance.ativa_Painel_Guia == false && UIManager.instance.ativa_painel_Dicas == false)
+            && UIManager.instance.dicaComprada == false)
         {
-            GAMEMANAGER.instance.misselAtivo = true;
-            new_Missel = Instantiate(prefab_missel) as GameObject;
-            GAMEMANAGER.instance.positioMeteor = transform.position;
-            GAMEMANAGER.instance.speedMissel = GAMEMANAGER.instance.powerMissel;
-
-            if (GAMEMANAGER.instance.cargaMissel > 0)
+            if (GAMEMANAGER.instance.cargaMissel > 0 && GAMEMANAGER.instance.misselAtivo == false)
             {
-                GAMEMANAGER.instance.cargaMissel--;
+                //TRAVA CLICK
+                
+                GAMEMANAGER.instance.misselAtivo = true;
+                new_Missel = Instantiate(prefab_missel) as GameObject;
+                GAMEMANAGER.instance.positioMeteor = transform.position;
+                GAMEMANAGER.instance.speedMissel = GAMEMANAGER.instance.powerMissel;
+
+                if (GAMEMANAGER.instance.cargaMissel > 0)
+                {
+                    GAMEMANAGER.instance.cargaMissel--;
+                    GAMEMANAGER.instance.totalMeteorDestuidos += 1;
+
+                    GAMEMANAGER.instance.SalvaMetDestruidos(GAMEMANAGER.instance.totalMeteorDestuidos);
+                }
             }
-        }
-        else
-            GAMEMANAGER.instance.HabTex_Informativo("Sem mísseis");  
-    }
+            else
+                GAMEMANAGER.instance.HabTex_Informativo("Sem mísseis");
+        }         
+    } 
 
     void Ligacoll()
     {
@@ -123,7 +136,7 @@ public class RotationMeteor : MonoBehaviour
 
     IEnumerator LigaColl()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(0.5f);
         collMeteor = GetComponent<Collider2D>();
         collMeteor.enabled = true;
     }

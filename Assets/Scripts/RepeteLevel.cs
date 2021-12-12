@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 //ESSE SCRIPT CONTROLA A QUANTIDADE DE VEZEZ QUE O PLAYER REPETIU UM LEVEL AO PERDER
-//QUANDO O PLAYER PERDER 3 VEZEZ O GAME OFERECE AO PLAYER: ASSISTIR ANÚNCIO PARA GANHAR...
-//UMA DICA OU COMPRAR UMA DICA COM CRISTAIS
+//QUANDO O PLAYER PERDER 3 VEZEZ O GAME OFERECE AO PLAYER  COMPRAR UMA DICA COM CRISTAIS
 public class RepeteLevel : MonoBehaviour
 {
     public static RepeteLevel instance;
@@ -60,10 +59,6 @@ public class RepeteLevel : MonoBehaviour
             {
                 ZPlayerPrefs.SetInt("repeteLevel_" + LevelAtual.instance.level, ZPlayerPrefs.GetInt("repeteLevel_" + LevelAtual.instance.level) + 1);
             }
-
-
-            print("dica" + ZPlayerPrefs.GetInt("repeteLevel_" + LevelAtual.instance.level));
-            print("adsUnity" + PlayerPrefs.GetInt("AdsUnity"));
         }
     }
 
@@ -83,7 +78,13 @@ public class RepeteLevel : MonoBehaviour
             }
 
             ZPlayerPrefs.SetInt("repeteLevel_" + LevelAtual.instance.level, 0);
-            print("habilitadicaR");
         }
+    }
+
+    IEnumerator PegaAnimeMao()
+    {
+        yield return new WaitForSeconds(0.01f);
+        animaMao_Dica.SetActive(true);
+        animaMao_Dica = GameObject.FindWithTag("animeMao_Dica");
     }
 }

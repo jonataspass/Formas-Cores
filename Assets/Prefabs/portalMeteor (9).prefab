@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2018642984824267365}
   - component: {fileID: 2018642984824267362}
-  - component: {fileID: 2018642984824267363}
   - component: {fileID: 2018642984824267360}
   m_Layer: 0
   m_Name: portalMeteor (9)
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2018642984824267361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.56, y: -2.96, z: -8.188841}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,10 +70,10 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 23
   m_Sprite: {fileID: 5878909611540122580, guid: 2372bffe909bc1f498a152acf663e87e,
     type: 3}
-  m_Color: {r: 0.14526673, g: 0.5566038, b: 0.013127446, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.47058824}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,19 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2018642984824267363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018642984824267361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07f93076567245046a4228ff2be34a1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velRot: 0
 --- !u!114 &2018642984824267360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,4 +95,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f93076567245046a4228ff2be34a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velRot: -10
+  velRot: -100

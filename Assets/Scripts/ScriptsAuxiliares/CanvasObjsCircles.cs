@@ -39,16 +39,7 @@ public class CanvasObjsCircles : MonoBehaviour
         currentLife_temp = circleManager.circles[indexCircle].currentlife;
         linhaEnerg.color = new Color(255, 255, 255, 150);
         iconeEnerg.color = new Color(255, 255, 255, 150);
-        animeMaoCrs = GameObject.FindWithTag("animeMaoCrs");
-
-        if (!ZPlayerPrefs.HasKey("tutorialAnimeMaoCrs"))
-        {
-            ZPlayerPrefs.SetInt("tutorialAnimeMaoCrs", 0);
-        }
-
-        //print(ZPlayerPrefs.GetInt("tutorialAnimeMaoCrs"));
-
-        //ZPlayerPrefs.DeleteAll();
+        animeMaoCrs = GameObject.FindWithTag("animeMaoCrs");;
 
         StartCoroutine(PegaMaoCrs());
 
@@ -59,18 +50,17 @@ public class CanvasObjsCircles : MonoBehaviour
 
     }
 
-    //private void Update()
-    //{
-    //    Desativa_PainelInitEnergy();
-    //}
-
-    private void FixedUpdate()
+    private void Update()
     {
         AtualizaTextsCanvas();
     }
 
     void AtualizaTextsCanvas()
     {
+        if(GAMEMANAGER.instance.CrsCargaAtiva == 0)
+        {
+            animeMaoCrs.SetActive(true);
+        }
         if (GAMEMANAGER.instance.CrsCargaAtiva > 0 && contInitGame <= 10)
         {
             //print("0");
@@ -98,8 +88,12 @@ public class CanvasObjsCircles : MonoBehaviour
                     GAMEMANAGER.instance.startGame = true;
                     GAMEMANAGER.instance.Panel_InitEnergy.SetActive(false);
                     UIManager.instance.liberaMetodo_Painel_Guia = true;
-                    UIManager.instance.habilitabBtnsCena = true;
-                    UIManager.instance.habilitaBtnRestart = true;
+
+                    if(GAMEMANAGER.instance.lose == false || GAMEMANAGER.instance.win == true)
+                    {
+                        UIManager.instance.habilitabBtnsCena = true;
+                        UIManager.instance.habilitaBtnRestart = true;
+                    }                    
 
                     if(contInitGame > 10)
                     {
@@ -111,14 +105,14 @@ public class CanvasObjsCircles : MonoBehaviour
         else if (GAMEMANAGER.instance.CrsCargaAtiva == 0 && GAMEMANAGER.instance.lose == true
             && GAMEMANAGER.instance.cristalGreen > 0)
         {
-            GAMEMANAGER.instance.HabTex_Infor_NoCrs("Sem energia para inicializar os módulos\n click em novamente e carregue com cristais");
+            GAMEMANAGER.instance.HabTex_Infor_NoCrs("Sem energia para inicializar os módulos\n carregue com cristais");
 
-            if (ZPlayerPrefs.GetInt("tutorialAnimeMaoCrs") < 1)
-            {
-                animeMaoCrs.SetActive(true);
+            //if (ZPlayerPrefs.GetInt("tutorialAnimeMaoCrs") < 1)
+            //{
+            //    animeMaoCrs.SetActive(true);
 
-                ZPlayerPrefs.SetInt("tutorialAnimeMaoCrs", 1);
-            }
+            //    ZPlayerPrefs.SetInt("tutorialAnimeMaoCrs", 1);
+            //}
 
             UIManager.instance.painel_Recompensa.SetActive(false);
         }
@@ -128,12 +122,12 @@ public class CanvasObjsCircles : MonoBehaviour
             //GAMEMANAGER.instance.travaBtnReompensa = true;
             GAMEMANAGER.instance.HabTex_Infor_NoCrs("Sem energia para inicializar os módulos\n carregue com cristais");
 
-            if (ZPlayerPrefs.GetInt("tutorialAnimeMaoCrs") < 1)
-            {
-                animeMaoCrs.SetActive(true);
+            //if (ZPlayerPrefs.GetInt("tutorialAnimeMaoCrs") < 1)
+            //{
+            //    animeMaoCrs.SetActive(true);
 
-                ZPlayerPrefs.SetInt("tutorialAnimeMaoCrs", 1);
-            }
+            //    ZPlayerPrefs.SetInt("tutorialAnimeMaoCrs", 1);
+            //}
 
             UIManager.instance.painel_Recompensa.SetActive(false);
 
@@ -141,14 +135,14 @@ public class CanvasObjsCircles : MonoBehaviour
         else if (GAMEMANAGER.instance.CrsCargaAtiva == 0 && GAMEMANAGER.instance.destTxtCanvas == false
             && GAMEMANAGER.instance.cristalGreen == 0 && GAMEMANAGER.instance.travaBtnReompensa == false)
         {
-            GAMEMANAGER.instance.HabTex_Infor_NoCrs("Sem energia para inicializar os módulos\n ganhe 01 cristal clicando no botão abaixo");
+            GAMEMANAGER.instance.HabTex_Infor_NoCrs("Sem energia para inicializar os módulos\n ganhe 30 cristais clicando no botão abaixo");
 
-            if (ZPlayerPrefs.GetInt("tutorialAnimeMaoCrs") < 1)
-            {
-                animeMaoCrs.SetActive(true);
+            //if (ZPlayerPrefs.GetInt("tutorialAnimeMaoCrs") < 1)
+            //{
+            //    animeMaoCrs.SetActive(true);
 
-                ZPlayerPrefs.SetInt("tutorialAnimeMaoCrs", 1);
-            }
+            //    ZPlayerPrefs.SetInt("tutorialAnimeMaoCrs", 1);
+            //}
 
             //recompensa cristal
             UIManager.instance.painel_Recompensa.SetActive(true);
@@ -157,7 +151,6 @@ public class CanvasObjsCircles : MonoBehaviour
         }
 
         textCurrentLife.text = currentLifeTemp.ToString("F0");
-        textCurrentClicks.text = circleManager.circles[indexCircle].currentClicks.ToString();
         //aplicar a todos os módulos
         if (GAMEMANAGER.instance.CrsCargaAtiva <= 0)
         {

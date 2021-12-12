@@ -88,6 +88,16 @@ TagManager:
   - txtClicksObjetivo
   - txtMoedasObjetivo
   - btnOkObjetivos
+  - b
+  - p
+  - o
+  - rookie
+  - intermediate
+  - veteran
+  - destroyer
+  - msOne
+  - msTwo
+  - txtEx
   layers:
   - Default
   - TransparentFX
@@ -98,7 +108,7 @@ TagManager:
   - 
   - 
   - geraItem
-  - 
+  - meteor
   - 
   - 
   - 

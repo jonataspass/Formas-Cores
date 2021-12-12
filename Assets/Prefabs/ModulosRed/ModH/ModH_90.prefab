@@ -363,6 +363,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CH_Red_SE
       objectReference: {fileID: 0}
+    - target: {fileID: 2295098996597021956, guid: 7f345848ff5af29449ee40c26f0c7d6e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2425419689932730194, guid: 7f345848ff5af29449ee40c26f0c7d6e,
         type: 3}
       propertyPath: clips.Array.size

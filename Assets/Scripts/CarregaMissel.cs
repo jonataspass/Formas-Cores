@@ -5,15 +5,14 @@ using TMPro;
 
 public class CarregaMissel : MonoBehaviour
 {
-   // CircleManager circleManager;
-
     //recebe cargMissel do script GeraMissel
     public int carga;
+    public int numRepeteCarga;
 
     AudioSource audio_pegaMissel;
 
     public Animator animacarregaMissel;
-    public TextMeshProUGUI text_itemMissel;
+    public TextMeshProUGUI text_cargaMissel, text_numRepet;
 
     public Collider2D pegaMissel;
 
@@ -22,12 +21,12 @@ public class CarregaMissel : MonoBehaviour
 
     void Start()
     {
-        //circleManager = GameObject.FindWithTag("circleManager").GetComponent<CircleManager>();
         audio_pegaMissel = GetComponent<AudioSource>();
         animacarregaMissel = GetComponent<Animator>();
         animacarregaMissel.Play("AnimeGeraMissel");
-        text_itemMissel = GetComponentInChildren<TextMeshProUGUI>();
-        text_itemMissel.text = carga.ToString();
+        //text_cargaMissel = GetComponentInChildren<TextMeshProUGUI>();
+        text_cargaMissel.text = carga.ToString();
+        text_numRepet.text = numRepeteCarga.ToString() + "x";
         pegaMissel = GetComponent<Collider2D>();
         pegaMissel.enabled = false;
 

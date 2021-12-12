@@ -76,7 +76,8 @@ public class CircleCS_Gray : MonoBehaviour
             {
                 effectsObjs.clip = clips[0];
                 effectsObjs.Play();
-                circleManager.circles[indexVetCircles].currentClicks++;
+                //incrementa numClickstotal
+                circleManager.totalClicks += 1;
                 //decrementa tentativas            
                 GAMEMANAGER.instance.num_tentativas--;
             }
@@ -106,7 +107,7 @@ public class CircleCS_Gray : MonoBehaviour
             if (circleManager.circles[indexVetCircles].currentlife > 0)
             {
                 circleManager.circles[indexVetCircles].currentlife--;
-            }
+            }            
 
             StartCoroutine(DestravaClick());
         }

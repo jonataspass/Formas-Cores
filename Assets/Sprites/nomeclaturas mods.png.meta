@@ -1,0 +1,856 @@
+fileFormatVersion: 2
+guid: 5ad1cd0b8dcfb8b4c998f579daf4bab2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2921282692202520996
+    second: nomeclaturas mods_0
+  - first:
+      213: 6108262611402670047
+    second: nomeclaturas mods_1
+  - first:
+      213: -1443180943098614009
+    second: nomeclaturas mods_2
+  - first:
+      213: -7976646939235876448
+    second: nomeclaturas mods_3
+  - first:
+      213: -6449681896061296456
+    second: nomeclaturas mods_4
+  - first:
+      213: 6343944979711963317
+    second: nomeclaturas mods_5
+  - first:
+      213: -7891018940243525188
+    second: nomeclaturas mods_6
+  - first:
+      213: -1659747245624117837
+    second: nomeclaturas mods_7
+  - first:
+      213: 7730956273696819580
+    second: nomeclaturas mods_8
+  - first:
+      213: 337233998145588819
+    second: nomeclaturas mods_9
+  - first:
+      213: 3048310934911828953
+    second: nomeclaturas mods_10
+  - first:
+      213: -1173362669180020777
+    second: nomeclaturas mods_11
+  - first:
+      213: 1987397849871569315
+    second: nomeclaturas mods_12
+  - first:
+      213: -2628879021053014371
+    second: nomeclaturas mods_13
+  - first:
+      213: 8030628500119941696
+    second: nomeclaturas mods_14
+  - first:
+      213: 9052149668588871874
+    second: nomeclaturas mods_15
+  - first:
+      213: -760691108509686710
+    second: nomeclaturas mods_16
+  - first:
+      213: -4853692754750200185
+    second: nomeclaturas mods_17
+  - first:
+      213: 5363776338758558823
+    second: nomeclaturas mods_18
+  - first:
+      213: 8116759483482303066
+    second: nomeclaturas mods_19
+  - first:
+      213: -884690496185794734
+    second: nomeclaturas mods_20
+  - first:
+      213: -3165505239525178899
+    second: nomeclaturas mods_21
+  - first:
+      213: -4520642793589590881
+    second: nomeclaturas mods_22
+  - first:
+      213: 4761633752251190478
+    second: nomeclaturas mods_23
+  - first:
+      213: -1802805803064058740
+    second: nomeclaturas mods_24
+  - first:
+      213: 2191681813862730558
+    second: nomeclaturas mods_25
+  - first:
+      213: -5579116329446402113
+    second: nomeclaturas mods_26
+  - first:
+      213: 2536728022411645604
+    second: nomeclaturas mods_27
+  - first:
+      213: 8686205685030571350
+    second: nomeclaturas mods_28
+  - first:
+      213: 7104948143590856250
+    second: nomeclaturas mods_29
+  - first:
+      213: -2011760901528412810
+    second: nomeclaturas mods_30
+  - first:
+      213: -7874088377101020115
+    second: nomeclaturas mods_31
+  - first:
+      213: 586437935781997844
+    second: nomeclaturas mods_32
+  - first:
+      213: 6607977070862776956
+    second: nomeclaturas mods_33
+  - first:
+      213: -8943664976612977559
+    second: nomeclaturas mods_34
+  - first:
+      213: 1319790109680979796
+    second: nomeclaturas mods_35
+  - first:
+      213: 2436061128536184977
+    second: nomeclaturas mods_36
+  - first:
+      213: -1714790621895171801
+    second: nomeclaturas mods_37
+  - first:
+      213: 378642739341933780
+    second: nomeclaturas mods_38
+  - first:
+      213: -7218570965237336680
+    second: nomeclaturas mods_39
+  - first:
+      213: 78662415211544915
+    second: nomeclaturas mods_40
+  - first:
+      213: -5776769618888969560
+    second: nomeclaturas mods_41
+  - first:
+      213: 6635864072852489312
+    second: nomeclaturas mods_42
+  - first:
+      213: -8228885547785682594
+    second: nomeclaturas mods_43
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: nomeclaturas mods_0
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 516
+        width: 62
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a16a35812b7a8820800000000000000
+      internalID: 2921282692202520996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_1
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 514
+        width: 55
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdfb47b6b78e4c450800000000000000
+      internalID: 6108262611402670047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_2
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 516
+        width: 64
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70f6efb149ac8fbe0800000000000000
+      internalID: -1443180943098614009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_3
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 517
+        width: 56
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a18320fed14d4190800000000000000
+      internalID: -7976646939235876448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_4
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 516
+        width: 55
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b0aff6cc702e76a0800000000000000
+      internalID: -6449681896061296456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_5
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 514
+        width: 56
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b0ba5ee8583a0850800000000000000
+      internalID: 6343944979711963317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_6
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 513
+        width: 59
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb1c7ee05187d7290800000000000000
+      internalID: -7891018940243525188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_7
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 513
+        width: 59
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b534af7ca467f8e0800000000000000
+      internalID: -1659747245624117837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_8
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 512
+        width: 53
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c79c6c345cfd94b60800000000000000
+      internalID: 7730956273696819580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_9
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 513
+        width: 55
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35e07a9d8881ea400800000000000000
+      internalID: 337233998145588819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_10
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 512
+        width: 62
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d3cb5805a6cd4a20800000000000000
+      internalID: 3048310934911828953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_11
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 512
+        width: 58
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d712de7ed067bfe0800000000000000
+      internalID: -1173362669180020777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_12
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 459
+        width: 61
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a158f490d7a49b10800000000000000
+      internalID: 1987397849871569315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_13
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 459
+        width: 57
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e88a07578548bd0800000000000000
+      internalID: -2628879021053014371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_14
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 459
+        width: 52
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 042f6c0a216827f60800000000000000
+      internalID: 8030628500119941696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_15
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 457
+        width: 57
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c0e8e9c922bf9d70800000000000000
+      internalID: 9052149668588871874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_16
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 458
+        width: 64
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a446b75977b7175f0800000000000000
+      internalID: -760691108509686710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_17
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 457
+        width: 61
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7862a30d72834acb0800000000000000
+      internalID: -4853692754750200185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_18
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 459
+        width: 59
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 764695e5926ff6a40800000000000000
+      internalID: 5363776338758558823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_19
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 399
+        width: 43
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5aee3ceeb584a070800000000000000
+      internalID: 8116759483482303066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_20
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 397
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25f7ea65ea2f8b3f0800000000000000
+      internalID: -884690496185794734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_21
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 395
+        width: 34
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de1c67791cdd114d0800000000000000
+      internalID: -3165505239525178899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_22
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 396
+        width: 43
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f94b9a3a4537341c0800000000000000
+      internalID: -4520642793589590881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_23
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 396
+        width: 43
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecc41716ba8b41240800000000000000
+      internalID: 4761633752251190478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_24
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 395
+        width: 49
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8c9a5d7ca52bf6e0800000000000000
+      internalID: -1802805803064058740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_25
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 397
+        width: 42
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3bc8f76ffa6a6e10800000000000000
+      internalID: 2191681813862730558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_26
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 396
+        width: 37
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb714cef14ff292b0800000000000000
+      internalID: -5579116329446402113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_27
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 395
+        width: 41
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a210ab32b4443320800000000000000
+      internalID: 2536728022411645604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nomeclaturas mods_28
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 393
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65dc93e8c0a9b8870800000000000000
+      internalID: 8686205685030571350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

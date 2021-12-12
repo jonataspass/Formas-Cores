@@ -66,7 +66,7 @@ public class controlPanelRotation : MonoBehaviour
             GAMEMANAGER.instance.VerificaLose();
         }
         else if (GAMEMANAGER.instance.win == false && GAMEMANAGER.instance.qtd_moedaSalvas >= GAMEMANAGER.instance.extraTry * 100
-                 && travaExtra == false)
+                 && travaExtra == false && GAMEMANAGER.instance.lose == false)
         {
             GAMEMANAGER.instance.OfereceTentativasExtras();
         }
@@ -76,14 +76,11 @@ public class controlPanelRotation : MonoBehaviour
             GAMEMANAGER.instance.VerificaLose();
         }
 
-        //testando
+        //NÃO PERMITE QUE A PONTUAÇÃO SEJA MAIOR AO COMPRAR TENTATIVAS EXTRAS
         if(GAMEMANAGER.instance.numTentativasExtras * 100 > (ScoreManager.instance.maxScore * 100) / 10)
         {
             travaExtra = true;
         }
-
-        print((ScoreManager.instance.maxScore * 100) / 10);
-        print(GAMEMANAGER.instance.numTentativasExtras * 100);
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
