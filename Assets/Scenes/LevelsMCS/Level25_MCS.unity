@@ -23671,14 +23671,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1178376266}
-        m_MethodName: LoadingBtnProximo
+        m_MethodName: Loading
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: _MCH
+          m_StringArgument: 2_FaseMestra
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1874849902
@@ -24070,7 +24070,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 944, y: 2522387.5}
+  m_AnchoredPosition: {x: 944, y: 2522912.5}
   m_SizeDelta: {x: 775.8, y: 3192.2}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1904888481

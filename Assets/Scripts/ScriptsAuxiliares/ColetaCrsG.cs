@@ -16,6 +16,11 @@ public class ColetaCrsG : MonoBehaviour
         }            
     }
 
+    private void Update()
+    {
+        UIManager.instance.AtualizaCristalGreen(GAMEMANAGER.instance.cristalGreen);
+    }
+
     //Coleta cristais de energia
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,7 +29,8 @@ public class ColetaCrsG : MonoBehaviour
             GAMEMANAGER.instance.id_Crs_gameManager = id_crs;
             GAMEMANAGER.instance.coletouCrs = true;
             GAMEMANAGER.instance.ColetaCristalGreen(10);
-            UIManager.instance.AtualizaCristalGreen(GAMEMANAGER.instance.cristalGreen);
+            GAMEMANAGER.instance.SalvaCristais(GAMEMANAGER.instance.cristalGreen);
+            //UIManager.instance.AtualizaCristalGreen(GAMEMANAGER.instance.cristalGreen);
             audio_coletaCrsG.Play();
             coletaCrs.Play("animeColetaCrsG");
 

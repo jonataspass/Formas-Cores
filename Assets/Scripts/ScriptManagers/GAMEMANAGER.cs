@@ -132,13 +132,12 @@ public class GAMEMANAGER : MonoBehaviour
     //testando variavel para atualizar pts btn fase mestra
     ShowPts_Caps ptsMestra;
 
+    //testando
+    SafeArea safeAre;
+
     //Carrega cena
     void Carrega(Scene cena, LoadSceneMode modo)
     {
-        ////visualização da camera
-        //Camera.main.projectionMatrix = Matrix4x4.Ortho(-orthoSize * aspect, orthoSize * aspect, -orthoSize, orthoSize,
-        //    Camera.main.nearClipPlane, Camera.main.farClipPlane);
-
         //desbloqueio de fase mestra MCH
         if (ZPlayerPrefs.HasKey("DesbloqMCH"))
         {
@@ -161,7 +160,6 @@ public class GAMEMANAGER : MonoBehaviour
         if (ZPlayerPrefs.HasKey("cargaMissel"))
         {
             cargaMissel = ZPlayerPrefs.GetInt("cargaMissel");
-            //txt_moedasSalvas = cargaMissel;
         }
 
         //Salva MoedasZ
@@ -193,6 +191,8 @@ public class GAMEMANAGER : MonoBehaviour
             StartGame();
         }
 
+        safeAre = GameObject.Find("SafeArea").GetComponent<SafeArea>();
+        safeAre.SafeA();
     }
 
     void StartGame()
@@ -222,42 +222,7 @@ public class GAMEMANAGER : MonoBehaviour
         ScoreManager.instance.conta_ptsMarcados = 0;
         coletouCrs = false;
 
-        liberaExtras = Random.Range(1, 4);//*****
-
-        ////Salva cristais
-        //if (ZPlayerPrefs.HasKey("cristaisGreen_Total"))
-        //{
-        //    cristalGreen = ZPlayerPrefs.GetInt("cristaisGreen_Total");
-        //}
-
-        ////salva Missel
-        //if (ZPlayerPrefs.HasKey("cargaMissel"))
-        //{
-        //    cargaMissel = ZPlayerPrefs.GetInt("cargaMissel");
-        //    //txt_moedasSalvas = cargaMissel;
-        //}
-
-        ////Salva MoedasZ
-        //if (ZPlayerPrefs.HasKey("qtdMoedas"))
-        //{
-        //    //print("moedasS");
-        //    qtd_moedaSalvas = ZPlayerPrefs.GetInt("qtdMoedas");
-        //}
-
-        //if (LevelAtual.instance.level >= 6)
-        //{
-        //    //num_tentativas = circleManager.num_tentativas_Start;
-        //}
-
-        ////carga de critais para inicializar o sistema
-        //if (!ZPlayerPrefs.HasKey("cargaCrs"))
-        //{
-        //    ZPlayerPrefs.SetInt("cargaCrs", 5);
-        //}
-        //else if (ZPlayerPrefs.HasKey("cargaCrs"))
-        //{
-        //    CrsCargaAtiva = ZPlayerPrefs.GetInt("cargaCrs");
-        //}        
+        liberaExtras = Random.Range(1, 4);//*****       
 
         //canhões
         ativosTemp = 0;
@@ -321,70 +286,12 @@ public class GAMEMANAGER : MonoBehaviour
 
             FeedBackObjetivo();
 
-            //SALVA LEVEIS QUE JÁ FORAM JOGADOS
-            //POSSIBILITA HABILITAR BTNPROXIMO PARA O PROXIMO LEVEL
-            //if (!ZPlayerPrefs.HasKey(LevelAtual.instance.cenaAtual))
-            //{
-            //    ZPlayerPrefs.SetInt(LevelAtual.instance.cenaAtual + "levelConcluido", 1);
-            //}
-
-            //if (moedaPegas == 0 && circleManager.totalClicks == circleManager.num_tentativas_Ideal)
-            //{
-            //    UIManager.instance.txt_Painel_info_WL.text = "Parabéns, você completou 100% do objetivo!!!";
-            //}
-            //else if (moedaPegas == circleManager.totalMoedasLevel && circleManager.totalClicks == circleManager.num_tentativas_Ideal)
-            //{
-            //    UIManager.instance.txt_Painel_info_WL.text = "Parabéns, você completou 100% do objetivo!!!";
-            //}
-            //else if (moedaPegas == circleManager.totalMoedasLevel && circleManager.totalClicks > circleManager.num_tentativas_Ideal)
-            //{
-            //    UIManager.instance.txt_Painel_info_WL.text = "Parabéns, você coletou todas as moedasZ, \n porém deu "
-            //        + (circleManager.totalClicks - circleManager.num_tentativas_Ideal) + " clicks a mais!!!";
-            //}
-            //else if (moedaPegas == circleManager.totalMoedasLevel && circleManager.totalClicks < circleManager.num_tentativas_Ideal)
-            //{
-            //    UIManager.instance.txt_Painel_info_WL.text = "Fantástico, você completou 100% do objetivo com "
-            //        + (circleManager.num_tentativas_Ideal - circleManager.totalClicks) + " clicks a menos!!!";
-            //}
-            //else if (moedaPegas < circleManager.totalMoedasLevel && circleManager.totalClicks == circleManager.num_tentativas_Ideal)
-            //{
-            //    UIManager.instance.txt_Painel_info_WL.text = "Parabéns, você alinhou todos os módulos mas deixou para trás "
-            //        + (circleManager.totalMoedasLevel - moedaPegas) + " moedaZ!!!";
-            //}
-            //else if (moedaPegas < circleManager.totalMoedasLevel && circleManager.totalClicks > circleManager.num_tentativas_Ideal)
-            //{
-            //    UIManager.instance.txt_Painel_info_WL.text = "Parabéns, você alinhou todos os módulos, \n porém deu "
-            //        + (circleManager.totalClicks - circleManager.num_tentativas_Ideal) + " clicks a mais e deixou para trás "
-            //        + (circleManager.totalMoedasLevel - moedaPegas) + " moedaZ!!!";
-            //}
-            //else if (moedaPegas < circleManager.totalMoedasLevel && circleManager.totalClicks < circleManager.num_tentativas_Ideal)
-            //{
-            //    UIManager.instance.txt_Painel_info_WL.text = "Parabéns, você alinhou todos os módulos com apenas "
-            //        + (circleManager.totalClicks) + " clicks, porém deixou para trás "
-            //        + (circleManager.totalMoedasLevel - moedaPegas) + " moedaZ!!!";
-            //}
-
             UIManager.instance.UI_Win();
-
-            //if (ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenB"))
-            //{
-            //    //ColetaCristalGreen(1);
-            //    //qtd_moedaSalvas += 50;
-            //}
-            //if (ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenP"))
-            //{
-            //    //ColetaCristalGreen(1);
-            //    //qtd_moedaSalvas += 50;
-            //}
-            //if (ZPlayerPrefs.HasKey(LevelAtual.instance.level + "cristaisGreenO"))
-            //{
-            //    //ColetaCristalGreen(1);
-            //    //qtd_moedaSalvas += 50;
-            //}
-
+            
             //SalvaMissel(cargaMissel);
             SalvaMoedasZ(qtd_moedaSalvas);
             SalveCargaCrs(CrsCargaAtiva);
+
             //Salva crscoletado em cena para destruílo se a cena for jogada novamente
             SalvaCrsColetado(id_Crs_gameManager);
 
@@ -401,6 +308,9 @@ public class GAMEMANAGER : MonoBehaviour
 
             UIManager.instance.descarregaMissel = true;
             SalvaMissel(0);
+
+            //desbloque niveisfaseMestra
+            DesbloqNiveis();
         }
     }
 
@@ -517,6 +427,17 @@ public class GAMEMANAGER : MonoBehaviour
             UIManager.instance.txt_Painel_info_WL.text = "Parabéns, você alinhou todos os módulos com apenas "
                 + (circleManager.totalClicks) + " clicks, porém deixou para trás "
                 + (circleManager.totalMoedasLevel - moedaPegas) + " moedasZ!!!";
+        }
+    }
+
+    //desbloqueia niveis da faseMestra
+    void DesbloqNiveis()
+    {
+        //desbloqueia btn MCH na cena faseMestra
+        if (LevelAtual.instance.cenaAtual == "Level25_MCS" && ZPlayerPrefs.HasKey("DesbloqMCH"))
+        {
+            ZPlayerPrefs.SetInt("DesbloqMCH", 1);
+            desbloMS2 = 1;
         }
     }
 
@@ -659,6 +580,7 @@ public class GAMEMANAGER : MonoBehaviour
         CrsCargaAtiva = cgCrs;
     }
 
+    //talvez deletar
     public void ColetaCristalGreen(int crsG)
     {
         cristalGreen += crsG;
@@ -668,8 +590,11 @@ public class GAMEMANAGER : MonoBehaviour
     public void DecrementaCristal(int crsG)
     {
         liberaCristal = true;
-        cristalGreen -= crsG;
-        SalvaCristais(cristalGreen);
+        if(cristalGreen >= crsG)
+        {
+            cristalGreen -= crsG;
+            SalvaCristais(cristalGreen);
+        }        
     }
 
     //Salva Cristais  
@@ -738,13 +663,15 @@ public class GAMEMANAGER : MonoBehaviour
 
     //Oferece comprar mais tentativas extras
     public TextMeshProUGUI precoTentarNovamente;
-    public int extraTry;    
+    public int extraTry; 
+    
     public void OfereceTentativasExtras()
     {
         //ADD VALOR E QUANTIDADE DE TENTATIVS EXTRAS
         if (qtd_moedaSalvas >= extraTry * 100)
         {     
             precoTentarNovamente.text = (extraTry * 100).ToString();
+
             //ativa painel comprar tentativas
             UIManager.instance.painel_CompraExtra.SetActive(true);
             UIManager.instance.txtTipoItem.text = "Suas tentativas acabaram, compre " + extraTry + " tentativas extras para continuar jogando";
@@ -753,21 +680,7 @@ public class GAMEMANAGER : MonoBehaviour
             UIManager.instance.imgExtra.enabled = true;
             UIManager.instance.txtExtra.enabled = true;
         }
-        //else if (qtd_moedaSalvas < extraTry * 100)
-        //{
-        //    print("AQUI");
-        //    StartCoroutine(AvisoSemTentativas());
-        //}
     }
-
-    //IEnumerator AvisoSemTentativas()
-    //{
-    //    yield return new WaitForSeconds(1f);
-    //    HabTex_Infor_NoCrs("Suas tentativas acabaram, \n clique no botão abaixo e assista um vídeo para ganhar " + extraTry + " tentativas extras");
-    //    UIManager.instance.painel_Recompensa.SetActive(true);
-    //    UIManager.instance.extras.enabled = true;
-    //    travaPainelExtras = false;
-    //}
 }
 
 

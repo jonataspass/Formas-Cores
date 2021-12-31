@@ -299,7 +299,7 @@ public class RecompensaManager : MonoBehaviour
             {
                 newRecompensaSuporte_veteran.star1.color = new Color(newRecompensaSuporte_intermediate.star1.color.r, newRecompensaSuporte_veteran.star1.color.g, newRecompensaSuporte_veteran.star1.color.b, 1);
             }
-            if (recompensasAtributes[5].totalRecompensas >= 700000)
+            if (recompensasAtributes[5].totalRecompensas >= 725000)
             {
                 newRecompensaSuporte_veteran.star2.color = new Color(newRecompensaSuporte_intermediate.star1.color.r, newRecompensaSuporte_veteran.star1.color.g, newRecompensaSuporte_veteran.star1.color.b, 1);
             }

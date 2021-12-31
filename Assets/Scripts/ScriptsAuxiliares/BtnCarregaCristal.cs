@@ -32,7 +32,6 @@ public class BtnCarregaCristal : MonoBehaviour
             //anuncio
             if (AdsOnceTime == false && GAMEMANAGER.instance.num_tentativas > 0)
             {
-                print("meteoro colidiu");
                 UnityAds.instance.ShowAds();
                 AdsOnceTime = true;
             }

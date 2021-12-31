@@ -85,7 +85,7 @@ public class RotationMeteor : MonoBehaviour
             UIManager.instance.txt_Painel_info_WL.text = "O módulo colidiu com um meteóro";
             UIManager.instance.UI_Win();
             UIManager.instance.habilitabBtnsCena = false;
-            UIManager.instance.habilitaBtnRestart = false;            
+            UIManager.instance.btn_restart.interactable = false;
         }
         if (coll.CompareTag("missel"))
         {
@@ -102,12 +102,11 @@ public class RotationMeteor : MonoBehaviour
     {
         if(GAMEMANAGER.instance.win == false && GAMEMANAGER.instance.lose == false
             && (UIManager.instance.ativa_Painel_Guia == false && UIManager.instance.ativa_painel_Dicas == false)
-            && UIManager.instance.dicaComprada == false)
+            && UIManager.instance.dicaComprada == false && GAMEMANAGER.instance.num_tentativas > 0
+            && GAMEMANAGER.instance.startGame == true && UnityAds.instance.rewardedAtivo == false)
         {
             if (GAMEMANAGER.instance.cargaMissel > 0 && GAMEMANAGER.instance.misselAtivo == false)
-            {
-                //TRAVA CLICK
-                
+            {                
                 GAMEMANAGER.instance.misselAtivo = true;
                 new_Missel = Instantiate(prefab_missel) as GameObject;
                 GAMEMANAGER.instance.positioMeteor = transform.position;

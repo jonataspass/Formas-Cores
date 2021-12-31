@@ -23,6 +23,13 @@ public class Loanding : MonoBehaviour
         GAMEMANAGER.instance.win = false;
         animeLoading.gameObject.SetActive(true);
         StartCoroutine(CenaDeCarregamento(cena));
+
+        ////desbloqueia btn MCH na cena faseMestra
+        //if (LevelAtual.instance.cenaAtual == "MCS" && LevelAtual.instance.level == 30)
+        //{
+        //        ZPlayerPrefs.SetInt("DesbloqMCH", 1);
+        //        GAMEMANAGER.instance.desbloMS2 = 1;            
+        //}
     }
     //testandoBtnProxioLevel
     public void LoadingBtnProximo(string cena)

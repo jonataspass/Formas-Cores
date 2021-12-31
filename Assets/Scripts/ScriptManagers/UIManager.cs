@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
     //Btns do Painel_WL
     [SerializeField]
     private Button btnBack, btnVoltar_Painel_WL, btnNovamente_Painel_WL, btnProximo_Painel_WL;
-    
+
     public Button btnPainel_Guia;
     public bool ativa_Painel_Guia;
 
@@ -63,7 +63,7 @@ public class UIManager : MonoBehaviour
     //painel_dicas
     [SerializeField]
     private GameObject painel_Dicas;
-    
+
     public Button btnPainel_Dicas;
     public bool ativa_painel_Dicas;
 
@@ -98,7 +98,7 @@ public class UIManager : MonoBehaviour
 
     //[SerializeField]
     //GameObject animaMaoCarregaCrs;
-        
+
     private void Update()
     {
         HabilitDesabilitBts_Painel_WL();
@@ -199,7 +199,7 @@ public class UIManager : MonoBehaviour
             imgExtra.enabled = false;
             imgMissel.enabled = false;
             imgEnergy.enabled = false;
-            painel_CompraExtra.SetActive(false);            
+            painel_CompraExtra.SetActive(false);
 
             StartCoroutine(esperaWL());
 
@@ -234,7 +234,7 @@ public class UIManager : MonoBehaviour
             crs.enabled = false;
             missel.enabled = false;
             dica.enabled = false;
-            extras.enabled = false;            
+            extras.enabled = false;
         }
     }
 
@@ -273,7 +273,7 @@ public class UIManager : MonoBehaviour
         if (ScoreManager.instance.conta_ptsMarcados >= ScoreManager.instance.maxScore * 0.75 * 100)
         {
             capaceteBronze.enabled = true;
-            
+
             //capacetes dos btns das fases MCS, MCH, MCAH
             GAMEMANAGER.instance.numCapacetes = 1;
             //GAMEMANAGER.instance.SalvaCapacetes(GAMEMANAGER.instance.numCapacetes);
@@ -354,18 +354,18 @@ public class UIManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        if (GAMEMANAGER.instance.win == false && dicaComprada == false)
+        if (GAMEMANAGER.instance.win == false && dicaComprada == false
+            && GAMEMANAGER.instance.qtd_moedaSalvas >= 300)
         {
             StartCoroutine(WaitSoundClick_btnRestart());
 
-            if(GAMEMANAGER.instance.liberaCargaCrs == false)
+            if (GAMEMANAGER.instance.liberaCargaCrs == false)
             {
                 GAMEMANAGER.instance.qtd_moedaSalvas -= 300;
                 GAMEMANAGER.instance.SalvaMoedasZ(GAMEMANAGER.instance.qtd_moedaSalvas);
             }
-            
         }
-        else if(GAMEMANAGER.instance.win == false && dicaComprada == true)
+        else if (GAMEMANAGER.instance.win == false && dicaComprada == true)
         {
             StartCoroutine(WaitSoundClick_btnRestart());
         }
@@ -397,8 +397,6 @@ public class UIManager : MonoBehaviour
                 //desabilita btn próximo caso o próximo level estiver bloqueado
                 //ou habilita caso esteja desbloqueado
                 VerificaNextLevel();
-
-                
             }
         }
     }
@@ -412,14 +410,14 @@ public class UIManager : MonoBehaviour
         {
             int temp = LevelAtual.instance.level - 5;
             temp++;
-            if(ZPlayerPrefs.GetInt("Level" + temp + "_MCS") == 1)
+
+            if (ZPlayerPrefs.GetInt("Level" + temp + "_MCS") == 1)
             {
                 btnProximo_Painel_WL.interactable = true;
                 btnProximo_Painel_WL.gameObject.SetActive(true);
             }
             else
             {
-                print("2");
                 btnProximo_Painel_WL.interactable = false;
                 btnProximo_Painel_WL.gameObject.SetActive(false);
             }
@@ -452,37 +450,60 @@ public class UIManager : MonoBehaviour
 
     //libera restart
     public bool dicaComprada;
+
     public void habilitaBtnsCena()
     {
+        if (GAMEMANAGER.instance.startGame == true 
+            && (GAMEMANAGER.instance.lose == false && GAMEMANAGER.instance.win == false))
+        {
+            habilitabBtnsCena = true;
+            habilitaBtnRestart = true;
+        }
+        else
+        {
+            habilitabBtnsCena = false;
+            habilitaBtnRestart = false;
+        }        
+
         if (LevelAtual.instance.level >= 6 && GAMEMANAGER.instance.painelExtraAtivado == false)
         {
+            //btns gui e dica
             if (habilitabBtnsCena == true)
             {
-                //print("1");
                 btnPainel_Guia.interactable = true;
                 btnPainel_Dicas.interactable = true;
             }
             else if (habilitabBtnsCena == false)
             {
-                //print("2");
                 btnPainel_Guia.interactable = false;
                 btnPainel_Dicas.interactable = false;
             }
-            if (habilitaBtnRestart == true)
+
+            //desabilita btn restant quando jogo está inicializando 
+            if (GAMEMANAGER.instance.startGame == false)
             {
-                //print("3");
-                btn_restart.interactable = true;
-            }
-            else if(habilitaBtnRestart == false)
-            {
-                //print("4");
                 btn_restart.interactable = false;
             }
-            if(GAMEMANAGER.instance.num_tentativas <= 3 && dicaComprada == false)
+            else            //habilita btnrestart quando possui moedas suficientes
+            if (habilitaBtnRestart == true && GAMEMANAGER.instance.win == false
+                && GAMEMANAGER.instance.qtd_moedaSalvas > 300 && GAMEMANAGER.instance.startGame == true)
             {
-                btn_restart.interactable = false;                
+                btn_restart.interactable = true;
             }
-            if(GAMEMANAGER.instance.num_tentativas != circleManager.num_tentativas_Start)
+            //desabilita se não possuir moedas suficientes e não tiver usando dicas
+            else if (habilitaBtnRestart == false && GAMEMANAGER.instance.qtd_moedaSalvas < 30)
+            {
+                btn_restart.interactable = false;
+            }
+
+            //desabilita btn reiniciar uando num de tentativas menor que 3
+            if (GAMEMANAGER.instance.num_tentativas <= 3 && dicaComprada == false)
+            {
+                btn_restart.interactable = false;
+            }
+
+            //desabilita btn sair quando play já usou uma tentativa
+            if (GAMEMANAGER.instance.num_tentativas != circleManager.num_tentativas_Start)
             {
                 btnSair.interactable = false;
             }
@@ -533,7 +554,7 @@ public class UIManager : MonoBehaviour
             AtualizaCristalGreen(GAMEMANAGER.instance.cristalGreen);
             AtualizaMoedaZ(GAMEMANAGER.instance.qtd_moedaSalvas);
         }
-        if(GAMEMANAGER.instance.liberaCristal == true)//libera pelo btnrecompensa
+        if (GAMEMANAGER.instance.liberaCristal == true)//libera pelo btnrecompensa
         {
             AtualizaCristalGreen(GAMEMANAGER.instance.cristalGreen);
         }
@@ -564,7 +585,7 @@ public class UIManager : MonoBehaviour
 
                 habilitaBtnRestart = true;
             }
-        }        
+        }
     }
 
     //trava o click sobre os mods
@@ -662,7 +683,7 @@ public class UIManager : MonoBehaviour
                 xmoedas += 100 + (velCon * Time.deltaTime);
 
             //efeito de audio da contagem das moedas
-            if(soundMoedas != null)
+            if (soundMoedas != null)
             {
                 soundMoedas.Play();
             }
@@ -704,7 +725,7 @@ public class UIManager : MonoBehaviour
     //converte mísseis em moedas
     public void ConverteMisselToCoin()
     {
-        if(GAMEMANAGER.instance.win == true && GAMEMANAGER.instance.cargaMissel > 0 
+        if (GAMEMANAGER.instance.win == true && GAMEMANAGER.instance.cargaMissel > 0
             && descarregaMissel == true && ScoreManager.instance.waitCont == true)
         {
             descarregaMissel = false;
@@ -712,20 +733,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    ////tutorial carrega Crs
-    //public void CarregaCrsTutorial()
-    //{
-    //    if(GAMEMANAGER.instance.CrsCargaAtiva == 0)
-    //    {
-    //        animaMaoCarregaCrs.SetActive(true);
-    //    }
-    //}
-
     //testando convertemissel to coin
     IEnumerator convertTeste()
     {
         yield return new WaitForSeconds(0.5f);
-        GAMEMANAGER.instance.cargaMissel -= 1;
+        if(GAMEMANAGER.instance.cargaMissel > 0)
+        {
+            GAMEMANAGER.instance.cargaMissel -= 1;
+        }
         GAMEMANAGER.instance.qtd_moedaSalvas += 5;
         descarregaMissel = true;
     }
@@ -742,6 +757,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(LevelAtual.instance.level);
         RepeteLevel.instance.SaveRepetLevel();
+
         //deve ser zerado para não descotar no scoreFinal
         GAMEMANAGER.instance.numTentativasExtras = 0;
     }

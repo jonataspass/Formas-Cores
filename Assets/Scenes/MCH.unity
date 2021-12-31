@@ -492,8 +492,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 640, y: 70.098175}
-  m_SizeDelta: {x: 310, y: 70}
+  m_AnchoredPosition: {x: 635, y: 70}
+  m_SizeDelta: {x: 200, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638351168
 MonoBehaviour:
@@ -914,6 +914,42 @@ MonoBehaviour:
     habilitado: 0
     desbloq: 0
     level_Real: 16
+  - levelText: 'Em breve '
+    habilitado: 0
+    desbloq: 0
+    level_Real: 0
+  - levelText: Em breve
+    habilitado: 0
+    desbloq: 0
+    level_Real: 0
+  - levelText: Em breve
+    habilitado: 0
+    desbloq: 0
+    level_Real: 0
+  - levelText: Em breve
+    habilitado: 0
+    desbloq: 0
+    level_Real: 0
+  - levelText: Em breve
+    habilitado: 0
+    desbloq: 0
+    level_Real: 0
+  - levelText: Em breve
+    habilitado: 0
+    desbloq: 0
+    level_Real: 0
+  - levelText: Em breve
+    habilitado: 0
+    desbloq: 0
+    level_Real: 0
+  - levelText: Em breve
+    habilitado: 0
+    desbloq: 0
+    level_Real: 0
+  - levelText: Em breve
+    habilitado: 0
+    desbloq: 0
+    level_Real: 0
   mestraMCS: 0
   mestraMCH: 0
   mestraMCAH: 0

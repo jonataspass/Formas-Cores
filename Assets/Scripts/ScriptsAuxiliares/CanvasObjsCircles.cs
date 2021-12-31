@@ -39,7 +39,7 @@ public class CanvasObjsCircles : MonoBehaviour
         currentLife_temp = circleManager.circles[indexCircle].currentlife;
         linhaEnerg.color = new Color(255, 255, 255, 150);
         iconeEnerg.color = new Color(255, 255, 255, 150);
-        animeMaoCrs = GameObject.FindWithTag("animeMaoCrs");;
+        animeMaoCrs = GameObject.FindWithTag("animeMaoCrs"); ;
 
         StartCoroutine(PegaMaoCrs());
 
@@ -57,7 +57,7 @@ public class CanvasObjsCircles : MonoBehaviour
 
     void AtualizaTextsCanvas()
     {
-        if(GAMEMANAGER.instance.CrsCargaAtiva == 0)
+        if (GAMEMANAGER.instance.CrsCargaAtiva == 0)
         {
             animeMaoCrs.SetActive(true);
         }
@@ -89,13 +89,20 @@ public class CanvasObjsCircles : MonoBehaviour
                     GAMEMANAGER.instance.Panel_InitEnergy.SetActive(false);
                     UIManager.instance.liberaMetodo_Painel_Guia = true;
 
-                    if(GAMEMANAGER.instance.lose == false || GAMEMANAGER.instance.win == true)
-                    {
-                        UIManager.instance.habilitabBtnsCena = true;
-                        UIManager.instance.habilitaBtnRestart = true;
-                    }                    
+                    //if(GAMEMANAGER.instance.lose == false || GAMEMANAGER.instance.win == true)
+                    //if (GAMEMANAGER.instance.startGame == true)
+                    //{
+                    //    UIManager.instance.habilitabBtnsCena = true;
+                    //    UIManager.instance.habilitaBtnRestart = true;
+                    //}
+                    //else
+                    //if (GAMEMANAGER.instance.lose == true || GAMEMANAGER.instance.win == true)
+                    //{
+                    //    UIManager.instance.habilitabBtnsCena = false;
+                    //    UIManager.instance.habilitaBtnRestart = false;
+                    //}
 
-                    if(contInitGame > 10)
+                    if (contInitGame > 10)
                     {
                         contInitGame = 10;
                     }

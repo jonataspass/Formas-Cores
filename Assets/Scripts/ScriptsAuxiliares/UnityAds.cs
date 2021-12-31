@@ -10,6 +10,8 @@ public class UnityAds : MonoBehaviour, IUnityAdsListener
     public static UnityAds instance;
 
     public Button btn_Recompensa;
+
+    public bool rewardedAtivo;
     //public Image crs, missel, dica, extras;
 
     private void Awake()
@@ -33,6 +35,7 @@ public class UnityAds : MonoBehaviour, IUnityAdsListener
         {
             btn_Recompensa = GameObject.FindWithTag("btnRecompensa").GetComponent<Button>();
             btn_Recompensa.onClick.AddListener(BtnRecompensa);
+            rewardedAtivo = false;
         }
 
         ShowBanner();
@@ -46,22 +49,18 @@ public class UnityAds : MonoBehaviour, IUnityAdsListener
         Advertisement.Initialize(gameId/*, Debug.isDebugBuild*/);
 
         ShowBanner();
+        rewardedAtivo = false;
     }
 
     void BtnRecompensa()
     {
-        //if (Advertisement.IsReady("MyFirtAds_Recompensado"))
-        //{   
-        //    //atualizar essa linha, resultCallback obsoleto
-        //    Advertisement.Show("MyFirtAds_Recompensado", new ShowOptions() { resultCallback = AdsAnalise });
-        //    GAMEMANAGER.instance.liberaCristal = true;
+        //destrava click
+        for (int i = 0; i < GAMEMANAGER.instance.circleManager.circles.Length; i++)
+        {
+            GAMEMANAGER.instance.circleManager.circles[i].trava_Click = false;
+        }
 
-        //    //recompensa cristal
-        //    UIManager.instance.painel_Recompensa.SetActive(false);
-        //    UIManager.instance.crs.enabled = false;
 
-        //    GAMEMANAGER.instance.travaBtnReompensa = true;
-        //}
         if (RewardedIsReady())
         {
             ShowRewarded();
@@ -74,44 +73,15 @@ public class UnityAds : MonoBehaviour, IUnityAdsListener
             GAMEMANAGER.instance.travaBtnReompensa = true;
         }
 
+        rewardedAtivo = false;
+
     }
-
-    //void AdsAnalise(ShowResult result)
-    //{
-    //    if (result == ShowResult.Finished)
-    //    {
-    //        GAMEMANAGER.instance.cristalGreen += 30;
-    //        GAMEMANAGER.instance.SalvaCristais(GAMEMANAGER.instance.cristalGreen);
-
-    //        //Se tentativas extras == 0 e libera para ganhar tentativas extras == true
-    //        //trabalhando aqui****
-    //        if (GAMEMANAGER.instance.num_tentativas == 0)
-    //        {
-    //            GAMEMANAGER.instance.num_tentativas = GAMEMANAGER.instance.extraTry;
-    //            UIManager.instance.painel_Recompensa.SetActive(false);
-    //            UIManager.instance.txt_Informativo.enabled = false;
-    //            GAMEMANAGER.instance.travaPainelExtras = true;
-    //            GAMEMANAGER.instance.liberaExtras = 2;
-    //            //libera click nos módulos
-    //            GAMEMANAGER.instance.getExtra = true;
-    //        }
-    //    }
-    //    else if (GAMEMANAGER.instance.num_tentativas == 0)
-    //    {
-    //        UIManager.instance.txt_Informativo.enabled = false;
-    //        //GAMEMANAGER.instance.liberalose = true;
-    //        //GAMEMANAGER.instance.liberaExtras = 2;
-    //        GAMEMANAGER.instance.VerificaLose();
-    //    }
-            
-    //}
 
     //Interstial
     public void ShowAds()
     {
         StartCoroutine(WaitToShowAds());
     }
-
 
     //Banner
     void ShowBanner()
@@ -121,6 +91,7 @@ public class UnityAds : MonoBehaviour, IUnityAdsListener
     }
 
     //-------------------------------------------------------------------------------------------
+
     //Rewarded
     public void ShowRewarded()
     {
@@ -130,13 +101,6 @@ public class UnityAds : MonoBehaviour, IUnityAdsListener
     public bool RewardedIsReady()
     {
         return Advertisement.IsReady("Rewarded_Android");
-        //    GAMEMANAGER.instance.liberaCristal = true;
-
-        //    //recompensa cristal
-        //    UIManager.instance.painel_Recompensa.SetActive(false);
-        //    UIManager.instance.crs.enabled = false;
-
-        //    GAMEMANAGER.instance.travaBtnReompensa = true;
     }
 
 
@@ -149,14 +113,21 @@ public class UnityAds : MonoBehaviour, IUnityAdsListener
         //INTERSTITIAL
         if (PlayerPrefs.HasKey("AdsUnity"))
         {
-            print("Interstitial " + PlayerPrefs.GetInt("AdsUnityRewarded"));
-            if (PlayerPrefs.GetInt("AdsUnity") == 3)
+            if (PlayerPrefs.GetInt("AdsUnity") == 5 && PlayerPrefs.GetInt("AdsUnityRewarded") != 3)
             {
                 if (Advertisement.IsReady("MyFirtAds_Recompensado"))
                 {
                     Advertisement.Show("MyFirtAds_Recompensado");
                 }
 
+                PlayerPrefs.SetInt("AdsUnity", 1);
+            }
+            else if (PlayerPrefs.GetInt("AdsUnity") == 5 && PlayerPrefs.GetInt("AdsUnityRewarded") == 3)
+            {
+                PlayerPrefs.SetInt("AdsUnity", 4);
+            }
+            else if (PlayerPrefs.GetInt("AdsUnity") > 5)
+            {
                 PlayerPrefs.SetInt("AdsUnity", 1);
             }
             else
@@ -168,18 +139,29 @@ public class UnityAds : MonoBehaviour, IUnityAdsListener
         {
             PlayerPrefs.SetInt("AdsUnity", 1);
         }
+
         //----------------------------------------------------------------
+
         //REWARDEDCristais
         if (PlayerPrefs.HasKey("AdsUnityRewarded"))
         {
-            print("Rewarded "+PlayerPrefs.GetInt("AdsUnityRewarded"));
-            if (PlayerPrefs.GetInt("AdsUnityRewarded") >= 2 && PlayerPrefs.GetInt("AdsUnity") != 5)
+            if (PlayerPrefs.GetInt("AdsUnityRewarded") == 3 && PlayerPrefs.GetInt("AdsUnity") != 5)
             {
                 GAMEMANAGER.instance.HabTex_Informativo("Assista um vídeo e ganhe 30 cristais clicando no botão abaixo");
                 //recompensa
                 UIManager.instance.painel_Recompensa.SetActive(true);
                 UIManager.instance.crs.enabled = true;
 
+                rewardedAtivo = true;
+
+                PlayerPrefs.SetInt("AdsUnityRewarded", 1);
+            }
+            else if (PlayerPrefs.GetInt("AdsUnityRewarded") == 3 && PlayerPrefs.GetInt("AdsUnity") == 5)
+            {
+                PlayerPrefs.SetInt("AdsUnityRewarded", 2);
+            }
+            else if (PlayerPrefs.GetInt("AdsUnityRewarded") > 3)
+            {
                 PlayerPrefs.SetInt("AdsUnityRewarded", 1);
             }
             else
@@ -200,7 +182,7 @@ public class UnityAds : MonoBehaviour, IUnityAdsListener
     //interfaces dos Ads
     public void OnUnityAdsReady(string placementId)
     {
-       //executa quando um placementId está pronto para ser mostrado na tela
+        //executa quando um placementId está pronto para ser mostrado na tela
     }
 
     public void OnUnityAdsDidError(string message)
@@ -210,31 +192,18 @@ public class UnityAds : MonoBehaviour, IUnityAdsListener
 
     public void OnUnityAdsDidStart(string placementId)
     {
-       //executa quando um video começa a ser mostrado na tela
-       //exemplo: pode ser usado para pausar o jogo quando um video aparecer, já pausa automáticamente 
-       //ou pode ser criada uma programação prória
+        //executa quando um video começa a ser mostrado na tela
+        //exemplo: pode ser usado para pausar o jogo quando um video aparecer, já pausa automáticamente 
+        //ou pode ser criada uma programação prória
     }
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
         //executa quando uma propaganda finaliza
-        if(placementId == "Rewarded_Android" && showResult == ShowResult.Finished)
+        if (placementId == "Rewarded_Android" && showResult == ShowResult.Finished)
         {
             GAMEMANAGER.instance.cristalGreen += 30;
             GAMEMANAGER.instance.SalvaCristais(GAMEMANAGER.instance.cristalGreen);
-
-            //Se tentativas extras == 0 e libera para ganhar tentativas extras == true
-            //trabalhando aqui****
-            //if (GAMEMANAGER.instance.num_tentativas == 0)
-            //{
-            //    GAMEMANAGER.instance.num_tentativas = GAMEMANAGER.instance.extraTry;
-            //    UIManager.instance.painel_Recompensa.SetActive(false);
-            //    UIManager.instance.txt_Informativo.enabled = false;
-            //    GAMEMANAGER.instance.travaPainelExtras = true;
-            //    GAMEMANAGER.instance.liberaExtras = 2;
-            //    //libera click nos módulos
-            //    GAMEMANAGER.instance.getExtra = true;
-            //}
         }
         else if (GAMEMANAGER.instance.num_tentativas == 0)
         {

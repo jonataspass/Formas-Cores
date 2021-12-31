@@ -86,7 +86,7 @@ public class LevelManager : MonoBehaviour
             }
 
             //TESTANDO DESBLOQUEIO DE FASE MESTRA
-            VerificaUltimoLv(lv.level_Real, lv.habilitado);
+            //VerificaUltimoLv(lv.level_Real, lv.habilitado);
 
             //desbloqueia btn
             newBtnTemp.desbloq_Btn = lv.desbloq;
@@ -147,12 +147,12 @@ public class LevelManager : MonoBehaviour
     }
 
     //metodo verifica se útimo level da fase mestra está desbloqueada
-    void VerificaUltimoLv(string ultimolv, bool habilitado)
+    public void VerificaUltimoLv(string ultimolv, bool habilitado)
     {
-        if (LevelAtual.instance.level == 3)
-        {
-            string nomeNivel = LevelAtual.instance.cenaAtual;            
-        }
+        //if (LevelAtual.instance.level == 3)
+        //{
+        //    string nomeNivel = LevelAtual.instance.cenaAtual;            
+        //}
 
         //desbloqueio próximo nivel "MCH/MCAH..."
         if (LevelAtual.instance.cenaAtual == "MCS" && ultimolv == "25")

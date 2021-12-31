@@ -10550,7 +10550,7 @@ PrefabInstance:
     - target: {fileID: 6655969995620520189, guid: 98b347a49fdd3b446a90ef2377fd0054,
         type: 3}
       propertyPath: qtdMoeda
-      value: 13
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6999103143544954234, guid: 98b347a49fdd3b446a90ef2377fd0054,
         type: 3}
@@ -13184,7 +13184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 944, y: 196668.17}
+  m_AnchoredPosition: {x: 944, y: 197193.73}
   m_SizeDelta: {x: 775.8, y: 3192.2}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1280927466
